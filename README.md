@@ -27,7 +27,7 @@ Download **`BlocPlus-Setup.exe`** from the [latest release](https://github.com/u
 - It adds BlocPlus to the Start menu, to the **Open with** list and to the right-click menu (**Editar con BlocPlus**).
 - **To make it your default editor**, accept the offer at the end of the installation, or later choose **Ayuda > Usar como editor predeterminado** (the interface is in Spanish). Windows doesn't allow programs to set themselves as the default, so this opens *Settings > Default apps*, where you pick BlocPlus.
 - **Updates**: every time it starts, BlocPlus checks GitHub for a new release. When there is one, a notice appears in the status bar. You can also check by hand with **Ayuda > Buscar actualizaciones**. Updating downloads the new version and restarts the editor, keeping your tabs. You can turn off the automatic check in Settings.
-- **To uninstall**, use *Settings > Apps > Installed apps > BlocPlus*. Your settings and session are kept in `%APPDATA%\BlocPlus`.
+- **To uninstall**, use *Settings > Apps > Installed apps > BlocPlus*. The uninstaller asks whether to also delete your data in `%APPDATA%\BlocPlus` (settings, recent files and the saved session) or keep it for a future install.
 
 If you'd rather not install anything, download **`BlocPlus.exe`** and run it from anywhere. That is the portable version.
 

@@ -17,6 +17,6 @@ Primera versión.
 - Recarga los archivos que otro programa modifica.
 - Archivos recientes.
 - Ventana de Ajustes (Ctrl+,) con la versión y este registro de cambios.
-- Instalador para tu usuario, sin permisos de administrador: añade el programa al menú Inicio, a "Abrir con" y a "Editar con BlocPlus", y lo registra para poder elegirlo como editor predeterminado. Se desinstala desde la configuración de Windows.
+- Instalador para tu usuario, sin permisos de administrador: añade el programa al menú Inicio, a "Abrir con" y a "Editar con BlocPlus", y lo registra para poder elegirlo como editor predeterminado. Se desinstala desde la configuración de Windows, y el desinstalador pregunta si quieres conservar o borrar tus ajustes y tu sesión.
 - Actualizaciones: al abrir el programa busca una versión nueva en GitHub (se puede desactivar) y también desde Ayuda > Buscar actualizaciones. La actualización se descarga, se instala y reinicia el programa sin perder las pestañas.
 - Logo e icono propios.

@@ -171,8 +171,10 @@ static class Setup
 
     public static void UninstallInteractive()
     {
-        if (MessageBox.Show("¿Desinstalar " + App + "?\n\nTus ajustes y tu sesión se conservan en %APPDATA%\\" + App + ".",
-                App, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+        if (MessageBox.Show("¿Desinstalar " + App + "?", App, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+        bool wipe = MessageBox.Show("¿Borrar también tus datos de " + App + "?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.",
+            App, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+        if (wipe) try { Directory.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), App), true); } catch { }
         var cu = Registry.CurrentUser;
         foreach (var key in new[] { @"Software\Classes\" + ProgId, @"Software\Classes\Applications\" + App + ".exe", @"Software\Classes\*\shell\" + App, @"Software\" + App, UninstallKey })
             cu.DeleteSubKeyTree(key, false);
