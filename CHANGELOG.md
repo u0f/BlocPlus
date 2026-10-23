@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 (2026-10-23)
+
+- **Vista previa en tiempo real** (Ver > Vista previa, Ctrl+Shift+V, o el botón de la barra de estado): el editor se queda a la izquierda y la vista previa a la derecha, y se actualiza mientras escribes.
+  - Formatos: HTML, Markdown, reStructuredText, SVG y CSV/TSV (como tabla).
+  - Sigue el desplazamiento del editor y usa el tema claro u oscuro.
+  - Las imágenes y enlaces relativos se cargan desde la carpeta del archivo. Los enlaces web se abren en el navegador.
+- Resaltado de sintaxis para reStructuredText.
+
 ## 1.0.0 (2026-10-23)
 
 Primera versión.

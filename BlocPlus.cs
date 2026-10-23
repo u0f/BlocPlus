@@ -24,7 +24,7 @@ using Microsoft.Win32;
 
 [assembly: AssemblyTitle("BlocPlus")]
 [assembly: AssemblyProduct("BlocPlus")]
-[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyVersion("1.1.0")]
 
 static class Native
 {
@@ -35,6 +35,7 @@ static class Native
     [DllImport("dwmapi.dll")] public static extern int DwmSetWindowAttribute(IntPtr h, int attr, ref int val, int size);
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)] public static extern int SetWindowTheme(IntPtr h, string app, string idList);
     [DllImport("shell32.dll")] public static extern void SHChangeNotify(int eventId, int flags, IntPtr a, IntPtr b);
+    [DllImport("urlmon.dll")] public static extern int CoInternetSetFeatureEnabled(int feature, int flags, bool enable);
 }
 
 static class Program
@@ -409,6 +410,8 @@ class Lang
           "t", @"^[ \t]*\[[^\]\n]*\]", "a", @"^[ \t]*[\w.\-""]+(?=[ \t]*[=:])", "s", DQ + "|" + SQ, "n", NUM, "k", W("true false")),
         L("Markdown", "md markdown", false, "t", @"^#{1,6}[ \t][^\n]*", "s", @"```[\s\S]*?(?:```|\z)|`[^`\n]+`", "c", @"^>[^\n]*",
           "k", @"\*\*[^*\n]+\*\*|__[^_\n]+__", "a", @"!?\[[^\]\n]*\]\([^)\n]*\)"),
+        L("reStructuredText", "rst rest", false, "t", @"^([=\-~^""'`#*+])\1{2,}[ \t]*$", "k", @"^\.\.[ \t]+[\w-]+::", "c", @"^\.\.(?:[ \t][^\n]*)?$",
+          "s", @"``[^`\n]+``", "a", @":[\w-]+:`[^`\n]+`|`[^`\n]+`_{0,2}"),
         L("Dockerfile", "dockerfile containerfile", true, "c", HASH, "s", DQ + "|" + SQ, "a", @"\$\{?\w+\}?",
           "k", W("from run cmd label expose env add copy entrypoint volume user workdir arg onbuild stopsignal healthcheck shell as")),
         L("Diff", "diff patch", false, "t", @"^@@[^\n]*", "c", @"^\+[^\n]*", "s", @"^-[^\n]*"),
@@ -420,6 +423,332 @@ class Lang
         string key = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
         if (key.Length == 0) key = Path.GetFileName(path).ToLowerInvariant();
         return All.FirstOrDefault(l => l.Keys.Contains(key));
+    }
+}
+
+// Small converters for the live preview: Markdown, reStructuredText and CSV to HTML.
+// They cover the common syntax, not every corner of each spec.
+static class Markup
+{
+    static string Esc(string s) { return WebUtility.HtmlEncode(s); }
+    static int Indent(string l) { int n = 0; while (n < l.Length && (l[n] == ' ' || l[n] == '\t')) n++; return n; }
+
+    // Generated tags are parked in placeholders so later emphasis rules can't touch their URLs.
+    static string Stash(List<string> keep, string html) { keep.Add(html); return "\u0001" + (keep.Count - 1) + "\u0001"; }
+    static string Unstash(List<string> keep, string s) { return Regex.Replace(s, "\u0001(\\d+)\u0001", m => keep[int.Parse(m.Groups[1].Value)]); }
+
+    static string Emphasis(string s)
+    {
+        s = Regex.Replace(s, @"(\*\*|__)(?=\S)(.+?)(?<=\S)\1", "<strong>$2</strong>");
+        s = Regex.Replace(s, @"(?<![\w*])\*(?=\S)(.+?)(?<=\S)\*(?!\*)|(?<!\w)_(?=\S)(.+?)(?<=\S)_(?!\w)",
+            m => "<em>" + (m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value) + "</em>");
+        return Regex.Replace(s, @"~~(?=\S)(.+?)(?<=\S)~~", "<del>$1</del>");
+    }
+
+    public static string Inline(string s)
+    {
+        var keep = new List<string>();
+        s = Regex.Replace(s, @"(`+)(.+?)\1", m => Stash(keep, "<code>" + Esc(m.Groups[2].Value.Trim()) + "</code>"));
+        s = Regex.Replace(s, @"!\[([^\]]*)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<img src=\"" + Esc(m.Groups[2].Value) + "\" alt=\"" + Esc(m.Groups[1].Value) + "\">"));
+        s = Regex.Replace(s, @"\[([^\]]+)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<a href=\"" + Esc(m.Groups[2].Value) + "\">" + Emphasis(Esc(m.Groups[1].Value)) + "</a>"));
+        s = Regex.Replace(s, @"<((?:https?|mailto):[^>\s]+)>", m => Stash(keep, "<a href=\"" + Esc(m.Groups[1].Value) + "\">" + Esc(m.Groups[1].Value) + "</a>"));
+        return Unstash(keep, Emphasis(Esc(s)));
+    }
+
+    // ---------- Markdown ----------
+
+    static readonly Regex ListItem = new Regex(@"^(\s*)([-*+]|\d+[.)])\s+(.*)$");
+    static readonly Regex Fence = new Regex(@"^\s{0,3}(```+|~~~+)");
+    static readonly Regex Heading = new Regex(@"^\s{0,3}(#{1,6})\s+(.*?)\s*#*\s*$");
+    static readonly Regex Rule = new Regex(@"^\s{0,3}([-*_])(\s*\1){2,}\s*$");
+    static readonly Regex TableSep = new Regex(@"^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$");
+
+    public static string Markdown(string text) { return Md(text.Split('\n').ToList()); }
+
+    static bool StartsBlock(string l)
+    {
+        return Fence.IsMatch(l) || Heading.IsMatch(l) || Rule.IsMatch(l) || Regex.IsMatch(l, @"^\s{0,3}>") || ListItem.IsMatch(l);
+    }
+
+    static string Md(List<string> lines)
+    {
+        var sb = new StringBuilder();
+        int i = 0;
+        while (i < lines.Count)
+        {
+            string l = lines[i];
+            Match m;
+            if (l.Trim().Length == 0) { i++; continue; }
+            if ((m = Fence.Match(l)).Success)
+            {
+                string fence = m.Groups[1].Value;
+                var code = new StringBuilder();
+                for (i++; i < lines.Count && !lines[i].TrimStart().StartsWith(fence); i++) code.Append(lines[i]).Append('\n');
+                i++;
+                sb.Append("<pre><code>").Append(Esc(code.ToString())).Append("</code></pre>\n");
+            }
+            else if ((m = Heading.Match(l)).Success)
+            {
+                sb.AppendFormat("<h{0}>{1}</h{0}>\n", m.Groups[1].Length, Inline(m.Groups[2].Value));
+                i++;
+            }
+            else if (Rule.IsMatch(l)) { sb.Append("<hr>\n"); i++; }
+            else if (Regex.IsMatch(l, @"^\s{0,3}>"))
+            {
+                var quote = new List<string>();
+                while (i < lines.Count && lines[i].Trim().Length > 0) quote.Add(Regex.Replace(lines[i++], @"^\s{0,3}>\s?", ""));
+                sb.Append("<blockquote>").Append(Md(quote)).Append("</blockquote>\n");
+            }
+            else if (Regex.IsMatch(l, @"^\s{0,3}<[A-Za-z!/]")) // raw HTML block
+            {
+                while (i < lines.Count && lines[i].Trim().Length > 0) sb.Append(lines[i++]).Append('\n');
+            }
+            else if (ListItem.IsMatch(l)) i = MdList(lines, i, sb);
+            else if (l.Contains("|") && i + 1 < lines.Count && lines[i + 1].Contains("-") && TableSep.IsMatch(lines[i + 1])) i = MdTable(lines, i, sb);
+            else if (Indent(l) >= 4)
+            {
+                var code = new StringBuilder();
+                for (; i < lines.Count && (lines[i].Trim().Length == 0 || Indent(lines[i]) >= 4); i++)
+                    code.Append(lines[i].Length >= 4 ? lines[i].Substring(lines[i][0] == '\t' ? 1 : 4) : "").Append('\n');
+                sb.Append("<pre><code>").Append(Esc(code.ToString().TrimEnd('\n'))).Append("</code></pre>\n");
+            }
+            else
+            {
+                var para = new List<string>();
+                int level = 0;
+                while (i < lines.Count && lines[i].Trim().Length > 0)
+                {
+                    if (para.Count > 0 && Regex.IsMatch(lines[i], @"^\s{0,3}(=+|-+)\s*$")) { level = lines[i].Trim()[0] == '=' ? 1 : 2; i++; break; }
+                    if (para.Count > 0 && StartsBlock(lines[i])) break;
+                    para.Add(lines[i].EndsWith("  ") ? lines[i].Trim() + "\u0002" : lines[i].Trim());
+                    i++;
+                }
+                string body = Inline(string.Join("\n", para)).Replace("\u0002", "<br>");
+                if (level > 0) sb.AppendFormat("<h{0}>{1}</h{0}>\n", level, body);
+                else sb.Append("<p>").Append(body).Append("</p>\n");
+            }
+        }
+        return sb.ToString();
+    }
+
+    static int MdList(List<string> lines, int i, StringBuilder sb)
+    {
+        var first = ListItem.Match(lines[i]);
+        int indent = first.Groups[1].Length;
+        bool ordered = char.IsDigit(first.Groups[2].Value[0]);
+        int start = ordered ? int.Parse(first.Groups[2].Value.TrimEnd('.', ')')) : 1;
+        sb.Append(ordered ? (start != 1 ? "<ol start=\"" + start + "\">" : "<ol>") : "<ul>");
+        while (i < lines.Count)
+        {
+            var m = ListItem.Match(lines[i]);
+            if (!m.Success || m.Groups[1].Length != indent) break;
+            int content = indent + m.Groups[2].Length + 1;
+            var item = new List<string> { m.Groups[3].Value };
+            bool loose = false;
+            for (i++; i < lines.Count; i++)
+            {
+                string l = lines[i];
+                if (l.Trim().Length == 0)
+                {
+                    if (i + 1 < lines.Count && lines[i + 1].Trim().Length > 0 && Indent(lines[i + 1]) >= content) { item.Add(""); loose = true; continue; }
+                    break;
+                }
+                var sub = ListItem.Match(l);
+                if (sub.Success && sub.Groups[1].Length <= indent) break;
+                if (!sub.Success && Indent(l) < content && item[item.Count - 1].Length == 0) break;
+                item.Add(l.Substring(Math.Min(Indent(l), content)));
+            }
+            string inner = Md(item);
+            if (!loose) inner = Regex.Replace(inner, @"^<p>(.*?)</p>", "$1", RegexOptions.Singleline);
+            inner = Regex.Replace(inner, @"^\[( |x|X)\] ", c => "<input type=\"checkbox\" disabled" + (c.Groups[1].Value == " " ? "" : " checked") + "> ");
+            sb.Append("<li>").Append(inner.Trim()).Append("</li>\n");
+        }
+        sb.Append(ordered ? "</ol>\n" : "</ul>\n");
+        return i;
+    }
+
+    static string[] Cells(string l)
+    {
+        l = l.Trim();
+        if (l.StartsWith("|")) l = l.Substring(1);
+        if (l.EndsWith("|")) l = l.Substring(0, l.Length - 1);
+        return l.Split('|').Select(c => c.Trim()).ToArray();
+    }
+
+    static int MdTable(List<string> lines, int i, StringBuilder sb)
+    {
+        var head = Cells(lines[i]);
+        var align = Cells(lines[i + 1]).Select(a => a.StartsWith(":") && a.EndsWith(":") ? " align=\"center\"" : a.EndsWith(":") ? " align=\"right\"" : "").ToArray();
+        Func<int, string> al = k => k < align.Length ? align[k] : "";
+        sb.Append("<table><thead><tr>");
+        for (int k = 0; k < head.Length; k++) sb.Append("<th" + al(k) + ">" + Inline(head[k]) + "</th>");
+        sb.Append("</tr></thead><tbody>");
+        for (i += 2; i < lines.Count && lines[i].Trim().Length > 0 && lines[i].Contains("|"); i++)
+        {
+            var row = Cells(lines[i]);
+            sb.Append("<tr>");
+            for (int k = 0; k < head.Length; k++) sb.Append("<td" + al(k) + ">" + (k < row.Length ? Inline(row[k]) : "") + "</td>");
+            sb.Append("</tr>");
+        }
+        sb.Append("</tbody></table>\n");
+        return i;
+    }
+
+    // ---------- reStructuredText ----------
+
+    static readonly Regex Adornment = new Regex(@"^([=\-~^""'`#*+:._])\1{2,}\s*$");
+
+    static string RstInline(string s)
+    {
+        var keep = new List<string>();
+        s = Regex.Replace(s, @"``(.+?)``", m => Stash(keep, "<code>" + Esc(m.Groups[1].Value) + "</code>"));
+        s = Regex.Replace(s, @"`([^`<]+?)\s*<([^>]+)>`__?", m => Stash(keep, "<a href=\"" + Esc(m.Groups[2].Value) + "\">" + Esc(m.Groups[1].Value) + "</a>"));
+        s = Regex.Replace(s, @":[\w-]+:`([^`]+)`", m => Stash(keep, "<code>" + Esc(m.Groups[1].Value) + "</code>"));
+        s = Regex.Replace(s, @"`([^`]+)`_?", m => Stash(keep, "<em>" + Esc(m.Groups[1].Value) + "</em>"));
+        s = Regex.Replace(s, @"\bhttps?://[^\s<>""]+[^\s<>"".,;:)]", m => Stash(keep, "<a href=\"" + Esc(m.Value) + "\">" + Esc(m.Value) + "</a>"));
+        s = Esc(s);
+        s = Regex.Replace(s, @"\*\*(?=\S)(.+?)(?<=\S)\*\*", "<strong>$1</strong>");
+        s = Regex.Replace(s, @"(?<![\w*])\*(?=\S)(.+?)(?<=\S)\*(?!\*)", "<em>$1</em>");
+        return Unstash(keep, s);
+    }
+
+    public static string Rst(string text) { return RstBlocks(text.Split('\n'), new List<string>()); }
+
+    // Lines indented deeper than `indent` that follow position i, dedented.
+    static List<string> IndentedBlock(string[] lines, ref int i, int indent)
+    {
+        var block = new List<string>();
+        while (i < lines.Length && (lines[i].Trim().Length == 0 || Indent(lines[i]) > indent)) block.Add(lines[i++]);
+        while (block.Count > 0 && block[block.Count - 1].Trim().Length == 0) block.RemoveAt(block.Count - 1);
+        int cut = block.Where(b => b.Trim().Length > 0).Select(Indent).DefaultIfEmpty(0).Min();
+        return block.Select(b => b.Length >= cut ? b.Substring(cut) : "").ToList();
+    }
+
+    static string RstBlocks(string[] lines, List<string> levels)
+    {
+        var sb = new StringBuilder();
+        Func<string, string, string> heading = (key, title) =>
+        {
+            if (!levels.Contains(key)) levels.Add(key);
+            int n = Math.Min(levels.IndexOf(key) + 1, 6);
+            return "<h" + n + ">" + RstInline(title) + "</h" + n + ">\n";
+        };
+        int i = 0;
+        while (i < lines.Length)
+        {
+            string l = lines[i];
+            Match m;
+            if (l.Trim().Length == 0) { i++; continue; }
+            if (Adornment.IsMatch(l) && i + 2 < lines.Length && lines[i + 1].Trim().Length > 0 && Adornment.IsMatch(lines[i + 2]))
+            {
+                sb.Append(heading("o" + l[0], lines[i + 1].Trim()));
+                i += 3;
+            }
+            else if (i + 1 < lines.Length && Indent(l) == 0 && !Adornment.IsMatch(l) && Adornment.IsMatch(lines[i + 1]) && lines[i + 1].TrimEnd().Length >= l.TrimEnd().Length)
+            {
+                sb.Append(heading("u" + lines[i + 1][0], l.Trim()));
+                i += 2;
+            }
+            else if (Adornment.IsMatch(l)) { sb.Append("<hr>\n"); i++; }
+            else if (Regex.IsMatch(l, @"^\.\.\s+(code-block|code|sourcecode)::"))
+            {
+                i++;
+                var block = IndentedBlock(lines, ref i, 0).SkipWhile(b => b.StartsWith(":") || b.Trim().Length == 0);
+                sb.Append("<pre><code>").Append(Esc(string.Join("\n", block))).Append("</code></pre>\n");
+            }
+            else if ((m = Regex.Match(l, @"^\.\.\s+(note|warning|tip|important|caution|attention|hint|danger|error|seealso|admonition)::\s*(.*)$", RegexOptions.IgnoreCase)).Success)
+            {
+                i++;
+                var body = IndentedBlock(lines, ref i, 0);
+                if (m.Groups[2].Value.Length > 0) body.Insert(0, m.Groups[2].Value);
+                string title = char.ToUpper(m.Groups[1].Value[0]) + m.Groups[1].Value.Substring(1).ToLower();
+                sb.Append("<div class=\"admonition\"><p class=\"admonition-title\">").Append(title).Append("</p>").Append(RstBlocks(body.ToArray(), levels)).Append("</div>\n");
+            }
+            else if ((m = Regex.Match(l, @"^\.\.\s+(image|figure)::\s*(\S+)")).Success)
+            {
+                i++;
+                IndentedBlock(lines, ref i, 0);
+                sb.Append("<p><img src=\"").Append(Esc(m.Groups[2].Value)).Append("\"></p>\n");
+            }
+            else if (l.StartsWith("..")) { i++; IndentedBlock(lines, ref i, 0); } // comments, targets, other directives
+            else if ((m = Regex.Match(l, @"^(\s*)([-*+•]|\d+[.)]|#[.)])\s+")).Success)
+            {
+                int indent = m.Groups[1].Length;
+                bool ordered = !"-*+•".Contains(m.Groups[2].Value);
+                sb.Append(ordered ? "<ol>" : "<ul>");
+                while (i < lines.Length && (m = Regex.Match(lines[i], @"^(\s*)([-*+•]|\d+[.)]|#[.)])\s+(.*)$")).Success && m.Groups[1].Length == indent)
+                {
+                    int content = lines[i].Length - m.Groups[3].Length;
+                    var item = new List<string> { m.Groups[3].Value };
+                    i++;
+                    item.AddRange(IndentedBlock(lines, ref i, content - 1));
+                    string inner = RstBlocks(item.ToArray(), levels);
+                    sb.Append("<li>").Append(Regex.Replace(inner, @"^<p>(.*?)</p>", "$1", RegexOptions.Singleline).Trim()).Append("</li>\n");
+                    while (i < lines.Length && lines[i].Trim().Length == 0 && i + 1 < lines.Length && Regex.IsMatch(lines[i + 1], @"^\s*([-*+•]|\d+[.)]|#[.)])\s+")) i++;
+                }
+                sb.Append(ordered ? "</ol>\n" : "</ul>\n");
+            }
+            else if (Indent(l) > 0)
+            {
+                var block = IndentedBlock(lines, ref i, -1);
+                sb.Append("<blockquote>").Append(RstBlocks(block.ToArray(), levels)).Append("</blockquote>\n");
+            }
+            else
+            {
+                var para = new List<string>();
+                while (i < lines.Length && lines[i].Trim().Length > 0 && Indent(lines[i]) == 0)
+                {
+                    if (para.Count > 0 && i + 1 < lines.Length && Adornment.IsMatch(lines[i + 1])) break;
+                    para.Add(lines[i++].Trim());
+                }
+                string p = string.Join(" ", para);
+                bool literal = p.EndsWith("::");
+                if (literal) p = p == "::" ? "" : p.EndsWith(" ::") ? p.Substring(0, p.Length - 3) : p.Substring(0, p.Length - 1);
+                if (p.Length > 0) sb.Append("<p>").Append(RstInline(p)).Append("</p>\n");
+                if (literal)
+                {
+                    while (i < lines.Length && lines[i].Trim().Length == 0) i++;
+                    sb.Append("<pre><code>").Append(Esc(string.Join("\n", IndentedBlock(lines, ref i, 0)))).Append("</code></pre>\n");
+                }
+            }
+        }
+        return sb.ToString();
+    }
+
+    // ---------- CSV / TSV ----------
+
+    public static string Csv(string text, char sep)
+    {
+        var rows = new List<List<string>>();
+        var row = new List<string>();
+        var cell = new StringBuilder();
+        bool quoted = false;
+        for (int i = 0; i < text.Length && rows.Count < 5000; i++)
+        {
+            char c = text[i];
+            if (quoted)
+            {
+                if (c == '"' && i + 1 < text.Length && text[i + 1] == '"') { cell.Append('"'); i++; }
+                else if (c == '"') quoted = false;
+                else cell.Append(c);
+            }
+            else if (c == '"' && cell.Length == 0) quoted = true;
+            else if (c == sep) { row.Add(cell.ToString()); cell.Clear(); }
+            else if (c == '\n') { row.Add(cell.ToString()); cell.Clear(); rows.Add(row); row = new List<string>(); }
+            else cell.Append(c);
+        }
+        if (cell.Length > 0 || row.Count > 0) { row.Add(cell.ToString()); rows.Add(row); }
+        if (rows.Count == 0) return "";
+        var sb = new StringBuilder("<table><thead><tr>");
+        foreach (var h in rows[0]) sb.Append("<th>").Append(Esc(h)).Append("</th>");
+        sb.Append("</tr></thead><tbody>");
+        foreach (var r in rows.Skip(1))
+        {
+            sb.Append("<tr>");
+            foreach (var v in r) sb.Append("<td>").Append(Esc(v)).Append("</td>");
+            sb.Append("</tr>");
+        }
+        return sb.Append("</tbody></table>").ToString();
     }
 }
 
@@ -731,6 +1060,16 @@ class MainForm : Form
     readonly List<Doc> docs = new List<Doc>();
     readonly TabStrip strip = new TabStrip { AllowDrop = true };
     readonly Panel host = new Panel { Dock = DockStyle.Fill };
+    readonly SplitContainer split = new SplitContainer { Dock = DockStyle.Fill, Panel2Collapsed = true, SplitterWidth = 5 };
+    readonly WebBrowser web = new WebBrowser
+    {
+        Dock = DockStyle.Fill, ScriptErrorsSuppressed = true, AllowWebBrowserDrop = false, WebBrowserShortcutsEnabled = false
+    };
+    readonly Timer previewTimer = new Timer { Interval = 300 };
+    readonly ToolStripStatusLabel lPreview = new ToolStripStatusLabel { Visible = false, Padding = new Padding(10, 0, 10, 0) };
+    ToolStripMenuItem mPreview;
+    bool previewOn, previewSized;
+    string previewShell; // identifies the page loaded for Markdown/RST/CSV, so edits only swap its body
     readonly MenuStrip menu = new MenuStrip();
     readonly StatusStrip status = new StatusStrip { SizingGrip = false };
     readonly ToolStripStatusLabel lPos = new ToolStripStatusLabel { Spring = true, TextAlign = ContentAlignment.MiddleLeft }, lLang = Lbl(), lZoom = Lbl(), lEol = Lbl(), lEnc = Lbl();
@@ -794,19 +1133,27 @@ class MainForm : Form
         };
 
         BuildMenu();
-        status.Items.AddRange(new ToolStripItem[] { lPos, lUpdate, lLang, lZoom, lEol, lEnc });
+        status.Items.AddRange(new ToolStripItem[] { lPos, lUpdate, lPreview, lLang, lZoom, lEol, lEnc });
+        lPreview.Click += (s, e) => TogglePreview();
         lUpdate.Click += (s, e) => { var r = lUpdate.Tag as Updater.Release; if (r != null) PromptUpdate(r); };
         ctx.Items.AddRange(new ToolStripItem[] {
             Item("Deshacer", Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
             Item("Cortar", Keys.None, () => Cur.Box.Cut()), Item("Copiar", Keys.None, () => Cur.Box.Copy()),
             Item("Pegar", Keys.None, PastePlain), Item("Eliminar", Keys.None, () => Cur.Box.SelectedText = ""),
             new ToolStripSeparator(), Item("Seleccionar todo", Keys.None, () => Cur.Box.SelectAll()) });
-        Controls.Add(host); Controls.Add(strip); Controls.Add(menu); Controls.Add(status);
+        split.Panel1.Controls.Add(host);
+        split.Panel2.Controls.Add(web);
+        try { Native.CoInternetSetFeatureEnabled(21 /*FEATURE_DISABLE_NAVIGATION_SOUNDS*/, 2 /*SET_FEATURE_ON_PROCESS*/, true); } catch { }
+        web.Navigating += OnPreviewNavigating;
+        web.DocumentCompleted += (s, e) => SyncPreviewScroll();
+        previewTimer.Tick += (s, e) => { previewTimer.Stop(); RenderPreview(); };
+        Controls.Add(split); Controls.Add(strip); Controls.Add(menu); Controls.Add(status);
         MainMenuStrip = menu;
 
         try { LoadSettings(); } catch { }
         mWrap.Checked = wrap;
         mLines.Checked = lineNumbers;
+        mPreview.Checked = previewOn;
         if (restoreSession) RestoreSession();
         foreach (var a in args) if (File.Exists(a)) OpenPath(a);
         if (docs.Count == 0) NewDoc();
@@ -915,13 +1262,14 @@ class MainForm : Form
 
         mWrap = Item("A&juste de línea", Keys.Alt | Keys.Z, () => { wrap = !wrap; ApplyEditorSettings(); });
         mLines = Item("&Números de línea", Keys.None, () => { lineNumbers = !lineNumbers; ApplyEditorSettings(); });
+        mPreview = Item("&Vista previa", Keys.Control | Keys.Shift | Keys.V, TogglePreview);
         var zin = Item("Acercar", Keys.Control | Keys.Oemplus, () => Zoom(0.1f));
         var zout = Item("Alejar", Keys.Control | Keys.OemMinus, () => Zoom(-0.1f));
         zin.ShortcutKeyDisplayString = "Ctrl++";
         zout.ShortcutKeyDisplayString = "Ctrl+-";
         var view = new ToolStripMenuItem("&Ver");
         view.DropDownItems.AddRange(new ToolStripItem[] {
-            mWrap, mLines, new ToolStripSeparator(),
+            mWrap, mLines, mPreview, new ToolStripSeparator(),
             zin, zout, Item("Restablecer zoom", Keys.Control | Keys.D0, () => Zoom(0)) });
 
         var help = new ToolStripMenuItem("Ay&uda");
@@ -973,10 +1321,10 @@ class MainForm : Form
             d.Gut.Invalidate();
             sessionDirty = true;
             UpdateTitle(d);
-            if (d == Cur) { UpdateStatus(); QueueHighlight(d); }
+            if (d == Cur) { UpdateStatus(); QueueHighlight(d); if (!split.Panel2Collapsed) { previewTimer.Stop(); previewTimer.Start(); } }
         };
         d.Box.SelectionChanged += (s, e) => { if (d == Cur && !d.Busy) UpdateStatus(); };
-        d.Box.VScroll += (s, e) => { d.Gut.Invalidate(); QueueHighlight(d); };
+        d.Box.VScroll += (s, e) => { d.Gut.Invalidate(); QueueHighlight(d); if (d == Cur) SyncPreviewScroll(); };
         d.Box.Resize += (s, e) => { d.Gut.Invalidate(); QueueHighlight(d); };
         d.Box.MouseWheel += (s, e) =>
         {
@@ -1000,6 +1348,7 @@ class MainForm : Form
         UpdateStatus();
         d.Gut.Invalidate();
         QueueHighlight(d);
+        RenderPreview();
         if (Visible) d.Box.Focus();
     }
 
@@ -1343,6 +1692,7 @@ class MainForm : Form
         d.Lang = l;
         Highlight(d);
         UpdateStatus();
+        if (d == Cur) RenderPreview();
     }
 
     // ---------- editing ----------
@@ -1599,7 +1949,10 @@ class MainForm : Form
         lUpdate.ForeColor = t.Accent;
         strip.T = t;
         strip.Invalidate();
-        BackColor = host.BackColor = t.Chrome;
+        BackColor = host.BackColor = split.Panel1.BackColor = split.Panel2.BackColor = t.Back;
+        split.BackColor = t.Border; // the splitter bar
+        previewShell = null;
+        RenderPreview();
         TitleBar(this, t.IsDark);
         if (find != null) ThemeForm(find, t);
         if (Cur != null) Highlight(Cur);
@@ -1676,6 +2029,128 @@ class MainForm : Form
             ThemeForm(f, T);
             return f.ShowDialog(this) == DialogResult.OK ? tb.Text : null;
         }
+    }
+
+    // ---------- live preview ----------
+
+    static string PreviewKind(Doc d)
+    {
+        string ext = d.FilePath == null ? "" : Path.GetExtension(d.FilePath).TrimStart('.').ToLowerInvariant();
+        switch (ext)
+        {
+            case "html": case "htm": case "xhtml": return "html";
+            case "md": case "markdown": case "mdown": case "mkd": return "md";
+            case "rst": case "rest": return "rst";
+            case "svg": return "svg";
+            case "csv": return "csv";
+            case "tsv": return "tsv";
+        }
+        if (d.Lang == null) return null;
+        if (d.Lang.Name == "Markdown") return "md";
+        if (d.Lang.Name == "reStructuredText") return "rst";
+        if (d.Lang.Name == "HTML / XML" && Regex.IsMatch(d.Text.Substring(0, Math.Min(1000, d.Text.Length)), "<html|<!doctype html", RegexOptions.IgnoreCase)) return "html";
+        return null;
+    }
+
+    void TogglePreview()
+    {
+        if (!previewOn && PreviewKind(Cur) == null)
+        {
+            MessageBox.Show(this, "La vista previa está disponible para HTML, Markdown, reStructuredText, SVG y CSV/TSV.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        previewOn = mPreview.Checked = !previewOn;
+        RenderPreview();
+        Cur.Box.Focus();
+    }
+
+    static string Hex(Color c) { return "#" + c.R.ToString("x2") + c.G.ToString("x2") + c.B.ToString("x2"); }
+
+    string BaseTag(Doc d)
+    {
+        return d.FilePath == null ? "" : "<base href=\"file:///" + WebUtility.HtmlEncode(Path.GetDirectoryName(d.FilePath).Replace('\\', '/')) + "/\">";
+    }
+
+    string Shell(Doc d)
+    {
+        var t = T;
+        string code = Hex(t.IsDark ? Color.FromArgb(45, 45, 48) : Color.FromArgb(246, 248, 250)), muted = Hex(t.IsDark ? Color.FromArgb(150, 150, 150) : Color.FromArgb(100, 100, 100));
+        string css =
+            "body{margin:0;padding:20px 32px;font:15px/1.6 'Segoe UI',sans-serif;color:" + Hex(t.Fore) + ";background:" + Hex(t.Back) + ";word-wrap:break-word}" +
+            "h1,h2,h3,h4,h5,h6{margin:1.2em 0 .6em;font-weight:600;line-height:1.25}h1,h2{padding-bottom:.3em;border-bottom:1px solid " + Hex(t.Border) + "}" +
+            "h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.25em}a{color:" + Hex(t.Accent) + "}img{max-width:100%}" +
+            "code{font-family:Consolas,monospace;font-size:90%;background:" + code + ";padding:.15em .35em;border-radius:4px}" +
+            "pre{background:" + code + ";padding:12px 16px;border-radius:6px;overflow:auto;line-height:1.45}pre code{padding:0;background:none}" +
+            "blockquote{margin:0 0 1em;padding:0 1em;color:" + muted + ";border-left:4px solid " + Hex(t.Border) + "}" +
+            "table{border-collapse:collapse;margin:1em 0}th,td{border:1px solid " + Hex(t.Border) + ";padding:6px 13px}th{background:" + code + ";font-weight:600}" +
+            "hr{border:0;border-top:1px solid " + Hex(t.Border) + ";margin:1.5em 0}ul,ol{padding-left:2em}" +
+            ".admonition{border-left:4px solid " + Hex(t.Accent) + ";background:" + code + ";padding:.4em 1em;margin:1em 0;border-radius:4px}.admonition-title{font-weight:600;margin:.3em 0}";
+        return "<!DOCTYPE html><html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta charset=\"utf-8\">" + BaseTag(d) +
+            "<style>" + css + "</style></head><body></body></html>";
+    }
+
+    // Re-renders the preview of the current tab; shows or hides the pane as needed.
+    void RenderPreview()
+    {
+        var d = Cur;
+        if (d == null) return;
+        string kind = PreviewKind(d);
+        lPreview.Visible = kind != null;
+        lPreview.Text = previewOn ? "◧ Ocultar vista previa" : "◧ Vista previa";
+        bool show = previewOn && kind != null;
+        if (split.Panel2Collapsed == show)
+        {
+            split.Panel2Collapsed = !show;
+            if (show && !previewSized) { split.SplitterDistance = split.Width / 2; previewSized = true; }
+        }
+        if (!show) return;
+
+        if (kind == "html")
+        {
+            // A full page: give it our base folder (for relative links/images) and the modern IE mode.
+            string head = "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">" + BaseTag(d), page = d.Text;
+            var m = Regex.Match(page, @"<head[^>]*>|<!doctype[^>]*>", RegexOptions.IgnoreCase);
+            previewShell = null;
+            web.DocumentText = m.Success ? page.Insert(m.Index + m.Length, head) : head + page;
+            return;
+        }
+        string body = kind == "md" ? Markup.Markdown(d.Text) : kind == "rst" ? Markup.Rst(d.Text)
+            : kind == "csv" ? Markup.Csv(d.Text, ',') : kind == "tsv" ? Markup.Csv(d.Text, '\t') : d.Text;
+        string shell = Shell(d);
+        if (previewShell == shell && web.ReadyState == WebBrowserReadyState.Complete && web.Document != null && web.Document.Body != null)
+        {
+            web.Document.Body.InnerHtml = body; // no reload: no flicker, scroll stays put
+            SyncPreviewScroll();
+        }
+        else
+        {
+            previewShell = shell;
+            web.DocumentText = shell.Replace("<body></body>", "<body>" + body + "</body>");
+        }
+    }
+
+    // Scrolls the preview to the same relative position as the editor.
+    void SyncPreviewScroll()
+    {
+        var d = Cur;
+        if (d == null || split.Panel2Collapsed || web.Document == null || web.Document.Body == null) return;
+        var b = d.Box;
+        int first = b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, 1)));
+        int last = b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, b.ClientSize.Height - 1)));
+        int total = b.GetLineFromCharIndex(b.TextLength) + 1;
+        double ratio = Math.Max(0, Math.Min(1, (double)first / Math.Max(1, total - (last - first + 1))));
+        var root = web.Document.Body.Parent ?? web.Document.Body;
+        root.ScrollTop = (int)(ratio * Math.Max(0, root.ScrollRectangle.Height - root.ClientRectangle.Height));
+    }
+
+    // Links clicked in the preview open outside it: web pages in the browser, local text files here.
+    void OnPreviewNavigating(object s, WebBrowserNavigatingEventArgs e)
+    {
+        var u = e.Url;
+        if (u.Scheme == "about") return;
+        e.Cancel = true;
+        if (u.Scheme == "http" || u.Scheme == "https" || u.Scheme == "mailto") Process.Start(u.AbsoluteUri);
+        else if (u.IsFile && File.Exists(u.LocalPath)) OpenPath(u.LocalPath);
     }
 
     // ---------- updates ----------
@@ -1927,6 +2402,7 @@ class MainForm : Form
         spaces = flag("spaces", false);
         restoreSession = flag("session", true);
         checkUpdates = flag("updates", true);
+        previewOn = flag("preview", false);
         TopMost = flag("top", false);
         if (kv.TryGetValue("recent", out v)) recent.AddRange(v.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
         if (kv.TryGetValue("bounds", out v))
@@ -1955,6 +2431,7 @@ class MainForm : Form
             "spaces=" + b(spaces),
             "session=" + b(restoreSession),
             "updates=" + b(checkUpdates),
+            "preview=" + b(previewOn),
             "top=" + b(TopMost),
             "max=" + b(WindowState == FormWindowState.Maximized),
             "bounds=" + r.X + "," + r.Y + "," + r.Width + "," + r.Height,
