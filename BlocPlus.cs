@@ -8,14 +8,17 @@
 // distributed WITHOUT ANY WARRANTY. See the LICENSE file for details.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -31,6 +34,7 @@ static class Native
     [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr h, IntPtr after, int x, int y, int cx, int cy, int flags);
     [DllImport("dwmapi.dll")] public static extern int DwmSetWindowAttribute(IntPtr h, int attr, ref int val, int size);
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)] public static extern int SetWindowTheme(IntPtr h, string app, string idList);
+    [DllImport("shell32.dll")] public static extern void SHChangeNotify(int eventId, int flags, IntPtr a, IntPtr b);
 }
 
 static class Program
@@ -41,7 +45,187 @@ static class Program
         try { Native.SetProcessDPIAware(); } catch { }
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new MainForm(args));
+        if (args.Contains("--uninstall")) { Setup.UninstallInteractive(); return; }
+        // The release ships the same exe twice; the copy named BlocPlus-Setup*.exe acts as the installer.
+        if (args.Contains("--install") || Path.GetFileName(Application.ExecutablePath).StartsWith("BlocPlus-Setup", StringComparison.OrdinalIgnoreCase))
+        {
+            if (Setup.InstallInteractive()) Process.Start(Setup.Exe);
+            return;
+        }
+        Setup.Startup();
+        Application.Run(new MainForm(args.Where(a => !a.StartsWith("--")).ToArray()));
+    }
+}
+
+// Per-user install, no admin rights: copies the exe to %LOCALAPPDATA%\Programs\BlocPlus and
+// registers a Start menu shortcut, "Open with" / default-app entries and an uninstall entry.
+static class Setup
+{
+    public const string App = "BlocPlus", Repo = "u0f/BlocPlus";
+    public static readonly string Version = typeof(Setup).Assembly.GetName().Version.ToString(3);
+    const string UninstallKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\BlocPlus", ProgId = "BlocPlus.Document";
+    static readonly string[] Exts = ("txt log md markdown json jsonc xml yml yaml ini cfg conf toml csv tsv cs c h cpp hpp java kt js jsx ts tsx " +
+        "py rb go rs php ps1 psm1 sh bat cmd sql lua html htm css scss xaml csproj props targets config env gitignore editorconfig diff patch").Split(' ');
+
+    public static string Dir { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", App); } }
+    public static string Exe { get { return Path.Combine(Dir, App + ".exe"); } }
+    static string Shortcut { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), App + ".lnk"); } }
+    public static bool RunningInstalled { get { return string.Equals(Path.GetFullPath(Application.ExecutablePath), Exe, StringComparison.OrdinalIgnoreCase); } }
+
+    // Windows lets a running exe be renamed, so a new version can be swapped in while the old one is open.
+    public static void ReplaceExe(string source, string target)
+    {
+        if (File.Exists(target)) File.Move(target, target + "." + DateTime.Now.Ticks + ".old");
+        File.Copy(source, target);
+    }
+
+    public static void Startup()
+    {
+        foreach (var f in Directory.GetFiles(Path.GetDirectoryName(Application.ExecutablePath), App + ".exe.*.old"))
+            try { File.Delete(f); } catch { }
+        if (!RunningInstalled) return;
+        using (var k = Registry.CurrentUser.OpenSubKey(UninstallKey))
+            if (k == null || k.GetValue("DisplayVersion") as string != Version) try { Register(); } catch { } // after an update
+    }
+
+    public static bool InstallInteractive()
+    {
+        if (MessageBox.Show("¿Instalar " + App + " " + Version + " en este equipo?\n\nSe instalará solo para tu usuario en:\n" + Dir + "\n\nNo hace falta ser administrador.",
+                App + " - Instalación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return false;
+        try
+        {
+            Directory.CreateDirectory(Dir);
+            if (!RunningInstalled) ReplaceExe(Application.ExecutablePath, Exe);
+            Register();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("No se pudo instalar:\n" + ex.Message, App, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+        if (MessageBox.Show(App + " se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.",
+                App, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) OpenDefaultApps();
+        return true;
+    }
+
+    // Windows does not let apps make themselves the default; this opens the page where the user picks it.
+    public static void OpenDefaultApps()
+    {
+        try { Process.Start("ms-settings:defaultapps?registeredAppUser=" + App); }
+        catch { Process.Start("ms-settings:defaultapps"); }
+    }
+
+    static void Register()
+    {
+        var cu = Registry.CurrentUser;
+        string exe = Exe, open = "\"" + exe + "\" \"%1\"", icon = exe + ",0";
+        using (var k = cu.CreateSubKey(@"Software\Classes\" + ProgId))
+        {
+            k.SetValue("", "Documento de texto (" + App + ")");
+            using (var i = k.CreateSubKey("DefaultIcon")) i.SetValue("", icon);
+            using (var c = k.CreateSubKey(@"shell\open\command")) c.SetValue("", open);
+        }
+        using (var k = cu.CreateSubKey(@"Software\Classes\Applications\" + App + ".exe"))
+        {
+            k.SetValue("FriendlyAppName", App);
+            using (var c = k.CreateSubKey(@"shell\open\command")) c.SetValue("", open);
+            using (var s = k.CreateSubKey("SupportedTypes")) foreach (var e in Exts) s.SetValue("." + e, "");
+        }
+        using (var k = cu.CreateSubKey(@"Software\Classes\*\shell\" + App))
+        {
+            k.SetValue("", "Editar con " + App);
+            k.SetValue("Icon", icon);
+            using (var c = k.CreateSubKey("command")) c.SetValue("", open);
+        }
+        using (var k = cu.CreateSubKey(@"Software\" + App + @"\Capabilities"))
+        {
+            k.SetValue("ApplicationName", App);
+            k.SetValue("ApplicationDescription", "Editor de texto ligero para Windows.");
+            k.SetValue("ApplicationIcon", icon);
+            using (var fa = k.CreateSubKey("FileAssociations")) foreach (var e in Exts) fa.SetValue("." + e, ProgId);
+        }
+        using (var k = cu.CreateSubKey(@"Software\RegisteredApplications")) k.SetValue(App, @"Software\" + App + @"\Capabilities");
+        foreach (var e in Exts) using (var k = cu.CreateSubKey(@"Software\Classes\." + e + @"\OpenWithProgids")) k.SetValue(ProgId, "");
+        using (var k = cu.CreateSubKey(UninstallKey))
+        {
+            k.SetValue("DisplayName", App);
+            k.SetValue("DisplayVersion", Version);
+            k.SetValue("Publisher", "u0f");
+            k.SetValue("DisplayIcon", icon);
+            k.SetValue("InstallLocation", Dir);
+            k.SetValue("UninstallString", "\"" + exe + "\" --uninstall");
+            k.SetValue("URLInfoAbout", "https://github.com/" + Repo);
+            k.SetValue("NoModify", 1, RegistryValueKind.DWord);
+            k.SetValue("NoRepair", 1, RegistryValueKind.DWord);
+            k.SetValue("EstimatedSize", (int)(new FileInfo(exe).Length / 1024), RegistryValueKind.DWord);
+        }
+        dynamic shell = Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell"));
+        var lnk = shell.CreateShortcut(Shortcut);
+        lnk.TargetPath = exe;
+        lnk.WorkingDirectory = Dir;
+        lnk.IconLocation = icon;
+        lnk.Description = "Editor de texto ligero para Windows";
+        lnk.Save();
+        Native.SHChangeNotify(0x08000000 /*SHCNE_ASSOCCHANGED*/, 0, IntPtr.Zero, IntPtr.Zero);
+    }
+
+    public static void UninstallInteractive()
+    {
+        if (MessageBox.Show("¿Desinstalar " + App + "?\n\nTus ajustes y tu sesión se conservan en %APPDATA%\\" + App + ".",
+                App, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+        var cu = Registry.CurrentUser;
+        foreach (var key in new[] { @"Software\Classes\" + ProgId, @"Software\Classes\Applications\" + App + ".exe", @"Software\Classes\*\shell\" + App, @"Software\" + App, UninstallKey })
+            cu.DeleteSubKeyTree(key, false);
+        using (var k = cu.OpenSubKey(@"Software\RegisteredApplications", true)) if (k != null) k.DeleteValue(App, false);
+        foreach (var e in Exts)
+            using (var k = cu.OpenSubKey(@"Software\Classes\." + e + @"\OpenWithProgids", true)) if (k != null) k.DeleteValue(ProgId, false);
+        try { File.Delete(Shortcut); } catch { }
+        Native.SHChangeNotify(0x08000000, 0, IntPtr.Zero, IntPtr.Zero);
+        MessageBox.Show(App + " se ha desinstalado.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        // A running exe can't delete its own folder; a hidden cmd does it a moment after we exit.
+        Process.Start(new ProcessStartInfo("cmd.exe", "/c ping -n 3 127.0.0.1 >nul & rmdir /s /q \"" + Dir + "\"") { CreateNoWindow = true, UseShellExecute = false });
+    }
+}
+
+// Checks the latest GitHub release of the repo.
+static class Updater
+{
+    public class Release { public Version Version; public string Notes, Url, Page; }
+
+    // Null when there is no release or GitHub can't be reached.
+    public static Release Latest()
+    {
+        try
+        {
+            ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; // TLS 1.2
+            using (var wc = new WebClient { Encoding = Encoding.UTF8 })
+            {
+                wc.Headers[HttpRequestHeader.UserAgent] = Setup.App;
+                var o = (Dictionary<string, object>)new JavaScriptSerializer().DeserializeObject(
+                    wc.DownloadString("https://api.github.com/repos/" + Setup.Repo + "/releases/latest"));
+                Version v;
+                if (!Version.TryParse(((string)o["tag_name"]).TrimStart('v', 'V'), out v)) return null;
+                var r = new Release { Version = v, Notes = o["body"] as string ?? "", Page = (string)o["html_url"] };
+                foreach (Dictionary<string, object> a in (object[])o["assets"])
+                    if ((string)a["name"] == Setup.App + ".exe") r.Url = (string)a["browser_download_url"];
+                return r;
+            }
+        }
+        catch { return null; }
+    }
+
+    public static bool IsNewer(Release r) { return r != null && r.Version > Version.Parse(Setup.Version); }
+
+    public static void Download(Release r, string path)
+    {
+        using (var wc = new WebClient())
+        {
+            wc.Headers[HttpRequestHeader.UserAgent] = Setup.App;
+            wc.DownloadFile(r.Url, path);
+        }
+        var head = new byte[2];
+        using (var f = File.OpenRead(path)) f.Read(head, 0, 2);
+        if (head[0] != 'M' || head[1] != 'Z') throw new InvalidDataException("La descarga no es un ejecutable válido.");
     }
 }
 
@@ -536,7 +720,7 @@ class FindForm : Form
 class MainForm : Form
 {
     const string App = "BlocPlus";
-    static readonly string Version = typeof(MainForm).Assembly.GetName().Version.ToString(3);
+    static readonly string Version = Setup.Version;
     static readonly string[] EolNames = { "CRLF (Windows)", "LF (Unix)", "CR (Mac)" };
     static readonly string[] EolText = { "\r\n", "\n", "\r" };
     static readonly string[] ThemeNames = { "Sistema", "Claro", "Oscuro" };
@@ -548,13 +732,15 @@ class MainForm : Form
     readonly MenuStrip menu = new MenuStrip();
     readonly StatusStrip status = new StatusStrip { SizingGrip = false };
     readonly ToolStripStatusLabel lPos = new ToolStripStatusLabel { Spring = true, TextAlign = ContentAlignment.MiddleLeft }, lLang = Lbl(), lZoom = Lbl(), lEol = Lbl(), lEnc = Lbl();
+    readonly ToolStripStatusLabel lUpdate = new ToolStripStatusLabel { Visible = false, Padding = new Padding(10, 0, 10, 0) };
     readonly ContextMenuStrip ctx = new ContextMenuStrip();
     readonly List<string> recent = new List<string>();
     readonly Stack<string> closed = new Stack<string>();
     ToolStripMenuItem mWrap, mLines, mRecent, mEnc, mEol, mLang;
     Font font = new Font("Consolas", 11f);
     int sel = -1, untitled, themeMode, tabSize = 4;
-    bool wrap, lineNumbers = true, syntax = true, autoIndent = true, spaces, restoreSession = true, sessionDirty, checking;
+    bool wrap, lineNumbers = true, syntax = true, autoIndent = true, spaces, restoreSession = true, checkUpdates = true, sessionDirty, checking;
+    string restartExe; // set when an update or install asks to relaunch after closing
     FindForm find;
 
     string SessDir { get { return Path.Combine(dir, "session"); } }
@@ -588,6 +774,7 @@ class MainForm : Form
     {
         Text = App;
         Font = SystemFonts.MessageBoxFont;
+        try { Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath); } catch { }
         Size = new Size(1000, 700);
         AllowDrop = true;
         DragEnter += OnDragEnter; DragDrop += OnDragDrop;
@@ -605,7 +792,8 @@ class MainForm : Form
         };
 
         BuildMenu();
-        status.Items.AddRange(new ToolStripItem[] { lPos, lLang, lZoom, lEol, lEnc });
+        status.Items.AddRange(new ToolStripItem[] { lPos, lUpdate, lLang, lZoom, lEol, lEnc });
+        lUpdate.Click += (s, e) => { var r = lUpdate.Tag as Updater.Release; if (r != null) PromptUpdate(r); };
         ctx.Items.AddRange(new ToolStripItem[] {
             Item("Deshacer", Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
             Item("Cortar", Keys.None, () => Cur.Box.Cut()), Item("Copiar", Keys.None, () => Cur.Box.Copy()),
@@ -629,8 +817,18 @@ class MainForm : Form
         timer.Start();
         UserPreferenceChangedEventHandler pref = (s, e) => { if (themeMode == 0 && IsHandleCreated) BeginInvoke((Action)ApplyThemeAll); };
         SystemEvents.UserPreferenceChanged += pref;
-        FormClosed += (s, e) => SystemEvents.UserPreferenceChanged -= pref;
-        Shown += (s, e) => { Cur.Box.Focus(); Cur.Box.ScrollToCaret(); Highlight(Cur); };
+        FormClosed += (s, e) =>
+        {
+            SystemEvents.UserPreferenceChanged -= pref;
+            if (restartExe != null) Process.Start(restartExe); // after the session is saved
+        };
+        Shown += (s, e) =>
+        {
+            Cur.Box.Focus();
+            Cur.Box.ScrollToCaret();
+            Highlight(Cur);
+            if (checkUpdates) CheckUpdates(false);
+        };
         Activated += (s, e) => CheckExternal();
         FormClosing += OnClosing;
     }
@@ -725,6 +923,10 @@ class MainForm : Form
             zin, zout, Item("Restablecer zoom", Keys.Control | Keys.D0, () => Zoom(0)) });
 
         var help = new ToolStripMenuItem("Ay&uda");
+        help.DropDownItems.Add(Item("&Buscar actualizaciones", Keys.None, () => CheckUpdates(true)));
+        if (Setup.RunningInstalled) help.DropDownItems.Add(Item("Usar como editor &predeterminado...", Keys.None, Setup.OpenDefaultApps));
+        else help.DropDownItems.Add(Item("&Instalar en este equipo...", Keys.None, () => { if (Setup.InstallInteractive()) { restartExe = Setup.Exe; Close(); } }));
+        help.DropDownItems.Add(new ToolStripSeparator());
         help.DropDownItems.Add(Item("&Acerca de " + App + " " + Version, Keys.None, () => ShowSettings()));
 
         menu.Items.AddRange(new ToolStripItem[] { file, edit, docMenu, view, help });
@@ -1392,6 +1594,7 @@ class MainForm : Form
         Recolor(menu.Items, t);
         Recolor(ctx.Items, t);
         foreach (ToolStripItem i in status.Items) i.ForeColor = t.ChromeFore;
+        lUpdate.ForeColor = t.Accent;
         strip.T = t;
         strip.Invalidate();
         BackColor = host.BackColor = t.Chrome;
@@ -1456,7 +1659,7 @@ class MainForm : Form
 
     string Prompt(string title, string label, string value)
     {
-        using (var f = new Form { Text = title, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
+        using (var f = new Form { Text = title, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, ShowIcon = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
         {
             var tb = new TextBox { Text = value, Width = Font.Height * 16 };
             var ok = new Button { Text = "Aceptar", DialogResult = DialogResult.OK, AutoSize = true };
@@ -1471,6 +1674,61 @@ class MainForm : Form
             ThemeForm(f, T);
             return f.ShowDialog(this) == DialogResult.OK ? tb.Text : null;
         }
+    }
+
+    // ---------- updates ----------
+
+    // Asks GitHub in the background; a manual check also reports "up to date" and errors.
+    void CheckUpdates(bool manual)
+    {
+        System.Threading.ThreadPool.QueueUserWorkItem(_ =>
+        {
+            var r = Updater.Latest();
+            try
+            {
+                BeginInvoke((Action)(() =>
+                {
+                    if (Updater.IsNewer(r))
+                    {
+                        lUpdate.Tag = r;
+                        lUpdate.Text = "⬆ Actualización disponible: " + r.Version;
+                        lUpdate.Visible = true;
+                        if (manual) PromptUpdate(r);
+                    }
+                    else if (manual)
+                        MessageBox.Show(this, r == null ? "No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet." : "Tienes la última versión (" + Version + ").",
+                            App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }));
+            }
+            catch (InvalidOperationException) { } // window already closed
+        });
+    }
+
+    void PromptUpdate(Updater.Release r)
+    {
+        string notes = r.Notes.Length > 1200 ? r.Notes.Substring(0, 1200) + "..." : r.Notes;
+        if (MessageBox.Show(this, "Hay una nueva versión de " + App + ": " + r.Version + " (tienes la " + Version + ").\n\n" + notes +
+                "\n\n¿Descargarla e instalarla ahora? " + App + " se reiniciará y conservará tus pestañas.",
+                App, MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes) return;
+        if (r.Url == null) { Process.Start(r.Page); return; }
+        lUpdate.Text = "Descargando actualización...";
+        string exe = Application.ExecutablePath, tmp = Path.Combine(Path.GetTempPath(), App + "-" + r.Version + ".exe");
+        System.Threading.ThreadPool.QueueUserWorkItem(_ =>
+        {
+            Exception error = null;
+            try
+            {
+                Updater.Download(r, tmp);
+                Setup.ReplaceExe(tmp, exe);
+            }
+            catch (Exception ex) { error = ex; }
+            BeginInvoke((Action)(() =>
+            {
+                if (error != null) { lUpdate.Text = "⬆ Actualización disponible: " + r.Version; Err(error); return; }
+                restartExe = exe;
+                Close();
+            }));
+        });
     }
 
     // ---------- settings window ----------
@@ -1493,7 +1751,7 @@ class MainForm : Form
 
     void ShowSettings()
     {
-        using (var f = new Form { Text = "Ajustes - " + App + " " + Version, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
+        using (var f = new Form { Text = "Ajustes - " + App + " " + Version, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, ShowIcon = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
         {
             Func<string, bool, CheckBox> chk = (text, on) => new CheckBox { Text = text, Checked = on, AutoSize = true, Margin = new Padding(3, 4, 3, 4) };
             Func<string, Label> head = text => new Label { Text = text, AutoSize = true, Font = new Font(Font, FontStyle.Bold), Margin = new Padding(3, 12, 3, 4) };
@@ -1517,12 +1775,13 @@ class MainForm : Form
             var xSpaces = chk("El tabulador inserta espacios", spaces);
             var xSession = chk("Restaurar pestañas y texto sin guardar al abrir", restoreSession);
             var xTop = chk("Ventana siempre visible", TopMost);
+            var xUpdates = chk("Buscar actualizaciones al iniciar", checkUpdates);
 
             var left = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false, Margin = new Padding(0, 0, 24, 0) };
             left.Controls.AddRange(new Control[] {
                 head("Apariencia"), new Label { Text = "Tema", AutoSize = true }, cTheme, bFont, xLines, xSyntax,
                 head("Edición"), xWrap, xIndent, xSpaces, new Label { Text = "Ancho del tabulador", AutoSize = true }, cTab,
-                head("Ventana"), xSession, xTop });
+                head("Ventana"), xSession, xTop, xUpdates });
 
             var log = new TextBox { Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Vertical, Text = Changelog(), Width = Font.Height * 30, Height = Font.Height * 22, WordWrap = true };
             var right = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false };
@@ -1556,6 +1815,7 @@ class MainForm : Form
             spaces = xSpaces.Checked;
             restoreSession = xSession.Checked;
             TopMost = xTop.Checked;
+            checkUpdates = xUpdates.Checked;
             ApplyEditorSettings();
             ApplyThemeAll();
             try { SaveSettings(); } catch { }
@@ -1664,6 +1924,7 @@ class MainForm : Form
         autoIndent = flag("indent", true);
         spaces = flag("spaces", false);
         restoreSession = flag("session", true);
+        checkUpdates = flag("updates", true);
         TopMost = flag("top", false);
         if (kv.TryGetValue("recent", out v)) recent.AddRange(v.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
         if (kv.TryGetValue("bounds", out v))
@@ -1691,6 +1952,7 @@ class MainForm : Form
             "indent=" + b(autoIndent),
             "spaces=" + b(spaces),
             "session=" + b(restoreSession),
+            "updates=" + b(checkUpdates),
             "top=" + b(TopMost),
             "max=" + b(WindowState == FormWindowState.Maximized),
             "bounds=" + r.X + "," + r.Y + "," + r.Width + "," + r.Height,
@@ -1707,13 +1969,14 @@ class MainForm : Form
                 if (!Confirm("No se pudo guardar la sesión:\n" + ex.Message + "\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar."))
                 {
                     e.Cancel = true;
+                    restartExe = null;
                     return;
                 }
             }
         }
         else
         {
-            foreach (var d in docs.ToList()) if (!ConfirmClose(d)) { e.Cancel = true; return; }
+            foreach (var d in docs.ToList()) if (!ConfirmClose(d)) { e.Cancel = true; restartExe = null; return; }
             try { if (Directory.Exists(SessDir)) Directory.Delete(SessDir, true); } catch { }
         }
         try { SaveSettings(); } catch { }

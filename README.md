@@ -1,4 +1,6 @@
-﻿# BlocPlus
+<p align="center"><img src="assets/logo.png" width="128" alt="BlocPlus logo"></p>
+
+# BlocPlus
 
 A lightweight text editor for Windows that replaces Notepad. It is a single C# file with no dependencies, and it compiles with the compiler that already ships with Windows. You don't need Visual Studio, the .NET SDK or any extra download.
 
@@ -15,6 +17,19 @@ A lightweight text editor for Windows that replaces Notepad. It is a single C# f
 - **Encodings**: detects and keeps UTF-8 (with or without BOM), UTF-16 LE/BE and ANSI, and keeps the original line endings (CRLF, LF or CR). You can convert both from the *Document* menu.
 - **Safe saving**: the editor writes to a temporary file first, so a failed save never corrupts the original.
 - **Detects external changes**: if another program changes an open file, the editor reloads it when you switch back to the window.
+- **Installer and automatic updates**: see below.
+
+## Installation
+
+Download **`BlocPlus-Setup.exe`** from the [latest release](https://github.com/u0f/BlocPlus/releases/latest) and run it. Requirements: Windows 10 or 11.
+
+- It installs for your user only, in `%LOCALAPPDATA%\Programs\BlocPlus`, so it doesn't need administrator rights.
+- It adds BlocPlus to the Start menu, to the **Open with** list and to the right-click menu (**Editar con BlocPlus**).
+- **To make it your default editor**, accept the offer at the end of the installation, or later choose **Ayuda > Usar como editor predeterminado** (the interface is in Spanish). Windows doesn't allow programs to set themselves as the default, so this opens *Settings > Default apps*, where you pick BlocPlus.
+- **Updates**: every time it starts, BlocPlus checks GitHub for a new release. When there is one, a notice appears in the status bar. You can also check by hand with **Ayuda > Buscar actualizaciones**. Updating downloads the new version and restarts the editor, keeping your tabs. You can turn off the automatic check in Settings.
+- **To uninstall**, use *Settings > Apps > Installed apps > BlocPlus*. Your settings and session are kept in `%APPDATA%\BlocPlus`.
+
+If you'd rather not install anything, download **`BlocPlus.exe`** and run it from anywhere. That is the portable version.
 
 ## Building
 
@@ -24,9 +39,9 @@ Requirements: Windows 10 or 11. The .NET Framework 4.x that comes with Windows i
 build.cmd
 ```
 
-This creates `BlocPlus.exe` next to the source code.
+This creates `dist\BlocPlus.exe` and `dist\BlocPlus-Setup.exe`. Both are the same program: when the file is named `BlocPlus-Setup*.exe`, it installs itself.
 
-To use it as your default editor, right-click a `.txt` file and choose **Open with > Choose another app > BlocPlus.exe**.
+To publish a version: bump `AssemblyVersion` in `BlocPlus.cs`, add the entry to `CHANGELOG.md`, build, and create a GitHub release tagged `vX.Y.Z` with both files attached. The updater looks for the `BlocPlus.exe` asset in the latest release.
 
 ## Keyboard shortcuts
 
