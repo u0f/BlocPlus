@@ -1,0 +1,1724 @@
+// BlocPlus: a Notepad replacement. Single file, WinForms, builds with the csc.exe
+// that ships with Windows (.NET Framework 4.x). Run build.cmd.
+//
+// Copyright (C) 2026 u0f
+// This program is free software: you can redistribute it and/or modify it under the
+// terms of the GNU General Public License as published by the Free Software Foundation,
+// either version 3 of the License, or (at your option) any later version. It is
+// distributed WITHOUT ANY WARRANTY. See the LICENSE file for details.
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using Microsoft.Win32;
+
+[assembly: AssemblyTitle("BlocPlus")]
+[assembly: AssemblyProduct("BlocPlus")]
+[assembly: AssemblyVersion("1.0.0")]
+
+static class Native
+{
+    [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
+    [DllImport("user32.dll")] public static extern IntPtr SendMessage(IntPtr h, int msg, IntPtr w, IntPtr l);
+    [DllImport("user32.dll")] public static extern IntPtr SendMessage(IntPtr h, int msg, IntPtr w, out IntPtr l);
+    [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr h, IntPtr after, int x, int y, int cx, int cy, int flags);
+    [DllImport("dwmapi.dll")] public static extern int DwmSetWindowAttribute(IntPtr h, int attr, ref int val, int size);
+    [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)] public static extern int SetWindowTheme(IntPtr h, string app, string idList);
+}
+
+static class Program
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        try { Native.SetProcessDPIAware(); } catch { }
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new MainForm(args));
+    }
+}
+
+class Theme
+{
+    public bool IsDark;
+    public Color Back, Fore, Gutter, GutterFore, Chrome, ChromeFore, Hover, Border, Input, Accent;
+    public Color Kw, Str, Com, Num, Typ, Attr;
+
+    static Color C(int r, int g, int b) { return Color.FromArgb(r, g, b); }
+
+    public static readonly Theme Light = new Theme
+    {
+        Back = Color.White, Fore = C(30, 30, 30), Gutter = Color.White, GutterFore = C(160, 160, 160),
+        Chrome = C(243, 243, 243), ChromeFore = C(90, 90, 90), Hover = C(228, 228, 228), Border = C(215, 215, 215),
+        Input = Color.White, Accent = C(0, 120, 212),
+        Kw = C(0, 0, 255), Str = C(163, 21, 21), Com = C(0, 128, 0), Num = C(9, 134, 88), Typ = C(38, 127, 153), Attr = C(0, 16, 128)
+    };
+
+    public static readonly Theme Dark = new Theme
+    {
+        IsDark = true,
+        Back = C(30, 30, 30), Fore = C(212, 212, 212), Gutter = C(30, 30, 30), GutterFore = C(110, 118, 129),
+        Chrome = C(37, 37, 38), ChromeFore = C(160, 160, 160), Hover = C(50, 50, 52), Border = C(62, 62, 64),
+        Input = C(51, 51, 51), Accent = C(0, 122, 204),
+        Kw = C(86, 156, 214), Str = C(206, 145, 120), Com = C(106, 153, 85), Num = C(181, 206, 168), Typ = C(78, 201, 176), Attr = C(156, 220, 254)
+    };
+
+    public Color For(char kind)
+    {
+        switch (kind)
+        {
+            case 'c': return Com;
+            case 's': return Str;
+            case 'k': return Kw;
+            case 'n': return Num;
+            case 't': return Typ;
+            default: return Attr;
+        }
+    }
+}
+
+class ThemeTable : ProfessionalColorTable
+{
+    readonly Theme t;
+    public ThemeTable(Theme t) { this.t = t; UseSystemColors = false; }
+    public override Color MenuStripGradientBegin { get { return t.Chrome; } }
+    public override Color MenuStripGradientEnd { get { return t.Chrome; } }
+    public override Color ToolStripDropDownBackground { get { return t.Chrome; } }
+    public override Color ImageMarginGradientBegin { get { return t.Chrome; } }
+    public override Color ImageMarginGradientMiddle { get { return t.Chrome; } }
+    public override Color ImageMarginGradientEnd { get { return t.Chrome; } }
+    public override Color MenuItemSelected { get { return t.Hover; } }
+    public override Color MenuItemSelectedGradientBegin { get { return t.Hover; } }
+    public override Color MenuItemSelectedGradientEnd { get { return t.Hover; } }
+    public override Color MenuItemPressedGradientBegin { get { return t.Hover; } }
+    public override Color MenuItemPressedGradientMiddle { get { return t.Hover; } }
+    public override Color MenuItemPressedGradientEnd { get { return t.Hover; } }
+    public override Color MenuItemBorder { get { return t.Hover; } }
+    public override Color MenuBorder { get { return t.Border; } }
+    public override Color SeparatorDark { get { return t.Border; } }
+    public override Color SeparatorLight { get { return t.Chrome; } }
+    public override Color StatusStripGradientBegin { get { return t.Chrome; } }
+    public override Color StatusStripGradientEnd { get { return t.Chrome; } }
+    public override Color CheckBackground { get { return t.Accent; } }
+    public override Color CheckSelectedBackground { get { return t.Accent; } }
+    public override Color CheckPressedBackground { get { return t.Accent; } }
+    public override Color ToolStripBorder { get { return t.Chrome; } }
+}
+
+static class Enc
+{
+    public static readonly string[] Names = { "UTF-8", "UTF-8 con BOM", "UTF-16 LE", "UTF-16 BE", "ANSI" };
+
+    public static Encoding Get(int i)
+    {
+        switch (i)
+        {
+            case 1: return new UTF8Encoding(true);
+            case 2: return new UnicodeEncoding(false, true);
+            case 3: return new UnicodeEncoding(true, true);
+            case 4: return Encoding.Default;
+            default: return new UTF8Encoding(false);
+        }
+    }
+
+    public static string Decode(byte[] b, out int enc)
+    {
+        if (b.Length >= 3 && b[0] == 0xEF && b[1] == 0xBB && b[2] == 0xBF) { enc = 1; return Encoding.UTF8.GetString(b, 3, b.Length - 3); }
+        if (b.Length >= 2 && b[0] == 0xFF && b[1] == 0xFE) { enc = 2; return Encoding.Unicode.GetString(b, 2, b.Length - 2); }
+        if (b.Length >= 2 && b[0] == 0xFE && b[1] == 0xFF) { enc = 3; return Encoding.BigEndianUnicode.GetString(b, 2, b.Length - 2); }
+        try { enc = 0; return new UTF8Encoding(false, true).GetString(b); }
+        catch (DecoderFallbackException) { enc = 4; return Encoding.Default.GetString(b); }
+    }
+}
+
+// Syntax highlighting: one regex per language, each named group's first letter is its
+// color kind (c comment, s string, k keyword, n number, t type/tag, a attribute/variable).
+class Lang
+{
+    public string Name;
+    public string[] Keys;
+    string pattern;
+    bool ignoreCase;
+    Regex rx;
+
+    public Regex Rx
+    {
+        get
+        {
+            if (rx == null)
+                rx = new Regex(pattern, RegexOptions.Multiline | RegexOptions.ExplicitCapture | RegexOptions.Compiled | (ignoreCase ? RegexOptions.IgnoreCase : 0));
+            return rx;
+        }
+    }
+
+    public char KindOf(Match m)
+    {
+        for (int g = 1; g < m.Groups.Count; g++)
+            if (m.Groups[g].Success) return rx.GroupNameFromNumber(g)[0];
+        return 'a';
+    }
+
+    const string DQ = @"""(?:\\.|[^""\\\n])*""?", SQ = @"'(?:\\.|[^'\\\n])*'?", BT = @"`(?:\\.|[^`\\])*`?",
+        CL = @"//[^\n]*|/\*[\s\S]*?(?:\*/|\z)", HASH = @"#[^\n]*",
+        NUM = @"\b(?:0[xX][0-9a-fA-F_]+|\d[\d_]*(?:\.\d+)?(?:[eE][+-]?\d+)?)[a-zA-Z]*\b";
+
+    static string W(string words) { return @"\b(?:" + words.Replace(" ", "|") + @")\b"; }
+
+    static Lang L(string name, string keys, bool ignoreCase, params string[] parts)
+    {
+        var sb = new StringBuilder();
+        for (int i = 0; i < parts.Length; i += 2)
+            sb.Append(i == 0 ? "" : "|").Append("(?<").Append(parts[i]).Append(i).Append('>').Append(parts[i + 1]).Append(')');
+        return new Lang { Name = name, Keys = keys.Split(' '), pattern = sb.ToString(), ignoreCase = ignoreCase };
+    }
+
+    public static readonly Lang[] All =
+    {
+        L("C#", "cs csx", false, "c", CL, "s", @"@""(?:""""|[^""])*""?|\$?" + DQ + "|" + SQ, "t", @"^[ \t]*#[ \t]*\w+", "n", NUM,
+          "k", W("abstract as async await base bool break byte case catch char checked class const continue decimal default delegate do double dynamic else enum event explicit extern false finally fixed float for foreach get goto if implicit in init int interface internal is lock long nameof namespace new null object operator out override params partial private protected public readonly record ref return sbyte sealed set short sizeof stackalloc static string struct switch this throw true try typeof uint ulong unchecked unsafe ushort using var virtual void volatile when where while yield")),
+        L("C / C++", "c h cpp hpp cc cxx hh hxx ino", false, "c", CL, "s", DQ + "|" + SQ, "t", @"^[ \t]*#[ \t]*\w+", "n", NUM,
+          "k", W("auto bool break case catch char class const constexpr continue default delete do double else enum explicit extern false float for friend goto if inline int long mutable namespace new noexcept nullptr operator private protected public register return short signed sizeof static static_cast struct switch template this throw true try typedef typename union unsigned using virtual void volatile while")),
+        L("Java / Kotlin / Swift", "java kt kts scala groovy gradle dart swift", false, "c", CL, "s", DQ + "|" + SQ, "t", @"@\w+", "n", NUM,
+          "k", W("abstract assert boolean break byte case catch char class const continue def default do double else enum extends extension false final finally float for fun func guard if implements import in instanceof int interface is let long native new null object override package private protected protocol public return self short static struct super switch synchronized this throw throws true try val var void volatile when while")),
+        L("JavaScript / TypeScript", "js jsx mjs cjs ts tsx", false, "c", CL, "s", DQ + "|" + SQ + "|" + BT, "n", NUM,
+          "k", W("any as async await boolean break case catch class const continue debugger default delete do else enum export extends false finally for from function get if implements import in instanceof interface let never new null number of private protected public readonly return set static string super switch this throw true try type typeof undefined unknown var void while with yield")),
+        L("Go", "go", false, "c", CL, "s", DQ + "|" + BT + "|" + SQ, "n", NUM,
+          "k", W("break case chan const continue default defer else fallthrough false for func go goto if import interface iota map nil package range return select struct switch true type var")),
+        L("Rust", "rs", false, "c", CL, "s", DQ + @"|'(?:\\.|[^'\\\n])'", "t", @"\b\w+!|#!?\[[^\]\n]*\]", "n", NUM,
+          "k", W("as async await break const continue crate dyn else enum extern false fn for if impl in let loop match mod move mut pub ref return self Self static struct super trait true type unsafe use where while")),
+        L("PHP", "php", false, "c", CL + "|" + HASH, "s", DQ + "|" + SQ, "a", @"\$\w+", "n", NUM,
+          "k", W("abstract and array as break case catch class clone const continue declare default do echo else elseif empty extends false final finally fn for foreach function global if implements include include_once instanceof interface isset list match namespace new null or print private protected public require require_once return static switch throw trait true try unset use var while yield")),
+        L("Python", "py pyw pyi", false, "c", HASH, "s", @"[rRbBfFuU]{0,2}(?:""""""[\s\S]*?(?:""""""|\z)|'''[\s\S]*?(?:'''|\z))|" + DQ + "|" + SQ, "t", @"^[ \t]*@[\w.]+", "n", NUM,
+          "k", W("False None True and as assert async await break case class continue def del elif else except finally for from global if import in is lambda match nonlocal not or pass raise return self try while with yield")),
+        L("Ruby", "rb rake gemspec", false, "c", HASH, "s", DQ + "|" + SQ, "a", @"[@$]\w+|:\w+", "n", NUM,
+          "k", W("alias and begin break case class def defined do else elsif end ensure false for if in module next nil not or redo require rescue retry return self super then true undef unless until when while yield")),
+        L("Shell", "sh bash zsh", false, "c", @"(?<![\w$])#[^\n]*", "s", DQ + "|" + SQ, "a", @"\$\{?[\w@#?*!-]+\}?", "n", NUM,
+          "k", W("alias case declare do done echo elif else esac exit export fi for function if in local readonly return select shift source then unset until while")),
+        L("PowerShell", "ps1 psm1 psd1", true, "c", @"<#[\s\S]*?(?:#>|\z)|#[^\n]*", "s", DQ + "|" + SQ, "a", @"\$[\w:]+", "t", @"\b[A-Za-z]+-[A-Za-z]+\b", "n", NUM,
+          "k", W("begin break catch class continue data do dynamicparam else elseif end enum exit filter finally for foreach from function if in param process return switch throw trap try until using while")),
+        L("Batch", "bat cmd", true, "c", @"^[ \t]*@?(?:rem\b|::)[^\n]*", "s", DQ, "a", @"%[\w~:]+%?|![\w]+!", "t", @"^[ \t]*:\w+",
+          "k", W("call cd defined do echo else endlocal enabledelayedexpansion equ errorlevel exist exit for geq goto gtr if in leq lss neq not nul pause popd pushd set setlocal shift start")),
+        L("SQL", "sql", true, "c", @"--[^\n]*|/\*[\s\S]*?(?:\*/|\z)", "s", SQ + "|" + DQ, "n", NUM,
+          "k", W("add all alter and as asc begin between boolean by case char check column commit constraint create cross database date datetime decimal default delete desc distinct drop else end exists float foreign from full group having in index inner insert int integer into is join key left like limit not null offset on or order outer primary references right rollback select set table text then top transaction truncate union unique update values varchar view when where with")),
+        L("Lua", "lua", false, "c", @"--\[\[[\s\S]*?(?:\]\]|\z)|--[^\n]*", "s", DQ + "|" + SQ + @"|\[\[[\s\S]*?(?:\]\]|\z)", "n", NUM,
+          "k", W("and break do else elseif end false for function goto if in local nil not or repeat return then true until while")),
+        L("HTML / XML", "html htm xhtml xml xaml svg csproj vbproj fsproj props targets config xsd xsl xslt resx plist vue", false,
+          "c", @"<!--[\s\S]*?(?:-->|\z)", "t", @"</?[\w:.-]+|/?>|<\?[\w-]*|\?>", "a", @"\b[\w:.-]+(?=\s*=\s*[""'])",
+          "s", @"(?<==\s*)(?:""[^""]*""?|'[^']*'?)", "k", @"&[#\w]+;"),
+        L("CSS", "css scss sass less", false, "c", @"/\*[\s\S]*?(?:\*/|\z)", "s", DQ + "|" + SQ,
+          "n", @"#[0-9a-fA-F]{3,8}\b|(?<![\w-])-?\d*\.?\d+(?:[a-z]+|%)?", "a", @"[\w-]+(?=\s*:[^;{}\n]*(?:;|\}|$))",
+          "k", @"@[\w-]+|!important", "t", @"[.#][\w-]+"),
+        L("JSON", "json jsonc json5 geojson webmanifest", false, "c", CL, "a", @"""(?:\\.|[^""\\\n])*""(?=\s*:)", "s", DQ,
+          "n", @"-?\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b", "k", W("true false null")),
+        L("YAML", "yml yaml", false, "c", @"(?:^|(?<=\s))#[^\n]*", "a", @"^[ \t]*(?:-[ \t]+)?[\w.\-/]+(?=[ \t]*:(?:\s|$))",
+          "s", DQ + "|" + SQ, "n", NUM, "k", W("true false null yes no on off")),
+        L("INI / TOML", "ini toml cfg conf properties env inf reg editorconfig gitconfig", false, "c", @"^[ \t]*[;#][^\n]*",
+          "t", @"^[ \t]*\[[^\]\n]*\]", "a", @"^[ \t]*[\w.\-""]+(?=[ \t]*[=:])", "s", DQ + "|" + SQ, "n", NUM, "k", W("true false")),
+        L("Markdown", "md markdown", false, "t", @"^#{1,6}[ \t][^\n]*", "s", @"```[\s\S]*?(?:```|\z)|`[^`\n]+`", "c", @"^>[^\n]*",
+          "k", @"\*\*[^*\n]+\*\*|__[^_\n]+__", "a", @"!?\[[^\]\n]*\]\([^)\n]*\)"),
+        L("Dockerfile", "dockerfile containerfile", true, "c", HASH, "s", DQ + "|" + SQ, "a", @"\$\{?\w+\}?",
+          "k", W("from run cmd label expose env add copy entrypoint volume user workdir arg onbuild stopsignal healthcheck shell as")),
+        L("Diff", "diff patch", false, "t", @"^@@[^\n]*", "c", @"^\+[^\n]*", "s", @"^-[^\n]*"),
+    };
+
+    public static Lang Detect(string path)
+    {
+        if (path == null) return null;
+        string key = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
+        if (key.Length == 0) key = Path.GetFileName(path).ToLowerInvariant();
+        return All.FirstOrDefault(l => l.Keys.Contains(key));
+    }
+}
+
+class Doc
+{
+    public Panel Page;
+    public RichTextBox Box;
+    public Gutter Gut;
+    public string FilePath;
+    public int Enc, Eol, Untitled; // Eol: 0 CRLF, 1 LF, 2 CR
+    public DateTime Stamp;
+    public Lang Lang;
+    public dynamic Tom;            // RichEdit's ITextDocument, for undo-free coloring
+    public bool Busy, HighlightQueued, Colored;
+    string text;
+    int[] starts;
+
+    public bool Dirty { get { return Box.Modified; } }
+    public string Title { get { return FilePath != null ? Path.GetFileName(FilePath) : "Sin título " + Untitled; } }
+    public void Invalidate() { text = null; starts = null; }
+
+    // RichTextBox counts every line break as one char, so cache text with "\n" only.
+    public string Text
+    {
+        get
+        {
+            if (text == null)
+            {
+                text = Box.Text;
+                if (text.IndexOf('\r') >= 0) text = text.Replace("\r\n", "\n").Replace('\r', '\n');
+            }
+            return text;
+        }
+    }
+
+    public int[] Starts
+    {
+        get
+        {
+            if (starts == null)
+            {
+                var l = new List<int> { 0 };
+                var t = Text;
+                for (int i = 0; i < t.Length; i++) if (t[i] == '\n') l.Add(i + 1);
+                starts = l.ToArray();
+            }
+            return starts;
+        }
+    }
+
+    public int LineOf(int pos)
+    {
+        int i = Array.BinarySearch(Starts, pos);
+        return i >= 0 ? i : ~i - 1;
+    }
+}
+
+class Gutter : Control
+{
+    public Doc D;
+
+    public Gutter()
+    {
+        SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        var b = D.Box;
+        e.Graphics.Clear(BackColor);
+        using (var f = new Font(b.Font.FontFamily, b.Font.Size * b.ZoomFactor))
+        {
+            bool wrap = b.WordWrap;
+            int len = b.TextLength;
+            int total = wrap ? D.Starts.Length : b.GetLineFromCharIndex(len) + 1;
+            int w = TextRenderer.MeasureText(new string('9', Math.Max(3, total.ToString().Length)), f).Width + 14;
+            if (Width != w) { Width = w; return; } // relayout repaints us
+
+            int lh = f.Height;
+            for (int line = b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, 1))); ; line++)
+            {
+                int ci = b.GetFirstCharIndexFromLine(line);
+                if (ci < 0) break;
+                // Empty last line has no char to ask the position of.
+                int y = ci >= len && len > 0 ? b.GetPositionFromCharIndex(len - 1).Y + lh : b.GetPositionFromCharIndex(ci).Y;
+                if (y > Height) break;
+                string num;
+                if (!wrap) num = (line + 1).ToString();
+                else { int k = D.LineOf(ci); num = D.Starts[k] == ci ? (k + 1).ToString() : ""; }
+                TextRenderer.DrawText(e.Graphics, num, f, new Rectangle(0, y, w - 8, lh), ForeColor, TextFormatFlags.Right | TextFormatFlags.NoPadding);
+            }
+        }
+    }
+}
+
+// Owner-drawn tab bar: themable (TabControl is not), with close buttons, "+" and drag to reorder.
+class TabStrip : Control
+{
+    public List<Doc> Docs;
+    public int Selected;
+    public Theme T = Theme.Light;
+    public Action<int> OnSelect, OnClose;
+    public Action<int, int> OnReorder;
+    public Action OnNew;
+    int hover = -1, drag = -1;
+    bool hoverClose, hoverPlus;
+    readonly ToolTip tip = new ToolTip();
+
+    public TabStrip()
+    {
+        SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
+        Dock = DockStyle.Top;
+        Height = Font.Height + 16;
+    }
+
+    protected override void OnFontChanged(EventArgs e) { base.OnFontChanged(e); Height = Font.Height + 16; }
+
+    Rectangle[] Rects(out Rectangle plus)
+    {
+        int n = Docs.Count, h = Height - 1, closeW = Font.Height + 4, plusW = Height;
+        var w = new int[n];
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            w[i] = Math.Min(Font.Height * 14, TextRenderer.MeasureText(Docs[i].Title, Font).Width + 24 + closeW);
+            sum += w[i];
+        }
+        int avail = Width - plusW - 4;
+        if (sum > avail && n > 0) for (int i = 0; i < n; i++) w[i] = Math.Max(Font.Height * 3, avail / n);
+        var r = new Rectangle[n];
+        int x = 0;
+        for (int i = 0; i < n; i++) { r[i] = new Rectangle(x, 0, w[i], h); x += w[i]; }
+        plus = new Rectangle(Math.Min(x + 2, Width - plusW + 2), 3, plusW - 6, h - 6);
+        return r;
+    }
+
+    Rectangle CloseRect(Rectangle r)
+    {
+        int s = Font.Height + 2;
+        return new Rectangle(r.Right - s - 8, r.Y + (r.Height - s) / 2, s, s);
+    }
+
+    int Hit(Point p, out bool close, out bool plus)
+    {
+        Rectangle pr;
+        var rs = Rects(out pr);
+        close = false;
+        plus = pr.Contains(p);
+        if (plus) return -1;
+        for (int i = 0; i < rs.Length; i++)
+            if (rs[i].Contains(p)) { close = CloseRect(rs[i]).Contains(p); return i; }
+        return -1;
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        var g = e.Graphics;
+        g.Clear(T.Chrome);
+        Rectangle plus;
+        var rs = Rects(out plus);
+        const TextFormatFlags text = TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix | TextFormatFlags.SingleLine;
+        const TextFormatFlags center = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding;
+        using (var border = new Pen(T.Border))
+        {
+            g.DrawLine(border, 0, Height - 1, Width, Height - 1);
+            for (int i = 0; i < rs.Length; i++)
+            {
+                var r = rs[i];
+                var d = Docs[i];
+                bool sel = i == Selected, hot = i == hover;
+                if (sel)
+                {
+                    using (var br = new SolidBrush(T.Back)) g.FillRectangle(br, r.X, r.Y, r.Width, r.Height + 1);
+                    using (var br = new SolidBrush(T.Accent)) g.FillRectangle(br, r.X, r.Y, r.Width, 2);
+                }
+                else if (hot) using (var br = new SolidBrush(T.Hover)) g.FillRectangle(br, r);
+                else if (i + 1 != Selected) g.DrawLine(border, r.Right - 1, r.Y + 8, r.Right - 1, r.Bottom - 8);
+
+                var c = CloseRect(r);
+                TextRenderer.DrawText(g, d.Title, Font, new Rectangle(r.X + 12, r.Y, c.X - r.X - 14, r.Height), sel ? T.Fore : T.ChromeFore, text);
+                if (hot && hoverClose) using (var br = new SolidBrush(T.Border)) g.FillRectangle(br, c);
+                string glyph = hot || (sel && !d.Dirty) ? "×" : d.Dirty ? "●" : "";
+                TextRenderer.DrawText(g, glyph, Font, c, sel ? T.Fore : T.ChromeFore, center);
+            }
+        }
+        if (hoverPlus) using (var br = new SolidBrush(T.Hover)) g.FillRectangle(br, plus);
+        using (var f = new Font(Font.FontFamily, Font.Size * 1.5f)) TextRenderer.DrawText(g, "+", f, plus, T.ChromeFore, center);
+    }
+
+    protected override void OnMouseDown(MouseEventArgs e)
+    {
+        bool close, plus;
+        int i = Hit(e.Location, out close, out plus);
+        if (e.Button == MouseButtons.Left && i >= 0 && !close) { OnSelect(i); drag = i; }
+    }
+
+    protected override void OnMouseUp(MouseEventArgs e)
+    {
+        bool close, plus;
+        int i = Hit(e.Location, out close, out plus);
+        if (e.Button == MouseButtons.Left) { if (plus) OnNew(); else if (i >= 0 && close) OnClose(i); }
+        else if (e.Button == MouseButtons.Middle && i >= 0) OnClose(i);
+        drag = -1;
+    }
+
+    protected override void OnMouseDoubleClick(MouseEventArgs e)
+    {
+        bool close, plus;
+        if (Hit(e.Location, out close, out plus) < 0 && !plus) OnNew();
+    }
+
+    protected override void OnMouseMove(MouseEventArgs e)
+    {
+        bool close, plus;
+        int i = Hit(e.Location, out close, out plus);
+        if (i != hover || close != hoverClose || plus != hoverPlus)
+        {
+            if (i != hover) tip.SetToolTip(this, i >= 0 ? Docs[i].FilePath ?? Docs[i].Title : "");
+            hover = i; hoverClose = close; hoverPlus = plus;
+            Invalidate();
+        }
+        if (drag >= 0 && e.Button == MouseButtons.Left && i >= 0 && i != drag) { OnReorder(drag, i); drag = i; }
+    }
+
+    protected override void OnMouseLeave(EventArgs e)
+    {
+        hover = -1; hoverPlus = hoverClose = false;
+        Invalidate();
+    }
+}
+
+class FindForm : Form
+{
+    public readonly TextBox What = new TextBox(), With = new TextBox();
+    public readonly CheckBox MatchCase = Chk("Mayús/minús"), Word = Chk("Palabra completa"), Rx = Chk("Expresión regular");
+    public readonly Label Info = new Label { AutoSize = true, Anchor = AnchorStyles.Left };
+
+    static CheckBox Chk(string t) { return new CheckBox { Text = t, AutoSize = true }; }
+    static Label Lab(string t) { return new Label { Text = t, AutoSize = true, Anchor = AnchorStyles.Left }; }
+    static Button Btn(string t, Action a)
+    {
+        var b = new Button { Text = t, AutoSize = true, Anchor = AnchorStyles.Left | AnchorStyles.Right };
+        b.Click += (s, e) => a();
+        return b;
+    }
+
+    public FindForm(MainForm main)
+    {
+        Text = "Buscar y reemplazar";
+        Font = main.Font;
+        FormBorderStyle = FormBorderStyle.FixedToolWindow;
+        ShowInTaskbar = false;
+        StartPosition = FormStartPosition.Manual;
+        AutoSize = true;
+        AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        KeyPreview = true;
+        What.Width = With.Width = Font.Height * 18;
+        What.Anchor = With.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
+        var next = Btn("Siguiente", () => main.FindNext(false));
+        var opts = new FlowLayoutPanel { AutoSize = true, Margin = Padding.Empty };
+        opts.Controls.AddRange(new Control[] { MatchCase, Word, Rx });
+        var t = new TableLayoutPanel { AutoSize = true, ColumnCount = 3, Padding = new Padding(8) };
+        t.Controls.Add(Lab("Buscar:"), 0, 0); t.Controls.Add(What, 1, 0); t.Controls.Add(next, 2, 0);
+        t.Controls.Add(Lab("Reemplazar:"), 0, 1); t.Controls.Add(With, 1, 1); t.Controls.Add(Btn("Anterior", () => main.FindNext(true)), 2, 1);
+        t.Controls.Add(opts, 1, 2); t.Controls.Add(Btn("Reemplazar", main.ReplaceOne), 2, 2);
+        t.Controls.Add(Info, 1, 3); t.Controls.Add(Btn("Reemplazar todo", main.ReplaceAll), 2, 3);
+        Controls.Add(t);
+        AcceptButton = next;
+
+        KeyDown += (s, e) =>
+        {
+            if (e.KeyCode == Keys.Escape) { Hide(); main.Activate(); }
+            else if (e.KeyCode == Keys.F3) { main.FindNext(e.Shift); e.Handled = true; }
+        };
+        FormClosing += (s, e) => { if (e.CloseReason == CloseReason.UserClosing) { e.Cancel = true; Hide(); } };
+    }
+
+    public Regex Build()
+    {
+        string p = What.Text;
+        if (p.Length == 0) return null;
+        if (!Rx.Checked) p = Regex.Escape(p);
+        if (Word.Checked) p = @"\b(?:" + p + @")\b";
+        var o = RegexOptions.Multiline;
+        if (!MatchCase.Checked) o |= RegexOptions.IgnoreCase;
+        try { return new Regex(p, o); }
+        catch (ArgumentException ex) { Info.Text = ex.Message; return null; }
+    }
+
+    public string Replacement(Match m)
+    {
+        if (!Rx.Checked) return With.Text;
+        string r;
+        try { r = Regex.Unescape(With.Text); } catch (ArgumentException) { r = With.Text; } // lets "\n" and "\t" work
+        return m.Result(r);
+    }
+}
+
+class MainForm : Form
+{
+    const string App = "BlocPlus";
+    static readonly string Version = typeof(MainForm).Assembly.GetName().Version.ToString(3);
+    static readonly string[] EolNames = { "CRLF (Windows)", "LF (Unix)", "CR (Mac)" };
+    static readonly string[] EolText = { "\r\n", "\n", "\r" };
+    static readonly string[] ThemeNames = { "Sistema", "Claro", "Oscuro" };
+
+    readonly string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), App);
+    readonly List<Doc> docs = new List<Doc>();
+    readonly TabStrip strip = new TabStrip { AllowDrop = true };
+    readonly Panel host = new Panel { Dock = DockStyle.Fill };
+    readonly MenuStrip menu = new MenuStrip();
+    readonly StatusStrip status = new StatusStrip { SizingGrip = false };
+    readonly ToolStripStatusLabel lPos = new ToolStripStatusLabel { Spring = true, TextAlign = ContentAlignment.MiddleLeft }, lLang = Lbl(), lZoom = Lbl(), lEol = Lbl(), lEnc = Lbl();
+    readonly ContextMenuStrip ctx = new ContextMenuStrip();
+    readonly List<string> recent = new List<string>();
+    readonly Stack<string> closed = new Stack<string>();
+    ToolStripMenuItem mWrap, mLines, mRecent, mEnc, mEol, mLang;
+    Font font = new Font("Consolas", 11f);
+    int sel = -1, untitled, themeMode, tabSize = 4;
+    bool wrap, lineNumbers = true, syntax = true, autoIndent = true, spaces, restoreSession = true, sessionDirty, checking;
+    FindForm find;
+
+    string SessDir { get { return Path.Combine(dir, "session"); } }
+    Doc Cur { get { return sel >= 0 && sel < docs.Count ? docs[sel] : null; } }
+    Theme T { get { return themeMode == 2 || themeMode == 0 && SystemDark() ? Theme.Dark : Theme.Light; } }
+
+    static ToolStripStatusLabel Lbl() { return new ToolStripStatusLabel { Padding = new Padding(10, 0, 10, 0) }; }
+
+    static ToolStripMenuItem Item(string text, Keys keys, Action a)
+    {
+        var i = new ToolStripMenuItem(text);
+        if (keys != Keys.None) i.ShortcutKeys = keys;
+        i.Click += (s, e) => a();
+        return i;
+    }
+
+    static bool SystemDark()
+    {
+        try
+        {
+            using (var k = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"))
+            {
+                var v = k == null ? null : k.GetValue("AppsUseLightTheme");
+                return v is int && (int)v == 0;
+            }
+        }
+        catch { return false; }
+    }
+
+    public MainForm(string[] args)
+    {
+        Text = App;
+        Font = SystemFonts.MessageBoxFont;
+        Size = new Size(1000, 700);
+        AllowDrop = true;
+        DragEnter += OnDragEnter; DragDrop += OnDragDrop;
+        strip.DragEnter += OnDragEnter; strip.DragDrop += OnDragDrop;
+        strip.Docs = docs;
+        strip.OnSelect = i => SwitchTo(docs[i]);
+        strip.OnClose = i => CloseTab(docs[i]);
+        strip.OnNew = () => SwitchTo(NewDoc());
+        strip.OnReorder = (from, to) =>
+        {
+            var d = docs[from];
+            docs.RemoveAt(from);
+            docs.Insert(to, d);
+            SwitchTo(d);
+        };
+
+        BuildMenu();
+        status.Items.AddRange(new ToolStripItem[] { lPos, lLang, lZoom, lEol, lEnc });
+        ctx.Items.AddRange(new ToolStripItem[] {
+            Item("Deshacer", Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
+            Item("Cortar", Keys.None, () => Cur.Box.Cut()), Item("Copiar", Keys.None, () => Cur.Box.Copy()),
+            Item("Pegar", Keys.None, PastePlain), Item("Eliminar", Keys.None, () => Cur.Box.SelectedText = ""),
+            new ToolStripSeparator(), Item("Seleccionar todo", Keys.None, () => Cur.Box.SelectAll()) });
+        Controls.Add(host); Controls.Add(strip); Controls.Add(menu); Controls.Add(status);
+        MainMenuStrip = menu;
+
+        try { LoadSettings(); } catch { }
+        mWrap.Checked = wrap;
+        mLines.Checked = lineNumbers;
+        if (restoreSession) RestoreSession();
+        foreach (var a in args) if (File.Exists(a)) OpenPath(a);
+        if (docs.Count == 0) NewDoc();
+        SwitchTo(Cur ?? docs[0]);
+        ApplyThemeAll();
+
+        // Crash protection: unsaved work also lands in the session every 30 s.
+        var timer = new Timer { Interval = 30000 };
+        timer.Tick += (s, e) => { if (sessionDirty && restoreSession) try { SaveSession(); } catch { } };
+        timer.Start();
+        UserPreferenceChangedEventHandler pref = (s, e) => { if (themeMode == 0 && IsHandleCreated) BeginInvoke((Action)ApplyThemeAll); };
+        SystemEvents.UserPreferenceChanged += pref;
+        FormClosed += (s, e) => SystemEvents.UserPreferenceChanged -= pref;
+        Shown += (s, e) => { Cur.Box.Focus(); Cur.Box.ScrollToCaret(); Highlight(Cur); };
+        Activated += (s, e) => CheckExternal();
+        FormClosing += OnClosing;
+    }
+
+    void BuildMenu()
+    {
+        mRecent = new ToolStripMenuItem("Abrir &reciente");
+        mRecent.DropDownItems.Add("(vacío)"); // placeholder so DropDownOpening fires
+        mRecent.DropDownOpening += (s, e) => FillRecent();
+        var settings = Item("A&justes...", Keys.Control | Keys.Oemcomma, () => ShowSettings());
+        settings.ShortcutKeyDisplayString = "Ctrl+,";
+        var exit = Item("&Salir", Keys.None, Close);
+        exit.ShortcutKeyDisplayString = "Alt+F4";
+        var file = new ToolStripMenuItem("&Archivo");
+        file.DropDownItems.AddRange(new ToolStripItem[] {
+            Item("&Nueva pestaña", Keys.Control | Keys.T, () => SwitchTo(NewDoc())),
+            Item("&Abrir...", Keys.Control | Keys.O, OpenDialog),
+            mRecent,
+            Item("Reabrir pestaña &cerrada", Keys.Control | Keys.Shift | Keys.T, ReopenClosed),
+            Item("Recargar desde disco", Keys.None, () => Reload(Cur, true)),
+            new ToolStripSeparator(),
+            Item("&Guardar", Keys.Control | Keys.S, () => Save(Cur, false)),
+            Item("Guardar &como...", Keys.Control | Keys.Shift | Keys.S, () => Save(Cur, true)),
+            Item("Guardar t&odo", Keys.Control | Keys.Alt | Keys.S, SaveAll),
+            new ToolStripSeparator(),
+            Item("Cerrar &pestaña", Keys.Control | Keys.W, () => CloseTab(Cur)),
+            new ToolStripSeparator(),
+            settings,
+            exit });
+
+        var edit = new ToolStripMenuItem("&Editar");
+        edit.DropDownItems.AddRange(new ToolStripItem[] {
+            Item("&Deshacer", Keys.Control | Keys.Z, () => Cur.Box.Undo()),
+            Item("&Rehacer", Keys.Control | Keys.Y, () => Cur.Box.Redo()),
+            new ToolStripSeparator(),
+            Item("Cor&tar", Keys.Control | Keys.X, () => Cur.Box.Cut()),
+            Item("&Copiar", Keys.Control | Keys.C, () => Cur.Box.Copy()),
+            Item("&Pegar", Keys.Control | Keys.V, PastePlain),
+            Item("Seleccionar &todo", Keys.Control | Keys.A, () => Cur.Box.SelectAll()),
+            new ToolStripSeparator(),
+            Item("&Buscar...", Keys.Control | Keys.F, () => ShowFind(false)),
+            Item("Buscar &siguiente", Keys.F3, () => FindNext(false)),
+            Item("Buscar &anterior", Keys.Shift | Keys.F3, () => FindNext(true)),
+            Item("R&eemplazar...", Keys.Control | Keys.H, () => ShowFind(true)),
+            Item("&Ir a línea...", Keys.Control | Keys.G, GoToLine),
+            new ToolStripSeparator(),
+            Item("D&uplicar línea", Keys.Control | Keys.D, Duplicate),
+            Item("Eliminar línea", Keys.Control | Keys.Shift | Keys.K, DeleteLine),
+            Item("Subir línea", Keys.Alt | Keys.Up, () => MoveLine(-1)),
+            Item("Bajar línea", Keys.Alt | Keys.Down, () => MoveLine(1)),
+            new ToolStripSeparator(),
+            Item("MAYÚSCULAS", Keys.Control | Keys.Shift | Keys.U, () => ChangeCase(true)),
+            Item("minúsculas", Keys.Control | Keys.U, () => ChangeCase(false)),
+            Item("Ordenar líneas", Keys.None, SortLines),
+            Item("Quitar espacios finales", Keys.None, TrimTrailing),
+            Item("Insertar fecha y hora", Keys.F5, () => Cur.Box.SelectedText = DateTime.Now.ToShortTimeString() + " " + DateTime.Now.ToShortDateString()) });
+
+        mLang = new ToolStripMenuItem("&Lenguaje");
+        mLang.DropDownItems.Add(Item("Texto plano", Keys.None, () => SetLang(Cur, null)));
+        foreach (var l in Lang.All)
+        {
+            var lang = l;
+            mLang.DropDownItems.Add(Item(lang.Name, Keys.None, () => SetLang(Cur, lang)));
+        }
+        mLang.DropDownOpening += (s, e) => CheckOnly(mLang, Cur.Lang == null ? 0 : Array.IndexOf(Lang.All, Cur.Lang) + 1);
+        mEnc = new ToolStripMenuItem("&Codificación");
+        for (int i = 0; i < Enc.Names.Length; i++)
+        {
+            int k = i;
+            mEnc.DropDownItems.Add(Item(Enc.Names[i], Keys.None, () => { Cur.Enc = k; MarkChanged(Cur); }));
+        }
+        mEnc.DropDownOpening += (s, e) => CheckOnly(mEnc, Cur.Enc);
+        mEol = new ToolStripMenuItem("&Fin de línea");
+        for (int i = 0; i < EolNames.Length; i++)
+        {
+            int k = i;
+            mEol.DropDownItems.Add(Item(EolNames[i], Keys.None, () => { Cur.Eol = k; MarkChanged(Cur); }));
+        }
+        mEol.DropDownOpening += (s, e) => CheckOnly(mEol, Cur.Eol);
+        var docMenu = new ToolStripMenuItem("&Documento");
+        docMenu.DropDownItems.AddRange(new ToolStripItem[] { mLang, mEnc, mEol });
+
+        mWrap = Item("A&juste de línea", Keys.Alt | Keys.Z, () => { wrap = !wrap; ApplyEditorSettings(); });
+        mLines = Item("&Números de línea", Keys.None, () => { lineNumbers = !lineNumbers; ApplyEditorSettings(); });
+        var zin = Item("Acercar", Keys.Control | Keys.Oemplus, () => Zoom(0.1f));
+        var zout = Item("Alejar", Keys.Control | Keys.OemMinus, () => Zoom(-0.1f));
+        zin.ShortcutKeyDisplayString = "Ctrl++";
+        zout.ShortcutKeyDisplayString = "Ctrl+-";
+        var view = new ToolStripMenuItem("&Ver");
+        view.DropDownItems.AddRange(new ToolStripItem[] {
+            mWrap, mLines, new ToolStripSeparator(),
+            zin, zout, Item("Restablecer zoom", Keys.Control | Keys.D0, () => Zoom(0)) });
+
+        var help = new ToolStripMenuItem("Ay&uda");
+        help.DropDownItems.Add(Item("&Acerca de " + App + " " + Version, Keys.None, () => ShowSettings()));
+
+        menu.Items.AddRange(new ToolStripItem[] { file, edit, docMenu, view, help });
+    }
+
+    static void CheckOnly(ToolStripMenuItem m, int idx)
+    {
+        for (int i = 0; i < m.DropDownItems.Count; i++) ((ToolStripMenuItem)m.DropDownItems[i]).Checked = i == idx;
+    }
+
+    // ---------- documents ----------
+
+    Doc NewDoc()
+    {
+        var d = new Doc { Untitled = ++untitled };
+        d.Box = new RichTextBox
+        {
+            Dock = DockStyle.Fill, BorderStyle = BorderStyle.None, AcceptsTab = true, DetectUrls = false,
+            HideSelection = false, WordWrap = wrap, Font = font, EnableAutoDragDrop = false, AllowDrop = true,
+            ScrollBars = RichTextBoxScrollBars.Both, ContextMenuStrip = ctx
+        };
+        d.Gut = new Gutter { Dock = DockStyle.Left, D = d, Width = 40, Visible = lineNumbers };
+        d.Page = new Panel { Dock = DockStyle.Fill, Visible = false };
+        d.Page.Controls.Add(d.Box);
+        d.Page.Controls.Add(d.Gut);
+        host.Controls.Add(d.Page);
+        docs.Add(d);
+        d.Box.HandleCreated += (s, e) =>
+        {
+            Native.SendMessage(d.Box.Handle, 0xD3 /*EM_SETMARGINS*/, (IntPtr)1, (IntPtr)6);
+            IntPtr p;
+            Native.SendMessage(d.Box.Handle, 0x43C /*EM_GETOLEINTERFACE*/, IntPtr.Zero, out p);
+            if (p != IntPtr.Zero) { d.Tom = Marshal.GetObjectForIUnknown(p); Marshal.Release(p); }
+            ApplyTabs(d);
+        };
+        var h = d.Box.Handle; // create now so Modified/ClearUndo apply to the real control
+
+        d.Box.TextChanged += (s, e) =>
+        {
+            if (d.Busy) return;
+            d.Invalidate();
+            d.Gut.Invalidate();
+            sessionDirty = true;
+            UpdateTitle(d);
+            if (d == Cur) { UpdateStatus(); QueueHighlight(d); }
+        };
+        d.Box.SelectionChanged += (s, e) => { if (d == Cur && !d.Busy) UpdateStatus(); };
+        d.Box.VScroll += (s, e) => { d.Gut.Invalidate(); QueueHighlight(d); };
+        d.Box.Resize += (s, e) => { d.Gut.Invalidate(); QueueHighlight(d); };
+        d.Box.MouseWheel += (s, e) =>
+        {
+            if ((ModifierKeys & Keys.Control) != 0) BeginInvoke((Action)(() => { d.Gut.Invalidate(); UpdateStatus(); QueueHighlight(d); }));
+        };
+        d.Box.KeyDown += BoxKeyDown;
+        d.Box.DragEnter += OnDragEnter;
+        d.Box.DragDrop += OnDragDrop;
+        ApplyTheme(d, T);
+        UpdateTitle(d);
+        return d;
+    }
+
+    void SwitchTo(Doc d)
+    {
+        sel = docs.IndexOf(d);
+        strip.Selected = sel;
+        foreach (var x in docs) x.Page.Visible = x == d;
+        strip.Invalidate();
+        UpdateTitle(d);
+        UpdateStatus();
+        d.Gut.Invalidate();
+        QueueHighlight(d);
+        if (Visible) d.Box.Focus();
+    }
+
+    void BoxKeyDown(object sender, KeyEventArgs e)
+    {
+        var b = (RichTextBox)sender;
+        var d = Cur;
+        var k = e.KeyCode;
+        if (k == Keys.Enter && !e.Alt)
+        {
+            // Plain newline (no RTF soft breaks), keeping the current line's indentation.
+            e.SuppressKeyPress = true;
+            string t = d.Text, indent = "";
+            if (autoIndent)
+            {
+                int p = b.SelectionStart, ls = p == 0 ? 0 : t.LastIndexOf('\n', p - 1) + 1, i = ls;
+                while (i < p && (t[i] == ' ' || t[i] == '\t')) i++;
+                indent = t.Substring(ls, i - ls);
+            }
+            b.SelectedText = "\n" + indent;
+        }
+        else if (k == Keys.Tab && !e.Control && !e.Alt)
+        {
+            e.SuppressKeyPress = true;
+            string unit = spaces ? new string(' ', tabSize) : "\t";
+            bool multi = b.SelectionLength > 0 && d.Text.IndexOf('\n', b.SelectionStart, b.SelectionLength) >= 0;
+            if (!multi && !e.Shift) { b.SelectedText = unit; return; }
+            int a, en;
+            LineRange(d, out a, out en);
+            var lines = d.Text.Substring(a, en - a).Split('\n');
+            for (int i = 0; i < lines.Length; i++)
+                lines[i] = e.Shift ? Outdent(lines[i]) : lines[i].Length > 0 ? unit + lines[i] : lines[i];
+            string r = string.Join("\n", lines);
+            Replace(d, a, en, r);
+            b.Select(a, r.Length);
+        }
+        else if (e.Shift && !e.Control && k == Keys.Insert) { e.SuppressKeyPress = true; PastePlain(); }
+        else if (e.Control && e.Shift && !e.Alt && k == Keys.Z) { e.SuppressKeyPress = true; b.Redo(); }
+        else if (e.Control && !e.Alt && ((k >= Keys.A && k <= Keys.Z) || (k >= Keys.D0 && k <= Keys.D9) || (k >= Keys.OemSemicolon && k <= Keys.OemBackslash)))
+            e.SuppressKeyPress = true; // swallow RichEdit formatting hotkeys (Ctrl+L/E/R/J/1/2/5, Ctrl+B/I, ...)
+    }
+
+    string Outdent(string s)
+    {
+        if (s.StartsWith("\t")) return s.Substring(1);
+        int n = 0;
+        while (n < tabSize && n < s.Length && s[n] == ' ') n++;
+        return s.Substring(n);
+    }
+
+    void UpdateTitle(Doc d)
+    {
+        strip.Invalidate();
+        if (d != Cur) return;
+        string t = (d.Dirty ? "*" : "") + d.Title + " - " + App;
+        if (Text != t) Text = t;
+    }
+
+    void UpdateStatus()
+    {
+        var d = Cur;
+        if (d == null) return;
+        var b = d.Box;
+        int p = b.SelectionStart, line, col;
+        if (!b.WordWrap) { line = b.GetLineFromCharIndex(p); col = p - b.GetFirstCharIndexFromLine(line); }
+        else { line = d.LineOf(p); col = p - d.Starts[line]; }
+        lPos.Text = "Lín " + (line + 1) + ", Col " + (col + 1) + (b.SelectionLength > 0 ? "   (" + b.SelectionLength + " seleccionados)" : "");
+        lLang.Text = d.Lang == null ? "Texto plano" : d.Lang.Name;
+        lZoom.Text = (int)Math.Round(b.ZoomFactor * 100) + "%";
+        lEol.Text = EolNames[d.Eol];
+        lEnc.Text = Enc.Names[d.Enc];
+    }
+
+    void MarkChanged(Doc d)
+    {
+        d.Box.Modified = true;
+        sessionDirty = true;
+        UpdateTitle(d);
+        UpdateStatus();
+    }
+
+    static string Normalize(string s) { return s.Replace("\r\n", "\n").Replace('\r', '\n'); }
+
+    static int DetectEol(string s)
+    {
+        int i = s.IndexOfAny(new[] { '\r', '\n' });
+        if (i < 0 || s[i] == '\r' && i + 1 < s.Length && s[i + 1] == '\n') return 0;
+        return s[i] == '\n' ? 1 : 2;
+    }
+
+    void SetText(Doc d, string s)
+    {
+        d.Box.Text = s;
+        d.Box.ClearUndo();
+        d.Box.Modified = false;
+        d.Box.Select(0, 0);
+        d.Invalidate();
+        d.Colored = false;
+        UpdateTitle(d);
+        QueueHighlight(d);
+    }
+
+    void LoadInto(Doc d, string path, byte[] bytes)
+    {
+        int enc;
+        string s = Enc.Decode(bytes, out enc);
+        d.FilePath = path;
+        d.Enc = enc;
+        d.Eol = DetectEol(s);
+        d.Lang = Lang.Detect(path);
+        SetText(d, Normalize(s));
+        d.Stamp = File.GetLastWriteTimeUtc(path);
+    }
+
+    void OpenPath(string path)
+    {
+        path = Path.GetFullPath(path);
+        foreach (var x in docs)
+            if (string.Equals(x.FilePath, path, StringComparison.OrdinalIgnoreCase)) { SwitchTo(x); return; }
+        byte[] bytes;
+        try { bytes = File.ReadAllBytes(path); }
+        catch (Exception ex) { Err(ex); return; }
+        var c = Cur;
+        var d = c != null && c.FilePath == null && !c.Dirty && c.Box.TextLength == 0 ? c : NewDoc(); // reuse a blank tab
+        LoadInto(d, path, bytes);
+        AddRecent(path);
+        SwitchTo(d);
+    }
+
+    void OpenDialog()
+    {
+        using (var o = new OpenFileDialog { Multiselect = true, Filter = "Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt" })
+        {
+            if (Cur.FilePath != null) o.InitialDirectory = Path.GetDirectoryName(Cur.FilePath);
+            if (o.ShowDialog(this) == DialogResult.OK) foreach (var f in o.FileNames) OpenPath(f);
+        }
+    }
+
+    void Reload(Doc d, bool ask)
+    {
+        if (d.FilePath == null) return;
+        if (ask && d.Dirty && !Confirm("¿Descartar los cambios de " + d.Title + " y recargar desde disco?")) return;
+        int p = d.Box.SelectionStart;
+        try { LoadInto(d, d.FilePath, File.ReadAllBytes(d.FilePath)); }
+        catch (Exception ex) { Err(ex); return; }
+        d.Box.Select(Math.Min(p, d.Box.TextLength), 0);
+        d.Box.ScrollToCaret();
+        if (d == Cur) UpdateStatus();
+    }
+
+    // Picks up edits made by other programs when the window regains focus.
+    void CheckExternal()
+    {
+        if (checking) return;
+        checking = true;
+        try
+        {
+            foreach (var d in docs.ToList())
+            {
+                if (d.FilePath == null || !File.Exists(d.FilePath)) continue;
+                var t = File.GetLastWriteTimeUtc(d.FilePath);
+                if (t == d.Stamp) continue;
+                d.Stamp = t;
+                if (!d.Dirty || Confirm(d.Title + " ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?")) Reload(d, false);
+            }
+        }
+        finally { checking = false; }
+    }
+
+    bool Save(Doc d, bool saveAs)
+    {
+        string path = d.FilePath;
+        if (path == null || saveAs)
+        {
+            using (var s = new SaveFileDialog { Filter = "Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*", FileName = path == null ? "" : Path.GetFileName(path) })
+            {
+                if (path != null) s.InitialDirectory = Path.GetDirectoryName(path);
+                if (s.ShowDialog(this) != DialogResult.OK) return false;
+                path = s.FileName;
+            }
+        }
+        string text = d.Eol == 1 ? d.Text : d.Text.Replace("\n", EolText[d.Eol]);
+        var e = Enc.Get(d.Enc);
+        byte[] body = e.GetBytes(text);
+        if (d.Enc == 4 && e.GetString(body) != text &&
+            Confirm("Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?"))
+        {
+            d.Enc = 0;
+            e = Enc.Get(0);
+            body = e.GetBytes(text);
+        }
+        try
+        {
+            // Write to a temp file first so a failed write never truncates the original.
+            byte[] pre = e.GetPreamble(), all = new byte[pre.Length + body.Length];
+            Buffer.BlockCopy(pre, 0, all, 0, pre.Length);
+            Buffer.BlockCopy(body, 0, all, pre.Length, body.Length);
+            string tmp = path + ".blocplus.tmp";
+            File.WriteAllBytes(tmp, all);
+            if (File.Exists(path)) File.Replace(tmp, path, null); else File.Move(tmp, path);
+        }
+        catch (Exception ex) { Err(ex); return false; }
+        if (path != d.FilePath) { d.FilePath = path; SetLang(d, Lang.Detect(path)); }
+        d.Box.Modified = false;
+        d.Stamp = File.GetLastWriteTimeUtc(path);
+        sessionDirty = true;
+        AddRecent(path);
+        UpdateTitle(d);
+        UpdateStatus();
+        return true;
+    }
+
+    void SaveAll()
+    {
+        foreach (var d in docs.ToList())
+            if (d.Dirty) { SwitchTo(d); if (!Save(d, false)) return; }
+    }
+
+    bool ConfirmClose(Doc d)
+    {
+        if (!(d.Dirty || d.FilePath == null) || d.Box.TextLength == 0) return true;
+        SwitchTo(d);
+        var r = MessageBox.Show(this, "¿Guardar los cambios de " + d.Title + "?", App, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        return r == DialogResult.No || r == DialogResult.Yes && Save(d, false);
+    }
+
+    bool CloseTab(Doc d)
+    {
+        var cur = Cur;
+        if (!ConfirmClose(d)) return false;
+        if (d.FilePath != null) closed.Push(d.FilePath);
+        int i = docs.IndexOf(d);
+        docs.Remove(d);
+        host.Controls.Remove(d.Page);
+        d.Page.Dispose();
+        sessionDirty = true;
+        if (docs.Count == 0) SwitchTo(NewDoc());
+        else SwitchTo(cur != d ? cur : docs[Math.Min(i, docs.Count - 1)]);
+        return true;
+    }
+
+    void ReopenClosed()
+    {
+        while (closed.Count > 0)
+        {
+            var p = closed.Pop();
+            if (File.Exists(p)) { OpenPath(p); return; }
+        }
+    }
+
+    void AddRecent(string p)
+    {
+        recent.RemoveAll(x => string.Equals(x, p, StringComparison.OrdinalIgnoreCase));
+        recent.Insert(0, p);
+        if (recent.Count > 12) recent.RemoveAt(recent.Count - 1);
+    }
+
+    void FillRecent()
+    {
+        mRecent.DropDownItems.Clear();
+        foreach (var p in recent)
+        {
+            var path = p;
+            mRecent.DropDownItems.Add(Item(path.Replace("&", "&&"), Keys.None, () => OpenPath(path)));
+        }
+        if (recent.Count == 0) mRecent.DropDownItems.Add(new ToolStripMenuItem("(vacío)") { Enabled = false });
+        Recolor(mRecent.DropDownItems, T);
+    }
+
+    void OnDragEnter(object s, DragEventArgs e)
+    {
+        if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+    }
+
+    void OnDragDrop(object s, DragEventArgs e)
+    {
+        var files = e.Data.GetData(DataFormats.FileDrop) as string[];
+        if (files != null) foreach (var f in files) if (File.Exists(f)) OpenPath(f);
+    }
+
+    // ---------- syntax highlighting ----------
+
+    // Runs formatting-only changes without touching undo history or the "modified" flag.
+    static void Silently(Doc d, Action a)
+    {
+        bool mod = d.Box.Modified;
+        d.Busy = true;
+        var tom = d.Tom;
+        if (tom != null) { tom.Undo(-9999995 /*tomSuspend*/); tom.Freeze(); }
+        try { a(); }
+        finally
+        {
+            if (tom != null) { tom.Unfreeze(); tom.Undo(-9999994 /*tomResume*/); }
+            d.Box.Modified = mod;
+            d.Busy = false;
+        }
+    }
+
+    static void Colorize(Doc d, int s, int e, Color c) { d.Tom.Range(s, e).Font.ForeColor = c.R | c.G << 8 | c.B << 16; }
+
+    void QueueHighlight(Doc d)
+    {
+        if (d.HighlightQueued || !IsHandleCreated) return;
+        d.HighlightQueued = true;
+        BeginInvoke((Action)(() => { d.HighlightQueued = false; if (!d.Page.IsDisposed && d == Cur) Highlight(d); }));
+    }
+
+    // Recolors only the visible lines; scanning starts earlier so block comments/strings are right.
+    void Highlight(Doc d)
+    {
+        if (d.Tom == null) return;
+        var t = T;
+        var b = d.Box;
+        if (!syntax || d.Lang == null || b.TextLength > 3000000)
+        {
+            if (d.Colored) Silently(d, () => Colorize(d, 0, b.TextLength, t.Fore));
+            d.Colored = false;
+            return;
+        }
+        string text = d.Text;
+        int vs = Math.Max(0, b.GetFirstCharIndexFromLine(b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, 1)))));
+        int ve = Math.Min(text.Length, b.GetCharIndexFromPosition(new Point(b.ClientSize.Width - 1, b.ClientSize.Height - 1)));
+        int nl = text.IndexOf('\n', ve);
+        ve = nl < 0 ? text.Length : nl;
+        int from = vs > 300000 ? vs - 100000 : 0;
+        var lang = d.Lang;
+        Silently(d, () =>
+        {
+            Colorize(d, vs, ve, t.Fore);
+            for (var m = lang.Rx.Match(text, from); m.Success && m.Index < ve; m = m.NextMatch())
+            {
+                int e = m.Index + m.Length;
+                if (e > vs && m.Length > 0) Colorize(d, Math.Max(vs, m.Index), Math.Min(ve, e), t.For(lang.KindOf(m)));
+            }
+        });
+        d.Colored = true;
+    }
+
+    void SetLang(Doc d, Lang l)
+    {
+        d.Lang = l;
+        Highlight(d);
+        UpdateStatus();
+    }
+
+    // ---------- editing ----------
+
+    void PastePlain()
+    {
+        string t;
+        try { t = Clipboard.GetText(); } catch (ExternalException) { return; }
+        if (t.Length > 0) Cur.Box.SelectedText = Normalize(t);
+    }
+
+    // Full logical lines covered by the selection: [a, e), e excludes the trailing '\n'.
+    static void LineRange(Doc d, out int a, out int e)
+    {
+        string t = d.Text;
+        int s = d.Box.SelectionStart, en = s + d.Box.SelectionLength;
+        if (en > s && t[en - 1] == '\n') en--;
+        a = s == 0 ? 0 : t.LastIndexOf('\n', s - 1) + 1;
+        e = t.IndexOf('\n', en);
+        if (e < 0) e = t.Length;
+    }
+
+    static void Replace(Doc d, int a, int e, string s)
+    {
+        d.Box.Select(a, e - a);
+        d.Box.SelectedText = s;
+    }
+
+    void Duplicate()
+    {
+        var d = Cur; var b = d.Box;
+        int a, e, s = b.SelectionStart, l = b.SelectionLength;
+        LineRange(d, out a, out e);
+        string blk = d.Text.Substring(a, e - a);
+        Replace(d, e, e, "\n" + blk);
+        b.Select(s + blk.Length + 1, l);
+    }
+
+    void DeleteLine()
+    {
+        var d = Cur;
+        int a, e;
+        LineRange(d, out a, out e);
+        if (e < d.Text.Length) e++; else if (a > 0) a--;
+        Replace(d, a, e, "");
+    }
+
+    void MoveLine(int dir)
+    {
+        var d = Cur; var b = d.Box; var t = d.Text;
+        int a, e, s = b.SelectionStart, l = b.SelectionLength;
+        LineRange(d, out a, out e);
+        string blk = t.Substring(a, e - a);
+        if (dir < 0)
+        {
+            if (a == 0) return;
+            int pa = a >= 2 ? t.LastIndexOf('\n', a - 2) + 1 : 0;
+            string prev = t.Substring(pa, a - 1 - pa);
+            Replace(d, pa, e, blk + "\n" + prev);
+            b.Select(s - prev.Length - 1, l);
+        }
+        else
+        {
+            if (e >= t.Length) return;
+            int ne = t.IndexOf('\n', e + 1);
+            if (ne < 0) ne = t.Length;
+            string next = t.Substring(e + 1, ne - e - 1);
+            Replace(d, a, ne, next + "\n" + blk);
+            b.Select(s + next.Length + 1, l);
+        }
+    }
+
+    void ChangeCase(bool upper)
+    {
+        var d = Cur; var b = d.Box;
+        int s = b.SelectionStart, l = b.SelectionLength;
+        if (l == 0) return;
+        string t = d.Text.Substring(s, l);
+        b.SelectedText = upper ? t.ToUpper() : t.ToLower();
+        b.Select(s, l);
+    }
+
+    void SortLines()
+    {
+        var d = Cur;
+        int a = 0, e = d.Text.Length;
+        if (d.Box.SelectionLength > 0) LineRange(d, out a, out e);
+        var lines = d.Text.Substring(a, e - a).Split('\n');
+        Array.Sort(lines, StringComparer.CurrentCulture);
+        Replace(d, a, e, string.Join("\n", lines));
+        d.Box.Select(a, e - a);
+    }
+
+    void TrimTrailing()
+    {
+        var d = Cur;
+        string t = d.Text, r = Regex.Replace(t, @"[ \t]+(?=\n|$)", "");
+        if (r == t) return;
+        int p = d.Box.SelectionStart;
+        Replace(d, 0, t.Length, r);
+        d.Box.Select(Math.Min(p, r.Length), 0);
+    }
+
+    void GoToLine()
+    {
+        var d = Cur;
+        int max = d.Starts.Length, n;
+        string s = Prompt("Ir a línea", "Número de línea (1-" + max + "):", (d.LineOf(d.Box.SelectionStart) + 1).ToString());
+        if (s == null || !int.TryParse(s, out n)) return;
+        d.Box.Select(d.Starts[Math.Max(1, Math.Min(n, max)) - 1], 0);
+        d.Box.ScrollToCaret();
+    }
+
+    // ---------- find / replace ----------
+
+    void ShowFind(bool replace)
+    {
+        bool first = find == null;
+        if (first) find = new FindForm(this);
+        var b = Cur.Box;
+        if (b.SelectionLength > 0 && b.SelectionLength < 500)
+        {
+            string s = Cur.Text.Substring(b.SelectionStart, b.SelectionLength);
+            if (s.IndexOf('\n') < 0) find.What.Text = s;
+        }
+        if (first)
+        {
+            ThemeForm(find, T);
+            find.Show(this);
+            find.Location = new Point(Right - find.Width - 40, Top + 110);
+        }
+        else find.Show();
+        find.Activate();
+        var box = replace ? find.With : find.What;
+        box.Focus();
+        box.SelectAll();
+    }
+
+    public void FindNext(bool back)
+    {
+        if (find == null || find.What.Text.Length == 0) { ShowFind(false); return; }
+        var re = find.Build();
+        if (re == null) return;
+        var d = Cur; var b = d.Box; string t = d.Text;
+        Match m;
+        if (!back)
+        {
+            int from = b.SelectionStart + b.SelectionLength;
+            m = re.Match(t, from);
+            if (m.Success && m.Length == 0 && m.Index == b.SelectionStart && from < t.Length) m = re.Match(t, from + 1);
+            if (!m.Success) m = re.Match(t, 0);
+        }
+        else
+        {
+            var rr = new Regex(re.ToString(), re.Options | RegexOptions.RightToLeft);
+            m = rr.Match(t, b.SelectionStart);
+            if (!m.Success) m = rr.Match(t, t.Length);
+        }
+        if (!m.Success)
+        {
+            find.Info.Text = "No se encontró.";
+            System.Media.SystemSounds.Beep.Play();
+            return;
+        }
+        find.Info.Text = "";
+        b.Select(m.Index, m.Length);
+        b.ScrollToCaret();
+    }
+
+    public void ReplaceOne()
+    {
+        var re = find.Build();
+        if (re == null) return;
+        var d = Cur; var b = d.Box;
+        var m = re.Match(d.Text, b.SelectionStart);
+        if (m.Success && m.Index == b.SelectionStart && m.Length == b.SelectionLength) b.SelectedText = find.Replacement(m);
+        FindNext(false);
+    }
+
+    public void ReplaceAll()
+    {
+        var re = find.Build();
+        if (re == null) return;
+        var d = Cur;
+        int n = 0;
+        string r = re.Replace(d.Text, m => { n++; return find.Replacement(m); });
+        if (n > 0)
+        {
+            int p = d.Box.SelectionStart;
+            Replace(d, 0, d.Text.Length, r); // one undo step
+            d.Box.Select(Math.Min(p, r.Length), 0);
+        }
+        find.Info.Text = n + " reemplazos.";
+    }
+
+    // ---------- view & theme ----------
+
+    void Zoom(float delta)
+    {
+        var b = Cur.Box;
+        b.ZoomFactor = delta == 0 ? 1f : Math.Max(0.5f, Math.Min(5f, b.ZoomFactor + delta));
+        Cur.Gut.Invalidate();
+        UpdateStatus();
+        QueueHighlight(Cur);
+    }
+
+    void ApplyTabs(Doc d)
+    {
+        if (d.Tom == null) return;
+        using (var g = d.Box.CreateGraphics())
+        {
+            float px = TextRenderer.MeasureText(g, new string('x', 10), font, Size.Empty, TextFormatFlags.NoPadding).Width / 10f;
+            float pt = px * tabSize * 72f / g.DpiX;
+            Silently(d, () => d.Tom.DefaultTabStop = pt);
+        }
+    }
+
+    // Applies wrap / line numbers / font / tabs to every open document.
+    void ApplyEditorSettings()
+    {
+        mWrap.Checked = wrap;
+        mLines.Checked = lineNumbers;
+        foreach (var d in docs)
+        {
+            var x = d;
+            Silently(x, () => { x.Box.WordWrap = wrap; x.Box.Font = font; });
+            x.Gut.Visible = lineNumbers;
+            x.Gut.Invalidate();
+            x.Colored = true; // font reset may keep old colors; force a full repaint
+            ApplyTabs(x);
+        }
+        TopMost = TopMost;
+        UpdateStatus();
+        Highlight(Cur);
+    }
+
+    void ApplyTheme(Doc d, Theme t)
+    {
+        Silently(d, () => { d.Box.BackColor = t.Back; d.Box.ForeColor = t.Fore; });
+        d.Gut.BackColor = t.Gutter;
+        d.Gut.ForeColor = t.GutterFore;
+        d.Gut.Invalidate();
+        if (d.Box.IsHandleCreated) Native.SetWindowTheme(d.Box.Handle, t.IsDark ? "DarkMode_Explorer" : "Explorer", null);
+    }
+
+    void ApplyThemeAll()
+    {
+        var t = T;
+        foreach (var d in docs) { ApplyTheme(d, t); d.Colored = false; }
+        menu.Renderer = status.Renderer = ctx.Renderer = new ToolStripProfessionalRenderer(new ThemeTable(t)) { RoundedEdges = false };
+        Recolor(menu.Items, t);
+        Recolor(ctx.Items, t);
+        foreach (ToolStripItem i in status.Items) i.ForeColor = t.ChromeFore;
+        strip.T = t;
+        strip.Invalidate();
+        BackColor = host.BackColor = t.Chrome;
+        TitleBar(this, t.IsDark);
+        if (find != null) ThemeForm(find, t);
+        if (Cur != null) Highlight(Cur);
+    }
+
+    static void Recolor(ToolStripItemCollection items, Theme t)
+    {
+        foreach (ToolStripItem i in items)
+        {
+            i.ForeColor = t.Fore;
+            var m = i as ToolStripMenuItem;
+            if (m != null) Recolor(m.DropDownItems, t);
+        }
+    }
+
+    static void TitleBar(Form f, bool dark)
+    {
+        int v = dark ? 1 : 0;
+        try
+        {
+            Native.DwmSetWindowAttribute(f.Handle, 20 /*DWMWA_USE_IMMERSIVE_DARK_MODE*/, ref v, 4);
+            Native.SetWindowPos(f.Handle, IntPtr.Zero, 0, 0, 0, 0, 0x37 /*NOSIZE|NOMOVE|NOZORDER|NOACTIVATE|FRAMECHANGED*/);
+        }
+        catch { }
+    }
+
+    static void ThemeForm(Form f, Theme t)
+    {
+        f.BackColor = t.Chrome;
+        f.ForeColor = t.Fore;
+        ThemeControls(f.Controls, t);
+        TitleBar(f, t.IsDark);
+    }
+
+    static void ThemeControls(Control.ControlCollection cs, Theme t)
+    {
+        foreach (Control c in cs)
+        {
+            if (c is TextBoxBase || c is ComboBox)
+            {
+                c.BackColor = t.Input;
+                c.ForeColor = t.Fore;
+                var cb = c as ComboBox;
+                if (cb != null) cb.FlatStyle = t.IsDark ? FlatStyle.Flat : FlatStyle.Standard;
+                Native.SetWindowTheme(c.Handle, t.IsDark ? "DarkMode_Explorer" : "Explorer", null);
+            }
+            else if (c is Button)
+            {
+                var b = (Button)c;
+                b.FlatStyle = t.IsDark ? FlatStyle.Flat : FlatStyle.Standard;
+                b.BackColor = t.IsDark ? t.Hover : SystemColors.Control;
+                b.ForeColor = t.Fore;
+                b.FlatAppearance.BorderColor = t.Border;
+                b.UseVisualStyleBackColor = !t.IsDark;
+            }
+            ThemeControls(c.Controls, t);
+        }
+    }
+
+    string Prompt(string title, string label, string value)
+    {
+        using (var f = new Form { Text = title, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
+        {
+            var tb = new TextBox { Text = value, Width = Font.Height * 16 };
+            var ok = new Button { Text = "Aceptar", DialogResult = DialogResult.OK, AutoSize = true };
+            var cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, AutoSize = true };
+            var buttons = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Right };
+            buttons.Controls.AddRange(new Control[] { ok, cancel });
+            var p = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, Padding = new Padding(10) };
+            p.Controls.AddRange(new Control[] { new Label { Text = label, AutoSize = true }, tb, buttons });
+            f.Controls.Add(p);
+            f.AcceptButton = ok;
+            f.CancelButton = cancel;
+            ThemeForm(f, T);
+            return f.ShowDialog(this) == DialogResult.OK ? tb.Text : null;
+        }
+    }
+
+    // ---------- settings window ----------
+
+    static string Changelog()
+    {
+        using (var s = typeof(MainForm).Assembly.GetManifestResourceStream("CHANGELOG.md"))
+        {
+            if (s == null) return "";
+            using (var r = new StreamReader(s))
+            {
+                // Strip the bits of Markdown that look noisy in a plain TextBox.
+                string t = Regex.Replace(Normalize(r.ReadToEnd()), @"^# [^\n]*\n+", "");
+                t = Regex.Replace(t, @"^#+ ", "", RegexOptions.Multiline);
+                t = Regex.Replace(t, @"^- ", "• ", RegexOptions.Multiline).Replace("**", "");
+                return t.Trim().Replace("\n", "\r\n");
+            }
+        }
+    }
+
+    void ShowSettings()
+    {
+        using (var f = new Form { Text = "Ajustes - " + App + " " + Version, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
+        {
+            Func<string, bool, CheckBox> chk = (text, on) => new CheckBox { Text = text, Checked = on, AutoSize = true, Margin = new Padding(3, 4, 3, 4) };
+            Func<string, Label> head = text => new Label { Text = text, AutoSize = true, Font = new Font(Font, FontStyle.Bold), Margin = new Padding(3, 12, 3, 4) };
+            var cTheme = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = Font.Height * 10 };
+            cTheme.Items.AddRange(ThemeNames);
+            cTheme.SelectedIndex = themeMode;
+            var cTab = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = Font.Height * 10 };
+            cTab.Items.AddRange(new object[] { "2", "4", "8" });
+            cTab.SelectedItem = tabSize.ToString();
+            var chosen = font;
+            var bFont = new Button { Text = "Fuente: " + font.Name + " " + font.SizeInPoints + " pt", AutoSize = true };
+            bFont.Click += (s, e) =>
+            {
+                using (var fd = new FontDialog { Font = chosen, ShowEffects = false })
+                    if (fd.ShowDialog(f) == DialogResult.OK) { chosen = fd.Font; bFont.Text = "Fuente: " + chosen.Name + " " + chosen.SizeInPoints + " pt"; }
+            };
+            var xWrap = chk("Ajuste de línea", wrap);
+            var xLines = chk("Mostrar números de línea", lineNumbers);
+            var xSyntax = chk("Resaltado de sintaxis", syntax);
+            var xIndent = chk("Sangría automática al pulsar Intro", autoIndent);
+            var xSpaces = chk("El tabulador inserta espacios", spaces);
+            var xSession = chk("Restaurar pestañas y texto sin guardar al abrir", restoreSession);
+            var xTop = chk("Ventana siempre visible", TopMost);
+
+            var left = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false, Margin = new Padding(0, 0, 24, 0) };
+            left.Controls.AddRange(new Control[] {
+                head("Apariencia"), new Label { Text = "Tema", AutoSize = true }, cTheme, bFont, xLines, xSyntax,
+                head("Edición"), xWrap, xIndent, xSpaces, new Label { Text = "Ancho del tabulador", AutoSize = true }, cTab,
+                head("Ventana"), xSession, xTop });
+
+            var log = new TextBox { Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Vertical, Text = Changelog(), Width = Font.Height * 30, Height = Font.Height * 22, WordWrap = true };
+            var right = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false };
+            right.Controls.AddRange(new Control[] {
+                new Label { Text = App + " " + Version, AutoSize = true, Font = new Font(Font.FontFamily, Font.Size * 1.6f, FontStyle.Bold), Margin = new Padding(3, 8, 3, 2) },
+                new Label { Text = "Un editor de texto ligero para Windows.", AutoSize = true },
+                head("Novedades"), log });
+
+            var ok = new Button { Text = "Aceptar", DialogResult = DialogResult.OK, AutoSize = true };
+            var cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, AutoSize = true };
+            var buttons = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Right, Margin = new Padding(0, 12, 0, 0) };
+            buttons.Controls.AddRange(new Control[] { ok, cancel });
+            var grid = new TableLayoutPanel { AutoSize = true, ColumnCount = 2, Padding = new Padding(14) };
+            grid.Controls.Add(left, 0, 0);
+            grid.Controls.Add(right, 1, 0);
+            grid.Controls.Add(buttons, 1, 1);
+            f.Controls.Add(grid);
+            f.AcceptButton = ok;
+            f.CancelButton = cancel;
+            ThemeForm(f, T);
+            log.Select(0, 0);
+            if (f.ShowDialog(this) != DialogResult.OK) return;
+
+            themeMode = cTheme.SelectedIndex;
+            tabSize = int.Parse((string)cTab.SelectedItem);
+            font = chosen;
+            wrap = xWrap.Checked;
+            lineNumbers = xLines.Checked;
+            syntax = xSyntax.Checked;
+            autoIndent = xIndent.Checked;
+            spaces = xSpaces.Checked;
+            restoreSession = xSession.Checked;
+            TopMost = xTop.Checked;
+            ApplyEditorSettings();
+            ApplyThemeAll();
+            try { SaveSettings(); } catch { }
+        }
+    }
+
+    protected override bool ProcessCmdKey(ref Message msg, Keys k)
+    {
+        if (k == (Keys.Control | Keys.Tab) || k == (Keys.Control | Keys.Shift | Keys.Tab))
+        {
+            int n = docs.Count;
+            if (n > 1) SwitchTo(docs[(sel + ((k & Keys.Shift) != 0 ? n - 1 : 1)) % n]);
+            return true;
+        }
+        if (k == (Keys.Control | Keys.N)) { SwitchTo(NewDoc()); return true; } // Notepad habit, same as Ctrl+T
+        return base.ProcessCmdKey(ref msg, k);
+    }
+
+    // ---------- session & settings persistence ----------
+
+    // Like modern Notepad: closing never nags; open tabs and unsaved text come back next time.
+    void SaveSession()
+    {
+        Directory.CreateDirectory(SessDir);
+        var lines = new List<string> { sel.ToString() };
+        var keep = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        int n = 0;
+        foreach (var d in docs)
+        {
+            string tmp = "";
+            if ((d.Dirty || d.FilePath == null) && d.Box.TextLength > 0)
+            {
+                tmp = "tab" + (n++) + ".txt";
+                File.WriteAllText(Path.Combine(SessDir, tmp), d.Text, Encoding.UTF8);
+                keep.Add(tmp);
+            }
+            else if (d.FilePath == null) continue;
+            lines.Add(string.Join("\t", d.FilePath ?? "", tmp, d.Enc, d.Eol, d.Dirty ? 1 : 0, d.Box.SelectionStart, d.Lang == null ? "" : d.Lang.Name));
+        }
+        File.WriteAllLines(Path.Combine(SessDir, "session.txt"), lines);
+        foreach (var f in Directory.GetFiles(SessDir, "tab*.txt"))
+            if (!keep.Contains(Path.GetFileName(f))) File.Delete(f);
+        sessionDirty = false;
+    }
+
+    void RestoreSession()
+    {
+        string[] lines;
+        try { lines = File.ReadAllLines(Path.Combine(SessDir, "session.txt")); } catch { return; }
+        for (int i = 1; i < lines.Length; i++)
+        {
+            var c = lines[i].Split('\t');
+            if (c.Length < 6) continue;
+            try
+            {
+                string path = c[0].Length > 0 ? c[0] : null, tmp = c[1].Length > 0 ? Path.Combine(SessDir, c[1]) : null;
+                Doc d;
+                if (tmp != null && File.Exists(tmp))
+                {
+                    d = NewDoc();
+                    d.FilePath = path;
+                    SetText(d, Normalize(File.ReadAllText(tmp)));
+                    d.Enc = int.Parse(c[2]);
+                    d.Eol = int.Parse(c[3]);
+                    d.Box.Modified = c[4] == "1";
+                    if (path != null && File.Exists(path)) d.Stamp = File.GetLastWriteTimeUtc(path);
+                }
+                else if (path != null && File.Exists(path))
+                {
+                    d = NewDoc();
+                    LoadInto(d, path, File.ReadAllBytes(path));
+                }
+                else continue;
+                if (c.Length > 6) d.Lang = Lang.All.FirstOrDefault(l => l.Name == c[6]);
+                int s;
+                if (int.TryParse(c[5], out s)) d.Box.Select(Math.Min(s, d.Box.TextLength), 0);
+                UpdateTitle(d);
+            }
+            catch { }
+        }
+        int a;
+        if (int.TryParse(lines[0], out a) && a >= 0 && a < docs.Count) sel = a;
+    }
+
+    void LoadSettings()
+    {
+        var kv = new Dictionary<string, string>();
+        var f = Path.Combine(dir, "settings.ini");
+        if (!File.Exists(f)) return;
+        foreach (var l in File.ReadAllLines(f))
+        {
+            int i = l.IndexOf('=');
+            if (i > 0) kv[l.Substring(0, i)] = l.Substring(i + 1);
+        }
+        Func<string, bool, bool> flag = (k, def) => { string x; return kv.TryGetValue(k, out x) ? x == "1" : def; };
+        string v;
+        float size;
+        int n;
+        if (kv.TryGetValue("font", out v) && kv.ContainsKey("size") && float.TryParse(kv["size"], NumberStyles.Float, CultureInfo.InvariantCulture, out size))
+            font = new Font(v, size);
+        if (kv.TryGetValue("theme", out v) && int.TryParse(v, out n) && n >= 0 && n < 3) themeMode = n;
+        if (kv.TryGetValue("tab", out v) && int.TryParse(v, out n) && n > 0) tabSize = n;
+        wrap = flag("wrap", false);
+        lineNumbers = flag("lines", true);
+        syntax = flag("syntax", true);
+        autoIndent = flag("indent", true);
+        spaces = flag("spaces", false);
+        restoreSession = flag("session", true);
+        TopMost = flag("top", false);
+        if (kv.TryGetValue("recent", out v)) recent.AddRange(v.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
+        if (kv.TryGetValue("bounds", out v))
+        {
+            var p = v.Split(',').Select(int.Parse).ToArray();
+            var r = new Rectangle(p[0], p[1], p[2], p[3]);
+            if (Screen.AllScreens.Any(sc => sc.WorkingArea.IntersectsWith(r))) { StartPosition = FormStartPosition.Manual; Bounds = r; }
+        }
+        if (flag("max", false)) WindowState = FormWindowState.Maximized;
+    }
+
+    void SaveSettings()
+    {
+        var r = WindowState == FormWindowState.Normal ? Bounds : RestoreBounds;
+        Func<bool, string> b = x => x ? "1" : "0";
+        Directory.CreateDirectory(dir);
+        File.WriteAllLines(Path.Combine(dir, "settings.ini"), new[] {
+            "font=" + font.Name,
+            "size=" + font.Size.ToString(CultureInfo.InvariantCulture),
+            "theme=" + themeMode,
+            "tab=" + tabSize,
+            "wrap=" + b(wrap),
+            "lines=" + b(lineNumbers),
+            "syntax=" + b(syntax),
+            "indent=" + b(autoIndent),
+            "spaces=" + b(spaces),
+            "session=" + b(restoreSession),
+            "top=" + b(TopMost),
+            "max=" + b(WindowState == FormWindowState.Maximized),
+            "bounds=" + r.X + "," + r.Y + "," + r.Width + "," + r.Height,
+            "recent=" + string.Join("|", recent) });
+    }
+
+    void OnClosing(object s, FormClosingEventArgs e)
+    {
+        if (restoreSession)
+        {
+            try { SaveSession(); }
+            catch (Exception ex)
+            {
+                if (!Confirm("No se pudo guardar la sesión:\n" + ex.Message + "\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar."))
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            foreach (var d in docs.ToList()) if (!ConfirmClose(d)) { e.Cancel = true; return; }
+            try { if (Directory.Exists(SessDir)) Directory.Delete(SessDir, true); } catch { }
+        }
+        try { SaveSettings(); } catch { }
+    }
+
+    bool Confirm(string q) { return MessageBox.Show(this, q, App, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes; }
+    void Err(Exception ex) { MessageBox.Show(this, ex.Message, App, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+}
