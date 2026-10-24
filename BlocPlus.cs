@@ -24,7 +24,7 @@ using Microsoft.Win32;
 
 [assembly: AssemblyTitle("BlocPlus")]
 [assembly: AssemblyProduct("BlocPlus")]
-[assembly: AssemblyVersion("1.1.0")]
+[assembly: AssemblyVersion("1.1.1")]
 
 static class Native
 {

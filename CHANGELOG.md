@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (2026-10-24)
+
+- Corregida la vista previa en blanco al abrir el programa con un archivo (por ejemplo un CSV): ya no hace falta modificarlo para que aparezca.
+
 ## 1.1.0 (2026-10-23)
 
 - **Vista previa en tiempo real** (Ver > Vista previa, Ctrl+Shift+V, o el botón de la barra de estado): el editor se queda a la izquierda y la vista previa a la derecha, y se actualiza mientras escribes.
