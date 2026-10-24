@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-10-25)
+
+- **Varios cursores**, como en VS Code: Ctrl+clic añade un cursor y Ctrl+arrastrar añade otra selección. Se escribe, se borra y se mueve (flechas, Inicio, Fin, con Shift para seleccionar) en todos a la vez. Copiar y cortar juntan las selecciones, pegar reparte una línea por cursor y un solo Ctrl+Z lo deshace todo. Escape o un clic normal vuelven a un cursor.
+- **Letras LRC con reproductor**: la vista previa de un archivo .lrc reproduce su audio o vídeo (MP3, M4A/AAC o MP4 H.264) y resalta la línea que suena. Clic en una línea para saltar a ella.
+  - Si junto al .lrc hay un audio o vídeo con el mismo nombre se carga solo; si no, se elige desde la vista previa.
+  - Reproductor con barra de progreso y de volumen (clic o arrastrar) y botón de silencio.
+  - En los vídeos, la letra aparece como subtítulos.
+  - Editar la letra no corta la reproducción, y ocultar la vista previa la para.
+- El botón de la barra de estado se ve mucho más cuando el archivo tiene vista previa disponible.
+
 ## 1.1.1 (2026-10-24)
 
 - Corregida la vista previa en blanco al abrir el programa con un archivo (por ejemplo un CSV): ya no hace falta modificarlo para que aparezca.

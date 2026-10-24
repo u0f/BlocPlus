@@ -24,13 +24,18 @@ using Microsoft.Win32;
 
 [assembly: AssemblyTitle("BlocPlus")]
 [assembly: AssemblyProduct("BlocPlus")]
-[assembly: AssemblyVersion("1.1.1")]
+[assembly: AssemblyVersion("1.2.0")]
 
 static class Native
 {
     [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
     [DllImport("user32.dll")] public static extern IntPtr SendMessage(IntPtr h, int msg, IntPtr w, IntPtr l);
     [DllImport("user32.dll")] public static extern IntPtr SendMessage(IntPtr h, int msg, IntPtr w, out IntPtr l);
+    [DllImport("user32.dll")] public static extern IntPtr SendMessage(IntPtr h, int msg, out Point w, IntPtr l);
+    [DllImport("user32.dll")] public static extern int GetUpdateRgn(IntPtr h, IntPtr rgn, bool erase);
+    [DllImport("gdi32.dll")] public static extern IntPtr CreateRectRgn(int l, int t, int r, int b);
+    [DllImport("gdi32.dll")] public static extern bool DeleteObject(IntPtr o);
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern int GetShortPathName(string path, StringBuilder buf, int size);
     [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr h, IntPtr after, int x, int y, int cx, int cy, int flags);
     [DllImport("dwmapi.dll")] public static extern int DwmSetWindowAttribute(IntPtr h, int attr, ref int val, int size);
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)] public static extern int SetWindowTheme(IntPtr h, string app, string idList);
@@ -717,6 +722,37 @@ static class Markup
 
     // ---------- CSV / TSV ----------
 
+    // LRC lyrics: one <p data-t="seconds"> per timed line, sorted, after a title/artist heading from the header tags.
+    public static string Lrc(string text)
+    {
+        var lines = new List<KeyValuePair<double, string>>();
+        string ti = null, ar = null;
+        double offset = 0;
+        foreach (var raw in text.Split('\n'))
+        {
+            var m = Regex.Match(raw, @"^\s*((?:\[\d+:\d+(?:[.:]\d+)?\]\s*)+)(.*)");
+            if (m.Success)
+            {
+                string words = Regex.Replace(m.Groups[2].Value, @"<\d+:\d+(?:[.:]\d+)?>", "").Trim(); // enhanced LRC word times
+                foreach (Match t in Regex.Matches(m.Groups[1].Value, @"\[(\d+):(\d+(?:[.:]\d+)?)\]"))
+                    lines.Add(new KeyValuePair<double, string>(int.Parse(t.Groups[1].Value) * 60 + double.Parse(t.Groups[2].Value.Replace(':', '.'), CultureInfo.InvariantCulture), words));
+                continue;
+            }
+            m = Regex.Match(raw, @"^\s*\[(ti|ar|offset):(.*)\]", RegexOptions.IgnoreCase);
+            if (!m.Success) continue;
+            string k = m.Groups[1].Value.ToLowerInvariant(), v = m.Groups[2].Value.Trim();
+            if (k == "ti") ti = v;
+            else if (k == "ar") ar = v;
+            else double.TryParse(v, NumberStyles.Float, CultureInfo.InvariantCulture, out offset);
+        }
+        var sb = new StringBuilder();
+        if (ti != null || ar != null) sb.Append("<h2>").Append(Esc(string.Join(" · ", new[] { ti, ar }.Where(x => !string.IsNullOrEmpty(x))))).Append("</h2>");
+        foreach (var l in lines.OrderBy(x => x.Key))
+            sb.Append("<p data-t=\"").Append(Math.Max(0, l.Key - offset / 1000).ToString(CultureInfo.InvariantCulture)).Append("\">")
+              .Append(l.Value.Length > 0 ? Esc(l.Value) : "♪").Append("</p>");
+        return sb.ToString();
+    }
+
     public static string Csv(string text, char sep)
     {
         var rows = new List<List<string>>();
@@ -755,12 +791,13 @@ static class Markup
 class Doc
 {
     public Panel Page;
-    public RichTextBox Box;
+    public MultiBox Box;
     public Gutter Gut;
     public string FilePath;
     public int Enc, Eol, Untitled; // Eol: 0 CRLF, 1 LF, 2 CR
     public DateTime Stamp;
     public Lang Lang;
+    public string Media;           // audio/video played along with an .lrc preview
     public dynamic Tom;            // RichEdit's ITextDocument, for undo-free coloring
     public bool Busy, HighlightQueued, Colored;
     string text;
@@ -803,6 +840,86 @@ class Doc
     {
         int i = Array.BinarySearch(Starts, pos);
         return i >= 0 ? i : ~i - 1;
+    }
+}
+
+// RichTextBox plus extra carets/selections: Ctrl+click or Ctrl+drag adds one. MainForm applies edits to all.
+class MultiBox : RichTextBox
+{
+    public List<int[]> Extra = new List<int[]>(); // {anchor, caret}
+    public bool Editing;
+
+    public void ClearExtra() { if (Extra.Count > 0) { Extra.Clear(); Invalidate(); } }
+
+    public static bool Collide(int[] x, int[] y)
+    {
+        int a = Math.Min(x[0], x[1]), b = Math.Max(x[0], x[1]), c = Math.Min(y[0], y[1]), e = Math.Max(y[0], y[1]);
+        return a < e && c < b || a == c && b == e;
+    }
+
+    // EM_POSFROMCHAR directly: the .NET wrapper fetches the whole text per call and refuses the end position.
+    Point Pos(int i)
+    {
+        Point p;
+        Native.SendMessage(Handle, 0xD6, out p, (IntPtr)i);
+        return p;
+    }
+
+    protected override void WndProc(ref Message m)
+    {
+        if (m.Msg >= 0x200 && m.Msg <= 0x203) // mouse move / button down / up / double click
+        {
+            int keys = (int)m.WParam;
+            if (m.Msg == 0x201)
+            {
+                if ((keys & 8) == 0) ClearExtra();
+                else { int a = SelectionStart; Extra.Add(new[] { a, a + SelectionLength }); Invalidate(); }
+            }
+            m.WParam = (IntPtr)(keys & ~8); // RichEdit sees a plain click/drag
+            base.WndProc(ref m);
+            if (m.Msg == 0x202 && Extra.Count > 0)
+            {
+                var p = new[] { SelectionStart, SelectionStart + SelectionLength };
+                Extra.RemoveAll(x => Collide(x, p));
+                Invalidate();
+            }
+            return;
+        }
+        if (m.Msg != 0xF /*WM_PAINT*/ || Extra.Count == 0) { base.WndProc(ref m); return; }
+        // Draw only over what RichEdit just repainted, so translucent fills never stack up.
+        IntPtr rgn = Native.CreateRectRgn(0, 0, 0, 0);
+        Native.GetUpdateRgn(Handle, rgn, false);
+        base.WndProc(ref m);
+        using (var g = Graphics.FromHwnd(Handle))
+        using (var clip = Region.FromHrgn(rgn))
+        {
+            g.Clip = clip;
+            PaintExtra(g);
+        }
+        Native.DeleteObject(rgn);
+    }
+
+    void PaintExtra(Graphics g)
+    {
+        int lh = (int)(Font.Height * ZoomFactor), h = ClientSize.Height;
+        int top = GetFirstCharIndexFromLine(GetLineFromCharIndex(GetCharIndexFromPosition(Point.Empty)));
+        using (var fill = new SolidBrush(Color.FromArgb(90, SystemColors.Highlight)))
+        using (var caret = new SolidBrush(ForeColor))
+            foreach (var x in Extra)
+            {
+                int lo = Math.Max(top, Math.Min(x[0], x[1])), hi = Math.Max(x[0], x[1]);
+                for (int line = GetLineFromCharIndex(lo); lo < hi; line++)
+                {
+                    int next = GetFirstCharIndexFromLine(line + 1), end = next < 0 || next > hi ? hi : next;
+                    var p = Pos(lo);
+                    if (p.Y > h) break;
+                    int x2 = end == next ? Pos(end - 1).X + lh / 2 : Pos(end).X; // line break: show a bit of it
+                    g.FillRectangle(fill, p.X, p.Y, Math.Max(1, x2 - p.X), lh);
+                    lo = end;
+                }
+                var c = Pos(x[1]);
+                g.FillRectangle(caret, c.X, c.Y, 2, lh);
+            }
     }
 }
 
@@ -1066,7 +1183,7 @@ class MainForm : Form
         Dock = DockStyle.Fill, ScriptErrorsSuppressed = true, AllowWebBrowserDrop = false, WebBrowserShortcutsEnabled = false
     };
     readonly Timer previewTimer = new Timer { Interval = 300 };
-    readonly ToolStripStatusLabel lPreview = new ToolStripStatusLabel { Visible = false, Padding = new Padding(10, 0, 10, 0) };
+    readonly ToolStripStatusLabel lPreview = new ToolStripStatusLabel { Visible = false, Padding = new Padding(10, 0, 10, 0), Margin = new Padding(4, 2, 4, 2) };
     ToolStripMenuItem mPreview;
     bool previewOn, previewSized;
     string previewShell; // identifies the page loaded for Markdown/RST/CSV, so edits only swap its body
@@ -1135,12 +1252,15 @@ class MainForm : Form
         BuildMenu();
         status.Items.AddRange(new ToolStripItem[] { lPos, lUpdate, lPreview, lLang, lZoom, lEol, lEnc });
         lPreview.Click += (s, e) => TogglePreview();
+        lPreview.Font = new Font(lPreview.Font, FontStyle.Bold);
+        lPreview.MouseEnter += (s, e) => { StylePreviewButton(true); status.Cursor = Cursors.Hand; };
+        lPreview.MouseLeave += (s, e) => { StylePreviewButton(false); status.Cursor = Cursors.Default; };
         lUpdate.Click += (s, e) => { var r = lUpdate.Tag as Updater.Release; if (r != null) PromptUpdate(r); };
         ctx.Items.AddRange(new ToolStripItem[] {
             Item("Deshacer", Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
-            Item("Cortar", Keys.None, () => Cur.Box.Cut()), Item("Copiar", Keys.None, () => Cur.Box.Copy()),
+            Item("Cortar", Keys.None, () => CopySel(true)), Item("Copiar", Keys.None, () => CopySel(false)),
             Item("Pegar", Keys.None, PastePlain), Item("Eliminar", Keys.None, () => Cur.Box.SelectedText = ""),
-            new ToolStripSeparator(), Item("Seleccionar todo", Keys.None, () => Cur.Box.SelectAll()) });
+            new ToolStripSeparator(), Item("Seleccionar todo", Keys.None, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }) });
         split.Panel1.Controls.Add(host);
         split.Panel2.Controls.Add(web);
         try { Native.CoInternetSetFeatureEnabled(21 /*FEATURE_DISABLE_NAVIGATION_SOUNDS*/, 2 /*SET_FEATURE_ON_PROCESS*/, true); } catch { }
@@ -1215,10 +1335,10 @@ class MainForm : Form
             Item("&Deshacer", Keys.Control | Keys.Z, () => Cur.Box.Undo()),
             Item("&Rehacer", Keys.Control | Keys.Y, () => Cur.Box.Redo()),
             new ToolStripSeparator(),
-            Item("Cor&tar", Keys.Control | Keys.X, () => Cur.Box.Cut()),
-            Item("&Copiar", Keys.Control | Keys.C, () => Cur.Box.Copy()),
+            Item("Cor&tar", Keys.Control | Keys.X, () => CopySel(true)),
+            Item("&Copiar", Keys.Control | Keys.C, () => CopySel(false)),
             Item("&Pegar", Keys.Control | Keys.V, PastePlain),
-            Item("Seleccionar &todo", Keys.Control | Keys.A, () => Cur.Box.SelectAll()),
+            Item("Seleccionar &todo", Keys.Control | Keys.A, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }),
             new ToolStripSeparator(),
             Item("&Buscar...", Keys.Control | Keys.F, () => ShowFind(false)),
             Item("Buscar &siguiente", Keys.F3, () => FindNext(false)),
@@ -1294,7 +1414,7 @@ class MainForm : Form
     Doc NewDoc()
     {
         var d = new Doc { Untitled = ++untitled };
-        d.Box = new RichTextBox
+        d.Box = new MultiBox
         {
             Dock = DockStyle.Fill, BorderStyle = BorderStyle.None, AcceptsTab = true, DetectUrls = false,
             HideSelection = false, WordWrap = wrap, Font = font, EnableAutoDragDrop = false, AllowDrop = true,
@@ -1319,6 +1439,7 @@ class MainForm : Form
         d.Box.TextChanged += (s, e) =>
         {
             if (d.Busy) return;
+            if (!d.Box.Editing) d.Box.ClearExtra();
             d.Invalidate();
             d.Gut.Invalidate();
             sessionDirty = true;
@@ -1333,6 +1454,7 @@ class MainForm : Form
             if ((ModifierKeys & Keys.Control) != 0) BeginInvoke((Action)(() => { d.Gut.Invalidate(); UpdateStatus(); QueueHighlight(d); }));
         };
         d.Box.KeyDown += BoxKeyDown;
+        d.Box.KeyPress += BoxKeyPress;
         d.Box.DragEnter += OnDragEnter;
         d.Box.DragDrop += OnDragDrop;
         ApplyTheme(d, T);
@@ -1359,18 +1481,12 @@ class MainForm : Form
         var b = (RichTextBox)sender;
         var d = Cur;
         var k = e.KeyCode;
+        if (b == d.Box && d.Box.Extra.Count > 0 && MultiKey(d, e)) { e.SuppressKeyPress = true; return; }
         if (k == Keys.Enter && !e.Alt)
         {
             // Plain newline (no RTF soft breaks), keeping the current line's indentation.
             e.SuppressKeyPress = true;
-            string t = d.Text, indent = "";
-            if (autoIndent)
-            {
-                int p = b.SelectionStart, ls = p == 0 ? 0 : t.LastIndexOf('\n', p - 1) + 1, i = ls;
-                while (i < p && (t[i] == ' ' || t[i] == '\t')) i++;
-                indent = t.Substring(ls, i - ls);
-            }
-            b.SelectedText = "\n" + indent;
+            b.SelectedText = "\n" + (autoIndent ? IndentAt(d.Text, b.SelectionStart) : "");
         }
         else if (k == Keys.Tab && !e.Control && !e.Alt)
         {
@@ -1391,6 +1507,133 @@ class MainForm : Form
         else if (e.Control && e.Shift && !e.Alt && k == Keys.Z) { e.SuppressKeyPress = true; b.Redo(); }
         else if (e.Control && !e.Alt && ((k >= Keys.A && k <= Keys.Z) || (k >= Keys.D0 && k <= Keys.D9) || (k >= Keys.OemSemicolon && k <= Keys.OemBackslash)))
             e.SuppressKeyPress = true; // swallow RichEdit formatting hotkeys (Ctrl+L/E/R/J/1/2/5, Ctrl+B/I, ...)
+    }
+
+    // Leading whitespace of the line containing p, up to p.
+    static string IndentAt(string t, int p)
+    {
+        int ls = p == 0 ? 0 : t.LastIndexOf('\n', p - 1) + 1, i = ls;
+        while (i < p && (t[i] == ' ' || t[i] == '\t')) i++;
+        return t.Substring(ls, i - ls);
+    }
+
+    // ---------- multiple cursors ----------
+
+    // All selections as {anchor, caret}, the RichTextBox's own first.
+    static List<int[]> Sels(Doc d)
+    {
+        int a = d.Box.SelectionStart, e = a + d.Box.SelectionLength;
+        if (d.Tom != null && (d.Tom.Selection.Flags & 1 /*tomSelStartActive*/) != 0) { int x = a; a = e; e = x; }
+        var l = new List<int[]> { new[] { a, e } };
+        l.AddRange(d.Box.Extra.Select(x => (int[])x.Clone()));
+        return l;
+    }
+
+    static void SetSels(Doc d, List<int[]> l)
+    {
+        var keep = new List<int[]>();
+        foreach (var x in l) if (!keep.Any(y => MultiBox.Collide(x, y))) keep.Add(x);
+        d.Box.Extra = keep.Skip(1).ToList();
+        var p = keep[0];
+        if (d.Tom != null) d.Tom.Selection.SetRange(p[0], p[1]);
+        else d.Box.Select(Math.Min(p[0], p[1]), Math.Abs(p[1] - p[0]));
+        d.Box.ScrollToCaret();
+        d.Box.Invalidate();
+    }
+
+    // f(text, start, end) gives {from, to, insert} for each selection, in document order; carets land after
+    // each insert. Everything goes in as one replacement so a single Ctrl+Z undoes it.
+    void MultiEdit(Doc d, Func<string, int, int, Tuple<int, int, string>> f)
+    {
+        string t = d.Text;
+        var sels = Sels(d);
+        var res = new List<int[]>(sels);
+        var sb = new StringBuilder();
+        int lo = -1, prev = 0;
+        foreach (int i in Enumerable.Range(0, sels.Count).OrderBy(i => Math.Min(sels[i][0], sels[i][1])))
+        {
+            var s = sels[i];
+            var r = f(t, Math.Min(s[0], s[1]), Math.Max(s[0], s[1]));
+            int a = Math.Max(r.Item1, prev), b = Math.Max(r.Item2, a);
+            if (lo < 0) lo = prev = a;
+            sb.Append(t, prev, a - prev).Append(r.Item3);
+            int c = lo + sb.Length;
+            res[i] = new[] { c, c };
+            prev = b;
+        }
+        string span = sb.ToString();
+        if (span != t.Substring(lo, prev - lo))
+        {
+            d.Box.Editing = true;
+            try { if (d.Tom != null) d.Tom.Range(lo, prev).Text = span; else Replace(d, lo, prev, span); }
+            finally { d.Box.Editing = false; }
+        }
+        SetSels(d, res);
+    }
+
+    void MultiMove(Doc d, Keys k, bool shift)
+    {
+        string t = d.Text;
+        var st = d.Starts;
+        var l = Sels(d);
+        foreach (var s in l)
+        {
+            int c = s[1], lo = Math.Min(s[0], c), hi = Math.Max(s[0], c), line = d.LineOf(c), ls = st[line];
+            int le = line + 1 < st.Length ? st[line + 1] - 1 : t.Length;
+            if (k == Keys.Left) c = !shift && lo < hi ? lo : Math.Max(0, c - 1);
+            else if (k == Keys.Right) c = !shift && lo < hi ? hi : Math.Min(t.Length, c + 1);
+            else if (k == Keys.End) c = le;
+            else if (k == Keys.Home)
+            {
+                int i = ls;
+                while (i < le && (t[i] == ' ' || t[i] == '\t')) i++;
+                c = c == i ? ls : i;
+            }
+            else
+            {
+                int n = line + (k == Keys.Up ? -1 : 1);
+                c = n < 0 ? 0 : n >= st.Length ? t.Length : Math.Min(st[n] + c - ls, n + 1 < st.Length ? st[n + 1] - 1 : t.Length);
+            }
+            s[1] = c;
+            if (!shift) s[0] = c;
+        }
+        SetSels(d, l);
+    }
+
+    // Keys while there are extra cursors; false lets BoxKeyDown/RichEdit handle it.
+    bool MultiKey(Doc d, KeyEventArgs e)
+    {
+        var k = e.KeyCode;
+        if (k == Keys.Escape) d.Box.ClearExtra();
+        else if (e.Alt || k == Keys.ControlKey || k == Keys.ShiftKey) return false;
+        else if (e.Control || k == Keys.PageUp || k == Keys.PageDown) { d.Box.ClearExtra(); return false; }
+        else if (k == Keys.Back) MultiEdit(d, (t, s, en) => Tuple.Create(s == en ? Math.Max(0, s - 1) : s, en, ""));
+        else if (k == Keys.Delete) MultiEdit(d, (t, s, en) => Tuple.Create(s, s == en ? Math.Min(t.Length, en + 1) : en, ""));
+        else if (k == Keys.Enter) MultiEdit(d, (t, s, en) => Tuple.Create(s, en, "\n" + (autoIndent ? IndentAt(t, s) : "")));
+        else if (k == Keys.Tab) { if (!e.Shift) MultiEdit(d, (t, s, en) => Tuple.Create(s, en, spaces ? new string(' ', tabSize) : "\t")); }
+        else if (k == Keys.Left || k == Keys.Right || k == Keys.Up || k == Keys.Down || k == Keys.Home || k == Keys.End) MultiMove(d, k, e.Shift);
+        else return false;
+        return true;
+    }
+
+    void BoxKeyPress(object sender, KeyPressEventArgs e)
+    {
+        var d = Cur;
+        if (sender != d.Box || d.Box.Extra.Count == 0 || e.KeyChar < ' ' || e.KeyChar == '\x7f') return;
+        e.Handled = true;
+        string c = e.KeyChar.ToString();
+        MultiEdit(d, (t, s, en) => Tuple.Create(s, en, c));
+    }
+
+    void CopySel(bool cut)
+    {
+        var d = Cur;
+        if (d.Box.Extra.Count == 0) { if (cut) d.Box.Cut(); else d.Box.Copy(); return; }
+        string t = d.Text;
+        var parts = Sels(d).OrderBy(s => Math.Min(s[0], s[1])).Select(s => t.Substring(Math.Min(s[0], s[1]), Math.Abs(s[1] - s[0]))).ToList();
+        if (parts.All(x => x.Length == 0)) return;
+        try { Clipboard.SetText(string.Join("\r\n", parts)); } catch (ExternalException) { return; }
+        if (cut) MultiEdit(d, (x, s, en) => Tuple.Create(s, en, ""));
     }
 
     string Outdent(string s)
@@ -1703,7 +1946,15 @@ class MainForm : Form
     {
         string t;
         try { t = Clipboard.GetText(); } catch (ExternalException) { return; }
-        if (t.Length > 0) Cur.Box.SelectedText = Normalize(t);
+        if (t.Length == 0) return;
+        t = Normalize(t);
+        var d = Cur;
+        if (d.Box.Extra.Count == 0) { d.Box.SelectedText = t; return; }
+        // One line per cursor when the counts match (as copied from several cursors), else all of it at each.
+        var lines = t.TrimEnd('\n').Split('\n');
+        bool spread = lines.Length == d.Box.Extra.Count + 1;
+        int n = 0;
+        MultiEdit(d, (x, s, en) => Tuple.Create(s, en, spread ? lines[n++] : t));
     }
 
     // Full logical lines covered by the selection: [a, e), e excludes the trailing '\n'.
@@ -1949,6 +2200,7 @@ class MainForm : Form
         Recolor(ctx.Items, t);
         foreach (ToolStripItem i in status.Items) i.ForeColor = t.ChromeFore;
         lUpdate.ForeColor = t.Accent;
+        StylePreviewButton(false);
         strip.T = t;
         strip.Invalidate();
         BackColor = host.BackColor = split.Panel1.BackColor = split.Panel2.BackColor = t.Back;
@@ -2046,6 +2298,7 @@ class MainForm : Form
             case "svg": return "svg";
             case "csv": return "csv";
             case "tsv": return "tsv";
+            case "lrc": return "lrc";
         }
         if (d.Lang == null) return null;
         if (d.Lang.Name == "Markdown") return "md";
@@ -2058,12 +2311,20 @@ class MainForm : Form
     {
         if (!previewOn && PreviewKind(Cur) == null)
         {
-            MessageBox.Show(this, "La vista previa está disponible para HTML, Markdown, reStructuredText, SVG y CSV/TSV.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, "La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         previewOn = mPreview.Checked = !previewOn;
         RenderPreview();
         Cur.Box.Focus();
+    }
+
+    // A filled accent pill while the preview is available but hidden, so it stands out; accent text once open.
+    void StylePreviewButton(bool hover)
+    {
+        var t = T;
+        if (previewOn) { lPreview.BackColor = hover ? t.Hover : t.Chrome; lPreview.ForeColor = t.Accent; }
+        else { lPreview.BackColor = hover ? ControlPaint.Light(t.Accent) : t.Accent; lPreview.ForeColor = Color.White; }
     }
 
     static string Hex(Color c) { return "#" + c.R.ToString("x2") + c.G.ToString("x2") + c.B.ToString("x2"); }
@@ -2098,14 +2359,17 @@ class MainForm : Form
         if (d == null) return;
         string kind = PreviewKind(d);
         lPreview.Visible = kind != null;
-        lPreview.Text = previewOn ? "◧ Ocultar vista previa" : "◧ Vista previa";
+        lPreview.Text = previewOn ? "◧ Ocultar vista previa" : "◧ Vista previa disponible";
+        StylePreviewButton(false);
         bool show = previewOn && kind != null;
         if (split.Panel2Collapsed == show)
         {
             split.Panel2Collapsed = !show;
             if (show && !previewSized) { split.SplitterDistance = split.Width / 2; previewSized = true; }
+            if (!show) { previewShell = null; web.DocumentText = ""; } // unload it, so an LRC song stops playing
         }
         if (!show) return;
+        if (kind == "lrc") { RenderLrc(d); return; }
 
         if (kind == "html")
         {
@@ -2131,11 +2395,109 @@ class MainForm : Form
         }
     }
 
+    static readonly string[] MediaExts = { ".mp3", ".m4a", ".aac", ".mp4", ".m4v" };
+
+    // Lyrics under an audio/video player: the current line follows playback, clicking a line seeks to it.
+    // Edits only swap the lyrics, so playback keeps going.
+    void RenderLrc(Doc d)
+    {
+        if (d.Media == null && d.FilePath != null) // song.lrc next to song.mp3
+            d.Media = MediaExts.Select(x => Path.ChangeExtension(d.FilePath, x)).FirstOrDefault(File.Exists);
+        string player;
+        if (d.Media == null) player = "<p>Elige el audio o vídeo de esta letra para seguirla mientras suena.</p><a href='blocplus:media'>Elegir archivo...</a>";
+        else
+        {
+            string ext = Path.GetExtension(d.Media).ToLowerInvariant(), tag = ext == ".mp4" || ext == ".m4v" || ext == ".mov" || ext == ".wmv" || ext == ".avi" ? "video" : "audio";
+            player = "<" + tag + " id='m' src='" + WebUtility.HtmlEncode(MediaUrl(d.Media)) + "'></" + tag + ">";
+            if (tag == "video") player = "<div id='v'>" + player + "<div id='sub'></div></div>"; // lyrics as subtitles
+            player +=
+                "<div id='c'><button id='pp' class='p' title='Reproducir / pausa'>&#9654;</button><span id='tc'>0:00</span>" + Slider("bar") +
+                "<span id='td'>0:00</span><button id='mu' title='Silenciar'>&#128266;</button>" + Slider("vol") + "</div>" +
+                "<div>" + WebUtility.HtmlEncode(Path.GetFileName(d.Media)) + " · <a href='blocplus:media'>Cambiar...</a> <span id='e'></span></div>";
+        }
+        string acc = Hex(T.Accent), track = Hex(T.Border);
+        string css = "html,body{height:100%;overflow:hidden}body{padding:0}" +
+            "#h{padding:12px 20px;border-bottom:1px solid " + track + ";font-size:13px}#h video{display:block;width:100%;max-height:55vh;background:#000;cursor:pointer}" +
+            "#v{position:relative;background:#000}#sub{position:absolute;left:4%;right:4%;bottom:7%;text-align:center;line-height:1.45;color:#fff;pointer-events:none}" +
+            "#sub span{background:rgba(8,8,8,.75);padding:.1em .45em}" +
+            "#c{display:flex;align-items:center;margin:8px 0}" +
+            "#c button{flex:none;width:38px;height:38px;padding:0;border:0;border-radius:50%;cursor:pointer;font:15px/38px 'Segoe UI Symbol';text-align:center}" +
+            "#pp{background:" + acc + ";color:#fff}#pp.p{padding-left:3px}#mu{background:none;color:" + Hex(T.Fore) + ";margin-left:4px}" +
+            "#tc,#td{flex:none;width:44px;text-align:center;font:12px Consolas,monospace}" +
+            ".sl{flex:1;position:relative;height:18px;cursor:pointer}#vol{flex:none;width:80px;margin-right:4px}" +
+            ".tr,.fi{position:absolute;left:0;top:7px;height:4px;border-radius:2px}.tr{right:0;background:" + track + "}.fi{width:0;background:" + acc + "}" +
+            ".kn{position:absolute;top:3px;left:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:" + acc + ";display:none}" +
+            ".hit{position:absolute;left:0;right:0;top:0;bottom:0;background:#000;opacity:0}.sl:hover .kn{display:block}.sl:hover .tr,.sl:hover .fi{top:6px;height:6px}" +
+            "#l{position:absolute;left:0;right:0;bottom:0;overflow:auto;padding:0 24px;text-align:center}#l:before{content:'';display:block;height:12px}#l:after{content:'';display:block;height:35vh}#l p{margin:.45em 0;opacity:.5;cursor:pointer;font-size:1.15em}" +
+            "#l p.on{opacity:1;font-weight:600;color:" + Hex(T.Accent) + "}#e{color:#d33}";
+        const string script = "<script>var m=document.getElementById('m'),l=document.getElementById('l'),sub=document.getElementById('sub'),cur=null;" +
+            "function fit(){l.style.top=document.getElementById('h').offsetHeight+'px';if(sub)sub.style.fontSize=Math.max(14,m.offsetWidth/28)+'px';}" +
+            "fit();setInterval(fit,250);if(m){" +
+            "m.onerror=function(){document.getElementById('e').innerText='No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.';};" +
+            "setInterval(function(){var ps=l.getElementsByTagName('p'),a=null,t=m.currentTime;" +
+            "for(var i=0;i<ps.length;i++){if(parseFloat(ps[i].getAttribute('data-t'))<=t)a=ps[i];else break;}" +
+            "if(a!==cur){if(cur)cur.className='';cur=a;if(sub)sub.innerHTML=a?'<span>'+a.innerHTML+'</span>':'';if(a){a.className='on';l.scrollTop+=a.getBoundingClientRect().top-l.getBoundingClientRect().top-(l.clientHeight-a.offsetHeight)/2;}}},100);" +
+            "l.onclick=function(e){e=e||window.event;var p=e.target||e.srcElement;while(p&&p.tagName!='P')p=p.parentNode;" +
+            "if(p){m.currentTime=parseFloat(p.getAttribute('data-t'));m.play();}};" +
+            // Our own controls: play/pause, times, a seek bar and a volume bar, both clickable and draggable.
+            "var $=function(i){return document.getElementById(i);};" +
+            "function fmt(s){s=Math.floor(s||0);var r=s%60;return Math.floor(s/60)+':'+(r<10?'0':'')+r;}" +
+            "function show(id,f){var c=$(id).childNodes;c[1].style.width=c[2].style.left=f*100+'%';}" +
+            "function slider(id,set){var s=$(id),h=s,drag=false;" +
+            "function at(e){e=e||window.event;var r=s.getBoundingClientRect();set(Math.max(0,Math.min(1,(e.clientX-r.left)/(r.right-r.left))));}" +
+            "h.onmousedown=function(e){drag=true;h.setCapture();at(e);return false;};h.onmousemove=function(e){if(drag)at(e);};" +
+            "h.onmouseup=function(){drag=false;h.releaseCapture();};}" +
+            "function upd(){show('bar',m.duration?m.currentTime/m.duration:0);$('tc').innerText=fmt(m.currentTime);$('td').innerText=fmt(m.duration);}" +
+            "slider('bar',function(f){if(m.duration)m.currentTime=f*m.duration;upd();});" +
+            "slider('vol',function(f){m.volume=f;m.muted=false;});" +
+            "$('pp').onclick=m.onclick=function(){if(m.paused)m.play();else m.pause();};$('mu').onclick=function(){m.muted=!m.muted;};" +
+            "m.onplay=function(){$('pp').className='';$('pp').innerHTML='&#10074;&#10074;';};" +
+            "m.onpause=m.onended=function(){$('pp').className='p';$('pp').innerHTML='&#9654;';};" +
+            "m.onvolumechange=function(){show('vol',m.muted?0:m.volume);$('mu').innerHTML=m.muted||!m.volume?'&#128263;':'&#128266;';};" +
+            "m.ontimeupdate=m.ondurationchange=upd;m.onvolumechange();}</script>";
+        string shell = Shell(d).Replace("</style>", css + "</style>").Replace("<body></body>", "<body><div id='h'>" + player + "</div><div id='l'></div>" + script + "</body>");
+        string lyrics = Markup.Lrc(d.Text);
+        var el = previewShell == shell && web.ReadyState == WebBrowserReadyState.Complete && web.Document != null ? web.Document.GetElementById("l") : null;
+        if (el != null) { el.InnerHtml = lyrics; return; }
+        previewShell = shell;
+        web.DocumentText = shell.Replace("<div id='l'></div>", "<div id='l'>" + lyrics + "</div>");
+    }
+
+    // IE can't open file URLs with non-ASCII characters, so such files go through their 8.3 short name.
+    static string MediaUrl(string path)
+    {
+        if (path.Any(c => c > 127))
+        {
+            var sb = new StringBuilder(1024);
+            if (Native.GetShortPathName(path, sb, sb.Capacity) > 0) path = sb.ToString();
+        }
+        return new Uri(path).AbsoluteUri;
+    }
+
+    // Track, fill, knob, and an invisible layer on top so IE never lets a click fall through; the LRC script relies on this order.
+    static string Slider(string id) { return "<div class='sl' id='" + id + "'><div class='tr'></div><div class='fi'></div><div class='kn'></div><div class='hit'></div></div>"; }
+
+    void PickMedia()
+    {
+        var d = Cur;
+        using (var dlg = new OpenFileDialog
+        {
+            Title = "Audio o vídeo de la letra",
+            Filter = "Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*"
+        })
+        {
+            if (d.FilePath != null) dlg.InitialDirectory = Path.GetDirectoryName(d.FilePath);
+            if (dlg.ShowDialog(this) != DialogResult.OK) return;
+            d.Media = dlg.FileName;
+        }
+        RenderPreview();
+    }
+
     // Scrolls the preview to the same relative position as the editor.
     void SyncPreviewScroll()
     {
         var d = Cur;
-        if (d == null || split.Panel2Collapsed || web.Document == null || web.Document.Body == null) return;
+        if (d == null || split.Panel2Collapsed || web.Document == null || web.Document.Body == null || PreviewKind(d) == "lrc") return;
         var b = d.Box;
         int first = b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, 1)));
         int last = b.GetLineFromCharIndex(b.GetCharIndexFromPosition(new Point(1, b.ClientSize.Height - 1)));
@@ -2151,7 +2513,8 @@ class MainForm : Form
         var u = e.Url;
         if (u.Scheme == "about") return;
         e.Cancel = true;
-        if (u.Scheme == "http" || u.Scheme == "https" || u.Scheme == "mailto") Process.Start(u.AbsoluteUri);
+        if (u.Scheme == "blocplus") BeginInvoke((Action)PickMedia); // the "choose audio/video" link of the LRC preview
+        else if (u.Scheme == "http" || u.Scheme == "https" || u.Scheme == "mailto") Process.Start(u.AbsoluteUri);
         else if (u.IsFile && File.Exists(u.LocalPath)) OpenPath(u.LocalPath);
     }
 

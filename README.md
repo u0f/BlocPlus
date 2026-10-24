@@ -13,11 +13,13 @@ A lightweight text editor for Windows that replaces Notepad. It is a single C# f
 - **Line numbers**, word wrap, zoom and font selection.
 - **Unlimited undo and redo.**
 - **Find and replace** with case matching, whole words and regular expressions.
+- **Multiple cursors**, like VS Code: Ctrl+click adds a cursor and Ctrl+drag adds a selection; typing, deleting, moving, copy and paste act on all of them. Escape goes back to one cursor.
 - **Line editing**: duplicate, delete, move up or down, sort, trim trailing whitespace, change case, and indent or outdent a whole block with Tab and Shift+Tab.
 - **Encodings**: detects and keeps UTF-8 (with or without BOM), UTF-16 LE/BE and ANSI, and keeps the original line endings (CRLF, LF or CR). You can convert both from the *Document* menu.
 - **Safe saving**: the editor writes to a temporary file first, so a failed save never corrupts the original.
 - **Detects external changes**: if another program changes an open file, the editor reloads it when you switch back to the window.
 - **Live preview** for HTML, Markdown, reStructuredText, SVG and CSV/TSV: the editor on the left and the rendered result on the right, updated as you type and scrolled along with the editor (**Ver > Vista previa**, Ctrl+Shift+V).
+- **LRC lyrics player**: the preview of an `.lrc` file plays its song or video (MP3, M4A/AAC or H.264 MP4) and highlights the line being sung; videos show the lyrics as subtitles. A file with the same name next to the `.lrc` loads automatically.
 - **Installer and automatic updates**: see below.
 
 ## Installation
