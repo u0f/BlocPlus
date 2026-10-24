@@ -1176,6 +1176,8 @@ class MainForm : Form
             Cur.Box.Focus();
             Cur.Box.ScrollToCaret();
             Highlight(Cur);
+            previewShell = null; // the page set before the browser had a handle never loaded
+            RenderPreview();
             if (checkUpdates) CheckUpdates(false);
         };
         Activated += (s, e) => CheckExternal();
