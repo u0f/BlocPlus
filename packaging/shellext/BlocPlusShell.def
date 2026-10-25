@@ -1,0 +1,4 @@
+LIBRARY BlocPlusShell
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow PRIVATE

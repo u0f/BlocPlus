@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2 (2026-10-25)
+
+- Versión de Microsoft Store: "Editar con BlocPlus" aparece en el menú contextual de Windows 11 para cualquier archivo, y "Abrir con" ofrece BlocPlus para muchos más tipos de archivo (.lrc, .rst, .svg, .vue, .ts...).
+- La versión de GitHub no cambia.
+
 ## 1.2.1 (2026-10-25)
 
 - **BlocPlus en 33 idiomas**: usa el idioma de Windows (o inglés si no está disponible) y se puede cambiar en Ajustes > Idioma. Al cambiarlo, ofrece reiniciar el programa en ese momento.
