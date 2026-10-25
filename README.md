@@ -2,7 +2,7 @@
 
 # BlocPlus
 
-> **Coming soon to the [Microsoft Store](https://apps.microsoft.com/detail/9PBMQDG1JZV9).** Until then, download it from the [latest release](https://github.com/u0f/BlocPlus/releases/latest).
+<p align="center"><a href="https://apps.microsoft.com/detail/9PBMQDG1JZV9"><img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Get it from Microsoft"></a></p>
 
 A lightweight text editor for Windows that replaces Notepad. It is a single C# file with no dependencies, and it compiles with the compiler that already ships with Windows. You don't need Visual Studio, the .NET SDK or any extra download.
 
@@ -26,6 +26,8 @@ A lightweight text editor for Windows that replaces Notepad. It is a single C# f
 - **Installer and automatic updates**: see below.
 
 ## Installation
+
+The easiest way is to **[get it from the Microsoft Store](https://apps.microsoft.com/detail/9PBMQDG1JZV9)**: Windows installs it and keeps it up to date. You can also install it from GitHub:
 
 Download **`BlocPlus-Setup.exe`** from the [latest release](https://github.com/u0f/BlocPlus/releases/latest) and run it. Requirements: Windows 10 or 11.
 
