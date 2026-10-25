@@ -1,0 +1,135 @@
+&Abrir...	&Ouvrir...
+&Acerca de {0} {1}	À &propos de {0} {1}
+&Archivo	&Fichier
+&Buscar actualizaciones	Rechercher les &mises à jour
+&Buscar...	&Rechercher...
+&Codificación	&Encodage
+&Copiar	&Copier
+&Deshacer	&Annuler
+&Documento	&Document
+&Editar	É&dition
+&Fin de línea	&Fin de ligne
+&Guardar	&Enregistrer
+&Instalar en este equipo...	&Installer sur cet ordinateur...
+&Ir a línea...	&Aller à la ligne...
+&Lenguaje	&Langage
+&Nueva pestaña	&Nouvel onglet
+&Números de línea	&Numéros de ligne
+&Pegar	C&oller
+&Rehacer	Réta&blir
+&Salir	&Quitter
+&Ver	&Affichage
+&Vista previa	A&perçu
+(vacío)	(vide)
+A&juste de línea	Retour à la &ligne
+A&justes...	&Paramètres...
+Abrir &reciente	Ouvrir un fichier &récent
+Aceptar	OK
+Acercar	Zoom avant
+Ajuste de línea	Retour à la ligne
+Ajustes - {0} {1}	Paramètres - {0} {1}
+Alejar	Zoom arrière
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Certains caractères n'existent pas en ANSI et seraient perdus.\nEnregistrer plutôt en UTF-8 ?
+Ancho del tabulador	Largeur de tabulation
+Anterior	Précédent
+Apariencia	Apparence
+Audio o vídeo de la letra	Audio ou vidéo des paroles
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio et vidéo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Tous les fichiers|*.*
+Ay&uda	Aid&e
+Bajar línea	Descendre la ligne
+Buscar &anterior	Rechercher le &précédent
+Buscar &siguiente	Rechercher le &suivant
+Buscar actualizaciones al iniciar	Rechercher les mises à jour au démarrage
+Buscar y reemplazar	Rechercher et remplacer
+Buscar:	Rechercher :
+Cambiar...	Modifier...
+Cancelar	Annuler
+Cerrar &pestaña	Fermer l'&onglet
+Claro	Clair
+Copiar	Copier
+Cor&tar	Co&uper
+Cortar	Couper
+D&uplicar línea	D&upliquer la ligne
+Descargando actualización...	Téléchargement de la mise à jour...
+Deshacer	Annuler
+Documento de texto ({0})	Document texte ({0})
+Edición	Édition
+Editar con {0}	Modifier avec {0}
+Editor de texto ligero para Windows	Éditeur de texte léger pour Windows
+Editor de texto ligero para Windows.	Éditeur de texte léger pour Windows.
+El tabulador inserta espacios	La touche Tab insère des espaces
+Elegir archivo...	Choisir un fichier...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Choisissez l'audio ou la vidéo de ces paroles pour les suivre pendant la lecture.
+Eliminar	Supprimer
+Eliminar línea	Supprimer la ligne
+Expresión regular	Expression régulière
+Fuente: {0} {1} pt	Police : {0} {1} pt
+Guardar &como...	Enregistrer &sous...
+Guardar t&odo	Enregistrer t&out
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Une nouvelle version de {0} est disponible : {1} (vous avez la {2}).\n\n{3}\n\nLa télécharger et l'installer maintenant ? {0} va redémarrer et conservera vos onglets.
+Insertar fecha y hora	Insérer la date et l'heure
+Ir a línea	Aller à la ligne
+La descarga no es un ejecutable válido.	Le téléchargement n'est pas un exécutable valide.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	L'aperçu est disponible pour HTML, Markdown, reStructuredText, SVG, CSV/TSV et les paroles LRC.
+Lín {0}, Col {1}	Lig {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Lig {0}, Col {1}   ({2} sélectionnés)
+MAYÚSCULAS	MAJUSCULES
+Mayús/minús	Casse
+Mostrar números de línea	Afficher les numéros de ligne
+No se encontró.	Introuvable.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Impossible de rechercher les mises à jour. Vérifiez votre connexion Internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Impossible d'enregistrer la session :\n{0}\n\nFermer quand même ? Le texte non enregistré sera perdu.
+No se pudo instalar:\n{0}	Impossible d'installer :\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Lecture impossible : le MP4 doit être en H.264 avec audio AAC ; l'audio doit être en MP3 ou M4A/AAC.
+Novedades	Nouveautés
+Número de línea (1-{0}):	Numéro de ligne (1-{0}) :
+Ordenar líneas	Trier les lignes
+Oscuro	Sombre
+Palabra completa	Mot entier
+Pegar	Coller
+Quitar espacios finales	Supprimer les espaces de fin
+R&eemplazar...	R&emplacer...
+Reabrir pestaña &cerrada	Rouvrir l'onglet &fermé
+Recargar desde disco	Recharger depuis le disque
+Reemplazar	Remplacer
+Reemplazar todo	Tout remplacer
+Reemplazar:	Remplacer par :
+Reproducir / pausa	Lecture / pause
+Resaltado de sintaxis	Coloration syntaxique
+Restablecer zoom	Réinitialiser le zoom
+Restaurar pestañas y texto sin guardar al abrir	Restaurer les onglets et le texte non enregistré au démarrage
+Sangría automática al pulsar Intro	Indentation automatique avec Entrée
+Seleccionar &todo	Sélectionner &tout
+Seleccionar todo	Tout sélectionner
+Siguiente	Suivant
+Silenciar	Muet
+Sin título {0}	Sans titre {0}
+Sistema	Système
+Subir línea	Monter la ligne
+Tema	Thème
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*
+Texto plano	Texte brut
+Tienes la última versión ({0}).	Vous avez la dernière version ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Tous les fichiers (*.*)|*.*|Texte (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 avec BOM
+Un editor de texto ligero para Windows.	Un éditeur de texte léger pour Windows.
+Usar como editor &predeterminado...	Utiliser comme éditeur par &défaut...
+Ventana	Fenêtre
+Ventana siempre visible	Toujours au premier plan
+minúsculas	minuscules
+{0} - Instalación	{0} - Installation
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} a été modifié en dehors de l'éditeur.\nLe recharger et perdre vos modifications ?
+{0} se ha desinstalado.	{0} a été désinstallé.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} a été installé et se trouve maintenant dans le menu Démarrer.\n\nVoulez-vous l'utiliser comme éditeur de texte par défaut ? Les paramètres de Windows s'ouvriront pour que vous le choisissiez.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Supprimer aussi vos données {0} ?\n\nIl s'agit de vos paramètres, des fichiers récents et de la session enregistrée, y compris le texte des onglets jamais enregistrés.\n\nSi vous choisissez Non, elles sont conservées au cas où vous le réinstalleriez.
+¿Descartar los cambios de {0} y recargar desde disco?	Abandonner les modifications de {0} et recharger depuis le disque ?
+¿Desinstalar {0}?	Désinstaller {0} ?
+¿Guardar los cambios de {0}?	Enregistrer les modifications de {0} ?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Installer {0} {1} sur cet ordinateur ?\n\nIl sera installé pour votre utilisateur uniquement dans :\n{2}\n\nLes droits d'administrateur ne sont pas nécessaires.
+◧ Ocultar vista previa	◧ Masquer l'aperçu
+◧ Vista previa disponible	◧ Aperçu disponible
+⬆ Actualización disponible: {0}	⬆ Mise à jour disponible : {0}
+Idioma	Langue
+Idioma de Windows	Langue de Windows
+El nuevo idioma se verá al reiniciar {0}.	La nouvelle langue s'appliquera au redémarrage de {0}.
+¿Reiniciar ahora?	Redémarrer maintenant ?

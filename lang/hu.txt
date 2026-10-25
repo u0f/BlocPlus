@@ -1,0 +1,135 @@
+&Abrir...	&Megnyitás...
+&Acerca de {0} {1}	A(z) {0} {1} &névjegye
+&Archivo	&Fájl
+&Buscar actualizaciones	&Frissítések keresése
+&Buscar...	&Keresés...
+&Codificación	Kó&dolás
+&Copiar	&Másolás
+&Deshacer	&Visszavonás
+&Documento	&Dokumentum
+&Editar	S&zerkesztés
+&Fin de línea	&Sorvég
+&Guardar	&Mentés
+&Instalar en este equipo...	&Telepítés erre a gépre...
+&Ir a línea...	&Ugrás sorra...
+&Lenguaje	&Nyelv
+&Nueva pestaña	&Új lap
+&Números de línea	Sor&számok
+&Pegar	&Beillesztés
+&Rehacer	Új&ra
+&Salir	&Kilépés
+&Ver	&Nézet
+&Vista previa	&Előnézet
+(vacío)	(üres)
+A&juste de línea	&Sortörés
+A&justes...	&Beállítások...
+Abrir &reciente	&Legutóbbiak megnyitása
+Aceptar	OK
+Acercar	Nagyítás
+Ajuste de línea	Sortörés
+Ajustes - {0} {1}	Beállítások – {0} {1}
+Alejar	Kicsinyítés
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Egyes karakterek nem léteznek ANSI kódolásban, és elvesznének.\nMenti inkább UTF-8 kódolással?
+Ancho del tabulador	Tabulátor szélessége
+Anterior	Előző
+Apariencia	Megjelenés
+Audio o vídeo de la letra	A dalszöveg hang- vagy videofájlja
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Hang és videó (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Minden fájl|*.*
+Ay&uda	&Súgó
+Bajar línea	Sor mozgatása lefelé
+Buscar &anterior	&Előző keresése
+Buscar &siguiente	&Következő keresése
+Buscar actualizaciones al iniciar	Frissítések keresése indításkor
+Buscar y reemplazar	Keresés és csere
+Buscar:	Keresés:
+Cambiar...	Módosítás...
+Cancelar	Mégse
+Cerrar &pestaña	&Lap bezárása
+Claro	Világos
+Copiar	Másolás
+Cor&tar	&Kivágás
+Cortar	Kivágás
+D&uplicar línea	Sor &kettőzése
+Descargando actualización...	Frissítés letöltése...
+Deshacer	Visszavonás
+Documento de texto ({0})	Szöveges dokumentum ({0})
+Edición	Szerkesztés
+Editar con {0}	Szerkesztés a következővel: {0}
+Editor de texto ligero para Windows	Könnyű szövegszerkesztő Windowshoz
+Editor de texto ligero para Windows.	Könnyű szövegszerkesztő Windowshoz.
+El tabulador inserta espacios	A tabulátor szóközöket szúr be
+Elegir archivo...	Fájl kiválasztása...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Válassza ki a dalszöveghez tartozó hang- vagy videofájlt, hogy lejátszás közben követhesse.
+Eliminar	Törlés
+Eliminar línea	Sor törlése
+Expresión regular	Reguláris kifejezés
+Fuente: {0} {1} pt	Betűtípus: {0} {1} pt
+Guardar &como...	Mentés &másként...
+Guardar t&odo	Összes &mentése
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Új verzió érhető el: {0} {1} (a jelenlegi: {2}).\n\n{3}\n\nLetölti és telepíti most? A(z) {0} újraindul, és megőrzi a lapjait.
+Insertar fecha y hora	Dátum és idő beszúrása
+Ir a línea	Ugrás sorra
+La descarga no es un ejecutable válido.	A letöltött fájl nem érvényes futtatható fájl.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Az előnézet HTML, Markdown, reStructuredText, SVG, CSV/TSV és LRC dalszövegek esetén érhető el.
+Lín {0}, Col {1}	{0}. sor, {1}. oszl.
+Lín {0}, Col {1}   ({2} seleccionados)	{0}. sor, {1}. oszl.   ({2} kijelölve)
+MAYÚSCULAS	NAGYBETŰS
+Mayús/minús	Kis- és nagybetű
+Mostrar números de línea	Sorszámok megjelenítése
+No se encontró.	Nem található.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Nem sikerült ellenőrizni a frissítéseket. Ellenőrizze az internetkapcsolatot.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Nem sikerült menteni a munkamenetet:\n{0}\n\nMégis bezárja? A nem mentett szöveg elvész.
+No se pudo instalar:\n{0}	A telepítés nem sikerült:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Nem játszható le: az MP4-nek H.264 videóval és AAC hanggal kell rendelkeznie; a hang MP3 vagy M4A/AAC lehet.
+Novedades	Újdonságok
+Número de línea (1-{0}):	Sorszám (1-{0}):
+Ordenar líneas	Sorok rendezése
+Oscuro	Sötét
+Palabra completa	Teljes szó
+Pegar	Beillesztés
+Quitar espacios finales	Záró szóközök eltávolítása
+R&eemplazar...	&Csere...
+Reabrir pestaña &cerrada	Bezárt &lap újranyitása
+Recargar desde disco	Újratöltés lemezről
+Reemplazar	Csere
+Reemplazar todo	Összes cseréje
+Reemplazar:	Csere erre:
+Reproducir / pausa	Lejátszás / szünet
+Resaltado de sintaxis	Szintaxiskiemelés
+Restablecer zoom	Nagyítás visszaállítása
+Restaurar pestañas y texto sin guardar al abrir	Indításkor a lapok és a nem mentett szöveg visszaállítása
+Sangría automática al pulsar Intro	Automatikus behúzás Enter lenyomásakor
+Seleccionar &todo	Összes &kijelölése
+Seleccionar todo	Összes kijelölése
+Siguiente	Következő
+Silenciar	Némítás
+Sin título {0}	Névtelen {0}
+Sistema	Rendszer
+Subir línea	Sor mozgatása felfelé
+Tema	Téma
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Szöveg (*.txt)|*.txt|Minden fájl (*.*)|*.*
+Texto plano	Egyszerű szöveg
+Tienes la última versión ({0}).	A legfrissebb verziót használja ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Minden fájl (*.*)|*.*|Szöveg (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 BOM-mal
+Un editor de texto ligero para Windows.	Könnyű szövegszerkesztő Windowshoz.
+Usar como editor &predeterminado...	Beállítás &alapértelmezett szerkesztőként...
+Ventana	Ablak
+Ventana siempre visible	Ablak mindig elöl
+minúsculas	kisbetűs
+{0} - Instalación	{0} – Telepítés
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	A(z) {0} megváltozott a szerkesztőn kívül.\nÚjratölti, és elveszíti a módosításokat?
+{0} se ha desinstalado.	A(z) {0} eltávolítva.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	A(z) {0} telepítve lett, és már megtalálható a Start menüben.\n\nSzeretné alapértelmezett szövegszerkesztőként használni? Megnyílik a Windows beállítása, ahol kiválaszthatja.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Törli a(z) {0} adatait is?\n\nEzek a beállítások, a legutóbbi fájlok és a mentett munkamenet, beleértve a soha nem mentett lapok szövegét is.\n\nHa a Nem lehetőséget választja, megmaradnak arra az esetre, ha újra telepítené.
+¿Descartar los cambios de {0} y recargar desde disco?	Elveti a(z) {0} módosításait, és újratölti lemezről?
+¿Desinstalar {0}?	Eltávolítja a(z) {0} programot?
+¿Guardar los cambios de {0}?	Menti a(z) {0} módosításait?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Telepíti a(z) {0} {1} programot erre a gépre?\n\nCsak az Ön felhasználójához települ ide:\n{2}\n\nNem kell rendszergazdának lennie.
+◧ Ocultar vista previa	◧ Előnézet elrejtése
+◧ Vista previa disponible	◧ Előnézet elérhető
+⬆ Actualización disponible: {0}	⬆ Frissítés érhető el: {0}
+Idioma	Nyelv
+Idioma de Windows	Windows nyelve
+El nuevo idioma se verá al reiniciar {0}.	Az új nyelv a(z) {0} újraindítása után lép érvénybe.
+¿Reiniciar ahora?	Újraindítja most?

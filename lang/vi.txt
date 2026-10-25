@@ -1,0 +1,135 @@
+&Abrir...	&Mở...
+&Acerca de {0} {1}	&Giới thiệu {0} {1}
+&Archivo	&Tệp
+&Buscar actualizaciones	Kiểm tra &cập nhật
+&Buscar...	&Tìm...
+&Codificación	&Mã hóa
+&Copiar	&Sao chép
+&Deshacer	&Hoàn tác
+&Documento	&Tài liệu
+&Editar	&Chỉnh sửa
+&Fin de línea	&Kết thúc dòng
+&Guardar	&Lưu
+&Instalar en este equipo...	Cài đặt trên má&y này...
+&Ir a línea...	Đi &tới dòng...
+&Lenguaje	Ngôn &ngữ
+&Nueva pestaña	Tab &mới
+&Números de línea	Số &dòng
+&Pegar	&Dán
+&Rehacer	Làm &lại
+&Salir	&Thoát
+&Ver	&Xem
+&Vista previa	Xem &trước
+(vacío)	(trống)
+A&juste de línea	Tự động xuống &dòng
+A&justes...	Cài &đặt...
+Abrir &reciente	Mở &gần đây
+Aceptar	OK
+Acercar	Phóng to
+Ajuste de línea	Tự động xuống dòng
+Ajustes - {0} {1}	Cài đặt - {0} {1}
+Alejar	Thu nhỏ
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Một số ký tự không có trong ANSI và sẽ bị mất.\nLưu bằng UTF-8 thay thế?
+Ancho del tabulador	Độ rộng tab
+Anterior	Trước
+Apariencia	Giao diện
+Audio o vídeo de la letra	Âm thanh hoặc video của lời bài hát
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Âm thanh và video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Tất cả tệp|*.*
+Ay&uda	Trợ &giúp
+Bajar línea	Dời dòng xuống
+Buscar &anterior	Tìm &trước
+Buscar &siguiente	Tìm &tiếp
+Buscar actualizaciones al iniciar	Kiểm tra cập nhật khi khởi động
+Buscar y reemplazar	Tìm và thay thế
+Buscar:	Tìm:
+Cambiar...	Thay đổi...
+Cancelar	Hủy
+Cerrar &pestaña	Đóng &tab
+Claro	Sáng
+Copiar	Sao chép
+Cor&tar	&Cắt
+Cortar	Cắt
+D&uplicar línea	Nhân &đôi dòng
+Descargando actualización...	Đang tải xuống bản cập nhật...
+Deshacer	Hoàn tác
+Documento de texto ({0})	Tài liệu văn bản ({0})
+Edición	Chỉnh sửa
+Editar con {0}	Chỉnh sửa bằng {0}
+Editor de texto ligero para Windows	Trình soạn thảo văn bản nhẹ cho Windows
+Editor de texto ligero para Windows.	Trình soạn thảo văn bản nhẹ cho Windows.
+El tabulador inserta espacios	Phím Tab chèn dấu cách
+Elegir archivo...	Chọn tệp...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Chọn âm thanh hoặc video của lời bài hát này để theo dõi khi phát.
+Eliminar	Xóa
+Eliminar línea	Xóa dòng
+Expresión regular	Biểu thức chính quy
+Fuente: {0} {1} pt	Phông chữ: {0} {1} pt
+Guardar &como...	Lưu &thành...
+Guardar t&odo	Lưu t&ất cả
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Đã có phiên bản mới của {0}: {1} (bạn đang dùng {2}).\n\n{3}\n\nTải xuống và cài đặt ngay bây giờ? {0} sẽ khởi động lại và giữ nguyên các tab của bạn.
+Insertar fecha y hora	Chèn ngày và giờ
+Ir a línea	Đi tới dòng
+La descarga no es un ejecutable válido.	Tệp tải xuống không phải là tệp thực thi hợp lệ.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Có thể xem trước HTML, Markdown, reStructuredText, SVG, CSV/TSV và lời bài hát LRC.
+Lín {0}, Col {1}	Dòng {0}, Cột {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Dòng {0}, Cột {1}   ({2} đã chọn)
+MAYÚSCULAS	CHỮ HOA
+Mayús/minús	Hoa/thường
+Mostrar números de línea	Hiện số dòng
+No se encontró.	Không tìm thấy.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Không thể kiểm tra cập nhật. Hãy kiểm tra kết nối internet của bạn.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Không thể lưu phiên:\n{0}\n\nVẫn đóng? Văn bản chưa lưu sẽ bị mất.
+No se pudo instalar:\n{0}	Không thể cài đặt:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Không thể phát: MP4 phải là H.264 với âm thanh AAC; âm thanh phải là MP3 hoặc M4A/AAC.
+Novedades	Có gì mới
+Número de línea (1-{0}):	Số dòng (1-{0}):
+Ordenar líneas	Sắp xếp dòng
+Oscuro	Tối
+Palabra completa	Khớp toàn từ
+Pegar	Dán
+Quitar espacios finales	Xóa khoảng trắng ở cuối
+R&eemplazar...	T&hay thế...
+Reabrir pestaña &cerrada	Mở lại tab đã &đóng
+Recargar desde disco	Tải lại từ đĩa
+Reemplazar	Thay thế
+Reemplazar todo	Thay thế tất cả
+Reemplazar:	Thay thế bằng:
+Reproducir / pausa	Phát / tạm dừng
+Resaltado de sintaxis	Tô sáng cú pháp
+Restablecer zoom	Đặt lại thu phóng
+Restaurar pestañas y texto sin guardar al abrir	Khôi phục các tab và văn bản chưa lưu khi mở
+Sangría automática al pulsar Intro	Tự động thụt lề khi nhấn Enter
+Seleccionar &todo	Chọn &tất cả
+Seleccionar todo	Chọn tất cả
+Siguiente	Tiếp
+Silenciar	Tắt tiếng
+Sin título {0}	Không có tiêu đề {0}
+Sistema	Hệ thống
+Subir línea	Dời dòng lên
+Tema	Chủ đề
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Văn bản (*.txt)|*.txt|Tất cả tệp (*.*)|*.*
+Texto plano	Văn bản thuần
+Tienes la última versión ({0}).	Bạn đang dùng phiên bản mới nhất ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Tất cả tệp (*.*)|*.*|Văn bản (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 có BOM
+Un editor de texto ligero para Windows.	Một trình soạn thảo văn bản nhẹ cho Windows.
+Usar como editor &predeterminado...	Dùng làm trình soạn thảo &mặc định...
+Ventana	Cửa sổ
+Ventana siempre visible	Luôn hiện cửa sổ trên cùng
+minúsculas	chữ thường
+{0} - Instalación	{0} - Cài đặt
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} đã thay đổi bên ngoài trình soạn thảo.\nTải lại và mất các thay đổi của bạn?
+{0} se ha desinstalado.	Đã gỡ cài đặt {0}.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	Đã cài đặt {0} và đã có trong menu Start.\n\nBạn có muốn dùng nó làm trình soạn thảo văn bản mặc định không? Cài đặt Windows sẽ mở ra để bạn chọn.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Xóa cả dữ liệu {0} của bạn?\n\nGồm cài đặt, tệp gần đây và phiên đã lưu, kể cả văn bản trong các tab bạn chưa từng lưu.\n\nNếu chọn Không, dữ liệu được giữ lại phòng khi bạn cài đặt lại.
+¿Descartar los cambios de {0} y recargar desde disco?	Hủy các thay đổi của {0} và tải lại từ đĩa?
+¿Desinstalar {0}?	Gỡ cài đặt {0}?
+¿Guardar los cambios de {0}?	Lưu các thay đổi của {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Cài đặt {0} {1} trên máy này?\n\nChỉ cài đặt cho người dùng của bạn tại:\n{2}\n\nKhông cần quyền quản trị viên.
+◧ Ocultar vista previa	◧ Ẩn bản xem trước
+◧ Vista previa disponible	◧ Có bản xem trước
+⬆ Actualización disponible: {0}	⬆ Có bản cập nhật: {0}
+Idioma	Ngôn ngữ
+Idioma de Windows	Ngôn ngữ của Windows
+El nuevo idioma se verá al reiniciar {0}.	Ngôn ngữ mới sẽ được áp dụng khi khởi động lại {0}.
+¿Reiniciar ahora?	Khởi động lại ngay bây giờ?

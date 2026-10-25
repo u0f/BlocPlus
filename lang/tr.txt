@@ -1,0 +1,135 @@
+&Abrir...	&Aç...
+&Acerca de {0} {1}	{0} {1} &Hakkında
+&Archivo	&Dosya
+&Buscar actualizaciones	&Güncellemeleri denetle
+&Buscar...	&Bul...
+&Codificación	&Kodlama
+&Copiar	&Kopyala
+&Deshacer	&Geri al
+&Documento	&Belge
+&Editar	&Düzen
+&Fin de línea	&Satır sonu
+&Guardar	&Kaydet
+&Instalar en este equipo...	Bu bilgisayara &yükle...
+&Ir a línea...	&Satıra git...
+&Lenguaje	&Dil
+&Nueva pestaña	&Yeni sekme
+&Números de línea	&Satır numaraları
+&Pegar	&Yapıştır
+&Rehacer	&Yinele
+&Salir	&Çıkış
+&Ver	&Görünüm
+&Vista previa	&Önizleme
+(vacío)	(boş)
+A&juste de línea	&Satır kaydırma
+A&justes...	A&yarlar...
+Abrir &reciente	&Son kullanılanları aç
+Aceptar	Tamam
+Acercar	Yakınlaştır
+Ajuste de línea	Satır kaydırma
+Ajustes - {0} {1}	Ayarlar - {0} {1}
+Alejar	Uzaklaştır
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Bazı karakterler ANSI'de yok ve kaybolacak.\nBunun yerine UTF-8 olarak kaydedilsin mi?
+Ancho del tabulador	Sekme genişliği
+Anterior	Önceki
+Apariencia	Görünüm
+Audio o vídeo de la letra	Şarkı sözlerinin ses veya videosu
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Ses ve video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Tüm dosyalar|*.*
+Ay&uda	Y&ardım
+Bajar línea	Satırı aşağı taşı
+Buscar &anterior	&Öncekini bul
+Buscar &siguiente	&Sonrakini bul
+Buscar actualizaciones al iniciar	Başlangıçta güncellemeleri denetle
+Buscar y reemplazar	Bul ve değiştir
+Buscar:	Bul:
+Cambiar...	Değiştir...
+Cancelar	İptal
+Cerrar &pestaña	&Sekmeyi kapat
+Claro	Açık
+Copiar	Kopyala
+Cor&tar	&Kes
+Cortar	Kes
+D&uplicar línea	Satırı ç&oğalt
+Descargando actualización...	Güncelleme indiriliyor...
+Deshacer	Geri al
+Documento de texto ({0})	Metin belgesi ({0})
+Edición	Düzenle
+Editar con {0}	{0} ile düzenle
+Editor de texto ligero para Windows	Windows için hafif metin düzenleyici
+Editor de texto ligero para Windows.	Windows için hafif metin düzenleyici.
+El tabulador inserta espacios	Sekme tuşu boşluk ekler
+Elegir archivo...	Dosya seç...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Çalarken izlemek için bu şarkı sözlerinin ses veya videosunu seçin.
+Eliminar	Sil
+Eliminar línea	Satırı sil
+Expresión regular	Normal ifade
+Fuente: {0} {1} pt	Yazı tipi: {0} {1} pt
+Guardar &como...	Farklı &kaydet...
+Guardar t&odo	&Tümünü kaydet
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} için yeni bir sürüm var: {1} (sizdeki: {2}).\n\n{3}\n\nŞimdi indirip yüklensin mi? {0} yeniden başlatılacak ve sekmelerinizi koruyacak.
+Insertar fecha y hora	Tarih ve saat ekle
+Ir a línea	Satıra git
+La descarga no es un ejecutable válido.	İndirilen dosya geçerli bir yürütülebilir dosya değil.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Önizleme HTML, Markdown, reStructuredText, SVG, CSV/TSV ve LRC şarkı sözleri için kullanılabilir.
+Lín {0}, Col {1}	Sat {0}, Süt {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Sat {0}, Süt {1}   ({2} seçili)
+MAYÚSCULAS	BÜYÜK HARF
+Mayús/minús	Büyük/küçük harf
+Mostrar números de línea	Satır numaralarını göster
+No se encontró.	Bulunamadı.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Güncellemeler denetlenemedi. İnternet bağlantınızı kontrol edin.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Oturum kaydedilemedi:\n{0}\n\nYine de kapatılsın mı? Kaydedilmemiş metin kaybolacak.
+No se pudo instalar:\n{0}	Yüklenemedi:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Oynatılamıyor: MP4, AAC sesli H.264 olmalı; ses ise MP3 veya M4A/AAC olmalı.
+Novedades	Yenilikler
+Número de línea (1-{0}):	Satır numarası (1-{0}):
+Ordenar líneas	Satırları sırala
+Oscuro	Koyu
+Palabra completa	Tam sözcük
+Pegar	Yapıştır
+Quitar espacios finales	Sondaki boşlukları kaldır
+R&eemplazar...	&Değiştir...
+Reabrir pestaña &cerrada	Kapatılan &sekmeyi yeniden aç
+Recargar desde disco	Diskten yeniden yükle
+Reemplazar	Değiştir
+Reemplazar todo	Tümünü değiştir
+Reemplazar:	Şununla değiştir:
+Reproducir / pausa	Oynat / duraklat
+Resaltado de sintaxis	Sözdizimi vurgulama
+Restablecer zoom	Yakınlaştırmayı sıfırla
+Restaurar pestañas y texto sin guardar al abrir	Açılışta sekmeleri ve kaydedilmemiş metni geri yükle
+Sangría automática al pulsar Intro	Enter'a basınca otomatik girinti
+Seleccionar &todo	&Tümünü seç
+Seleccionar todo	Tümünü seç
+Siguiente	Sonraki
+Silenciar	Sessize al
+Sin título {0}	Adsız {0}
+Sistema	Sistem
+Subir línea	Satırı yukarı taşı
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Metin (*.txt)|*.txt|Tüm dosyalar (*.*)|*.*
+Texto plano	Düz metin
+Tienes la última versión ({0}).	En son sürümü kullanıyorsunuz ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Tüm dosyalar (*.*)|*.*|Metin (*.txt)|*.txt
+UTF-8 con BOM	BOM'lu UTF-8
+Un editor de texto ligero para Windows.	Windows için hafif bir metin düzenleyici.
+Usar como editor &predeterminado...	&Varsayılan düzenleyici olarak kullan...
+Ventana	Pencere
+Ventana siempre visible	Pencere her zaman üstte
+minúsculas	küçük harf
+{0} - Instalación	{0} - Kurulum
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} düzenleyici dışında değiştirildi.\nYeniden yüklenip değişiklikleriniz kaybedilsin mi?
+{0} se ha desinstalado.	{0} kaldırıldı.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} yüklendi ve artık Başlat menüsünde.\n\nVarsayılan metin düzenleyici olarak kullanmak ister misiniz? Seçmeniz için Windows ayarları açılacak.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	{0} verileriniz de silinsin mi?\n\nBunlar ayarlarınız, son dosyalarınız ve kayıtlı oturumunuzdur; hiç kaydetmediğiniz sekmelerin metni de buna dahildir.\n\nHayır'ı seçerseniz, yeniden yüklemeniz ihtimaline karşı korunurlar.
+¿Descartar los cambios de {0} y recargar desde disco?	{0} değişiklikleri atılıp diskten yeniden yüklensin mi?
+¿Desinstalar {0}?	{0} kaldırılsın mı?
+¿Guardar los cambios de {0}?	{0} değişiklikleri kaydedilsin mi?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	{0} {1} bu bilgisayara yüklensin mi?\n\nYalnızca kullanıcınız için şuraya yüklenecek:\n{2}\n\nYönetici olmak gerekmez.
+◧ Ocultar vista previa	◧ Önizlemeyi gizle
+◧ Vista previa disponible	◧ Önizleme kullanılabilir
+⬆ Actualización disponible: {0}	⬆ Güncelleme mevcut: {0}
+Idioma	Dil
+Idioma de Windows	Windows dili
+El nuevo idioma se verá al reiniciar {0}.	Yeni dil {0} yeniden başlatıldığında uygulanacak.
+¿Reiniciar ahora?	Şimdi yeniden başlatılsın mı?

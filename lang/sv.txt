@@ -1,0 +1,135 @@
+&Abrir...	&Öppna...
+&Acerca de {0} {1}	&Om {0} {1}
+&Archivo	&Arkiv
+&Buscar actualizaciones	&Sök efter uppdateringar
+&Buscar...	&Sök...
+&Codificación	&Teckenkodning
+&Copiar	&Kopiera
+&Deshacer	&Ångra
+&Documento	&Dokument
+&Editar	&Redigera
+&Fin de línea	&Radslut
+&Guardar	&Spara
+&Instalar en este equipo...	&Installera på den här datorn...
+&Ir a línea...	&Gå till rad...
+&Lenguaje	&Språk
+&Nueva pestaña	&Ny flik
+&Números de línea	&Radnummer
+&Pegar	&Klistra in
+&Rehacer	&Gör om
+&Salir	&Avsluta
+&Ver	&Visa
+&Vista previa	&Förhandsgranska
+(vacío)	(tom)
+A&juste de línea	&Radbrytning
+A&justes...	&Inställningar...
+Abrir &reciente	Öppna &senaste
+Aceptar	OK
+Acercar	Zooma in
+Ajuste de línea	Radbrytning
+Ajustes - {0} {1}	Inställningar - {0} {1}
+Alejar	Zooma ut
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Vissa tecken finns inte i ANSI och skulle gå förlorade.\nSpara i UTF-8 i stället?
+Ancho del tabulador	Tabbredd
+Anterior	Föregående
+Apariencia	Utseende
+Audio o vídeo de la letra	Ljud eller video för låttexten
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Ljud och video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Alla filer|*.*
+Ay&uda	&Hjälp
+Bajar línea	Flytta rad nedåt
+Buscar &anterior	Sök &föregående
+Buscar &siguiente	Sök &nästa
+Buscar actualizaciones al iniciar	Sök efter uppdateringar vid start
+Buscar y reemplazar	Sök och ersätt
+Buscar:	Sök:
+Cambiar...	Ändra...
+Cancelar	Avbryt
+Cerrar &pestaña	Stäng &flik
+Claro	Ljust
+Copiar	Kopiera
+Cor&tar	Klipp u&t
+Cortar	Klipp ut
+D&uplicar línea	D&uplicera rad
+Descargando actualización...	Hämtar uppdatering...
+Deshacer	Ångra
+Documento de texto ({0})	Textdokument ({0})
+Edición	Redigering
+Editar con {0}	Redigera med {0}
+Editor de texto ligero para Windows	Lätt textredigerare för Windows
+Editor de texto ligero para Windows.	Lätt textredigerare för Windows.
+El tabulador inserta espacios	Tabb infogar blanksteg
+Elegir archivo...	Välj fil...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Välj ljudet eller videon för den här låttexten så att den följer med under uppspelning.
+Eliminar	Ta bort
+Eliminar línea	Ta bort rad
+Expresión regular	Reguljärt uttryck
+Fuente: {0} {1} pt	Teckensnitt: {0} {1} pt
+Guardar &como...	Spara s&om...
+Guardar t&odo	Spara a&lla
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Det finns en ny version av {0}: {1} (du har {2}).\n\n{3}\n\nVill du hämta och installera den nu? {0} startas om och behåller dina flikar.
+Insertar fecha y hora	Infoga datum och tid
+Ir a línea	Gå till rad
+La descarga no es un ejecutable válido.	Den hämtade filen är inte en giltig körbar fil.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Förhandsgranskning finns för HTML, Markdown, reStructuredText, SVG, CSV/TSV och LRC-låttexter.
+Lín {0}, Col {1}	Rad {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Rad {0}, Kol {1}   ({2} markerade)
+MAYÚSCULAS	VERSALER
+Mayús/minús	Versaler/gemener
+Mostrar números de línea	Visa radnummer
+No se encontró.	Hittades inte.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Det gick inte att söka efter uppdateringar. Kontrollera din internetanslutning.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Det gick inte att spara sessionen:\n{0}\n\nStänga ändå? Osparad text går förlorad.
+No se pudo instalar:\n{0}	Det gick inte att installera:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Kan inte spelas upp: MP4 måste vara H.264 med AAC-ljud; ljudet MP3 eller M4A/AAC.
+Novedades	Nyheter
+Número de línea (1-{0}):	Radnummer (1-{0}):
+Ordenar líneas	Sortera rader
+Oscuro	Mörkt
+Palabra completa	Hela ord
+Pegar	Klistra in
+Quitar espacios finales	Ta bort avslutande blanksteg
+R&eemplazar...	&Ersätt...
+Reabrir pestaña &cerrada	Öppna st&ängd flik igen
+Recargar desde disco	Läs om från disk
+Reemplazar	Ersätt
+Reemplazar todo	Ersätt alla
+Reemplazar:	Ersätt med:
+Reproducir / pausa	Spela upp / pausa
+Resaltado de sintaxis	Syntaxmarkering
+Restablecer zoom	Återställ zoom
+Restaurar pestañas y texto sin guardar al abrir	Återställ flikar och osparad text vid start
+Sangría automática al pulsar Intro	Automatiskt indrag vid Retur
+Seleccionar &todo	Markera a&llt
+Seleccionar todo	Markera allt
+Siguiente	Nästa
+Silenciar	Ljud av
+Sin título {0}	Namnlös {0}
+Sistema	System
+Subir línea	Flytta rad uppåt
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|Alla filer (*.*)|*.*
+Texto plano	Oformaterad text
+Tienes la última versión ({0}).	Du har den senaste versionen ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Alla filer (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 med BOM
+Un editor de texto ligero para Windows.	En lätt textredigerare för Windows.
+Usar como editor &predeterminado...	Använd som &standardredigerare...
+Ventana	Fönster
+Ventana siempre visible	Fönster alltid överst
+minúsculas	gemener
+{0} - Instalación	{0} - Installation
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} har ändrats utanför redigeraren.\nLäsa om den och förlora dina ändringar?
+{0} se ha desinstalado.	{0} har avinstallerats.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} har installerats och finns nu i Start-menyn.\n\nVill du använda den som standardtextredigerare? Windows-inställningarna öppnas så att du kan välja den.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Ta även bort dina data för {0}?\n\nDet är dina inställningar, senaste filer och den sparade sessionen, inklusive texten i flikar som du aldrig sparade.\n\nOm du väljer Nej behålls de ifall du installerar om den.
+¿Descartar los cambios de {0} y recargar desde disco?	Ignorera ändringarna i {0} och läsa om från disk?
+¿Desinstalar {0}?	Avinstallera {0}?
+¿Guardar los cambios de {0}?	Spara ändringarna i {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Installera {0} {1} på den här datorn?\n\nDen installeras bara för din användare i:\n{2}\n\nDu behöver inte vara administratör.
+◧ Ocultar vista previa	◧ Dölj förhandsgranskning
+◧ Vista previa disponible	◧ Förhandsgranskning finns
+⬆ Actualización disponible: {0}	⬆ Uppdatering tillgänglig: {0}
+Idioma	Språk
+Idioma de Windows	Windows-språk
+El nuevo idioma se verá al reiniciar {0}.	Det nya språket används när {0} startas om.
+¿Reiniciar ahora?	Starta om nu?

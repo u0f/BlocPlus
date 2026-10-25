@@ -1,0 +1,135 @@
+&Abrir...	&Åpne...
+&Acerca de {0} {1}	&Om {0} {1}
+&Archivo	&Fil
+&Buscar actualizaciones	&Se etter oppdateringer
+&Buscar...	&Søk...
+&Codificación	&Koding
+&Copiar	&Kopier
+&Deshacer	&Angre
+&Documento	&Dokument
+&Editar	&Rediger
+&Fin de línea	&Linjeslutt
+&Guardar	&Lagre
+&Instalar en este equipo...	&Installer på denne datamaskinen...
+&Ir a línea...	&Gå til linje...
+&Lenguaje	&Språk
+&Nueva pestaña	&Ny fane
+&Números de línea	&Linjenumre
+&Pegar	&Lim inn
+&Rehacer	&Gjør om
+&Salir	&Avslutt
+&Ver	&Vis
+&Vista previa	&Forhåndsvisning
+(vacío)	(tom)
+A&juste de línea	L&injebryting
+A&justes...	Inn&stillinger...
+Abrir &reciente	Åpne &nylige
+Aceptar	OK
+Acercar	Zoom inn
+Ajuste de línea	Linjebryting
+Ajustes - {0} {1}	Innstillinger - {0} {1}
+Alejar	Zoom ut
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Noen tegn finnes ikke i ANSI og vil gå tapt.\nLagre som UTF-8 i stedet?
+Ancho del tabulador	Tabulatorbredde
+Anterior	Forrige
+Apariencia	Utseende
+Audio o vídeo de la letra	Lyd eller video for sangteksten
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Lyd og video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Alle filer|*.*
+Ay&uda	H&jelp
+Bajar línea	Flytt linje ned
+Buscar &anterior	Finn &forrige
+Buscar &siguiente	Finn &neste
+Buscar actualizaciones al iniciar	Se etter oppdateringer ved oppstart
+Buscar y reemplazar	Søk og erstatt
+Buscar:	Søk etter:
+Cambiar...	Endre...
+Cancelar	Avbryt
+Cerrar &pestaña	Lukk &fane
+Claro	Lys
+Copiar	Kopier
+Cor&tar	Kl&ipp ut
+Cortar	Klipp ut
+D&uplicar línea	D&upliser linje
+Descargando actualización...	Laster ned oppdatering...
+Deshacer	Angre
+Documento de texto ({0})	Tekstdokument ({0})
+Edición	Redigering
+Editar con {0}	Rediger med {0}
+Editor de texto ligero para Windows	Lettvekts tekstredigerer for Windows
+Editor de texto ligero para Windows.	Lettvekts tekstredigerer for Windows.
+El tabulador inserta espacios	Tabulator setter inn mellomrom
+Elegir archivo...	Velg fil...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Velg lyden eller videoen for denne sangteksten for å følge med mens den spilles.
+Eliminar	Slett
+Eliminar línea	Slett linje
+Expresión regular	Regulært uttrykk
+Fuente: {0} {1} pt	Skrift: {0} {1} pt
+Guardar &como...	Lagre &som...
+Guardar t&odo	Lagre &alle
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Det finnes en ny versjon av {0}: {1} (du har {2}).\n\n{3}\n\nLaste ned og installere nå? {0} starter på nytt og beholder fanene dine.
+Insertar fecha y hora	Sett inn dato og klokkeslett
+Ir a línea	Gå til linje
+La descarga no es un ejecutable válido.	Nedlastingen er ikke en gyldig kjørbar fil.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Forhåndsvisning er tilgjengelig for HTML, Markdown, reStructuredText, SVG, CSV/TSV og LRC-tekster.
+Lín {0}, Col {1}	Ln {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Ln {0}, Kol {1}   ({2} valgt)
+MAYÚSCULAS	STORE BOKSTAVER
+Mayús/minús	Store/små bokstaver
+Mostrar números de línea	Vis linjenumre
+No se encontró.	Ikke funnet.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Kunne ikke se etter oppdateringer. Sjekk internettforbindelsen.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Kunne ikke lagre økten:\n{0}\n\nLukke likevel? Ulagret tekst går tapt.
+No se pudo instalar:\n{0}	Kunne ikke installere:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Kan ikke spille av: MP4 må være H.264 med AAC-lyd; lyd må være MP3 eller M4A/AAC.
+Novedades	Nyheter
+Número de línea (1-{0}):	Linjenummer (1-{0}):
+Ordenar líneas	Sorter linjer
+Oscuro	Mørk
+Palabra completa	Hele ord
+Pegar	Lim inn
+Quitar espacios finales	Fjern etterfølgende mellomrom
+R&eemplazar...	Er&statt...
+Reabrir pestaña &cerrada	Åpne &lukket fane på nytt
+Recargar desde disco	Last inn på nytt fra disk
+Reemplazar	Erstatt
+Reemplazar todo	Erstatt alle
+Reemplazar:	Erstatt med:
+Reproducir / pausa	Spill av / pause
+Resaltado de sintaxis	Syntaksutheving
+Restablecer zoom	Tilbakestill zoom
+Restaurar pestañas y texto sin guardar al abrir	Gjenopprett faner og ulagret tekst ved oppstart
+Sangría automática al pulsar Intro	Automatisk innrykk ved Enter
+Seleccionar &todo	Merk &alt
+Seleccionar todo	Merk alt
+Siguiente	Neste
+Silenciar	Demp
+Sin título {0}	Uten navn {0}
+Sistema	System
+Subir línea	Flytt linje opp
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Tekst (*.txt)|*.txt|Alle filer (*.*)|*.*
+Texto plano	Ren tekst
+Tienes la última versión ({0}).	Du har den nyeste versjonen ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Alle filer (*.*)|*.*|Tekst (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 med BOM
+Un editor de texto ligero para Windows.	En lettvekts tekstredigerer for Windows.
+Usar como editor &predeterminado...	Bruk som &standard redigerer...
+Ventana	Vindu
+Ventana siempre visible	Vinduet alltid øverst
+minúsculas	små bokstaver
+{0} - Instalación	{0} - Installasjon
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} er endret utenfor redigeringsprogrammet.\nLaste inn på nytt og miste endringene dine?
+{0} se ha desinstalado.	{0} er avinstallert.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} er installert og finnes nå i Start-menyen.\n\nVil du bruke det som standard tekstredigerer? Windows-innstillinger åpnes slik at du kan velge det.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Slette også dataene dine fra {0}?\n\nDet er innstillingene, de nylige filene og den lagrede økten, inkludert teksten i faner du aldri lagret.\n\nVelger du Nei, beholdes de i tilfelle du installerer på nytt.
+¿Descartar los cambios de {0} y recargar desde disco?	Forkaste endringene i {0} og laste inn på nytt fra disk?
+¿Desinstalar {0}?	Avinstallere {0}?
+¿Guardar los cambios de {0}?	Lagre endringene i {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Installere {0} {1} på denne datamaskinen?\n\nDet installeres kun for din bruker i:\n{2}\n\nDu trenger ikke være administrator.
+◧ Ocultar vista previa	◧ Skjul forhåndsvisning
+◧ Vista previa disponible	◧ Forhåndsvisning tilgjengelig
+⬆ Actualización disponible: {0}	⬆ Oppdatering tilgjengelig: {0}
+Idioma	Språk
+Idioma de Windows	Windows-språk
+El nuevo idioma se verá al reiniciar {0}.	Det nye språket brukes når {0} startes på nytt.
+¿Reiniciar ahora?	Starte på nytt nå?

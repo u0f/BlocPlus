@@ -1,0 +1,135 @@
+&Abrir...	&Deschidere...
+&Acerca de {0} {1}	&Despre {0} {1}
+&Archivo	&Fișier
+&Buscar actualizaciones	&Căutare actualizări
+&Buscar...	&Găsire...
+&Codificación	&Codificare
+&Copiar	&Copiere
+&Deshacer	&Anulare
+&Documento	&Document
+&Editar	&Editare
+&Fin de línea	&Sfârșit de rând
+&Guardar	&Salvare
+&Instalar en este equipo...	&Instalare pe acest computer...
+&Ir a línea...	&Salt la linia...
+&Lenguaje	&Limbaj
+&Nueva pestaña	&File nouă
+&Números de línea	&Numere de linie
+&Pegar	&Lipire
+&Rehacer	&Refacere
+&Salir	&Ieșire
+&Ver	&Vizualizare
+&Vista previa	&Previzualizare
+(vacío)	(gol)
+A&juste de línea	&Încadrare text
+A&justes...	&Setări...
+Abrir &reciente	Deschidere &recente
+Aceptar	OK
+Acercar	Mărire
+Ajuste de línea	Încadrare text
+Ajustes - {0} {1}	Setări - {0} {1}
+Alejar	Micșorare
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Unele caractere nu există în ANSI și s-ar pierde.\nSalvați în schimb în UTF-8?
+Ancho del tabulador	Lățime tabulator
+Anterior	Anterior
+Apariencia	Aspect
+Audio o vídeo de la letra	Audio sau video pentru versuri
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio și video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Toate fișierele|*.*
+Ay&uda	A&jutor
+Bajar línea	Mutare linie în jos
+Buscar &anterior	Găsire &anterior
+Buscar &siguiente	Găsire &următor
+Buscar actualizaciones al iniciar	Căutare actualizări la pornire
+Buscar y reemplazar	Găsire și înlocuire
+Buscar:	Găsire:
+Cambiar...	Schimbare...
+Cancelar	Anulare
+Cerrar &pestaña	Închidere &filă
+Claro	Luminos
+Copiar	Copiere
+Cor&tar	&Decupare
+Cortar	Decupare
+D&uplicar línea	D&uplicare linie
+Descargando actualización...	Se descarcă actualizarea...
+Deshacer	Anulare
+Documento de texto ({0})	Document text ({0})
+Edición	Editare
+Editar con {0}	Editare cu {0}
+Editor de texto ligero para Windows	Editor de text ușor pentru Windows
+Editor de texto ligero para Windows.	Editor de text ușor pentru Windows.
+El tabulador inserta espacios	Tabulatorul inserează spații
+Elegir archivo...	Alegere fișier...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Alegeți audio sau video pentru aceste versuri, pentru a le urmări în timpul redării.
+Eliminar	Ștergere
+Eliminar línea	Ștergere linie
+Expresión regular	Expresie regulată
+Fuente: {0} {1} pt	Font: {0} {1} pt
+Guardar &como...	Salvare &ca...
+Guardar t&odo	Salvare t&otul
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Există o versiune nouă de {0}: {1} (aveți {2}).\n\n{3}\n\nO descărcați și o instalați acum? {0} va reporni și vă va păstra filele.
+Insertar fecha y hora	Inserare dată și oră
+Ir a línea	Salt la linia
+La descarga no es un ejecutable válido.	Descărcarea nu este un executabil valid.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Previzualizarea este disponibilă pentru HTML, Markdown, reStructuredText, SVG, CSV/TSV și versuri LRC.
+Lín {0}, Col {1}	Lin {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Lin {0}, Col {1}   ({2} selectate)
+MAYÚSCULAS	MAJUSCULE
+Mayús/minús	Majuscule/minuscule
+Mostrar números de línea	Afișare numere de linie
+No se encontró.	Nu a fost găsit.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Nu s-au putut verifica actualizările. Verificați conexiunea la internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Nu s-a putut salva sesiunea:\n{0}\n\nÎnchideți oricum? Textul nesalvat se va pierde.
+No se pudo instalar:\n{0}	Nu s-a putut instala:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Nu se poate reda: MP4 trebuie să fie H.264 cu audio AAC; audio MP3 sau M4A/AAC.
+Novedades	Noutăți
+Número de línea (1-{0}):	Numărul liniei (1-{0}):
+Ordenar líneas	Sortare linii
+Oscuro	Întunecat
+Palabra completa	Cuvânt întreg
+Pegar	Lipire
+Quitar espacios finales	Eliminare spații de la sfârșit
+R&eemplazar...	Î&nlocuire...
+Reabrir pestaña &cerrada	Redeschidere filă în&chisă
+Recargar desde disco	Reîncărcare de pe disc
+Reemplazar	Înlocuire
+Reemplazar todo	Înlocuire totală
+Reemplazar:	Înlocuire cu:
+Reproducir / pausa	Redare / pauză
+Resaltado de sintaxis	Evidențierea sintaxei
+Restablecer zoom	Resetare zoom
+Restaurar pestañas y texto sin guardar al abrir	La pornire, restaurează filele și textul nesalvat
+Sangría automática al pulsar Intro	Indentare automată la apăsarea Enter
+Seleccionar &todo	Selectare &tot
+Seleccionar todo	Selectare tot
+Siguiente	Următorul
+Silenciar	Dezactivare sunet
+Sin título {0}	Fără titlu {0}
+Sistema	Sistem
+Subir línea	Mutare linie în sus
+Tema	Temă
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|Toate fișierele (*.*)|*.*
+Texto plano	Text simplu
+Tienes la última versión ({0}).	Aveți ultima versiune ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Toate fișierele (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 cu BOM
+Un editor de texto ligero para Windows.	Un editor de text ușor pentru Windows.
+Usar como editor &predeterminado...	Utilizare ca editor &implicit...
+Ventana	Fereastră
+Ventana siempre visible	Fereastră mereu deasupra
+minúsculas	minuscule
+{0} - Instalación	{0} - Instalare
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} a fost modificat în afara editorului.\nÎl reîncărcați și pierdeți modificările?
+{0} se ha desinstalado.	{0} a fost dezinstalat.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} a fost instalat și se află în meniul Start.\n\nDoriți să îl utilizați ca editor de text implicit? Se vor deschide setările Windows pentru a-l alege.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Ștergeți și datele dvs. din {0}?\n\nAcestea sunt setările, fișierele recente și sesiunea salvată, inclusiv textul filelor pe care nu l-ați salvat niciodată.\n\nDacă alegeți Nu, se păstrează în caz că îl reinstalați.
+¿Descartar los cambios de {0} y recargar desde disco?	Renunțați la modificările din {0} și reîncărcați de pe disc?
+¿Desinstalar {0}?	Dezinstalați {0}?
+¿Guardar los cambios de {0}?	Salvați modificările din {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Instalați {0} {1} pe acest computer?\n\nVa fi instalat doar pentru utilizatorul dvs. în:\n{2}\n\nNu sunt necesare drepturi de administrator.
+◧ Ocultar vista previa	◧ Ascundere previzualizare
+◧ Vista previa disponible	◧ Previzualizare disponibilă
+⬆ Actualización disponible: {0}	⬆ Actualizare disponibilă: {0}
+Idioma	Limbă
+Idioma de Windows	Limba Windows
+El nuevo idioma se verá al reiniciar {0}.	Noua limbă se va aplica după repornirea {0}.
+¿Reiniciar ahora?	Reporniți acum?

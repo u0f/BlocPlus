@@ -1,0 +1,135 @@
+&Abrir...	&Obre...
+&Acerca de {0} {1}	&Quant a {0} {1}
+&Archivo	&Fitxer
+&Buscar actualizaciones	Cerca &actualitzacions
+&Buscar...	&Cerca...
+&Codificación	&Codificació
+&Copiar	&Copia
+&Deshacer	&Desfés
+&Documento	&Document
+&Editar	&Edita
+&Fin de línea	&Final de línia
+&Guardar	&Desa
+&Instalar en este equipo...	&Instal·la en aquest equip...
+&Ir a línea...	&Vés a la línia...
+&Lenguaje	&Llenguatge
+&Nueva pestaña	&Pestanya nova
+&Números de línea	&Números de línia
+&Pegar	&Enganxa
+&Rehacer	&Refés
+&Salir	&Surt
+&Ver	&Visualitza
+&Vista previa	&Previsualització
+(vacío)	(buit)
+A&juste de línea	A&just de línia
+A&justes...	&Configuració...
+Abrir &reciente	Obre &recent
+Aceptar	D'acord
+Acercar	Amplia
+Ajuste de línea	Ajust de línia
+Ajustes - {0} {1}	Configuració - {0} {1}
+Alejar	Redueix
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Alguns caràcters no existeixen en ANSI i es perdrien.\nVols desar en UTF-8 en lloc d'això?
+Ancho del tabulador	Amplada del tabulador
+Anterior	Anterior
+Apariencia	Aparença
+Audio o vídeo de la letra	Àudio o vídeo de la lletra
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Àudio i vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Tots els fitxers|*.*
+Ay&uda	Aj&uda
+Bajar línea	Baixa la línia
+Buscar &anterior	Cerca l'&anterior
+Buscar &siguiente	Cerca el &següent
+Buscar actualizaciones al iniciar	Cerca actualitzacions en iniciar
+Buscar y reemplazar	Cerca i reemplaça
+Buscar:	Cerca:
+Cambiar...	Canvia...
+Cancelar	Cancel·la
+Cerrar &pestaña	Tanca la &pestanya
+Claro	Clar
+Copiar	Copia
+Cor&tar	Re&talla
+Cortar	Retalla
+D&uplicar línea	D&uplica la línia
+Descargando actualización...	S'està baixant l'actualització...
+Deshacer	Desfés
+Documento de texto ({0})	Document de text ({0})
+Edición	Edició
+Editar con {0}	Edita amb {0}
+Editor de texto ligero para Windows	Editor de text lleuger per a Windows
+Editor de texto ligero para Windows.	Editor de text lleuger per a Windows.
+El tabulador inserta espacios	El tabulador insereix espais
+Elegir archivo...	Tria un fitxer...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Tria l'àudio o el vídeo d'aquesta lletra per seguir-la mentre sona.
+Eliminar	Elimina
+Eliminar línea	Elimina la línia
+Expresión regular	Expressió regular
+Fuente: {0} {1} pt	Tipus de lletra: {0} {1} pt
+Guardar &como...	Desa &com a...
+Guardar t&odo	Desa t&ot
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Hi ha una versió nova de {0}: {1} (tens la {2}).\n\n{3}\n\nVols baixar-la i instal·lar-la ara? {0} es reiniciarà i conservarà les teves pestanyes.
+Insertar fecha y hora	Insereix la data i l'hora
+Ir a línea	Vés a la línia
+La descarga no es un ejecutable válido.	La baixada no és un executable vàlid.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	La previsualització està disponible per a HTML, Markdown, reStructuredText, SVG, CSV/TSV i lletres LRC.
+Lín {0}, Col {1}	Lín {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Lín {0}, Col {1}   ({2} seleccionats)
+MAYÚSCULAS	MAJÚSCULES
+Mayús/minús	Majúscules/minúscules
+Mostrar números de línea	Mostra els números de línia
+No se encontró.	No s'ha trobat.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	No s'ha pogut comprovar si hi ha actualitzacions. Revisa la teva connexió a internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	No s'ha pogut desar la sessió:\n{0}\n\nVols tancar igualment? Es perdrà el text sense desar.
+No se pudo instalar:\n{0}	No s'ha pogut instal·lar:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	No es pot reproduir: el MP4 ha de ser H.264 amb àudio AAC; l'àudio, MP3 o M4A/AAC.
+Novedades	Novetats
+Número de línea (1-{0}):	Número de línia (1-{0}):
+Ordenar líneas	Ordena les línies
+Oscuro	Fosc
+Palabra completa	Paraula completa
+Pegar	Enganxa
+Quitar espacios finales	Elimina els espais finals
+R&eemplazar...	R&eemplaça...
+Reabrir pestaña &cerrada	Reobre la pestanya &tancada
+Recargar desde disco	Recarrega des del disc
+Reemplazar	Reemplaça
+Reemplazar todo	Reemplaça-ho tot
+Reemplazar:	Reemplaça per:
+Reproducir / pausa	Reprodueix / pausa
+Resaltado de sintaxis	Ressaltat de sintaxi
+Restablecer zoom	Restableix el zoom
+Restaurar pestañas y texto sin guardar al abrir	Restaura les pestanyes i el text sense desar en obrir
+Sangría automática al pulsar Intro	Sagnat automàtic en prémer Retorn
+Seleccionar &todo	Selecciona-ho &tot
+Seleccionar todo	Selecciona-ho tot
+Siguiente	Següent
+Silenciar	Silencia
+Sin título {0}	Sense títol {0}
+Sistema	Sistema
+Subir línea	Puja la línia
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|Tots els fitxers (*.*)|*.*
+Texto plano	Text sense format
+Tienes la última versión ({0}).	Tens l'última versió ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Tots els fitxers (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 amb BOM
+Un editor de texto ligero para Windows.	Un editor de text lleuger per a Windows.
+Usar como editor &predeterminado...	Usa com a editor &predeterminat...
+Ventana	Finestra
+Ventana siempre visible	Finestra sempre visible
+minúsculas	minúscules
+{0} - Instalación	{0} - Instal·lació
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} ha canviat fora de l'editor.\nVols tornar-lo a carregar i perdre els teus canvis?
+{0} se ha desinstalado.	{0} s'ha desinstal·lat.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} s'ha instal·lat i ja és al menú Inici.\n\nVols usar-lo com a editor de text predeterminat? S'obrirà la configuració de Windows perquè el triïs.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Vols eliminar també les teves dades de {0}?\n\nSón la configuració, els fitxers recents i la sessió desada, inclòs el text de les pestanyes que no vas desar mai.\n\nSi tries No, es conserven per si el tornes a instal·lar.
+¿Descartar los cambios de {0} y recargar desde disco?	Vols descartar els canvis de {0} i recarregar des del disc?
+¿Desinstalar {0}?	Vols desinstal·lar {0}?
+¿Guardar los cambios de {0}?	Vols desar els canvis de {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Vols instal·lar {0} {1} en aquest equip?\n\nS'instal·larà només per al teu usuari a:\n{2}\n\nNo cal ser administrador.
+◧ Ocultar vista previa	◧ Amaga la previsualització
+◧ Vista previa disponible	◧ Previsualització disponible
+⬆ Actualización disponible: {0}	⬆ Actualització disponible: {0}
+Idioma	Idioma
+Idioma de Windows	Idioma del Windows
+El nuevo idioma se verá al reiniciar {0}.	El nou idioma es veurà en reiniciar {0}.
+¿Reiniciar ahora?	Vols reiniciar ara?

@@ -1,0 +1,135 @@
+&Abrir...	열기(&O)...
+&Acerca de {0} {1}	{0} {1} 정보(&A)
+&Archivo	파일(&F)
+&Buscar actualizaciones	업데이트 확인(&U)
+&Buscar...	찾기(&S)...
+&Codificación	인코딩(&E)
+&Copiar	복사(&C)
+&Deshacer	실행 취소(&U)
+&Documento	문서(&D)
+&Editar	편집(&E)
+&Fin de línea	줄 끝(&L)
+&Guardar	저장(&S)
+&Instalar en este equipo...	이 PC에 설치(&I)...
+&Ir a línea...	줄로 이동(&G)...
+&Lenguaje	언어(&G)
+&Nueva pestaña	새 탭(&N)
+&Números de línea	줄 번호(&N)
+&Pegar	붙여넣기(&P)
+&Rehacer	다시 실행(&R)
+&Salir	끝내기(&X)
+&Ver	보기(&V)
+&Vista previa	미리 보기(&P)
+(vacío)	(비어 있음)
+A&juste de línea	자동 줄 바꿈(&W)
+A&justes...	설정(&S)...
+Abrir &reciente	최근 항목 열기(&R)
+Aceptar	확인
+Acercar	확대
+Ajuste de línea	자동 줄 바꿈
+Ajustes - {0} {1}	설정 - {0} {1}
+Alejar	축소
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	일부 문자는 ANSI에 없어 손실됩니다.\n대신 UTF-8로 저장하시겠습니까?
+Ancho del tabulador	탭 너비
+Anterior	이전
+Apariencia	모양
+Audio o vídeo de la letra	가사의 오디오 또는 비디오
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	오디오 및 비디오 (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|모든 파일|*.*
+Ay&uda	도움말(&H)
+Bajar línea	줄 아래로 이동
+Buscar &anterior	이전 찾기(&P)
+Buscar &siguiente	다음 찾기(&N)
+Buscar actualizaciones al iniciar	시작할 때 업데이트 확인
+Buscar y reemplazar	찾기 및 바꾸기
+Buscar:	찾을 내용:
+Cambiar...	변경...
+Cancelar	취소
+Cerrar &pestaña	탭 닫기(&C)
+Claro	밝게
+Copiar	복사
+Cor&tar	잘라내기(&T)
+Cortar	잘라내기
+D&uplicar línea	줄 복제(&U)
+Descargando actualización...	업데이트를 다운로드하는 중...
+Deshacer	실행 취소
+Documento de texto ({0})	텍스트 문서 ({0})
+Edición	편집
+Editar con {0}	{0}(으)로 편집
+Editor de texto ligero para Windows	Windows용 경량 텍스트 편집기
+Editor de texto ligero para Windows.	Windows용 경량 텍스트 편집기.
+El tabulador inserta espacios	Tab 키로 공백 삽입
+Elegir archivo...	파일 선택...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	이 가사를 따라가며 재생할 오디오 또는 비디오를 선택하세요.
+Eliminar	삭제
+Eliminar línea	줄 삭제
+Expresión regular	정규식
+Fuente: {0} {1} pt	글꼴: {0} {1}pt
+Guardar &como...	다른 이름으로 저장(&A)...
+Guardar t&odo	모두 저장(&L)
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0}의 새 버전 {1}이(가) 있습니다(현재 버전: {2}).\n\n{3}\n\n지금 다운로드하여 설치하시겠습니까? {0}이(가) 다시 시작되며 탭은 유지됩니다.
+Insertar fecha y hora	날짜 및 시간 삽입
+Ir a línea	줄로 이동
+La descarga no es un ejecutable válido.	다운로드한 파일이 유효한 실행 파일이 아닙니다.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	미리 보기는 HTML, Markdown, reStructuredText, SVG, CSV/TSV 및 LRC 가사에서 사용할 수 있습니다.
+Lín {0}, Col {1}	줄 {0}, 열 {1}
+Lín {0}, Col {1}   ({2} seleccionados)	줄 {0}, 열 {1}   ({2} 선택됨)
+MAYÚSCULAS	대문자
+Mayús/minús	대/소문자
+Mostrar números de línea	줄 번호 표시
+No se encontró.	찾을 수 없습니다.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	업데이트를 확인할 수 없습니다. 인터넷 연결을 확인하세요.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	세션을 저장할 수 없습니다:\n{0}\n\n그래도 닫으시겠습니까? 저장하지 않은 텍스트는 손실됩니다.
+No se pudo instalar:\n{0}	설치할 수 없습니다:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	재생할 수 없습니다. MP4는 H.264 및 AAC 오디오여야 하고, 오디오는 MP3 또는 M4A/AAC여야 합니다.
+Novedades	새로운 기능
+Número de línea (1-{0}):	줄 번호 (1-{0}):
+Ordenar líneas	줄 정렬
+Oscuro	어둡게
+Palabra completa	단어 단위
+Pegar	붙여넣기
+Quitar espacios finales	끝 공백 제거
+R&eemplazar...	바꾸기(&H)...
+Reabrir pestaña &cerrada	닫은 탭 다시 열기(&T)
+Recargar desde disco	디스크에서 다시 불러오기
+Reemplazar	바꾸기
+Reemplazar todo	모두 바꾸기
+Reemplazar:	바꿀 내용:
+Reproducir / pausa	재생 / 일시 중지
+Resaltado de sintaxis	구문 강조
+Restablecer zoom	확대/축소 초기화
+Restaurar pestañas y texto sin guardar al abrir	시작할 때 탭과 저장하지 않은 텍스트 복원
+Sangría automática al pulsar Intro	Enter 키로 자동 들여쓰기
+Seleccionar &todo	모두 선택(&A)
+Seleccionar todo	모두 선택
+Siguiente	다음
+Silenciar	음소거
+Sin título {0}	제목 없음 {0}
+Sistema	시스템
+Subir línea	줄 위로 이동
+Tema	테마
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	텍스트 (*.txt)|*.txt|모든 파일 (*.*)|*.*
+Texto plano	일반 텍스트
+Tienes la última versión ({0}).	최신 버전({0})을 사용 중입니다.
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	모든 파일 (*.*)|*.*|텍스트 (*.txt)|*.txt
+UTF-8 con BOM	BOM이 있는 UTF-8
+Un editor de texto ligero para Windows.	Windows용 경량 텍스트 편집기입니다.
+Usar como editor &predeterminado...	기본 편집기로 사용(&D)...
+Ventana	창
+Ventana siempre visible	항상 위에 표시
+minúsculas	소문자
+{0} - Instalación	{0} - 설치
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0}이(가) 편집기 밖에서 변경되었습니다.\n다시 불러오고 변경 내용을 잃으시겠습니까?
+{0} se ha desinstalado.	{0}을(를) 제거했습니다.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0}을(를) 설치했으며 시작 메뉴에서 실행할 수 있습니다.\n\n기본 텍스트 편집기로 사용하시겠습니까? 선택할 수 있도록 Windows 설정이 열립니다.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	{0} 데이터도 삭제하시겠습니까?\n\n설정, 최근 파일, 저장된 세션(한 번도 저장하지 않은 탭의 텍스트 포함)이 삭제됩니다.\n\n[아니요]를 선택하면 다시 설치할 경우를 위해 유지됩니다.
+¿Descartar los cambios de {0} y recargar desde disco?	{0}의 변경 내용을 취소하고 디스크에서 다시 불러오시겠습니까?
+¿Desinstalar {0}?	{0}을(를) 제거하시겠습니까?
+¿Guardar los cambios de {0}?	{0}의 변경 내용을 저장하시겠습니까?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	이 PC에 {0} {1}을(를) 설치하시겠습니까?\n\n현재 사용자에게만 다음 위치에 설치됩니다:\n{2}\n\n관리자 권한이 필요하지 않습니다.
+◧ Ocultar vista previa	◧ 미리 보기 숨기기
+◧ Vista previa disponible	◧ 미리 보기 사용 가능
+⬆ Actualización disponible: {0}	⬆ 업데이트 사용 가능: {0}
+Idioma	언어
+Idioma de Windows	Windows 언어
+El nuevo idioma se verá al reiniciar {0}.	새 언어는 {0}을(를) 다시 시작하면 적용됩니다.
+¿Reiniciar ahora?	지금 다시 시작하시겠습니까?

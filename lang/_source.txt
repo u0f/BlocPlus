@@ -1,0 +1,135 @@
+&Abrir...
+&Acerca de {0} {1}
+&Archivo
+&Buscar actualizaciones
+&Buscar...
+&Codificación
+&Copiar
+&Deshacer
+&Documento
+&Editar
+&Fin de línea
+&Guardar
+&Instalar en este equipo...
+&Ir a línea...
+&Lenguaje
+&Nueva pestaña
+&Números de línea
+&Pegar
+&Rehacer
+&Salir
+&Ver
+&Vista previa
+(vacío)
+A&juste de línea
+A&justes...
+Abrir &reciente
+Aceptar
+Acercar
+Ajuste de línea
+Ajustes - {0} {1}
+Alejar
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?
+Ancho del tabulador
+Anterior
+Apariencia
+Audio o vídeo de la letra
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*
+Ay&uda
+Bajar línea
+Buscar &anterior
+Buscar &siguiente
+Buscar actualizaciones al iniciar
+Buscar y reemplazar
+Buscar:
+Cambiar...
+Cancelar
+Cerrar &pestaña
+Claro
+Copiar
+Cor&tar
+Cortar
+D&uplicar línea
+Descargando actualización...
+Deshacer
+Documento de texto ({0})
+Edición
+Editar con {0}
+Editor de texto ligero para Windows
+Editor de texto ligero para Windows.
+El tabulador inserta espacios
+Elegir archivo...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.
+Eliminar
+Eliminar línea
+Expresión regular
+Fuente: {0} {1} pt
+Guardar &como...
+Guardar t&odo
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.
+Insertar fecha y hora
+Ir a línea
+La descarga no es un ejecutable válido.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.
+Lín {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)
+MAYÚSCULAS
+Mayús/minús
+Mostrar números de línea
+No se encontró.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.
+No se pudo instalar:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.
+Novedades
+Número de línea (1-{0}):
+Ordenar líneas
+Oscuro
+Palabra completa
+Pegar
+Quitar espacios finales
+R&eemplazar...
+Reabrir pestaña &cerrada
+Recargar desde disco
+Reemplazar
+Reemplazar todo
+Reemplazar:
+Reproducir / pausa
+Resaltado de sintaxis
+Restablecer zoom
+Restaurar pestañas y texto sin guardar al abrir
+Sangría automática al pulsar Intro
+Seleccionar &todo
+Seleccionar todo
+Siguiente
+Silenciar
+Sin título {0}
+Sistema
+Subir línea
+Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*
+Texto plano
+Tienes la última versión ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt
+UTF-8 con BOM
+Un editor de texto ligero para Windows.
+Usar como editor &predeterminado...
+Ventana
+Ventana siempre visible
+minúsculas
+{0} - Instalación
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?
+{0} se ha desinstalado.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.
+¿Descartar los cambios de {0} y recargar desde disco?
+¿Desinstalar {0}?
+¿Guardar los cambios de {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.
+◧ Ocultar vista previa
+◧ Vista previa disponible
+⬆ Actualización disponible: {0}
+Idioma
+Idioma de Windows
+El nuevo idioma se verá al reiniciar {0}.
+¿Reiniciar ahora?

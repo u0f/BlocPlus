@@ -1,0 +1,135 @@
+&Abrir...	เปิด(&O)...
+&Acerca de {0} {1}	เกี่ยวกับ {0} {1}(&A)
+&Archivo	ไฟล์(&F)
+&Buscar actualizaciones	ตรวจสอบการอัปเดต(&U)
+&Buscar...	ค้นหา(&S)...
+&Codificación	การเข้ารหัส(&E)
+&Copiar	คัดลอก(&C)
+&Deshacer	เลิกทำ(&U)
+&Documento	เอกสาร(&D)
+&Editar	แก้ไข(&E)
+&Fin de línea	ท้ายบรรทัด(&L)
+&Guardar	บันทึก(&S)
+&Instalar en este equipo...	ติดตั้งบนคอมพิวเตอร์เครื่องนี้(&I)...
+&Ir a línea...	ไปที่บรรทัด(&G)...
+&Lenguaje	ภาษา(&G)
+&Nueva pestaña	แท็บใหม่(&N)
+&Números de línea	หมายเลขบรรทัด(&N)
+&Pegar	วาง(&P)
+&Rehacer	ทำซ้ำ(&R)
+&Salir	ออก(&X)
+&Ver	ดู(&V)
+&Vista previa	ตัวอย่าง(&P)
+(vacío)	(ว่าง)
+A&juste de línea	ตัดคำขึ้นบรรทัดใหม่(&W)
+A&justes...	การตั้งค่า(&S)...
+Abrir &reciente	เปิดล่าสุด(&R)
+Aceptar	ตกลง
+Acercar	ขยาย
+Ajuste de línea	ตัดคำขึ้นบรรทัดใหม่
+Ajustes - {0} {1}	การตั้งค่า - {0} {1}
+Alejar	ย่อ
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	อักขระบางตัวไม่มีใน ANSI และจะสูญหาย\nบันทึกเป็น UTF-8 แทนหรือไม่
+Ancho del tabulador	ความกว้างแท็บ
+Anterior	ก่อนหน้า
+Apariencia	รูปลักษณ์
+Audio o vídeo de la letra	เสียงหรือวิดีโอของเนื้อเพลง
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	เสียงและวิดีโอ (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|ไฟล์ทั้งหมด|*.*
+Ay&uda	ความช่วยเหลือ(&H)
+Bajar línea	ย้ายบรรทัดลง
+Buscar &anterior	ค้นหาก่อนหน้า(&P)
+Buscar &siguiente	ค้นหาถัดไป(&N)
+Buscar actualizaciones al iniciar	ตรวจสอบการอัปเดตเมื่อเริ่มต้น
+Buscar y reemplazar	ค้นหาและแทนที่
+Buscar:	ค้นหา:
+Cambiar...	เปลี่ยน...
+Cancelar	ยกเลิก
+Cerrar &pestaña	ปิดแท็บ(&C)
+Claro	สว่าง
+Copiar	คัดลอก
+Cor&tar	ตัด(&T)
+Cortar	ตัด
+D&uplicar línea	ทำสำเนาบรรทัด(&U)
+Descargando actualización...	กำลังดาวน์โหลดการอัปเดต...
+Deshacer	เลิกทำ
+Documento de texto ({0})	เอกสารข้อความ ({0})
+Edición	แก้ไข
+Editar con {0}	แก้ไขด้วย {0}
+Editor de texto ligero para Windows	โปรแกรมแก้ไขข้อความขนาดเบาสำหรับ Windows
+Editor de texto ligero para Windows.	โปรแกรมแก้ไขข้อความขนาดเบาสำหรับ Windows
+El tabulador inserta espacios	แท็บแทรกช่องว่าง
+Elegir archivo...	เลือกไฟล์...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	เลือกเสียงหรือวิดีโอของเนื้อเพลงนี้เพื่อติดตามขณะเล่น
+Eliminar	ลบ
+Eliminar línea	ลบบรรทัด
+Expresión regular	นิพจน์ทั่วไป
+Fuente: {0} {1} pt	แบบอักษร: {0} {1} pt
+Guardar &como...	บันทึกเป็น(&A)...
+Guardar t&odo	บันทึกทั้งหมด(&L)
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	มี {0} เวอร์ชันใหม่: {1} (คุณใช้ {2})\n\n{3}\n\nดาวน์โหลดและติดตั้งตอนนี้หรือไม่ {0} จะเริ่มต้นใหม่และคงแท็บของคุณไว้
+Insertar fecha y hora	แทรกวันที่และเวลา
+Ir a línea	ไปที่บรรทัด
+La descarga no es un ejecutable válido.	ไฟล์ที่ดาวน์โหลดไม่ใช่ไฟล์ปฏิบัติการที่ถูกต้อง
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	ดูตัวอย่างได้สำหรับ HTML, Markdown, reStructuredText, SVG, CSV/TSV และเนื้อเพลง LRC
+Lín {0}, Col {1}	บรรทัด {0}, คอลัมน์ {1}
+Lín {0}, Col {1}   ({2} seleccionados)	บรรทัด {0}, คอลัมน์ {1}   (เลือก {2})
+MAYÚSCULAS	ตัวพิมพ์ใหญ่
+Mayús/minús	ตัวพิมพ์ใหญ่/เล็ก
+Mostrar números de línea	แสดงหมายเลขบรรทัด
+No se encontró.	ไม่พบ
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	ตรวจสอบการอัปเดตไม่ได้ โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	บันทึกเซสชันไม่ได้:\n{0}\n\nปิดต่อไปหรือไม่ ข้อความที่ยังไม่ได้บันทึกจะสูญหาย
+No se pudo instalar:\n{0}	ติดตั้งไม่ได้:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	เล่นไม่ได้: MP4 ต้องเป็น H.264 พร้อมเสียง AAC ส่วนไฟล์เสียงต้องเป็น MP3 หรือ M4A/AAC
+Novedades	มีอะไรใหม่
+Número de línea (1-{0}):	หมายเลขบรรทัด (1-{0}):
+Ordenar líneas	เรียงลำดับบรรทัด
+Oscuro	มืด
+Palabra completa	ตรงทั้งคำ
+Pegar	วาง
+Quitar espacios finales	ลบช่องว่างท้ายบรรทัด
+R&eemplazar...	แทนที่(&H)...
+Reabrir pestaña &cerrada	เปิดแท็บที่ปิดไปอีกครั้ง(&T)
+Recargar desde disco	โหลดซ้ำจากดิสก์
+Reemplazar	แทนที่
+Reemplazar todo	แทนที่ทั้งหมด
+Reemplazar:	แทนที่ด้วย:
+Reproducir / pausa	เล่น / หยุดชั่วคราว
+Resaltado de sintaxis	การเน้นไวยากรณ์
+Restablecer zoom	รีเซ็ตการซูม
+Restaurar pestañas y texto sin guardar al abrir	กู้คืนแท็บและข้อความที่ยังไม่ได้บันทึกเมื่อเปิด
+Sangría automática al pulsar Intro	เยื้องบรรทัดอัตโนมัติเมื่อกด Enter
+Seleccionar &todo	เลือกทั้งหมด(&A)
+Seleccionar todo	เลือกทั้งหมด
+Siguiente	ถัดไป
+Silenciar	ปิดเสียง
+Sin título {0}	ไม่มีชื่อ {0}
+Sistema	ระบบ
+Subir línea	ย้ายบรรทัดขึ้น
+Tema	ธีม
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	ข้อความ (*.txt)|*.txt|ไฟล์ทั้งหมด (*.*)|*.*
+Texto plano	ข้อความธรรมดา
+Tienes la última versión ({0}).	คุณใช้เวอร์ชันล่าสุดแล้ว ({0})
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	ไฟล์ทั้งหมด (*.*)|*.*|ข้อความ (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 พร้อม BOM
+Un editor de texto ligero para Windows.	โปรแกรมแก้ไขข้อความขนาดเบาสำหรับ Windows
+Usar como editor &predeterminado...	ใช้เป็นโปรแกรมแก้ไขเริ่มต้น(&D)...
+Ventana	หน้าต่าง
+Ventana siempre visible	หน้าต่างอยู่บนสุดเสมอ
+minúsculas	ตัวพิมพ์เล็ก
+{0} - Instalación	{0} - การติดตั้ง
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} มีการเปลี่ยนแปลงนอกโปรแกรมแก้ไข\nโหลดซ้ำและสูญเสียการเปลี่ยนแปลงของคุณหรือไม่
+{0} se ha desinstalado.	ถอนการติดตั้ง {0} แล้ว
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	ติดตั้ง {0} แล้วและอยู่ในเมนู Start\n\nต้องการใช้เป็นโปรแกรมแก้ไขข้อความเริ่มต้นหรือไม่ การตั้งค่า Windows จะเปิดขึ้นเพื่อให้คุณเลือก
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	ลบข้อมูล {0} ของคุณด้วยหรือไม่\n\nได้แก่การตั้งค่า ไฟล์ล่าสุด และเซสชันที่บันทึกไว้ รวมถึงข้อความในแท็บที่คุณไม่เคยบันทึก\n\nหากเลือก ไม่ จะเก็บไว้เผื่อคุณติดตั้งอีกครั้ง
+¿Descartar los cambios de {0} y recargar desde disco?	ละทิ้งการเปลี่ยนแปลงของ {0} และโหลดซ้ำจากดิสก์หรือไม่
+¿Desinstalar {0}?	ถอนการติดตั้ง {0} หรือไม่
+¿Guardar los cambios de {0}?	บันทึกการเปลี่ยนแปลงของ {0} หรือไม่
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	ติดตั้ง {0} {1} บนคอมพิวเตอร์เครื่องนี้หรือไม่\n\nจะติดตั้งเฉพาะผู้ใช้ของคุณที่:\n{2}\n\nไม่ต้องเป็นผู้ดูแลระบบ
+◧ Ocultar vista previa	◧ ซ่อนตัวอย่าง
+◧ Vista previa disponible	◧ มีตัวอย่าง
+⬆ Actualización disponible: {0}	⬆ มีการอัปเดต: {0}
+Idioma	ภาษา
+Idioma de Windows	ภาษาของ Windows
+El nuevo idioma se verá al reiniciar {0}.	ภาษาใหม่จะมีผลเมื่อเริ่ม {0} ใหม่
+¿Reiniciar ahora?	เริ่มใหม่ตอนนี้หรือไม่

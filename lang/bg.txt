@@ -1,0 +1,135 @@
+&Abrir...	&Отвори...
+&Acerca de {0} {1}	&Относно {0} {1}
+&Archivo	&Файл
+&Buscar actualizaciones	&Проверка за актуализации
+&Buscar...	&Търсене...
+&Codificación	&Кодиране
+&Copiar	&Копиране
+&Deshacer	&Отмяна
+&Documento	&Документ
+&Editar	&Редактиране
+&Fin de línea	&Край на реда
+&Guardar	&Запис
+&Instalar en este equipo...	&Инсталиране на този компютър...
+&Ir a línea...	&Към ред...
+&Lenguaje	&Език
+&Nueva pestaña	&Нов раздел
+&Números de línea	&Номера на редове
+&Pegar	&Поставяне
+&Rehacer	&Повтаряне
+&Salir	&Изход
+&Ver	&Изглед
+&Vista previa	&Преглед
+(vacío)	(празно)
+A&juste de línea	&Пренасяне на редове
+A&justes...	&Настройки...
+Abrir &reciente	Отвори &скорошни
+Aceptar	ОК
+Acercar	Увеличаване
+Ajuste de línea	Пренасяне на редове
+Ajustes - {0} {1}	Настройки - {0} {1}
+Alejar	Намаляване
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Някои знаци не съществуват в ANSI и ще бъдат загубени.\nДа се запише ли в UTF-8?
+Ancho del tabulador	Ширина на табулацията
+Anterior	Предишно
+Apariencia	Външен вид
+Audio o vídeo de la letra	Аудио или видео за текста на песента
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Аудио и видео (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Всички файлове|*.*
+Ay&uda	&Помощ
+Bajar línea	Преместване на реда надолу
+Buscar &anterior	Търси &предишно
+Buscar &siguiente	Търси &следващо
+Buscar actualizaciones al iniciar	Проверка за актуализации при стартиране
+Buscar y reemplazar	Търсене и замяна
+Buscar:	Търсене:
+Cambiar...	Промяна...
+Cancelar	Отказ
+Cerrar &pestaña	Затвори &раздела
+Claro	Светла
+Copiar	Копиране
+Cor&tar	&Изрязване
+Cortar	Изрязване
+D&uplicar línea	Д&убликиране на ред
+Descargando actualización...	Изтегляне на актуализацията...
+Deshacer	Отмяна
+Documento de texto ({0})	Текстов документ ({0})
+Edición	Редактиране
+Editar con {0}	Редактиране с {0}
+Editor de texto ligero para Windows	Лек текстов редактор за Windows
+Editor de texto ligero para Windows.	Лек текстов редактор за Windows.
+El tabulador inserta espacios	Табулацията вмъква интервали
+Elegir archivo...	Избор на файл...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Изберете аудиото или видеото за този текст, за да го следвате по време на възпроизвеждане.
+Eliminar	Изтриване
+Eliminar línea	Изтриване на ред
+Expresión regular	Регулярен израз
+Fuente: {0} {1} pt	Шрифт: {0} {1} pt
+Guardar &como...	Запис &като...
+Guardar t&odo	Запис на &всички
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Има нова версия на {0}: {1} (вие имате {2}).\n\n{3}\n\nДа се изтегли и инсталира ли сега? {0} ще се рестартира и ще запази разделите ви.
+Insertar fecha y hora	Вмъкване на дата и час
+Ir a línea	Към ред
+La descarga no es un ejecutable válido.	Изтегленият файл не е валиден изпълним файл.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Прегледът е наличен за HTML, Markdown, reStructuredText, SVG, CSV/TSV и текстове LRC.
+Lín {0}, Col {1}	Ред {0}, Кол {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Ред {0}, Кол {1}   ({2} избрани)
+MAYÚSCULAS	ГЛАВНИ БУКВИ
+Mayús/minús	Главни/малки букви
+Mostrar números de línea	Показване на номерата на редовете
+No se encontró.	Не е намерено.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Проверката за актуализации не успя. Проверете интернет връзката си.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Сесията не можа да бъде записана:\n{0}\n\nДа се затвори ли въпреки това? Незаписаният текст ще бъде загубен.
+No se pudo instalar:\n{0}	Инсталирането не успя:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Не може да се възпроизведе: MP4 трябва да е H.264 с аудио AAC; аудио MP3 или M4A/AAC.
+Novedades	Новости
+Número de línea (1-{0}):	Номер на ред (1-{0}):
+Ordenar líneas	Сортиране на редове
+Oscuro	Тъмна
+Palabra completa	Цяла дума
+Pegar	Поставяне
+Quitar espacios finales	Премахване на крайните интервали
+R&eemplazar...	&Замяна...
+Reabrir pestaña &cerrada	Отвори отново &затворен раздел
+Recargar desde disco	Презареждане от диска
+Reemplazar	Замяна
+Reemplazar todo	Замени всички
+Reemplazar:	Замяна с:
+Reproducir / pausa	Пускане / пауза
+Resaltado de sintaxis	Подчертаване на синтаксиса
+Restablecer zoom	Нулиране на мащаба
+Restaurar pestañas y texto sin guardar al abrir	При стартиране да се възстановяват разделите и незаписаният текст
+Sangría automática al pulsar Intro	Автоматично отстъпване при натискане на Enter
+Seleccionar &todo	Избор на &всичко
+Seleccionar todo	Избор на всичко
+Siguiente	Следващо
+Silenciar	Заглушаване
+Sin título {0}	Без име {0}
+Sistema	Система
+Subir línea	Преместване на реда нагоре
+Tema	Тема
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Текст (*.txt)|*.txt|Всички файлове (*.*)|*.*
+Texto plano	Обикновен текст
+Tienes la última versión ({0}).	Имате най-новата версия ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Всички файлове (*.*)|*.*|Текст (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 с BOM
+Un editor de texto ligero para Windows.	Лек текстов редактор за Windows.
+Usar como editor &predeterminado...	Използване като редактор по &подразбиране...
+Ventana	Прозорец
+Ventana siempre visible	Прозорец винаги отгоре
+minúsculas	малки букви
+{0} - Instalación	{0} - Инсталиране
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} е променен извън редактора.\nДа се презареди ли и да се загубят промените?
+{0} se ha desinstalado.	{0} е деинсталиран.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} е инсталиран и вече е в менюто "Старт".\n\nИскате ли да го използвате като текстов редактор по подразбиране? Ще се отворят настройките на Windows, за да го изберете.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Да се изтрият ли и данните ви от {0}?\n\nТова са настройките, скорошните файлове и записаната сесия, включително текстът на разделите, които никога не сте записвали.\n\nАко изберете Не, те се запазват, в случай че го инсталирате отново.
+¿Descartar los cambios de {0} y recargar desde disco?	Да се отхвърлят ли промените в {0} и да се презареди ли от диска?
+¿Desinstalar {0}?	Да се деинсталира ли {0}?
+¿Guardar los cambios de {0}?	Да се запишат ли промените в {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Да се инсталира ли {0} {1} на този компютър?\n\nЩе бъде инсталиран само за вашия потребител в:\n{2}\n\nНе са необходими администраторски права.
+◧ Ocultar vista previa	◧ Скриване на прегледа
+◧ Vista previa disponible	◧ Наличен е преглед
+⬆ Actualización disponible: {0}	⬆ Налична е актуализация: {0}
+Idioma	Език
+Idioma de Windows	Езикът на Windows
+El nuevo idioma se verá al reiniciar {0}.	Новият език ще се приложи след рестартиране на {0}.
+¿Reiniciar ahora?	Рестартиране сега?

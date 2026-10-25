@@ -1,0 +1,135 @@
+&Abrir...	खोलें(&O)...
+&Acerca de {0} {1}	{0} {1} के बारे में(&A)
+&Archivo	फ़ाइल(&F)
+&Buscar actualizaciones	अपडेट जाँचें(&U)
+&Buscar...	खोजें(&S)...
+&Codificación	एन्कोडिंग(&E)
+&Copiar	कॉपी करें(&C)
+&Deshacer	पूर्ववत करें(&U)
+&Documento	दस्तावेज़(&D)
+&Editar	संपादित करें(&E)
+&Fin de línea	पंक्ति समाप्ति(&L)
+&Guardar	सहेजें(&S)
+&Instalar en este equipo...	इस कंप्यूटर पर इंस्टॉल करें(&I)...
+&Ir a línea...	पंक्ति पर जाएँ(&G)...
+&Lenguaje	भाषा(&G)
+&Nueva pestaña	नया टैब(&N)
+&Números de línea	पंक्ति संख्या(&N)
+&Pegar	चिपकाएँ(&P)
+&Rehacer	फिर से करें(&R)
+&Salir	बाहर निकलें(&X)
+&Ver	देखें(&V)
+&Vista previa	पूर्वावलोकन(&P)
+(vacío)	(खाली)
+A&juste de línea	पंक्ति रैपिंग(&W)
+A&justes...	सेटिंग(&S)...
+Abrir &reciente	हाल की फ़ाइलें खोलें(&R)
+Aceptar	ठीक है
+Acercar	ज़ूम इन
+Ajuste de línea	पंक्ति रैपिंग
+Ajustes - {0} {1}	सेटिंग - {0} {1}
+Alejar	ज़ूम आउट
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	कुछ वर्ण ANSI में नहीं हैं और खो जाएँगे।\nइसके बजाय UTF-8 में सहेजें?
+Ancho del tabulador	टैब की चौड़ाई
+Anterior	पिछला
+Apariencia	रूप-रंग
+Audio o vídeo de la letra	गीत के बोल का ऑडियो या वीडियो
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	ऑडियो और वीडियो (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|सभी फ़ाइलें|*.*
+Ay&uda	सहायता(&H)
+Bajar línea	पंक्ति नीचे ले जाएँ
+Buscar &anterior	पिछला खोजें(&P)
+Buscar &siguiente	अगला खोजें(&N)
+Buscar actualizaciones al iniciar	शुरू होने पर अपडेट जाँचें
+Buscar y reemplazar	खोजें और बदलें
+Buscar:	खोजें:
+Cambiar...	बदलें...
+Cancelar	रद्द करें
+Cerrar &pestaña	टैब बंद करें(&C)
+Claro	हल्का
+Copiar	कॉपी करें
+Cor&tar	काटें(&T)
+Cortar	काटें
+D&uplicar línea	पंक्ति की प्रति बनाएँ(&U)
+Descargando actualización...	अपडेट डाउनलोड हो रहा है...
+Deshacer	पूर्ववत करें
+Documento de texto ({0})	टेक्स्ट दस्तावेज़ ({0})
+Edición	संपादन
+Editar con {0}	{0} से संपादित करें
+Editor de texto ligero para Windows	Windows के लिए हल्का टेक्स्ट संपादक
+Editor de texto ligero para Windows.	Windows के लिए हल्का टेक्स्ट संपादक।
+El tabulador inserta espacios	Tab कुंजी रिक्त स्थान डालती है
+Elegir archivo...	फ़ाइल चुनें...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	इस गीत के बोल का ऑडियो या वीडियो चुनें ताकि चलते समय उसके साथ चल सकें।
+Eliminar	हटाएँ
+Eliminar línea	पंक्ति हटाएँ
+Expresión regular	रेगुलर एक्सप्रेशन
+Fuente: {0} {1} pt	फ़ॉन्ट: {0} {1} pt
+Guardar &como...	इस रूप में सहेजें(&A)...
+Guardar t&odo	सभी सहेजें(&L)
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} का नया संस्करण उपलब्ध है: {1} (आपके पास {2} है)।\n\n{3}\n\nअभी डाउनलोड करके इंस्टॉल करें? {0} पुनः प्रारंभ होगा और आपके टैब बने रहेंगे।
+Insertar fecha y hora	दिनांक और समय डालें
+Ir a línea	पंक्ति पर जाएँ
+La descarga no es un ejecutable válido.	डाउनलोड की गई फ़ाइल मान्य निष्पादन योग्य फ़ाइल नहीं है।
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	पूर्वावलोकन HTML, Markdown, reStructuredText, SVG, CSV/TSV और LRC गीत के बोल के लिए उपलब्ध है।
+Lín {0}, Col {1}	पंक्ति {0}, स्तंभ {1}
+Lín {0}, Col {1}   ({2} seleccionados)	पंक्ति {0}, स्तंभ {1}   ({2} चयनित)
+MAYÚSCULAS	बड़े अक्षर
+Mayús/minús	बड़े/छोटे अक्षर
+Mostrar números de línea	पंक्ति संख्या दिखाएँ
+No se encontró.	नहीं मिला।
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	अपडेट की जाँच नहीं हो सकी। अपना इंटरनेट कनेक्शन जाँचें।
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	सत्र सहेजा नहीं जा सका:\n{0}\n\nफिर भी बंद करें? बिना सहेजा टेक्स्ट खो जाएगा।
+No se pudo instalar:\n{0}	इंस्टॉल नहीं हो सका:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	चलाया नहीं जा सकता: MP4 H.264 वीडियो और AAC ऑडियो वाला होना चाहिए; ऑडियो MP3 या M4A/AAC होना चाहिए।
+Novedades	नया क्या है
+Número de línea (1-{0}):	पंक्ति संख्या (1-{0}):
+Ordenar líneas	पंक्तियाँ क्रमबद्ध करें
+Oscuro	गहरा
+Palabra completa	पूरा शब्द
+Pegar	चिपकाएँ
+Quitar espacios finales	अंत के रिक्त स्थान हटाएँ
+R&eemplazar...	बदलें(&H)...
+Reabrir pestaña &cerrada	बंद टैब फिर से खोलें(&T)
+Recargar desde disco	डिस्क से पुनः लोड करें
+Reemplazar	बदलें
+Reemplazar todo	सभी बदलें
+Reemplazar:	इससे बदलें:
+Reproducir / pausa	चलाएँ / रोकें
+Resaltado de sintaxis	सिंटैक्स हाइलाइटिंग
+Restablecer zoom	ज़ूम रीसेट करें
+Restaurar pestañas y texto sin guardar al abrir	खोलने पर टैब और बिना सहेजा टेक्स्ट पुनर्स्थापित करें
+Sangría automática al pulsar Intro	Enter दबाने पर स्वचालित इंडेंट
+Seleccionar &todo	सभी चुनें(&A)
+Seleccionar todo	सभी चुनें
+Siguiente	अगला
+Silenciar	म्यूट करें
+Sin título {0}	शीर्षकहीन {0}
+Sistema	सिस्टम
+Subir línea	पंक्ति ऊपर ले जाएँ
+Tema	थीम
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	टेक्स्ट (*.txt)|*.txt|सभी फ़ाइलें (*.*)|*.*
+Texto plano	सादा टेक्स्ट
+Tienes la última versión ({0}).	आपके पास नवीनतम संस्करण ({0}) है।
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	सभी फ़ाइलें (*.*)|*.*|टेक्स्ट (*.txt)|*.txt
+UTF-8 con BOM	BOM के साथ UTF-8
+Un editor de texto ligero para Windows.	Windows के लिए एक हल्का टेक्स्ट संपादक।
+Usar como editor &predeterminado...	डिफ़ॉल्ट संपादक के रूप में उपयोग करें(&D)...
+Ventana	विंडो
+Ventana siempre visible	विंडो हमेशा ऊपर
+minúsculas	छोटे अक्षर
+{0} - Instalación	{0} - इंस्टॉलेशन
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} संपादक के बाहर बदल गया है।\nपुनः लोड करें और अपने बदलाव खो दें?
+{0} se ha desinstalado.	{0} अनइंस्टॉल हो गया है।
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} इंस्टॉल हो गया है और स्टार्ट मेनू में है।\n\nक्या इसे डिफ़ॉल्ट टेक्स्ट संपादक के रूप में उपयोग करना चाहेंगे? चुनने के लिए Windows सेटिंग खुलेगी।
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	क्या अपना {0} डेटा भी हटाएँ?\n\nइसमें आपकी सेटिंग, हाल की फ़ाइलें और सहेजा गया सत्र शामिल है, जिसमें उन टैब का टेक्स्ट भी है जिन्हें आपने कभी सहेजा नहीं।\n\nनहीं चुनने पर वे सुरक्षित रहेंगे, ताकि दोबारा इंस्टॉल करने पर काम आएँ।
+¿Descartar los cambios de {0} y recargar desde disco?	{0} के बदलाव छोड़ें और डिस्क से पुनः लोड करें?
+¿Desinstalar {0}?	{0} अनइंस्टॉल करें?
+¿Guardar los cambios de {0}?	{0} के बदलाव सहेजें?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	इस कंप्यूटर पर {0} {1} इंस्टॉल करें?\n\nयह केवल आपके उपयोगकर्ता के लिए इस स्थान पर इंस्टॉल होगा:\n{2}\n\nप्रशासक होना आवश्यक नहीं है।
+◧ Ocultar vista previa	◧ पूर्वावलोकन छिपाएँ
+◧ Vista previa disponible	◧ पूर्वावलोकन उपलब्ध
+⬆ Actualización disponible: {0}	⬆ अपडेट उपलब्ध: {0}
+Idioma	भाषा
+Idioma de Windows	Windows की भाषा
+El nuevo idioma se verá al reiniciar {0}.	नई भाषा {0} को पुनः प्रारंभ करने पर लागू होगी।
+¿Reiniciar ahora?	अभी पुनः प्रारंभ करें?

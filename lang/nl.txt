@@ -1,0 +1,135 @@
+&Abrir...	&Openen...
+&Acerca de {0} {1}	&Over {0} {1}
+&Archivo	&Bestand
+&Buscar actualizaciones	Zoeken naar &updates
+&Buscar...	&Zoeken...
+&Codificación	&Codering
+&Copiar	&Kopiëren
+&Deshacer	&Ongedaan maken
+&Documento	&Document
+&Editar	B&ewerken
+&Fin de línea	&Regeleinde
+&Guardar	&Opslaan
+&Instalar en este equipo...	&Installeren op deze computer...
+&Ir a línea...	&Ga naar regel...
+&Lenguaje	&Taal
+&Nueva pestaña	&Nieuw tabblad
+&Números de línea	Re&gelnummers
+&Pegar	&Plakken
+&Rehacer	Opnie&uw
+&Salir	&Afsluiten
+&Ver	&Beeld
+&Vista previa	Voor&beeld
+(vacío)	(leeg)
+A&juste de línea	&Tekstterugloop
+A&justes...	&Instellingen...
+Abrir &reciente	&Recent openen
+Aceptar	OK
+Acercar	Inzoomen
+Ajuste de línea	Tekstterugloop
+Ajustes - {0} {1}	Instellingen - {0} {1}
+Alejar	Uitzoomen
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Sommige tekens bestaan niet in ANSI en zouden verloren gaan.\nIn plaats daarvan opslaan als UTF-8?
+Ancho del tabulador	Tabbreedte
+Anterior	Vorige
+Apariencia	Uiterlijk
+Audio o vídeo de la letra	Audio of video van de songtekst
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio en video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Alle bestanden|*.*
+Ay&uda	&Help
+Bajar línea	Regel omlaag
+Buscar &anterior	Zoek &vorige
+Buscar &siguiente	Zoek &volgende
+Buscar actualizaciones al iniciar	Bij opstarten naar updates zoeken
+Buscar y reemplazar	Zoeken en vervangen
+Buscar:	Zoeken:
+Cambiar...	Wijzigen...
+Cancelar	Annuleren
+Cerrar &pestaña	&Tabblad sluiten
+Claro	Licht
+Copiar	Kopiëren
+Cor&tar	Kni&ppen
+Cortar	Knippen
+D&uplicar línea	Regel d&upliceren
+Descargando actualización...	Update downloaden...
+Deshacer	Ongedaan maken
+Documento de texto ({0})	Tekstdocument ({0})
+Edición	Bewerken
+Editar con {0}	Bewerken met {0}
+Editor de texto ligero para Windows	Lichte teksteditor voor Windows
+Editor de texto ligero para Windows.	Lichte teksteditor voor Windows.
+El tabulador inserta espacios	Tab voegt spaties in
+Elegir archivo...	Bestand kiezen...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Kies de audio of video bij deze songtekst om mee te volgen tijdens het afspelen.
+Eliminar	Verwijderen
+Eliminar línea	Regel verwijderen
+Expresión regular	Reguliere expressie
+Fuente: {0} {1} pt	Lettertype: {0} {1} pt
+Guardar &como...	Opslaan &als...
+Guardar t&odo	Alles o&pslaan
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Er is een nieuwe versie van {0}: {1} (u heeft {2}).\n\n{3}\n\nNu downloaden en installeren? {0} wordt opnieuw gestart en behoudt uw tabbladen.
+Insertar fecha y hora	Datum en tijd invoegen
+Ir a línea	Ga naar regel
+La descarga no es un ejecutable válido.	De download is geen geldig uitvoerbaar bestand.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Voorbeeld is beschikbaar voor HTML, Markdown, reStructuredText, SVG, CSV/TSV en LRC-songteksten.
+Lín {0}, Col {1}	Rg {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Rg {0}, Kol {1}   ({2} geselecteerd)
+MAYÚSCULAS	HOOFDLETTERS
+Mayús/minús	Hoofdlettergebruik
+Mostrar números de línea	Regelnummers weergeven
+No se encontró.	Niet gevonden.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Kan niet controleren op updates. Controleer uw internetverbinding.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Kan de sessie niet opslaan:\n{0}\n\nToch sluiten? Niet-opgeslagen tekst gaat verloren.
+No se pudo instalar:\n{0}	Kan niet installeren:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Kan niet afspelen: de MP4 moet H.264 met AAC-audio zijn; audio moet MP3 of M4A/AAC zijn.
+Novedades	Wat is er nieuw
+Número de línea (1-{0}):	Regelnummer (1-{0}):
+Ordenar líneas	Regels sorteren
+Oscuro	Donker
+Palabra completa	Heel woord
+Pegar	Plakken
+Quitar espacios finales	Spaties aan het einde verwijderen
+R&eemplazar...	V&ervangen...
+Reabrir pestaña &cerrada	Gesloten tabblad &heropenen
+Recargar desde disco	Opnieuw laden vanaf schijf
+Reemplazar	Vervangen
+Reemplazar todo	Alles vervangen
+Reemplazar:	Vervangen door:
+Reproducir / pausa	Afspelen / pauzeren
+Resaltado de sintaxis	Syntaxismarkering
+Restablecer zoom	Zoom herstellen
+Restaurar pestañas y texto sin guardar al abrir	Tabbladen en niet-opgeslagen tekst herstellen bij opstarten
+Sangría automática al pulsar Intro	Automatisch inspringen bij Enter
+Seleccionar &todo	&Alles selecteren
+Seleccionar todo	Alles selecteren
+Siguiente	Volgende
+Silenciar	Dempen
+Sin título {0}	Naamloos {0}
+Sistema	Systeem
+Subir línea	Regel omhoog
+Tema	Thema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Tekst (*.txt)|*.txt|Alle bestanden (*.*)|*.*
+Texto plano	Platte tekst
+Tienes la última versión ({0}).	U heeft de nieuwste versie ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Alle bestanden (*.*)|*.*|Tekst (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 met BOM
+Un editor de texto ligero para Windows.	Een lichte teksteditor voor Windows.
+Usar como editor &predeterminado...	Gebruiken als standaard&editor...
+Ventana	Venster
+Ventana siempre visible	Venster altijd zichtbaar
+minúsculas	kleine letters
+{0} - Instalación	{0} - Installatie
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} is buiten de editor gewijzigd.\nOpnieuw laden en uw wijzigingen verliezen?
+{0} se ha desinstalado.	{0} is verwijderd.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} is geïnstalleerd en staat nu in het menu Start.\n\nWilt u het als standaard teksteditor gebruiken? De Windows-instellingen worden geopend zodat u het kunt kiezen.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Ook uw gegevens van {0} verwijderen?\n\nDit zijn uw instellingen, recente bestanden en de opgeslagen sessie, inclusief de tekst van tabbladen die u nooit heeft opgeslagen.\n\nAls u Nee kiest, blijven ze bewaard voor het geval u het opnieuw installeert.
+¿Descartar los cambios de {0} y recargar desde disco?	Wijzigingen in {0} negeren en opnieuw laden vanaf schijf?
+¿Desinstalar {0}?	{0} verwijderen?
+¿Guardar los cambios de {0}?	Wijzigingen in {0} opslaan?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	{0} {1} op deze computer installeren?\n\nHet wordt alleen voor uw gebruiker geïnstalleerd in:\n{2}\n\nBeheerdersrechten zijn niet nodig.
+◧ Ocultar vista previa	◧ Voorbeeld verbergen
+◧ Vista previa disponible	◧ Voorbeeld beschikbaar
+⬆ Actualización disponible: {0}	⬆ Update beschikbaar: {0}
+Idioma	Taal
+Idioma de Windows	Windows-taal
+El nuevo idioma se verá al reiniciar {0}.	De nieuwe taal wordt gebruikt nadat {0} opnieuw is gestart.
+¿Reiniciar ahora?	Nu opnieuw starten?

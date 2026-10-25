@@ -1,0 +1,135 @@
+&Abrir...	&Buka...
+&Acerca de {0} {1}	&Tentang {0} {1}
+&Archivo	&Berkas
+&Buscar actualizaciones	&Periksa pembaruan
+&Buscar...	&Cari...
+&Codificación	&Pengodean
+&Copiar	&Salin
+&Deshacer	&Urungkan
+&Documento	&Dokumen
+&Editar	&Edit
+&Fin de línea	Akhir &baris
+&Guardar	&Simpan
+&Instalar en este equipo...	&Instal di komputer ini...
+&Ir a línea...	Pergi &ke baris...
+&Lenguaje	Ba&hasa
+&Nueva pestaña	Tab bar&u
+&Números de línea	&Nomor baris
+&Pegar	&Tempel
+&Rehacer	U&langi
+&Salir	&Keluar
+&Ver	&Tampilan
+&Vista previa	Pra&tinjau
+(vacío)	(kosong)
+A&juste de línea	Pem&bungkusan baris
+A&justes...	Penga&turan...
+Abrir &reciente	Buka &terbaru
+Aceptar	OK
+Acercar	Perbesar
+Ajuste de línea	Pembungkusan baris
+Ajustes - {0} {1}	Pengaturan - {0} {1}
+Alejar	Perkecil
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Beberapa karakter tidak ada di ANSI dan akan hilang.\nSimpan sebagai UTF-8?
+Ancho del tabulador	Lebar tab
+Anterior	Sebelumnya
+Apariencia	Penampilan
+Audio o vídeo de la letra	Audio atau video lirik
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio dan video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Semua berkas|*.*
+Ay&uda	Ban&tuan
+Bajar línea	Turunkan baris
+Buscar &anterior	Cari seb&elumnya
+Buscar &siguiente	Cari &berikutnya
+Buscar actualizaciones al iniciar	Periksa pembaruan saat memulai
+Buscar y reemplazar	Cari dan ganti
+Buscar:	Cari:
+Cambiar...	Ubah...
+Cancelar	Batal
+Cerrar &pestaña	Tutup &tab
+Claro	Terang
+Copiar	Salin
+Cor&tar	Po&tong
+Cortar	Potong
+D&uplicar línea	Du&plikat baris
+Descargando actualización...	Mengunduh pembaruan...
+Deshacer	Urungkan
+Documento de texto ({0})	Dokumen teks ({0})
+Edición	Edit
+Editar con {0}	Edit dengan {0}
+Editor de texto ligero para Windows	Editor teks ringan untuk Windows
+Editor de texto ligero para Windows.	Editor teks ringan untuk Windows.
+El tabulador inserta espacios	Tab menyisipkan spasi
+Elegir archivo...	Pilih berkas...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Pilih audio atau video untuk lirik ini agar dapat mengikutinya saat diputar.
+Eliminar	Hapus
+Eliminar línea	Hapus baris
+Expresión regular	Ekspresi reguler
+Fuente: {0} {1} pt	Fon: {0} {1} pt
+Guardar &como...	Simpan seb&agai...
+Guardar t&odo	Simpan sem&ua
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Ada versi baru {0}: {1} (Anda memiliki {2}).\n\n{3}\n\nUnduh dan instal sekarang? {0} akan dimulai ulang dan tab Anda tetap terjaga.
+Insertar fecha y hora	Sisipkan tanggal dan waktu
+Ir a línea	Ke baris
+La descarga no es un ejecutable válido.	Unduhan bukan berkas yang dapat dieksekusi yang valid.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Pratinjau tersedia untuk HTML, Markdown, reStructuredText, SVG, CSV/TSV, dan lirik LRC.
+Lín {0}, Col {1}	Brs {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Brs {0}, Kol {1}   ({2} dipilih)
+MAYÚSCULAS	HURUF BESAR
+Mayús/minús	Besar/kecil
+Mostrar números de línea	Tampilkan nomor baris
+No se encontró.	Tidak ditemukan.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Tidak dapat memeriksa pembaruan. Periksa koneksi internet Anda.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Tidak dapat menyimpan sesi:\n{0}\n\nTetap tutup? Teks yang belum disimpan akan hilang.
+No se pudo instalar:\n{0}	Tidak dapat menginstal:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Tidak dapat memutar: MP4 harus H.264 dengan audio AAC; audio harus MP3 atau M4A/AAC.
+Novedades	Yang baru
+Número de línea (1-{0}):	Nomor baris (1-{0}):
+Ordenar líneas	Urutkan baris
+Oscuro	Gelap
+Palabra completa	Kata utuh
+Pegar	Tempel
+Quitar espacios finales	Hapus spasi di akhir
+R&eemplazar...	G&anti...
+Reabrir pestaña &cerrada	Buka kembali tab yang &ditutup
+Recargar desde disco	Muat ulang dari disk
+Reemplazar	Ganti
+Reemplazar todo	Ganti semua
+Reemplazar:	Ganti dengan:
+Reproducir / pausa	Putar / jeda
+Resaltado de sintaxis	Penyorotan sintaks
+Restablecer zoom	Atur ulang zoom
+Restaurar pestañas y texto sin guardar al abrir	Pulihkan tab dan teks yang belum disimpan saat dibuka
+Sangría automática al pulsar Intro	Indentasi otomatis saat menekan Enter
+Seleccionar &todo	Pilih &semua
+Seleccionar todo	Pilih semua
+Siguiente	Berikutnya
+Silenciar	Bisukan
+Sin título {0}	Tanpa judul {0}
+Sistema	Sistem
+Subir línea	Naikkan baris
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Teks (*.txt)|*.txt|Semua berkas (*.*)|*.*
+Texto plano	Teks biasa
+Tienes la última versión ({0}).	Anda memakai versi terbaru ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Semua berkas (*.*)|*.*|Teks (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 dengan BOM
+Un editor de texto ligero para Windows.	Editor teks ringan untuk Windows.
+Usar como editor &predeterminado...	Gunakan sebagai editor &bawaan...
+Ventana	Jendela
+Ventana siempre visible	Jendela selalu di atas
+minúsculas	huruf kecil
+{0} - Instalación	{0} - Instalasi
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} telah berubah di luar editor.\nMuat ulang dan kehilangan perubahan Anda?
+{0} se ha desinstalado.	{0} telah dihapus instalasinya.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} telah diinstal dan sudah ada di menu Start.\n\nIngin menggunakannya sebagai editor teks bawaan? Pengaturan Windows akan terbuka agar Anda dapat memilihnya.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Hapus juga data {0} Anda?\n\nIni berisi pengaturan, berkas terbaru, dan sesi tersimpan, termasuk teks tab yang tidak pernah Anda simpan.\n\nJika memilih Tidak, data tetap disimpan kalau Anda menginstalnya lagi.
+¿Descartar los cambios de {0} y recargar desde disco?	Buang perubahan {0} dan muat ulang dari disk?
+¿Desinstalar {0}?	Hapus instalasi {0}?
+¿Guardar los cambios de {0}?	Simpan perubahan {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Instal {0} {1} di komputer ini?\n\nAkan diinstal hanya untuk pengguna Anda di:\n{2}\n\nTidak perlu menjadi administrator.
+◧ Ocultar vista previa	◧ Sembunyikan pratinjau
+◧ Vista previa disponible	◧ Pratinjau tersedia
+⬆ Actualización disponible: {0}	⬆ Pembaruan tersedia: {0}
+Idioma	Bahasa
+Idioma de Windows	Bahasa Windows
+El nuevo idioma se verá al reiniciar {0}.	Bahasa baru akan diterapkan saat {0} dimulai ulang.
+¿Reiniciar ahora?	Mulai ulang sekarang?

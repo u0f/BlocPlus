@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 (2026-10-25)
+
+- **BlocPlus en 33 idiomas**: usa el idioma de Windows (o inglés si no está disponible) y se puede cambiar en Ajustes > Idioma. Al cambiarlo, ofrece reiniciar el programa en ese momento.
+  - Idiomas: alemán, búlgaro, catalán, checo, chino (simplificado y tradicional), coreano, danés, eslovaco, español, euskera, finés, francés, gallego, griego, hindi, húngaro, indonesio, inglés, italiano, japonés, neerlandés, noruego, polaco, portugués (Brasil y Portugal), rumano, ruso, sueco, tailandés, turco, ucraniano y vietnamita.
+- Botón GitHub en Ajustes, junto al nombre del programa, que abre la página del proyecto.
+
 ## 1.2.0 (2026-10-25)
 
 - **Varios cursores**, como en VS Code: Ctrl+clic añade un cursor y Ctrl+arrastrar añade otra selección. Se escribe, se borra y se mueve (flechas, Inicio, Fin, con Shift para seleccionar) en todos a la vez. Copiar y cortar juntan las selecciones, pegar reparte una línea por cursor y un solo Ctrl+Z lo deshace todo. Escape o un clic normal vuelven a un cursor.

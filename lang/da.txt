@@ -1,0 +1,135 @@
+&Abrir...	&Åbn...
+&Acerca de {0} {1}	&Om {0} {1}
+&Archivo	&Filer
+&Buscar actualizaciones	&Søg efter opdateringer
+&Buscar...	&Find...
+&Codificación	&Kodning
+&Copiar	&Kopiér
+&Deshacer	&Fortryd
+&Documento	&Dokument
+&Editar	&Rediger
+&Fin de línea	&Linjeskift
+&Guardar	&Gem
+&Instalar en este equipo...	&Installer på denne computer...
+&Ir a línea...	&Gå til linje...
+&Lenguaje	&Sprog
+&Nueva pestaña	&Ny fane
+&Números de línea	&Linjenumre
+&Pegar	&Sæt ind
+&Rehacer	&Gentag
+&Salir	&Afslut
+&Ver	&Vis
+&Vista previa	&Forhåndsvisning
+(vacío)	(tom)
+A&juste de línea	&Ombrydning
+A&justes...	&Indstillinger...
+Abrir &reciente	Åbn &seneste
+Aceptar	OK
+Acercar	Zoom ind
+Ajuste de línea	Ombrydning
+Ajustes - {0} {1}	Indstillinger - {0} {1}
+Alejar	Zoom ud
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Nogle tegn findes ikke i ANSI og ville gå tabt.\nGem i stedet i UTF-8?
+Ancho del tabulador	Tabulatorbredde
+Anterior	Forrige
+Apariencia	Udseende
+Audio o vídeo de la letra	Lyd eller video til sangteksten
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Lyd og video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Alle filer|*.*
+Ay&uda	H&jælp
+Bajar línea	Flyt linje ned
+Buscar &anterior	Find &forrige
+Buscar &siguiente	Find &næste
+Buscar actualizaciones al iniciar	Søg efter opdateringer ved start
+Buscar y reemplazar	Find og erstat
+Buscar:	Find:
+Cambiar...	Skift...
+Cancelar	Annuller
+Cerrar &pestaña	Luk &fane
+Claro	Lyst
+Copiar	Kopiér
+Cor&tar	Kl&ip
+Cortar	Klip
+D&uplicar línea	D&upliker linje
+Descargando actualización...	Henter opdatering...
+Deshacer	Fortryd
+Documento de texto ({0})	Tekstdokument ({0})
+Edición	Redigering
+Editar con {0}	Rediger med {0}
+Editor de texto ligero para Windows	Let teksteditor til Windows
+Editor de texto ligero para Windows.	Let teksteditor til Windows.
+El tabulador inserta espacios	Tabulator indsætter mellemrum
+Elegir archivo...	Vælg fil...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Vælg lyden eller videoen til denne sangtekst, så den følger med under afspilning.
+Eliminar	Slet
+Eliminar línea	Slet linje
+Expresión regular	Regulært udtryk
+Fuente: {0} {1} pt	Skrifttype: {0} {1} pt
+Guardar &como...	Gem s&om...
+Guardar t&odo	Gem a&lle
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Der er en ny version af {0}: {1} (du har {2}).\n\n{3}\n\nVil du hente og installere den nu? {0} genstarter og beholder dine faner.
+Insertar fecha y hora	Indsæt dato og klokkeslæt
+Ir a línea	Gå til linje
+La descarga no es un ejecutable válido.	Den hentede fil er ikke en gyldig programfil.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Visning er tilgængelig for HTML, Markdown, reStructuredText, SVG, CSV/TSV og LRC-sangtekster.
+Lín {0}, Col {1}	Lin {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Lin {0}, Kol {1}   ({2} markeret)
+MAYÚSCULAS	STORE BOGSTAVER
+Mayús/minús	Store/små bogstaver
+Mostrar números de línea	Vis linjenumre
+No se encontró.	Ikke fundet.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Kunne ikke søge efter opdateringer. Tjek din internetforbindelse.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Sessionen kunne ikke gemmes:\n{0}\n\nLuk alligevel? Tekst, der ikke er gemt, går tabt.
+No se pudo instalar:\n{0}	Kunne ikke installeres:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Kan ikke afspilles: MP4 skal være H.264 med AAC-lyd; lyden MP3 eller M4A/AAC.
+Novedades	Nyheder
+Número de línea (1-{0}):	Linjenummer (1-{0}):
+Ordenar líneas	Sorter linjer
+Oscuro	Mørkt
+Palabra completa	Hele ord
+Pegar	Sæt ind
+Quitar espacios finales	Fjern afsluttende mellemrum
+R&eemplazar...	&Erstat...
+Reabrir pestaña &cerrada	Åbn lukket &fane igen
+Recargar desde disco	Genindlæs fra disk
+Reemplazar	Erstat
+Reemplazar todo	Erstat alle
+Reemplazar:	Erstat med:
+Reproducir / pausa	Afspil / pause
+Resaltado de sintaxis	Syntaksfremhævning
+Restablecer zoom	Nulstil zoom
+Restaurar pestañas y texto sin guardar al abrir	Gendan faner og ugemt tekst ved start
+Sangría automática al pulsar Intro	Automatisk indrykning ved Enter
+Seleccionar &todo	Marker a&lt
+Seleccionar todo	Marker alt
+Siguiente	Næste
+Silenciar	Slå lyden fra
+Sin título {0}	Unavngivet {0}
+Sistema	System
+Subir línea	Flyt linje op
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Tekst (*.txt)|*.txt|Alle filer (*.*)|*.*
+Texto plano	Almindelig tekst
+Tienes la última versión ({0}).	Du har den nyeste version ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Alle filer (*.*)|*.*|Tekst (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 med BOM
+Un editor de texto ligero para Windows.	En let teksteditor til Windows.
+Usar como editor &predeterminado...	Brug som &standardeditor...
+Ventana	Vindue
+Ventana siempre visible	Vindue altid øverst
+minúsculas	små bogstaver
+{0} - Instalación	{0} - Installation
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} er ændret uden for editoren.\nGenindlæs den og mist dine ændringer?
+{0} se ha desinstalado.	{0} er blevet afinstalleret.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} er installeret og findes nu i menuen Start.\n\nVil du bruge den som standardteksteditor? Windows-indstillinger åbnes, så du kan vælge den.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Slet også dine data for {0}?\n\nDet er dine indstillinger, seneste filer og den gemte session, herunder teksten i faner, du aldrig har gemt.\n\nHvis du vælger Nej, beholdes de, hvis du installerer den igen.
+¿Descartar los cambios de {0} y recargar desde disco?	Kassér ændringerne i {0} og genindlæs fra disk?
+¿Desinstalar {0}?	Afinstaller {0}?
+¿Guardar los cambios de {0}?	Gem ændringerne i {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Installer {0} {1} på denne computer?\n\nDen installeres kun for din bruger i:\n{2}\n\nDu behøver ikke at være administrator.
+◧ Ocultar vista previa	◧ Skjul visning
+◧ Vista previa disponible	◧ Visning tilgængelig
+⬆ Actualización disponible: {0}	⬆ Opdatering tilgængelig: {0}
+Idioma	Sprog
+Idioma de Windows	Windows-sprog
+El nuevo idioma se verá al reiniciar {0}.	Det nye sprog anvendes, når {0} genstartes.
+¿Reiniciar ahora?	Genstart nu?

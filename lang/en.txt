@@ -1,0 +1,135 @@
+&Abrir...	&Open...
+&Acerca de {0} {1}	&About {0} {1}
+&Archivo	&File
+&Buscar actualizaciones	Check for &updates
+&Buscar...	&Find...
+&Codificación	E&ncoding
+&Copiar	&Copy
+&Deshacer	&Undo
+&Documento	&Document
+&Editar	&Edit
+&Fin de línea	&Line ending
+&Guardar	&Save
+&Instalar en este equipo...	&Install on this computer...
+&Ir a línea...	&Go to line...
+&Lenguaje	Lan&guage
+&Nueva pestaña	&New tab
+&Números de línea	Line &numbers
+&Pegar	&Paste
+&Rehacer	&Redo
+&Salir	E&xit
+&Ver	&View
+&Vista previa	&Preview
+(vacío)	(empty)
+A&juste de línea	&Word wrap
+A&justes...	Se&ttings...
+Abrir &reciente	Open &recent
+Aceptar	OK
+Acercar	Zoom in
+Ajuste de línea	Word wrap
+Ajustes - {0} {1}	Settings - {0} {1}
+Alejar	Zoom out
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Some characters do not exist in ANSI and would be lost.\nSave as UTF-8 instead?
+Ancho del tabulador	Tab width
+Anterior	Previous
+Apariencia	Appearance
+Audio o vídeo de la letra	Lyrics audio or video
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio and video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|All files|*.*
+Ay&uda	&Help
+Bajar línea	Move line down
+Buscar &anterior	Find &previous
+Buscar &siguiente	Find &next
+Buscar actualizaciones al iniciar	Check for updates on startup
+Buscar y reemplazar	Find and replace
+Buscar:	Find:
+Cambiar...	Change...
+Cancelar	Cancel
+Cerrar &pestaña	Close &tab
+Claro	Light
+Copiar	Copy
+Cor&tar	Cu&t
+Cortar	Cut
+D&uplicar línea	D&uplicate line
+Descargando actualización...	Downloading update...
+Deshacer	Undo
+Documento de texto ({0})	Text document ({0})
+Edición	Editing
+Editar con {0}	Edit with {0}
+Editor de texto ligero para Windows	Lightweight text editor for Windows
+Editor de texto ligero para Windows.	Lightweight text editor for Windows.
+El tabulador inserta espacios	Tab inserts spaces
+Elegir archivo...	Choose file...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Choose the audio or video for these lyrics to follow along as it plays.
+Eliminar	Delete
+Eliminar línea	Delete line
+Expresión regular	Regular expression
+Fuente: {0} {1} pt	Font: {0} {1} pt
+Guardar &como...	Save &as...
+Guardar t&odo	Save a&ll
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	There is a new version of {0}: {1} (you have {2}).\n\n{3}\n\nDownload and install it now? {0} will restart and keep your tabs.
+Insertar fecha y hora	Insert date and time
+Ir a línea	Go to line
+La descarga no es un ejecutable válido.	The download is not a valid executable.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Preview is available for HTML, Markdown, reStructuredText, SVG, CSV/TSV and LRC lyrics.
+Lín {0}, Col {1}	Ln {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Ln {0}, Col {1}   ({2} selected)
+MAYÚSCULAS	UPPERCASE
+Mayús/minús	Change case
+Mostrar números de línea	Show line numbers
+No se encontró.	Not found.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Could not check for updates. Check your internet connection.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Could not save the session:\n{0}\n\nClose anyway? Unsaved text will be lost.
+No se pudo instalar:\n{0}	Could not install:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Cannot play: the MP4 must be H.264 with AAC audio; audio must be MP3 or M4A/AAC.
+Novedades	What's new
+Número de línea (1-{0}):	Line number (1-{0}):
+Ordenar líneas	Sort lines
+Oscuro	Dark
+Palabra completa	Whole word
+Pegar	Paste
+Quitar espacios finales	Trim trailing spaces
+R&eemplazar...	R&eplace...
+Reabrir pestaña &cerrada	Reopen &closed tab
+Recargar desde disco	Reload from disk
+Reemplazar	Replace
+Reemplazar todo	Replace all
+Reemplazar:	Replace with:
+Reproducir / pausa	Play / pause
+Resaltado de sintaxis	Syntax highlighting
+Restablecer zoom	Reset zoom
+Restaurar pestañas y texto sin guardar al abrir	Restore tabs and unsaved text on startup
+Sangría automática al pulsar Intro	Auto-indent on Enter
+Seleccionar &todo	Select &all
+Seleccionar todo	Select all
+Siguiente	Next
+Silenciar	Mute
+Sin título {0}	Untitled {0}
+Sistema	System
+Subir línea	Move line up
+Tema	Theme
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|All files (*.*)|*.*
+Texto plano	Plain text
+Tienes la última versión ({0}).	You have the latest version ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	All files (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 with BOM
+Un editor de texto ligero para Windows.	A lightweight text editor for Windows.
+Usar como editor &predeterminado...	Use as &default editor...
+Ventana	Window
+Ventana siempre visible	Always on top
+minúsculas	lowercase
+{0} - Instalación	{0} - Setup
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} has changed outside the editor.\nReload it and lose your changes?
+{0} se ha desinstalado.	{0} has been uninstalled.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} has been installed and is now in the Start menu.\n\nDo you want to use it as your default text editor? Windows settings will open so you can choose it.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Also delete your {0} data?\n\nThis is your settings, recent files and the saved session, including the text of tabs you never saved.\n\nIf you choose No, they are kept in case you reinstall it.
+¿Descartar los cambios de {0} y recargar desde disco?	Discard the changes to {0} and reload from disk?
+¿Desinstalar {0}?	Uninstall {0}?
+¿Guardar los cambios de {0}?	Save changes to {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Install {0} {1} on this computer?\n\nIt will be installed for your user only in:\n{2}\n\nAdministrator rights are not required.
+◧ Ocultar vista previa	◧ Hide preview
+◧ Vista previa disponible	◧ Preview available
+⬆ Actualización disponible: {0}	⬆ Update available: {0}
+Idioma	Language
+Idioma de Windows	Windows language
+El nuevo idioma se verá al reiniciar {0}.	The new language will appear when {0} restarts.
+¿Reiniciar ahora?	Restart now?

@@ -1,0 +1,135 @@
+&Abrir...	&Відкрити...
+&Acerca de {0} {1}	&Про програму {0} {1}
+&Archivo	&Файл
+&Buscar actualizaciones	&Перевірити оновлення
+&Buscar...	&Знайти...
+&Codificación	&Кодування
+&Copiar	&Копіювати
+&Deshacer	&Скасувати
+&Documento	&Документ
+&Editar	&Редагування
+&Fin de línea	&Кінець рядка
+&Guardar	&Зберегти
+&Instalar en este equipo...	&Установити на цей комп'ютер...
+&Ir a línea...	&Перейти до рядка...
+&Lenguaje	&Мова
+&Nueva pestaña	&Нова вкладка
+&Números de línea	&Номери рядків
+&Pegar	&Вставити
+&Rehacer	&Повторити
+&Salir	&Вихід
+&Ver	&Вигляд
+&Vista previa	&Перегляд
+(vacío)	(порожньо)
+A&juste de línea	&Перенесення рядків
+A&justes...	&Параметри...
+Abrir &reciente	Відкрити &нещодавні
+Aceptar	OK
+Acercar	Збільшити
+Ajuste de línea	Перенесення рядків
+Ajustes - {0} {1}	Параметри - {0} {1}
+Alejar	Зменшити
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Деяких символів немає в ANSI, і вони будуть втрачені.\nЗберегти в UTF-8?
+Ancho del tabulador	Ширина табуляції
+Anterior	Назад
+Apariencia	Оформлення
+Audio o vídeo de la letra	Аудіо або відео для тексту пісні
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Аудіо та відео (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Усі файли|*.*
+Ay&uda	&Довідка
+Bajar línea	Перемістити рядок униз
+Buscar &anterior	Знайти &попереднє
+Buscar &siguiente	Знайти &наступне
+Buscar actualizaciones al iniciar	Перевіряти оновлення під час запуску
+Buscar y reemplazar	Пошук і заміна
+Buscar:	Знайти:
+Cambiar...	Змінити...
+Cancelar	Скасувати
+Cerrar &pestaña	Закрити &вкладку
+Claro	Світла
+Copiar	Копіювати
+Cor&tar	&Вирізати
+Cortar	Вирізати
+D&uplicar línea	&Дублювати рядок
+Descargando actualización...	Завантаження оновлення...
+Deshacer	Скасувати
+Documento de texto ({0})	Текстовий документ ({0})
+Edición	Редагування
+Editar con {0}	Редагувати в {0}
+Editor de texto ligero para Windows	Легкий текстовий редактор для Windows
+Editor de texto ligero para Windows.	Легкий текстовий редактор для Windows.
+El tabulador inserta espacios	Табуляція вставляє пробіли
+Elegir archivo...	Вибрати файл...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Виберіть аудіо або відео для цього тексту, щоб слідувати за ним під час відтворення.
+Eliminar	Видалити
+Eliminar línea	Видалити рядок
+Expresión regular	Регулярний вираз
+Fuente: {0} {1} pt	Шрифт: {0} {1} пт
+Guardar &como...	Зберегти &як...
+Guardar t&odo	Зберегти &все
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Доступна нова версія {0}: {1} (у вас {2}).\n\n{3}\n\nЗавантажити та встановити зараз? {0} перезапуститься та збереже ваші вкладки.
+Insertar fecha y hora	Вставити дату й час
+Ir a línea	Перейти до рядка
+La descarga no es un ejecutable válido.	Завантажений файл не є дійсним виконуваним файлом.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Перегляд доступний для HTML, Markdown, reStructuredText, SVG, CSV/TSV і текстів LRC.
+Lín {0}, Col {1}	Рд {0}, Ст {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Рд {0}, Ст {1}   (виділено: {2})
+MAYÚSCULAS	ВЕЛИКІ ЛІТЕРИ
+Mayús/minús	Регістр
+Mostrar números de línea	Показувати номери рядків
+No se encontró.	Не знайдено.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Не вдалося перевірити оновлення. Перевірте підключення до інтернету.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Не вдалося зберегти сеанс:\n{0}\n\nВсе одно закрити? Незбережений текст буде втрачено.
+No se pudo instalar:\n{0}	Не вдалося встановити:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Відтворення неможливе: MP4 має бути H.264 зі звуком AAC; аудіо - MP3 або M4A/AAC.
+Novedades	Що нового
+Número de línea (1-{0}):	Номер рядка (1-{0}):
+Ordenar líneas	Сортування рядків
+Oscuro	Темна
+Palabra completa	Слово цілком
+Pegar	Вставити
+Quitar espacios finales	Видалити пробіли в кінці рядків
+R&eemplazar...	&Замінити...
+Reabrir pestaña &cerrada	Відкрити &закриту вкладку
+Recargar desde disco	Перезавантажити з диска
+Reemplazar	Замінити
+Reemplazar todo	Замінити все
+Reemplazar:	Замінити на:
+Reproducir / pausa	Відтворення / пауза
+Resaltado de sintaxis	Підсвічування синтаксису
+Restablecer zoom	Скинути масштаб
+Restaurar pestañas y texto sin guardar al abrir	Відновлювати вкладки та незбережений текст під час запуску
+Sangría automática al pulsar Intro	Автовідступ після натискання Enter
+Seleccionar &todo	Вибрати &все
+Seleccionar todo	Вибрати все
+Siguiente	Далі
+Silenciar	Вимкнути звук
+Sin título {0}	Без назви {0}
+Sistema	Системна
+Subir línea	Перемістити рядок угору
+Tema	Тема
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Текст (*.txt)|*.txt|Усі файли (*.*)|*.*
+Texto plano	Звичайний текст
+Tienes la última versión ({0}).	У вас остання версія ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Усі файли (*.*)|*.*|Текст (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 з BOM
+Un editor de texto ligero para Windows.	Легкий текстовий редактор для Windows.
+Usar como editor &predeterminado...	Використовувати як редактор за &замовчуванням...
+Ventana	Вікно
+Ventana siempre visible	Вікно завжди зверху
+minúsculas	малі літери
+{0} - Instalación	{0} - Установлення
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	Файл {0} було змінено поза редактором.\nПерезавантажити його та втратити зміни?
+{0} se ha desinstalado.	{0} видалено.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} встановлено, і вже є в меню "Пуск".\n\nВикористовувати його як текстовий редактор за замовчуванням? Відкриються параметри Windows, де можна його вибрати.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Видалити також ваші дані {0}?\n\nЦе параметри, нещодавні файли та збережений сеанс, зокрема текст вкладок, які ви ніколи не зберігали.\n\nЯкщо вибрати "Ні", вони збережуться на випадок повторного встановлення.
+¿Descartar los cambios de {0} y recargar desde disco?	Скасувати зміни в {0} і перезавантажити з диска?
+¿Desinstalar {0}?	Видалити {0}?
+¿Guardar los cambios de {0}?	Зберегти зміни в {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Установити {0} {1} на цей комп'ютер?\n\nУстановлення буде виконано лише для вашого користувача в:\n{2}\n\nПрава адміністратора не потрібні.
+◧ Ocultar vista previa	◧ Сховати перегляд
+◧ Vista previa disponible	◧ Доступний перегляд
+⬆ Actualización disponible: {0}	⬆ Доступне оновлення: {0}
+Idioma	Мова
+Idioma de Windows	Мова Windows
+El nuevo idioma se verá al reiniciar {0}.	Нову мову буде застосовано після перезапуску {0}.
+¿Reiniciar ahora?	Перезапустити зараз?

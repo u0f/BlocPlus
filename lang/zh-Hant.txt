@@ -1,0 +1,135 @@
+&Abrir...	開啟(&O)...
+&Acerca de {0} {1}	關於 {0} {1}(&A)
+&Archivo	檔案(&F)
+&Buscar actualizaciones	檢查更新(&U)
+&Buscar...	尋找(&S)...
+&Codificación	編碼(&E)
+&Copiar	複製(&C)
+&Deshacer	復原(&U)
+&Documento	文件(&D)
+&Editar	編輯(&E)
+&Fin de línea	行尾(&L)
+&Guardar	儲存(&S)
+&Instalar en este equipo...	安裝到此電腦(&I)...
+&Ir a línea...	移至行(&G)...
+&Lenguaje	語言(&G)
+&Nueva pestaña	新增索引標籤(&N)
+&Números de línea	行號(&N)
+&Pegar	貼上(&P)
+&Rehacer	取消復原(&R)
+&Salir	結束(&X)
+&Ver	檢視(&V)
+&Vista previa	預覽(&P)
+(vacío)	(空白)
+A&juste de línea	自動換行(&W)
+A&justes...	設定(&S)...
+Abrir &reciente	開啟最近的檔案(&R)
+Aceptar	確定
+Acercar	放大
+Ajuste de línea	自動換行
+Ajustes - {0} {1}	設定 - {0} {1}
+Alejar	縮小
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	部分字元不存在於 ANSI 中,將會遺失。\n要改用 UTF-8 儲存嗎?
+Ancho del tabulador	定位點寬度
+Anterior	上一個
+Apariencia	外觀
+Audio o vídeo de la letra	歌詞的音訊或影片
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	音訊和影片 (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|所有檔案|*.*
+Ay&uda	說明(&H)
+Bajar línea	下移一行
+Buscar &anterior	尋找上一個(&P)
+Buscar &siguiente	尋找下一個(&N)
+Buscar actualizaciones al iniciar	啟動時檢查更新
+Buscar y reemplazar	尋找與取代
+Buscar:	尋找:
+Cambiar...	變更...
+Cancelar	取消
+Cerrar &pestaña	關閉索引標籤(&C)
+Claro	淺色
+Copiar	複製
+Cor&tar	剪下(&T)
+Cortar	剪下
+D&uplicar línea	複製行(&U)
+Descargando actualización...	正在下載更新...
+Deshacer	復原
+Documento de texto ({0})	文字文件 ({0})
+Edición	編輯
+Editar con {0}	使用 {0} 編輯
+Editor de texto ligero para Windows	適用於 Windows 的輕量文字編輯器
+Editor de texto ligero para Windows.	適用於 Windows 的輕量文字編輯器。
+El tabulador inserta espacios	Tab 鍵插入空格
+Elegir archivo...	選擇檔案...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	選擇此歌詞對應的音訊或影片,以便在播放時跟隨。
+Eliminar	刪除
+Eliminar línea	刪除行
+Expresión regular	規則運算式
+Fuente: {0} {1} pt	字型: {0} {1} pt
+Guardar &como...	另存新檔(&A)...
+Guardar t&odo	全部儲存(&L)
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} 有新版本: {1} (目前為 {2})。\n\n{3}\n\n要立即下載並安裝嗎? {0} 將重新啟動並保留你的索引標籤。
+Insertar fecha y hora	插入日期和時間
+Ir a línea	移至行
+La descarga no es un ejecutable válido.	下載的檔案不是有效的可執行檔。
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	預覽適用於 HTML、Markdown、reStructuredText、SVG、CSV/TSV 和 LRC 歌詞。
+Lín {0}, Col {1}	行 {0},欄 {1}
+Lín {0}, Col {1}   ({2} seleccionados)	行 {0},欄 {1}   (已選取 {2})
+MAYÚSCULAS	大寫
+Mayús/minús	大小寫
+Mostrar números de línea	顯示行號
+No se encontró.	找不到。
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	無法檢查更新。請檢查你的網際網路連線。
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	無法儲存工作階段:\n{0}\n\n仍要關閉嗎? 未儲存的文字將會遺失。
+No se pudo instalar:\n{0}	無法安裝:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	無法播放: MP4 必須為 H.264 影片搭配 AAC 音訊; 音訊檔案必須為 MP3 或 M4A/AAC。
+Novedades	新功能
+Número de línea (1-{0}):	行號 (1-{0}):
+Ordenar líneas	排序行
+Oscuro	深色
+Palabra completa	全字比對
+Pegar	貼上
+Quitar espacios finales	移除行尾空白
+R&eemplazar...	取代(&H)...
+Reabrir pestaña &cerrada	重新開啟已關閉的索引標籤(&T)
+Recargar desde disco	從磁碟重新載入
+Reemplazar	取代
+Reemplazar todo	全部取代
+Reemplazar:	取代為:
+Reproducir / pausa	播放 / 暫停
+Resaltado de sintaxis	語法醒目提示
+Restablecer zoom	重設縮放
+Restaurar pestañas y texto sin guardar al abrir	啟動時還原索引標籤和未儲存的文字
+Sangría automática al pulsar Intro	按 Enter 時自動縮排
+Seleccionar &todo	全選(&A)
+Seleccionar todo	全選
+Siguiente	下一個
+Silenciar	靜音
+Sin título {0}	未命名 {0}
+Sistema	系統
+Subir línea	上移一行
+Tema	佈景主題
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	文字 (*.txt)|*.txt|所有檔案 (*.*)|*.*
+Texto plano	純文字
+Tienes la última versión ({0}).	你使用的已是最新版本 ({0})。
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	所有檔案 (*.*)|*.*|文字 (*.txt)|*.txt
+UTF-8 con BOM	含 BOM 的 UTF-8
+Un editor de texto ligero para Windows.	一款適用於 Windows 的輕量文字編輯器。
+Usar como editor &predeterminado...	設為預設編輯器(&D)...
+Ventana	視窗
+Ventana siempre visible	視窗永遠在最上層
+minúsculas	小寫
+{0} - Instalación	{0} - 安裝
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} 已在編輯器之外變更。\n要重新載入並捨棄你的變更嗎?
+{0} se ha desinstalado.	{0} 已解除安裝。
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} 已安裝,並已加入「開始」功能表。\n\n要將它設為預設文字編輯器嗎? 將開啟 Windows 設定供你選擇。
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	要一併刪除你的 {0} 資料嗎?\n\n包括你的設定、最近的檔案和已儲存的工作階段,其中有你從未儲存過的索引標籤文字。\n\n若選擇「否」,這些資料將會保留,以便你日後重新安裝時使用。
+¿Descartar los cambios de {0} y recargar desde disco?	要捨棄 {0} 的變更並從磁碟重新載入嗎?
+¿Desinstalar {0}?	要解除安裝 {0} 嗎?
+¿Guardar los cambios de {0}?	要儲存 {0} 的變更嗎?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	要將 {0} {1} 安裝到此電腦嗎?\n\n將僅為你的使用者安裝到:\n{2}\n\n不需要系統管理員權限。
+◧ Ocultar vista previa	◧ 隱藏預覽
+◧ Vista previa disponible	◧ 預覽可用
+⬆ Actualización disponible: {0}	⬆ 有可用更新: {0}
+Idioma	語言
+Idioma de Windows	Windows 語言
+El nuevo idioma se verá al reiniciar {0}.	新語言將在 {0} 重新啟動後生效。
+¿Reiniciar ahora?	立即重新啟動?

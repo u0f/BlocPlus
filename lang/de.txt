@@ -1,0 +1,135 @@
+&Abrir...	&Öffnen...
+&Acerca de {0} {1}	&Über {0} {1}
+&Archivo	&Datei
+&Buscar actualizaciones	Nach &Updates suchen
+&Buscar...	&Suchen...
+&Codificación	&Kodierung
+&Copiar	&Kopieren
+&Deshacer	&Rückgängig
+&Documento	D&okument
+&Editar	&Bearbeiten
+&Fin de línea	&Zeilenende
+&Guardar	&Speichern
+&Instalar en este equipo...	Auf diesem Computer &installieren...
+&Ir a línea...	&Gehe zu Zeile...
+&Lenguaje	S&prache
+&Nueva pestaña	&Neuer Tab
+&Números de línea	&Zeilennummern
+&Pegar	&Einfügen
+&Rehacer	&Wiederholen
+&Salir	B&eenden
+&Ver	&Ansicht
+&Vista previa	&Vorschau
+(vacío)	(leer)
+A&juste de línea	&Zeilenumbruch
+A&justes...	&Einstellungen...
+Abrir &reciente	&Zuletzt geöffnet
+Aceptar	OK
+Acercar	Vergrößern
+Ajuste de línea	Zeilenumbruch
+Ajustes - {0} {1}	Einstellungen - {0} {1}
+Alejar	Verkleinern
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Einige Zeichen sind in ANSI nicht vorhanden und würden verloren gehen.\nStattdessen als UTF-8 speichern?
+Ancho del tabulador	Tabulatorbreite
+Anterior	Vorherige
+Apariencia	Darstellung
+Audio o vídeo de la letra	Audio oder Video zum Songtext
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio und Video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Alle Dateien|*.*
+Ay&uda	&Hilfe
+Bajar línea	Zeile nach unten
+Buscar &anterior	&Vorheriges suchen
+Buscar &siguiente	&Nächstes suchen
+Buscar actualizaciones al iniciar	Beim Start nach Updates suchen
+Buscar y reemplazar	Suchen und Ersetzen
+Buscar:	Suchen:
+Cambiar...	Ändern...
+Cancelar	Abbrechen
+Cerrar &pestaña	&Tab schließen
+Claro	Hell
+Copiar	Kopieren
+Cor&tar	Aus&schneiden
+Cortar	Ausschneiden
+D&uplicar línea	Zeile d&uplizieren
+Descargando actualización...	Update wird heruntergeladen...
+Deshacer	Rückgängig
+Documento de texto ({0})	Textdokument ({0})
+Edición	Bearbeitung
+Editar con {0}	Mit {0} bearbeiten
+Editor de texto ligero para Windows	Schlanker Texteditor für Windows
+Editor de texto ligero para Windows.	Schlanker Texteditor für Windows.
+El tabulador inserta espacios	Tabulator fügt Leerzeichen ein
+Elegir archivo...	Datei auswählen...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Wählen Sie das Audio oder Video zu diesem Songtext, um ihm während der Wiedergabe zu folgen.
+Eliminar	Löschen
+Eliminar línea	Zeile löschen
+Expresión regular	Regulärer Ausdruck
+Fuente: {0} {1} pt	Schriftart: {0} {1} pt
+Guardar &como...	Speichern &unter...
+Guardar t&odo	&Alle speichern
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Es gibt eine neue Version von {0}: {1} (Sie haben {2}).\n\n{3}\n\nJetzt herunterladen und installieren? {0} wird neu gestartet und behält Ihre Tabs.
+Insertar fecha y hora	Datum und Uhrzeit einfügen
+Ir a línea	Gehe zu Zeile
+La descarga no es un ejecutable válido.	Der Download ist keine gültige ausführbare Datei.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Die Vorschau ist für HTML, Markdown, reStructuredText, SVG, CSV/TSV und LRC-Songtexte verfügbar.
+Lín {0}, Col {1}	Z {0}, Sp {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Z {0}, Sp {1}   ({2} ausgewählt)
+MAYÚSCULAS	GROSSBUCHSTABEN
+Mayús/minús	Groß-/Kleinschreibung
+Mostrar números de línea	Zeilennummern anzeigen
+No se encontró.	Nicht gefunden.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Die Suche nach Updates war nicht möglich. Prüfen Sie Ihre Internetverbindung.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Die Sitzung konnte nicht gespeichert werden:\n{0}\n\nTrotzdem schließen? Nicht gespeicherter Text geht verloren.
+No se pudo instalar:\n{0}	Installation nicht möglich:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Wiedergabe nicht möglich: Das MP4 muss H.264 mit AAC-Audio sein; Audio muss MP3 oder M4A/AAC sein.
+Novedades	Neuigkeiten
+Número de línea (1-{0}):	Zeilennummer (1-{0}):
+Ordenar líneas	Zeilen sortieren
+Oscuro	Dunkel
+Palabra completa	Ganzes Wort
+Pegar	Einfügen
+Quitar espacios finales	Leerzeichen am Zeilenende entfernen
+R&eemplazar...	E&rsetzen...
+Reabrir pestaña &cerrada	&Geschlossenen Tab erneut öffnen
+Recargar desde disco	Vom Datenträger neu laden
+Reemplazar	Ersetzen
+Reemplazar todo	Alle ersetzen
+Reemplazar:	Ersetzen durch:
+Reproducir / pausa	Wiedergabe / Pause
+Resaltado de sintaxis	Syntaxhervorhebung
+Restablecer zoom	Zoom zurücksetzen
+Restaurar pestañas y texto sin guardar al abrir	Tabs und nicht gespeicherten Text beim Start wiederherstellen
+Sangría automática al pulsar Intro	Automatisch einrücken bei Eingabe
+Seleccionar &todo	&Alles auswählen
+Seleccionar todo	Alles auswählen
+Siguiente	Nächste
+Silenciar	Stummschalten
+Sin título {0}	Unbenannt {0}
+Sistema	System
+Subir línea	Zeile nach oben
+Tema	Design
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|Alle Dateien (*.*)|*.*
+Texto plano	Nur Text
+Tienes la última versión ({0}).	Sie haben die neueste Version ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Alle Dateien (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 mit BOM
+Un editor de texto ligero para Windows.	Ein schlanker Texteditor für Windows.
+Usar como editor &predeterminado...	Als Standard-&Editor verwenden...
+Ventana	Fenster
+Ventana siempre visible	Fenster immer im Vordergrund
+minúsculas	kleinbuchstaben
+{0} - Instalación	{0} - Installation
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} wurde außerhalb des Editors geändert.\nNeu laden und Ihre Änderungen verlieren?
+{0} se ha desinstalado.	{0} wurde deinstalliert.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} wurde installiert und befindet sich jetzt im Startmenü.\n\nMöchten Sie es als Standard-Texteditor verwenden? Die Windows-Einstellungen werden geöffnet, damit Sie es auswählen können.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Auch Ihre {0}-Daten löschen?\n\nDas sind Ihre Einstellungen, die zuletzt geöffneten Dateien und die gespeicherte Sitzung, einschließlich des Textes von Tabs, die Sie nie gespeichert haben.\n\nWenn Sie Nein wählen, bleiben sie für eine spätere Neuinstallation erhalten.
+¿Descartar los cambios de {0} y recargar desde disco?	Änderungen an {0} verwerfen und vom Datenträger neu laden?
+¿Desinstalar {0}?	{0} deinstallieren?
+¿Guardar los cambios de {0}?	Änderungen an {0} speichern?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	{0} {1} auf diesem Computer installieren?\n\nEs wird nur für Ihren Benutzer installiert in:\n{2}\n\nAdministratorrechte sind nicht erforderlich.
+◧ Ocultar vista previa	◧ Vorschau ausblenden
+◧ Vista previa disponible	◧ Vorschau verfügbar
+⬆ Actualización disponible: {0}	⬆ Update verfügbar: {0}
+Idioma	Sprache
+Idioma de Windows	Windows-Sprache
+El nuevo idioma se verá al reiniciar {0}.	Die neue Sprache wird nach dem Neustart von {0} angezeigt.
+¿Reiniciar ahora?	Jetzt neu starten?

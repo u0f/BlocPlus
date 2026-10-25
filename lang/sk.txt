@@ -1,0 +1,135 @@
+&Abrir...	&Otvoriť...
+&Acerca de {0} {1}	&O programe {0} {1}
+&Archivo	&Súbor
+&Buscar actualizaciones	&Vyhľadať aktualizácie
+&Buscar...	&Hľadať...
+&Codificación	&Kódovanie
+&Copiar	&Kopírovať
+&Deshacer	&Späť
+&Documento	&Dokument
+&Editar	&Upraviť
+&Fin de línea	&Koniec riadka
+&Guardar	&Uložiť
+&Instalar en este equipo...	&Inštalovať do tohto počítača...
+&Ir a línea...	&Prejsť na riadok...
+&Lenguaje	&Jazyk
+&Nueva pestaña	&Nová karta
+&Números de línea	&Čísla riadkov
+&Pegar	&Prilepiť
+&Rehacer	&Znova
+&Salir	&Ukončiť
+&Ver	&Zobraziť
+&Vista previa	&Ukážka
+(vacío)	(prázdne)
+A&juste de línea	Zalamovanie &riadkov
+A&justes...	&Nastavenia...
+Abrir &reciente	Otvoriť &nedávne
+Aceptar	OK
+Acercar	Priblížiť
+Ajuste de línea	Zalamovanie riadkov
+Ajustes - {0} {1}	Nastavenia – {0} {1}
+Alejar	Oddialiť
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Niektoré znaky v ANSI neexistujú a stratili by sa.\nUložiť namiesto toho v UTF-8?
+Ancho del tabulador	Šírka tabulátora
+Anterior	Predchádzajúce
+Apariencia	Vzhľad
+Audio o vídeo de la letra	Zvuk alebo video textu piesne
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Zvuk a video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Všetky súbory|*.*
+Ay&uda	&Pomocník
+Bajar línea	Posunúť riadok nadol
+Buscar &anterior	Hľadať &predchádzajúce
+Buscar &siguiente	Hľadať &ďalšie
+Buscar actualizaciones al iniciar	Vyhľadať aktualizácie pri spustení
+Buscar y reemplazar	Hľadať a nahradiť
+Buscar:	Hľadať:
+Cambiar...	Zmeniť...
+Cancelar	Zrušiť
+Cerrar &pestaña	Zavrieť &kartu
+Claro	Svetlá
+Copiar	Kopírovať
+Cor&tar	Vy&strihnúť
+Cortar	Vystrihnúť
+D&uplicar línea	&Duplikovať riadok
+Descargando actualización...	Sťahuje sa aktualizácia...
+Deshacer	Späť
+Documento de texto ({0})	Textový dokument ({0})
+Edición	Úpravy
+Editar con {0}	Upraviť v {0}
+Editor de texto ligero para Windows	Ľahký textový editor pre Windows
+Editor de texto ligero para Windows.	Ľahký textový editor pre Windows.
+El tabulador inserta espacios	Tabulátor vkladá medzery
+Elegir archivo...	Vybrať súbor...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Vyberte zvuk alebo video k tomuto textu, aby ho sledoval počas prehrávania.
+Eliminar	Odstrániť
+Eliminar línea	Odstrániť riadok
+Expresión regular	Regulárny výraz
+Fuente: {0} {1} pt	Písmo: {0} {1} pt
+Guardar &como...	Uložiť &ako...
+Guardar t&odo	Uložiť &všetko
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Je dostupná nová verzia {0}: {1} (máte {2}).\n\n{3}\n\nPrevziať a nainštalovať teraz? {0} sa reštartuje a zachová vaše karty.
+Insertar fecha y hora	Vložiť dátum a čas
+Ir a línea	Prejsť na riadok
+La descarga no es un ejecutable válido.	Prevzatý súbor nie je platný spustiteľný súbor.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Ukážka je k dispozícii pre HTML, Markdown, reStructuredText, SVG, CSV/TSV a texty LRC.
+Lín {0}, Col {1}	Riad {0}, Stĺp {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Riad {0}, Stĺp {1}   (vybraté: {2})
+MAYÚSCULAS	VEĽKÉ PÍSMENÁ
+Mayús/minús	Veľkosť písmen
+Mostrar números de línea	Zobraziť čísla riadkov
+No se encontró.	Nenájdené.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Nepodarilo sa skontrolovať aktualizácie. Skontrolujte pripojenie na internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Reláciu sa nepodarilo uložiť:\n{0}\n\nNapriek tomu zavrieť? Neuložený text sa stratí.
+No se pudo instalar:\n{0}	Inštalácia zlyhala:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Nemožno prehrať: MP4 musí byť H.264 so zvukom AAC; zvuk MP3 alebo M4A/AAC.
+Novedades	Novinky
+Número de línea (1-{0}):	Číslo riadka (1-{0}):
+Ordenar líneas	Zoradiť riadky
+Oscuro	Tmavá
+Palabra completa	Celé slovo
+Pegar	Prilepiť
+Quitar espacios finales	Odstrániť koncové medzery
+R&eemplazar...	&Nahradiť...
+Reabrir pestaña &cerrada	Znova otvoriť &zatvorenú kartu
+Recargar desde disco	Znova načítať z disku
+Reemplazar	Nahradiť
+Reemplazar todo	Nahradiť všetko
+Reemplazar:	Nahradiť:
+Reproducir / pausa	Prehrať / pozastaviť
+Resaltado de sintaxis	Zvýrazňovanie syntaxe
+Restablecer zoom	Obnoviť priblíženie
+Restaurar pestañas y texto sin guardar al abrir	Pri spustení obnoviť karty a neuložený text
+Sangría automática al pulsar Intro	Automatické odsadenie po stlačení Enter
+Seleccionar &todo	Vybrať &všetko
+Seleccionar todo	Vybrať všetko
+Siguiente	Ďalšie
+Silenciar	Stlmiť
+Sin título {0}	Bez názvu {0}
+Sistema	Systém
+Subir línea	Posunúť riadok nahor
+Tema	Motív
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Text (*.txt)|*.txt|Všetky súbory (*.*)|*.*
+Texto plano	Obyčajný text
+Tienes la última versión ({0}).	Máte najnovšiu verziu ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Všetky súbory (*.*)|*.*|Text (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 s BOM
+Un editor de texto ligero para Windows.	Ľahký textový editor pre Windows.
+Usar como editor &predeterminado...	Použiť ako &predvolený editor...
+Ventana	Okno
+Ventana siempre visible	Okno vždy navrchu
+minúsculas	malé písmená
+{0} - Instalación	{0} – Inštalácia
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	Súbor {0} bol zmenený mimo editora.\nNačítať znova a stratiť zmeny?
+{0} se ha desinstalado.	{0} bol odinštalovaný.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} bol nainštalovaný a nachádza sa v ponuke Štart.\n\nChcete ho používať ako predvolený textový editor? Otvoria sa nastavenia Windows, kde ho vyberiete.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Odstrániť aj vaše údaje {0}?\n\nSú to nastavenia, nedávne súbory a uložená relácia vrátane textu kariet, ktoré ste nikdy neuložili.\n\nAk zvolíte Nie, zachovajú sa pre prípad, že ho nainštalujete znova.
+¿Descartar los cambios de {0} y recargar desde disco?	Zahodiť zmeny v {0} a znova načítať z disku?
+¿Desinstalar {0}?	Odinštalovať {0}?
+¿Guardar los cambios de {0}?	Uložiť zmeny v {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Nainštalovať {0} {1} do tohto počítača?\n\nNainštaluje sa iba pre vášho používateľa do:\n{2}\n\nNie je potrebné byť správcom.
+◧ Ocultar vista previa	◧ Skryť ukážku
+◧ Vista previa disponible	◧ Ukážka je k dispozícii
+⬆ Actualización disponible: {0}	⬆ Aktualizácia je k dispozícii: {0}
+Idioma	Jazyk
+Idioma de Windows	Jazyk systému Windows
+El nuevo idioma se verá al reiniciar {0}.	Nový jazyk sa prejaví po reštartovaní {0}.
+¿Reiniciar ahora?	Reštartovať teraz?

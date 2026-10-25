@@ -1,0 +1,135 @@
+&Abrir...	&Otwórz...
+&Acerca de {0} {1}	&O programie {0} {1}
+&Archivo	&Plik
+&Buscar actualizaciones	Sprawdź &aktualizacje
+&Buscar...	&Znajdź...
+&Codificación	&Kodowanie
+&Copiar	&Kopiuj
+&Deshacer	&Cofnij
+&Documento	&Dokument
+&Editar	&Edytuj
+&Fin de línea	&Koniec wiersza
+&Guardar	&Zapisz
+&Instalar en este equipo...	&Zainstaluj na tym komputerze...
+&Ir a línea...	&Przejdź do wiersza...
+&Lenguaje	&Język
+&Nueva pestaña	&Nowa karta
+&Números de línea	&Numery wierszy
+&Pegar	&Wklej
+&Rehacer	&Ponów
+&Salir	Za&kończ
+&Ver	&Widok
+&Vista previa	Po&dgląd
+(vacío)	(puste)
+A&juste de línea	&Zawijanie wierszy
+A&justes...	U&stawienia...
+Abrir &reciente	Otwórz o&statnie
+Aceptar	OK
+Acercar	Powiększ
+Ajuste de línea	Zawijanie wierszy
+Ajustes - {0} {1}	Ustawienia - {0} {1}
+Alejar	Pomniejsz
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Niektóre znaki nie istnieją w ANSI i zostałyby utracone.\nZapisać zamiast tego w UTF-8?
+Ancho del tabulador	Szerokość tabulatora
+Anterior	Poprzedni
+Apariencia	Wygląd
+Audio o vídeo de la letra	Dźwięk lub wideo tekstu piosenki
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Dźwięk i wideo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Wszystkie pliki|*.*
+Ay&uda	Po&moc
+Bajar línea	Przesuń wiersz w dół
+Buscar &anterior	Znajdź &poprzedni
+Buscar &siguiente	Znajdź &następny
+Buscar actualizaciones al iniciar	Sprawdzaj aktualizacje przy uruchamianiu
+Buscar y reemplazar	Znajdź i zamień
+Buscar:	Znajdź:
+Cambiar...	Zmień...
+Cancelar	Anuluj
+Cerrar &pestaña	Zamknij &kartę
+Claro	Jasny
+Copiar	Kopiuj
+Cor&tar	Wy&tnij
+Cortar	Wytnij
+D&uplicar línea	&Duplikuj wiersz
+Descargando actualización...	Pobieranie aktualizacji...
+Deshacer	Cofnij
+Documento de texto ({0})	Dokument tekstowy ({0})
+Edición	Edycja
+Editar con {0}	Edytuj za pomocą {0}
+Editor de texto ligero para Windows	Lekki edytor tekstu dla systemu Windows
+Editor de texto ligero para Windows.	Lekki edytor tekstu dla systemu Windows.
+El tabulador inserta espacios	Tabulator wstawia spacje
+Elegir archivo...	Wybierz plik...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Wybierz dźwięk lub wideo do tego tekstu, aby podążać za nim podczas odtwarzania.
+Eliminar	Usuń
+Eliminar línea	Usuń wiersz
+Expresión regular	Wyrażenie regularne
+Fuente: {0} {1} pt	Czcionka: {0} {1} pt
+Guardar &como...	Zapisz &jako...
+Guardar t&odo	Zapisz w&szystko
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Dostępna jest nowa wersja programu {0}: {1} (masz wersję {2}).\n\n{3}\n\nPobrać i zainstalować teraz? Program {0} zostanie uruchomiony ponownie i zachowa Twoje karty.
+Insertar fecha y hora	Wstaw datę i godzinę
+Ir a línea	Przejdź do wiersza
+La descarga no es un ejecutable válido.	Pobrany plik nie jest prawidłowym plikiem wykonywalnym.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Podgląd jest dostępny dla HTML, Markdown, reStructuredText, SVG, CSV/TSV i tekstów LRC.
+Lín {0}, Col {1}	Wr {0}, Kol {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Wr {0}, Kol {1}   (zaznaczono: {2})
+MAYÚSCULAS	WIELKIE LITERY
+Mayús/minús	Wielkość liter
+Mostrar números de línea	Pokaż numery wierszy
+No se encontró.	Nie znaleziono.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Nie można sprawdzić aktualizacji. Sprawdź połączenie z internetem.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Nie można zapisać sesji:\n{0}\n\nZamknąć mimo to? Niezapisany tekst zostanie utracony.
+No se pudo instalar:\n{0}	Nie można zainstalować:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Nie można odtworzyć: plik MP4 musi mieć wideo H.264 i dźwięk AAC; dźwięk musi być w formacie MP3 lub M4A/AAC.
+Novedades	Co nowego
+Número de línea (1-{0}):	Numer wiersza (1-{0}):
+Ordenar líneas	Sortuj wiersze
+Oscuro	Ciemny
+Palabra completa	Całe słowo
+Pegar	Wklej
+Quitar espacios finales	Usuń spacje końcowe
+R&eemplazar...	&Zamień...
+Reabrir pestaña &cerrada	Otwórz ponownie za&mkniętą kartę
+Recargar desde disco	Wczytaj ponownie z dysku
+Reemplazar	Zamień
+Reemplazar todo	Zamień wszystko
+Reemplazar:	Zamień na:
+Reproducir / pausa	Odtwórz / wstrzymaj
+Resaltado de sintaxis	Kolorowanie składni
+Restablecer zoom	Resetuj powiększenie
+Restaurar pestañas y texto sin guardar al abrir	Przywracaj karty i niezapisany tekst przy uruchamianiu
+Sangría automática al pulsar Intro	Automatyczne wcięcie po naciśnięciu Enter
+Seleccionar &todo	Zaznacz &wszystko
+Seleccionar todo	Zaznacz wszystko
+Siguiente	Następny
+Silenciar	Wycisz
+Sin título {0}	Bez tytułu {0}
+Sistema	Systemowy
+Subir línea	Przesuń wiersz w górę
+Tema	Motyw
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Tekst (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*
+Texto plano	Zwykły tekst
+Tienes la última versión ({0}).	Masz najnowszą wersję ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Wszystkie pliki (*.*)|*.*|Tekst (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 z BOM
+Un editor de texto ligero para Windows.	Lekki edytor tekstu dla systemu Windows.
+Usar como editor &predeterminado...	Użyj jako edytora &domyślnego...
+Ventana	Okno
+Ventana siempre visible	Okno zawsze na wierzchu
+minúsculas	małe litery
+{0} - Instalación	{0} - Instalacja
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	Plik {0} został zmieniony poza edytorem.\nWczytać go ponownie i utracić zmiany?
+{0} se ha desinstalado.	Program {0} został odinstalowany.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	Program {0} został zainstalowany i jest już w menu Start.\n\nCzy chcesz używać go jako domyślnego edytora tekstu? Otworzą się ustawienia systemu Windows, aby go wybrać.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Usunąć również Twoje dane programu {0}?\n\nTo Twoje ustawienia, ostatnie pliki i zapisana sesja, w tym tekst kart, których nigdy nie zapisałeś.\n\nJeśli wybierzesz Nie, zostaną zachowane na wypadek ponownej instalacji.
+¿Descartar los cambios de {0} y recargar desde disco?	Odrzucić zmiany w {0} i wczytać ponownie z dysku?
+¿Desinstalar {0}?	Odinstalować program {0}?
+¿Guardar los cambios de {0}?	Zapisać zmiany w {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Zainstalować program {0} {1} na tym komputerze?\n\nZostanie zainstalowany tylko dla Twojego użytkownika w:\n{2}\n\nNie są wymagane uprawnienia administratora.
+◧ Ocultar vista previa	◧ Ukryj podgląd
+◧ Vista previa disponible	◧ Podgląd dostępny
+⬆ Actualización disponible: {0}	⬆ Dostępna aktualizacja: {0}
+Idioma	Język
+Idioma de Windows	Język systemu Windows
+El nuevo idioma se verá al reiniciar {0}.	Nowy język zostanie zastosowany po ponownym uruchomieniu programu {0}.
+¿Reiniciar ahora?	Uruchomić ponownie teraz?

@@ -1,0 +1,135 @@
+&Abrir...	&Открыть...
+&Acerca de {0} {1}	&О программе {0} {1}
+&Archivo	&Файл
+&Buscar actualizaciones	&Проверить обновления
+&Buscar...	&Найти...
+&Codificación	&Кодировка
+&Copiar	&Копировать
+&Deshacer	&Отменить
+&Documento	&Документ
+&Editar	&Правка
+&Fin de línea	&Конец строки
+&Guardar	&Сохранить
+&Instalar en este equipo...	&Установить на этот компьютер...
+&Ir a línea...	&Перейти к строке...
+&Lenguaje	&Язык
+&Nueva pestaña	&Новая вкладка
+&Números de línea	&Номера строк
+&Pegar	&Вставить
+&Rehacer	&Повторить
+&Salir	&Выход
+&Ver	&Вид
+&Vista previa	&Просмотр
+(vacío)	(пусто)
+A&juste de línea	Перенос &строк
+A&justes...	&Параметры...
+Abrir &reciente	Открыть &недавние
+Aceptar	ОК
+Acercar	Увеличить
+Ajuste de línea	Перенос строк
+Ajustes - {0} {1}	Параметры - {0} {1}
+Alejar	Уменьшить
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Некоторые символы отсутствуют в ANSI и будут потеряны.\nСохранить в UTF-8?
+Ancho del tabulador	Ширина табуляции
+Anterior	Назад
+Apariencia	Оформление
+Audio o vídeo de la letra	Аудио или видео для текста песни
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Аудио и видео (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Все файлы|*.*
+Ay&uda	&Справка
+Bajar línea	Переместить строку вниз
+Buscar &anterior	Найти &предыдущее
+Buscar &siguiente	Найти &далее
+Buscar actualizaciones al iniciar	Проверять обновления при запуске
+Buscar y reemplazar	Поиск и замена
+Buscar:	Найти:
+Cambiar...	Изменить...
+Cancelar	Отмена
+Cerrar &pestaña	Закрыть &вкладку
+Claro	Светлая
+Copiar	Копировать
+Cor&tar	&Вырезать
+Cortar	Вырезать
+D&uplicar línea	&Дублировать строку
+Descargando actualización...	Загрузка обновления...
+Deshacer	Отменить
+Documento de texto ({0})	Текстовый документ ({0})
+Edición	Правка
+Editar con {0}	Изменить в {0}
+Editor de texto ligero para Windows	Лёгкий текстовый редактор для Windows
+Editor de texto ligero para Windows.	Лёгкий текстовый редактор для Windows.
+El tabulador inserta espacios	Табуляция вставляет пробелы
+Elegir archivo...	Выбрать файл...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Выберите аудио или видео для этого текста, чтобы следовать за ним во время воспроизведения.
+Eliminar	Удалить
+Eliminar línea	Удалить строку
+Expresión regular	Регулярное выражение
+Fuente: {0} {1} pt	Шрифт: {0} {1} пт
+Guardar &como...	Сохранить &как...
+Guardar t&odo	Сохранить &все
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Доступна новая версия {0}: {1} (у вас {2}).\n\n{3}\n\nЗагрузить и установить сейчас? {0} перезапустится и сохранит ваши вкладки.
+Insertar fecha y hora	Вставить дату и время
+Ir a línea	Перейти к строке
+La descarga no es un ejecutable válido.	Загруженный файл не является допустимым исполняемым файлом.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Просмотр доступен для HTML, Markdown, reStructuredText, SVG, CSV/TSV и текстов LRC.
+Lín {0}, Col {1}	Стр {0}, Стб {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Стр {0}, Стб {1}   (выделено: {2})
+MAYÚSCULAS	ПРОПИСНЫЕ
+Mayús/minús	Регистр
+Mostrar números de línea	Показывать номера строк
+No se encontró.	Не найдено.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Не удалось проверить обновления. Проверьте подключение к интернету.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Не удалось сохранить сеанс:\n{0}\n\nВсё равно закрыть? Несохранённый текст будет потерян.
+No se pudo instalar:\n{0}	Не удалось установить:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Воспроизведение невозможно: MP4 должен быть H.264 со звуком AAC; аудио - MP3 или M4A/AAC.
+Novedades	Что нового
+Número de línea (1-{0}):	Номер строки (1-{0}):
+Ordenar líneas	Сортировка строк
+Oscuro	Тёмная
+Palabra completa	Слово целиком
+Pegar	Вставить
+Quitar espacios finales	Удалить пробелы в конце строк
+R&eemplazar...	&Заменить...
+Reabrir pestaña &cerrada	Открыть &закрытую вкладку
+Recargar desde disco	Перезагрузить с диска
+Reemplazar	Заменить
+Reemplazar todo	Заменить все
+Reemplazar:	Заменить на:
+Reproducir / pausa	Воспроизведение / пауза
+Resaltado de sintaxis	Подсветка синтаксиса
+Restablecer zoom	Сбросить масштаб
+Restaurar pestañas y texto sin guardar al abrir	Восстанавливать вкладки и несохранённый текст при запуске
+Sangría automática al pulsar Intro	Автоотступ при нажатии Enter
+Seleccionar &todo	Выделить &все
+Seleccionar todo	Выделить все
+Siguiente	Далее
+Silenciar	Отключить звук
+Sin título {0}	Без имени {0}
+Sistema	Системная
+Subir línea	Переместить строку вверх
+Tema	Тема
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Текст (*.txt)|*.txt|Все файлы (*.*)|*.*
+Texto plano	Обычный текст
+Tienes la última versión ({0}).	У вас последняя версия ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Все файлы (*.*)|*.*|Текст (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 с BOM
+Un editor de texto ligero para Windows.	Лёгкий текстовый редактор для Windows.
+Usar como editor &predeterminado...	Использовать как редактор по &умолчанию...
+Ventana	Окно
+Ventana siempre visible	Окно поверх всех окон
+minúsculas	строчные
+{0} - Instalación	{0} - Установка
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	Файл {0} был изменён вне редактора.\nПерезагрузить его и потерять изменения?
+{0} se ha desinstalado.	{0} удалён.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} установлен и уже находится в меню "Пуск".\n\nИспользовать его как текстовый редактор по умолчанию? Откроются параметры Windows, где можно его выбрать.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Удалить также ваши данные {0}?\n\nЭто параметры, недавние файлы и сохранённый сеанс, включая текст вкладок, которые вы никогда не сохраняли.\n\nЕсли выбрать "Нет", они сохранятся на случай повторной установки.
+¿Descartar los cambios de {0} y recargar desde disco?	Отменить изменения в {0} и перезагрузить с диска?
+¿Desinstalar {0}?	Удалить {0}?
+¿Guardar los cambios de {0}?	Сохранить изменения в {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Установить {0} {1} на этот компьютер?\n\nУстановка будет выполнена только для вашего пользователя в:\n{2}\n\nПрава администратора не требуются.
+◧ Ocultar vista previa	◧ Скрыть просмотр
+◧ Vista previa disponible	◧ Доступен просмотр
+⬆ Actualización disponible: {0}	⬆ Доступно обновление: {0}
+Idioma	Язык
+Idioma de Windows	Язык Windows
+El nuevo idioma se verá al reiniciar {0}.	Новый язык будет применён после перезапуска {0}.
+¿Reiniciar ahora?	Перезапустить сейчас?

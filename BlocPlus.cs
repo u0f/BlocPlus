@@ -24,7 +24,63 @@ using Microsoft.Win32;
 
 [assembly: AssemblyTitle("BlocPlus")]
 [assembly: AssemblyProduct("BlocPlus")]
-[assembly: AssemblyVersion("1.2.0")]
+[assembly: AssemblyVersion("1.2.1")]
+
+// UI strings are written in Spanish and translated with the embedded lang\<culture>.txt
+// matching the language chosen in settings, or else the Windows display language (English
+// when there is none): one "Spanish<TAB>translation" pair per line, \n for line breaks, {0} for arguments.
+static class Tr
+{
+    public static readonly string Lang = Saved(); // "" follows Windows; read before any window exists
+    static readonly Dictionary<string, string> map = Load();
+
+    static string Saved()
+    {
+        try
+        {
+            foreach (var l in File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Setup.App, "settings.ini")))
+                if (l.StartsWith("lang=")) return l.Substring(5);
+        }
+        catch { }
+        return "";
+    }
+
+    // Culture names with a translation, Spanish (the source) included.
+    public static string[] Available()
+    {
+        return new[] { "es" }.Concat(typeof(Tr).Assembly.GetManifestResourceNames()
+            .Where(n => n.StartsWith("lang.") && !n.StartsWith("lang._")).Select(n => n.Substring(5, n.Length - 9))).ToArray();
+    }
+
+    public static string S(string s, params object[] args)
+    {
+        string t;
+        if (!map.TryGetValue(s, out t)) t = s;
+        return args.Length == 0 ? t : string.Format(t, args);
+    }
+
+    static Dictionary<string, string> Load()
+    {
+        var map = new Dictionary<string, string>();
+        var asm = typeof(Tr).Assembly;
+        var names = asm.GetManifestResourceNames();
+        var start = CultureInfo.CurrentUICulture;
+        try { if (Lang != "") start = new CultureInfo(Lang); } catch { }
+        for (var c = start; ; c = c.Parent)
+        {
+            if (c.TwoLetterISOLanguageName == "es") return map;
+            string res = "lang." + (c.Name == "" ? "en" : c.Name) + ".txt";
+            if (names.Contains(res))
+                using (var r = new StreamReader(asm.GetManifestResourceStream(res), Encoding.UTF8))
+                    for (string l; (l = r.ReadLine()) != null; )
+                    {
+                        int tab = l.IndexOf('\t');
+                        if (tab > 0) map[l.Substring(0, tab).Replace("\\n", "\n")] = l.Substring(tab + 1).Replace("\\n", "\n");
+                    }
+            if (names.Contains(res) || c.Name == "") return map;
+        }
+    }
+}
 
 static class Native
 {
@@ -96,8 +152,8 @@ static class Setup
 
     public static bool InstallInteractive()
     {
-        if (MessageBox.Show("¿Instalar " + App + " " + Version + " en este equipo?\n\nSe instalará solo para tu usuario en:\n" + Dir + "\n\nNo hace falta ser administrador.",
-                App + " - Instalación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return false;
+        if (MessageBox.Show(Tr.S("¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.", App, Version, Dir),
+                Tr.S("{0} - Instalación", App), MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return false;
         try
         {
             Directory.CreateDirectory(Dir);
@@ -106,10 +162,10 @@ static class Setup
         }
         catch (Exception ex)
         {
-            MessageBox.Show("No se pudo instalar:\n" + ex.Message, App, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Tr.S("No se pudo instalar:\n{0}", ex.Message), App, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
-        if (MessageBox.Show(App + " se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.",
+        if (MessageBox.Show(Tr.S("{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.", App),
                 App, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) OpenDefaultApps();
         return true;
     }
@@ -127,7 +183,7 @@ static class Setup
         string exe = Exe, open = "\"" + exe + "\" \"%1\"", icon = exe + ",0";
         using (var k = cu.CreateSubKey(@"Software\Classes\" + ProgId))
         {
-            k.SetValue("", "Documento de texto (" + App + ")");
+            k.SetValue("", Tr.S("Documento de texto ({0})", App));
             using (var i = k.CreateSubKey("DefaultIcon")) i.SetValue("", icon);
             using (var c = k.CreateSubKey(@"shell\open\command")) c.SetValue("", open);
         }
@@ -139,14 +195,14 @@ static class Setup
         }
         using (var k = cu.CreateSubKey(@"Software\Classes\*\shell\" + App))
         {
-            k.SetValue("", "Editar con " + App);
+            k.SetValue("", Tr.S("Editar con {0}", App));
             k.SetValue("Icon", icon);
             using (var c = k.CreateSubKey("command")) c.SetValue("", open);
         }
         using (var k = cu.CreateSubKey(@"Software\" + App + @"\Capabilities"))
         {
             k.SetValue("ApplicationName", App);
-            k.SetValue("ApplicationDescription", "Editor de texto ligero para Windows.");
+            k.SetValue("ApplicationDescription", Tr.S("Editor de texto ligero para Windows."));
             k.SetValue("ApplicationIcon", icon);
             using (var fa = k.CreateSubKey("FileAssociations")) foreach (var e in Exts) fa.SetValue("." + e, ProgId);
         }
@@ -170,15 +226,15 @@ static class Setup
         lnk.TargetPath = exe;
         lnk.WorkingDirectory = Dir;
         lnk.IconLocation = icon;
-        lnk.Description = "Editor de texto ligero para Windows";
+        lnk.Description = Tr.S("Editor de texto ligero para Windows");
         lnk.Save();
         Native.SHChangeNotify(0x08000000 /*SHCNE_ASSOCCHANGED*/, 0, IntPtr.Zero, IntPtr.Zero);
     }
 
     public static void UninstallInteractive()
     {
-        if (MessageBox.Show("¿Desinstalar " + App + "?", App, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
-        bool wipe = MessageBox.Show("¿Borrar también tus datos de " + App + "?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.",
+        if (MessageBox.Show(Tr.S("¿Desinstalar {0}?", App), App, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+        bool wipe = MessageBox.Show(Tr.S("¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.", App),
             App, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
         if (wipe) try { Directory.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), App), true); } catch { }
         var cu = Registry.CurrentUser;
@@ -189,7 +245,7 @@ static class Setup
             using (var k = cu.OpenSubKey(@"Software\Classes\." + e + @"\OpenWithProgids", true)) if (k != null) k.DeleteValue(ProgId, false);
         try { File.Delete(Shortcut); } catch { }
         Native.SHChangeNotify(0x08000000, 0, IntPtr.Zero, IntPtr.Zero);
-        MessageBox.Show(App + " se ha desinstalado.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show(Tr.S("{0} se ha desinstalado.", App), App, MessageBoxButtons.OK, MessageBoxIcon.Information);
         // A running exe can't delete its own folder; a hidden cmd does it a moment after we exit.
         Process.Start(new ProcessStartInfo("cmd.exe", "/c ping -n 3 127.0.0.1 >nul & rmdir /s /q \"" + Dir + "\"") { CreateNoWindow = true, UseShellExecute = false });
     }
@@ -233,7 +289,7 @@ static class Updater
         }
         var head = new byte[2];
         using (var f = File.OpenRead(path)) f.Read(head, 0, 2);
-        if (head[0] != 'M' || head[1] != 'Z') throw new InvalidDataException("La descarga no es un ejecutable válido.");
+        if (head[0] != 'M' || head[1] != 'Z') throw new InvalidDataException(Tr.S("La descarga no es un ejecutable válido."));
     }
 }
 
@@ -306,7 +362,7 @@ class ThemeTable : ProfessionalColorTable
 
 static class Enc
 {
-    public static readonly string[] Names = { "UTF-8", "UTF-8 con BOM", "UTF-16 LE", "UTF-16 BE", "ANSI" };
+    public static readonly string[] Names = { "UTF-8", Tr.S("UTF-8 con BOM"), "UTF-16 LE", "UTF-16 BE", "ANSI" };
 
     public static Encoding Get(int i)
     {
@@ -804,7 +860,7 @@ class Doc
     int[] starts;
 
     public bool Dirty { get { return Box.Modified; } }
-    public string Title { get { return FilePath != null ? Path.GetFileName(FilePath) : "Sin título " + Untitled; } }
+    public string Title { get { return FilePath != null ? Path.GetFileName(FilePath) : Tr.S("Sin título {0}", Untitled); } }
     public void Invalidate() { text = null; starts = null; }
 
     // RichTextBox counts every line break as one char, so cache text with "\n" only.
@@ -1100,7 +1156,7 @@ class TabStrip : Control
 class FindForm : Form
 {
     public readonly TextBox What = new TextBox(), With = new TextBox();
-    public readonly CheckBox MatchCase = Chk("Mayús/minús"), Word = Chk("Palabra completa"), Rx = Chk("Expresión regular");
+    public readonly CheckBox MatchCase = Chk(Tr.S("Mayús/minús")), Word = Chk(Tr.S("Palabra completa")), Rx = Chk(Tr.S("Expresión regular"));
     public readonly Label Info = new Label { AutoSize = true, Anchor = AnchorStyles.Left };
 
     static CheckBox Chk(string t) { return new CheckBox { Text = t, AutoSize = true }; }
@@ -1114,7 +1170,7 @@ class FindForm : Form
 
     public FindForm(MainForm main)
     {
-        Text = "Buscar y reemplazar";
+        Text = Tr.S("Buscar y reemplazar");
         Font = main.Font;
         FormBorderStyle = FormBorderStyle.FixedToolWindow;
         ShowInTaskbar = false;
@@ -1125,14 +1181,14 @@ class FindForm : Form
         What.Width = With.Width = Font.Height * 18;
         What.Anchor = With.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
-        var next = Btn("Siguiente", () => main.FindNext(false));
+        var next = Btn(Tr.S("Siguiente"), () => main.FindNext(false));
         var opts = new FlowLayoutPanel { AutoSize = true, Margin = Padding.Empty };
         opts.Controls.AddRange(new Control[] { MatchCase, Word, Rx });
         var t = new TableLayoutPanel { AutoSize = true, ColumnCount = 3, Padding = new Padding(8) };
-        t.Controls.Add(Lab("Buscar:"), 0, 0); t.Controls.Add(What, 1, 0); t.Controls.Add(next, 2, 0);
-        t.Controls.Add(Lab("Reemplazar:"), 0, 1); t.Controls.Add(With, 1, 1); t.Controls.Add(Btn("Anterior", () => main.FindNext(true)), 2, 1);
-        t.Controls.Add(opts, 1, 2); t.Controls.Add(Btn("Reemplazar", main.ReplaceOne), 2, 2);
-        t.Controls.Add(Info, 1, 3); t.Controls.Add(Btn("Reemplazar todo", main.ReplaceAll), 2, 3);
+        t.Controls.Add(Lab(Tr.S("Buscar:")), 0, 0); t.Controls.Add(What, 1, 0); t.Controls.Add(next, 2, 0);
+        t.Controls.Add(Lab(Tr.S("Reemplazar:")), 0, 1); t.Controls.Add(With, 1, 1); t.Controls.Add(Btn(Tr.S("Anterior"), () => main.FindNext(true)), 2, 1);
+        t.Controls.Add(opts, 1, 2); t.Controls.Add(Btn(Tr.S("Reemplazar"), main.ReplaceOne), 2, 2);
+        t.Controls.Add(Info, 1, 3); t.Controls.Add(Btn(Tr.S("Reemplazar todo"), main.ReplaceAll), 2, 3);
         Controls.Add(t);
         AcceptButton = next;
 
@@ -1171,7 +1227,7 @@ class MainForm : Form
     static readonly string Version = Setup.Version;
     static readonly string[] EolNames = { "CRLF (Windows)", "LF (Unix)", "CR (Mac)" };
     static readonly string[] EolText = { "\r\n", "\n", "\r" };
-    static readonly string[] ThemeNames = { "Sistema", "Claro", "Oscuro" };
+    static readonly string[] ThemeNames = { Tr.S("Sistema"), Tr.S("Claro"), Tr.S("Oscuro") };
 
     readonly string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), App);
     readonly List<Doc> docs = new List<Doc>();
@@ -1198,6 +1254,7 @@ class MainForm : Form
     Font font = new Font("Consolas", 11f);
     int sel = -1, untitled, themeMode, tabSize = 4;
     bool wrap, lineNumbers = true, syntax = true, autoIndent = true, spaces, restoreSession = true, checkUpdates = true, sessionDirty, checking;
+    string lang = Tr.Lang; // saved to settings.ini; Tr reads it at startup
     string restartExe; // set when an update or install asks to relaunch after closing
     FindForm find;
 
@@ -1257,10 +1314,10 @@ class MainForm : Form
         lPreview.MouseLeave += (s, e) => { StylePreviewButton(false); status.Cursor = Cursors.Default; };
         lUpdate.Click += (s, e) => { var r = lUpdate.Tag as Updater.Release; if (r != null) PromptUpdate(r); };
         ctx.Items.AddRange(new ToolStripItem[] {
-            Item("Deshacer", Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
-            Item("Cortar", Keys.None, () => CopySel(true)), Item("Copiar", Keys.None, () => CopySel(false)),
-            Item("Pegar", Keys.None, PastePlain), Item("Eliminar", Keys.None, () => Cur.Box.SelectedText = ""),
-            new ToolStripSeparator(), Item("Seleccionar todo", Keys.None, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }) });
+            Item(Tr.S("Deshacer"), Keys.None, () => Cur.Box.Undo()), new ToolStripSeparator(),
+            Item(Tr.S("Cortar"), Keys.None, () => CopySel(true)), Item(Tr.S("Copiar"), Keys.None, () => CopySel(false)),
+            Item(Tr.S("Pegar"), Keys.None, PastePlain), Item(Tr.S("Eliminar"), Keys.None, () => Cur.Box.SelectedText = ""),
+            new ToolStripSeparator(), Item(Tr.S("Seleccionar todo"), Keys.None, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }) });
         split.Panel1.Controls.Add(host);
         split.Panel2.Controls.Add(web);
         try { Native.CoInternetSetFeatureEnabled(21 /*FEATURE_DISABLE_NAVIGATION_SOUNDS*/, 2 /*SET_FEATURE_ON_PROCESS*/, true); } catch { }
@@ -1306,100 +1363,100 @@ class MainForm : Form
 
     void BuildMenu()
     {
-        mRecent = new ToolStripMenuItem("Abrir &reciente");
-        mRecent.DropDownItems.Add("(vacío)"); // placeholder so DropDownOpening fires
+        mRecent = new ToolStripMenuItem(Tr.S("Abrir &reciente"));
+        mRecent.DropDownItems.Add(Tr.S("(vacío)")); // placeholder so DropDownOpening fires
         mRecent.DropDownOpening += (s, e) => FillRecent();
-        var settings = Item("A&justes...", Keys.Control | Keys.Oemcomma, () => ShowSettings());
+        var settings = Item(Tr.S("A&justes..."), Keys.Control | Keys.Oemcomma, () => ShowSettings());
         settings.ShortcutKeyDisplayString = "Ctrl+,";
-        var exit = Item("&Salir", Keys.None, Close);
+        var exit = Item(Tr.S("&Salir"), Keys.None, Close);
         exit.ShortcutKeyDisplayString = "Alt+F4";
-        var file = new ToolStripMenuItem("&Archivo");
+        var file = new ToolStripMenuItem(Tr.S("&Archivo"));
         file.DropDownItems.AddRange(new ToolStripItem[] {
-            Item("&Nueva pestaña", Keys.Control | Keys.T, () => SwitchTo(NewDoc())),
-            Item("&Abrir...", Keys.Control | Keys.O, OpenDialog),
+            Item(Tr.S("&Nueva pestaña"), Keys.Control | Keys.T, () => SwitchTo(NewDoc())),
+            Item(Tr.S("&Abrir..."), Keys.Control | Keys.O, OpenDialog),
             mRecent,
-            Item("Reabrir pestaña &cerrada", Keys.Control | Keys.Shift | Keys.T, ReopenClosed),
-            Item("Recargar desde disco", Keys.None, () => Reload(Cur, true)),
+            Item(Tr.S("Reabrir pestaña &cerrada"), Keys.Control | Keys.Shift | Keys.T, ReopenClosed),
+            Item(Tr.S("Recargar desde disco"), Keys.None, () => Reload(Cur, true)),
             new ToolStripSeparator(),
-            Item("&Guardar", Keys.Control | Keys.S, () => Save(Cur, false)),
-            Item("Guardar &como...", Keys.Control | Keys.Shift | Keys.S, () => Save(Cur, true)),
-            Item("Guardar t&odo", Keys.Control | Keys.Alt | Keys.S, SaveAll),
+            Item(Tr.S("&Guardar"), Keys.Control | Keys.S, () => Save(Cur, false)),
+            Item(Tr.S("Guardar &como..."), Keys.Control | Keys.Shift | Keys.S, () => Save(Cur, true)),
+            Item(Tr.S("Guardar t&odo"), Keys.Control | Keys.Alt | Keys.S, SaveAll),
             new ToolStripSeparator(),
-            Item("Cerrar &pestaña", Keys.Control | Keys.W, () => CloseTab(Cur)),
+            Item(Tr.S("Cerrar &pestaña"), Keys.Control | Keys.W, () => CloseTab(Cur)),
             new ToolStripSeparator(),
             settings,
             exit });
 
-        var edit = new ToolStripMenuItem("&Editar");
+        var edit = new ToolStripMenuItem(Tr.S("&Editar"));
         edit.DropDownItems.AddRange(new ToolStripItem[] {
-            Item("&Deshacer", Keys.Control | Keys.Z, () => Cur.Box.Undo()),
-            Item("&Rehacer", Keys.Control | Keys.Y, () => Cur.Box.Redo()),
+            Item(Tr.S("&Deshacer"), Keys.Control | Keys.Z, () => Cur.Box.Undo()),
+            Item(Tr.S("&Rehacer"), Keys.Control | Keys.Y, () => Cur.Box.Redo()),
             new ToolStripSeparator(),
-            Item("Cor&tar", Keys.Control | Keys.X, () => CopySel(true)),
-            Item("&Copiar", Keys.Control | Keys.C, () => CopySel(false)),
-            Item("&Pegar", Keys.Control | Keys.V, PastePlain),
-            Item("Seleccionar &todo", Keys.Control | Keys.A, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }),
+            Item(Tr.S("Cor&tar"), Keys.Control | Keys.X, () => CopySel(true)),
+            Item(Tr.S("&Copiar"), Keys.Control | Keys.C, () => CopySel(false)),
+            Item(Tr.S("&Pegar"), Keys.Control | Keys.V, PastePlain),
+            Item(Tr.S("Seleccionar &todo"), Keys.Control | Keys.A, () => { Cur.Box.ClearExtra(); Cur.Box.SelectAll(); }),
             new ToolStripSeparator(),
-            Item("&Buscar...", Keys.Control | Keys.F, () => ShowFind(false)),
-            Item("Buscar &siguiente", Keys.F3, () => FindNext(false)),
-            Item("Buscar &anterior", Keys.Shift | Keys.F3, () => FindNext(true)),
-            Item("R&eemplazar...", Keys.Control | Keys.H, () => ShowFind(true)),
-            Item("&Ir a línea...", Keys.Control | Keys.G, GoToLine),
+            Item(Tr.S("&Buscar..."), Keys.Control | Keys.F, () => ShowFind(false)),
+            Item(Tr.S("Buscar &siguiente"), Keys.F3, () => FindNext(false)),
+            Item(Tr.S("Buscar &anterior"), Keys.Shift | Keys.F3, () => FindNext(true)),
+            Item(Tr.S("R&eemplazar..."), Keys.Control | Keys.H, () => ShowFind(true)),
+            Item(Tr.S("&Ir a línea..."), Keys.Control | Keys.G, GoToLine),
             new ToolStripSeparator(),
-            Item("D&uplicar línea", Keys.Control | Keys.D, Duplicate),
-            Item("Eliminar línea", Keys.Control | Keys.Shift | Keys.K, DeleteLine),
-            Item("Subir línea", Keys.Alt | Keys.Up, () => MoveLine(-1)),
-            Item("Bajar línea", Keys.Alt | Keys.Down, () => MoveLine(1)),
+            Item(Tr.S("D&uplicar línea"), Keys.Control | Keys.D, Duplicate),
+            Item(Tr.S("Eliminar línea"), Keys.Control | Keys.Shift | Keys.K, DeleteLine),
+            Item(Tr.S("Subir línea"), Keys.Alt | Keys.Up, () => MoveLine(-1)),
+            Item(Tr.S("Bajar línea"), Keys.Alt | Keys.Down, () => MoveLine(1)),
             new ToolStripSeparator(),
-            Item("MAYÚSCULAS", Keys.Control | Keys.Shift | Keys.U, () => ChangeCase(true)),
-            Item("minúsculas", Keys.Control | Keys.U, () => ChangeCase(false)),
-            Item("Ordenar líneas", Keys.None, SortLines),
-            Item("Quitar espacios finales", Keys.None, TrimTrailing),
-            Item("Insertar fecha y hora", Keys.F5, () => Cur.Box.SelectedText = DateTime.Now.ToShortTimeString() + " " + DateTime.Now.ToShortDateString()) });
+            Item(Tr.S("MAYÚSCULAS"), Keys.Control | Keys.Shift | Keys.U, () => ChangeCase(true)),
+            Item(Tr.S("minúsculas"), Keys.Control | Keys.U, () => ChangeCase(false)),
+            Item(Tr.S("Ordenar líneas"), Keys.None, SortLines),
+            Item(Tr.S("Quitar espacios finales"), Keys.None, TrimTrailing),
+            Item(Tr.S("Insertar fecha y hora"), Keys.F5, () => Cur.Box.SelectedText = DateTime.Now.ToShortTimeString() + " " + DateTime.Now.ToShortDateString()) });
 
-        mLang = new ToolStripMenuItem("&Lenguaje");
-        mLang.DropDownItems.Add(Item("Texto plano", Keys.None, () => SetLang(Cur, null)));
+        mLang = new ToolStripMenuItem(Tr.S("&Lenguaje"));
+        mLang.DropDownItems.Add(Item(Tr.S("Texto plano"), Keys.None, () => SetLang(Cur, null)));
         foreach (var l in Lang.All)
         {
             var lang = l;
             mLang.DropDownItems.Add(Item(lang.Name, Keys.None, () => SetLang(Cur, lang)));
         }
         mLang.DropDownOpening += (s, e) => CheckOnly(mLang, Cur.Lang == null ? 0 : Array.IndexOf(Lang.All, Cur.Lang) + 1);
-        mEnc = new ToolStripMenuItem("&Codificación");
+        mEnc = new ToolStripMenuItem(Tr.S("&Codificación"));
         for (int i = 0; i < Enc.Names.Length; i++)
         {
             int k = i;
             mEnc.DropDownItems.Add(Item(Enc.Names[i], Keys.None, () => { Cur.Enc = k; MarkChanged(Cur); }));
         }
         mEnc.DropDownOpening += (s, e) => CheckOnly(mEnc, Cur.Enc);
-        mEol = new ToolStripMenuItem("&Fin de línea");
+        mEol = new ToolStripMenuItem(Tr.S("&Fin de línea"));
         for (int i = 0; i < EolNames.Length; i++)
         {
             int k = i;
             mEol.DropDownItems.Add(Item(EolNames[i], Keys.None, () => { Cur.Eol = k; MarkChanged(Cur); }));
         }
         mEol.DropDownOpening += (s, e) => CheckOnly(mEol, Cur.Eol);
-        var docMenu = new ToolStripMenuItem("&Documento");
+        var docMenu = new ToolStripMenuItem(Tr.S("&Documento"));
         docMenu.DropDownItems.AddRange(new ToolStripItem[] { mLang, mEnc, mEol });
 
-        mWrap = Item("A&juste de línea", Keys.Alt | Keys.Z, () => { wrap = !wrap; ApplyEditorSettings(); });
-        mLines = Item("&Números de línea", Keys.None, () => { lineNumbers = !lineNumbers; ApplyEditorSettings(); });
-        mPreview = Item("&Vista previa", Keys.Control | Keys.Shift | Keys.V, TogglePreview);
-        var zin = Item("Acercar", Keys.Control | Keys.Oemplus, () => Zoom(0.1f));
-        var zout = Item("Alejar", Keys.Control | Keys.OemMinus, () => Zoom(-0.1f));
+        mWrap = Item(Tr.S("A&juste de línea"), Keys.Alt | Keys.Z, () => { wrap = !wrap; ApplyEditorSettings(); });
+        mLines = Item(Tr.S("&Números de línea"), Keys.None, () => { lineNumbers = !lineNumbers; ApplyEditorSettings(); });
+        mPreview = Item(Tr.S("&Vista previa"), Keys.Control | Keys.Shift | Keys.V, TogglePreview);
+        var zin = Item(Tr.S("Acercar"), Keys.Control | Keys.Oemplus, () => Zoom(0.1f));
+        var zout = Item(Tr.S("Alejar"), Keys.Control | Keys.OemMinus, () => Zoom(-0.1f));
         zin.ShortcutKeyDisplayString = "Ctrl++";
         zout.ShortcutKeyDisplayString = "Ctrl+-";
-        var view = new ToolStripMenuItem("&Ver");
+        var view = new ToolStripMenuItem(Tr.S("&Ver"));
         view.DropDownItems.AddRange(new ToolStripItem[] {
             mWrap, mLines, mPreview, new ToolStripSeparator(),
-            zin, zout, Item("Restablecer zoom", Keys.Control | Keys.D0, () => Zoom(0)) });
+            zin, zout, Item(Tr.S("Restablecer zoom"), Keys.Control | Keys.D0, () => Zoom(0)) });
 
-        var help = new ToolStripMenuItem("Ay&uda");
-        help.DropDownItems.Add(Item("&Buscar actualizaciones", Keys.None, () => CheckUpdates(true)));
-        if (Setup.RunningInstalled) help.DropDownItems.Add(Item("Usar como editor &predeterminado...", Keys.None, Setup.OpenDefaultApps));
-        else help.DropDownItems.Add(Item("&Instalar en este equipo...", Keys.None, () => { if (Setup.InstallInteractive()) { restartExe = Setup.Exe; Close(); } }));
+        var help = new ToolStripMenuItem(Tr.S("Ay&uda"));
+        help.DropDownItems.Add(Item(Tr.S("&Buscar actualizaciones"), Keys.None, () => CheckUpdates(true)));
+        if (Setup.RunningInstalled) help.DropDownItems.Add(Item(Tr.S("Usar como editor &predeterminado..."), Keys.None, Setup.OpenDefaultApps));
+        else help.DropDownItems.Add(Item(Tr.S("&Instalar en este equipo..."), Keys.None, () => { if (Setup.InstallInteractive()) { restartExe = Setup.Exe; Close(); } }));
         help.DropDownItems.Add(new ToolStripSeparator());
-        help.DropDownItems.Add(Item("&Acerca de " + App + " " + Version, Keys.None, () => ShowSettings()));
+        help.DropDownItems.Add(Item(Tr.S("&Acerca de {0} {1}", App, Version), Keys.None, () => ShowSettings()));
 
         menu.Items.AddRange(new ToolStripItem[] { file, edit, docMenu, view, help });
     }
@@ -1660,8 +1717,8 @@ class MainForm : Form
         int p = b.SelectionStart, line, col;
         if (!b.WordWrap) { line = b.GetLineFromCharIndex(p); col = p - b.GetFirstCharIndexFromLine(line); }
         else { line = d.LineOf(p); col = p - d.Starts[line]; }
-        lPos.Text = "Lín " + (line + 1) + ", Col " + (col + 1) + (b.SelectionLength > 0 ? "   (" + b.SelectionLength + " seleccionados)" : "");
-        lLang.Text = d.Lang == null ? "Texto plano" : d.Lang.Name;
+        lPos.Text = b.SelectionLength > 0 ? Tr.S("Lín {0}, Col {1}   ({2} seleccionados)", line + 1, col + 1, b.SelectionLength) : Tr.S("Lín {0}, Col {1}", line + 1, col + 1);
+        lLang.Text = d.Lang == null ? Tr.S("Texto plano") : d.Lang.Name;
         lZoom.Text = (int)Math.Round(b.ZoomFactor * 100) + "%";
         lEol.Text = EolNames[d.Eol];
         lEnc.Text = Enc.Names[d.Enc];
@@ -1725,7 +1782,7 @@ class MainForm : Form
 
     void OpenDialog()
     {
-        using (var o = new OpenFileDialog { Multiselect = true, Filter = "Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt" })
+        using (var o = new OpenFileDialog { Multiselect = true, Filter = Tr.S("Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt") })
         {
             if (Cur.FilePath != null) o.InitialDirectory = Path.GetDirectoryName(Cur.FilePath);
             if (o.ShowDialog(this) == DialogResult.OK) foreach (var f in o.FileNames) OpenPath(f);
@@ -1735,7 +1792,7 @@ class MainForm : Form
     void Reload(Doc d, bool ask)
     {
         if (d.FilePath == null) return;
-        if (ask && d.Dirty && !Confirm("¿Descartar los cambios de " + d.Title + " y recargar desde disco?")) return;
+        if (ask && d.Dirty && !Confirm(Tr.S("¿Descartar los cambios de {0} y recargar desde disco?", d.Title))) return;
         int p = d.Box.SelectionStart;
         try { LoadInto(d, d.FilePath, File.ReadAllBytes(d.FilePath)); }
         catch (Exception ex) { Err(ex); return; }
@@ -1757,7 +1814,7 @@ class MainForm : Form
                 var t = File.GetLastWriteTimeUtc(d.FilePath);
                 if (t == d.Stamp) continue;
                 d.Stamp = t;
-                if (!d.Dirty || Confirm(d.Title + " ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?")) Reload(d, false);
+                if (!d.Dirty || Confirm(Tr.S("{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?", d.Title))) Reload(d, false);
             }
         }
         finally { checking = false; }
@@ -1768,7 +1825,7 @@ class MainForm : Form
         string path = d.FilePath;
         if (path == null || saveAs)
         {
-            using (var s = new SaveFileDialog { Filter = "Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*", FileName = path == null ? "" : Path.GetFileName(path) })
+            using (var s = new SaveFileDialog { Filter = Tr.S("Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"), FileName = path == null ? "" : Path.GetFileName(path) })
             {
                 if (path != null) s.InitialDirectory = Path.GetDirectoryName(path);
                 if (s.ShowDialog(this) != DialogResult.OK) return false;
@@ -1779,7 +1836,7 @@ class MainForm : Form
         var e = Enc.Get(d.Enc);
         byte[] body = e.GetBytes(text);
         if (d.Enc == 4 && e.GetString(body) != text &&
-            Confirm("Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?"))
+            Confirm(Tr.S("Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?")))
         {
             d.Enc = 0;
             e = Enc.Get(0);
@@ -1816,7 +1873,7 @@ class MainForm : Form
     {
         if (!(d.Dirty || d.FilePath == null) || d.Box.TextLength == 0) return true;
         SwitchTo(d);
-        var r = MessageBox.Show(this, "¿Guardar los cambios de " + d.Title + "?", App, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        var r = MessageBox.Show(this, Tr.S("¿Guardar los cambios de {0}?", d.Title), App, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
         return r == DialogResult.No || r == DialogResult.Yes && Save(d, false);
     }
 
@@ -1859,7 +1916,7 @@ class MainForm : Form
             var path = p;
             mRecent.DropDownItems.Add(Item(path.Replace("&", "&&"), Keys.None, () => OpenPath(path)));
         }
-        if (recent.Count == 0) mRecent.DropDownItems.Add(new ToolStripMenuItem("(vacío)") { Enabled = false });
+        if (recent.Count == 0) mRecent.DropDownItems.Add(new ToolStripMenuItem(Tr.S("(vacío)")) { Enabled = false });
         Recolor(mRecent.DropDownItems, T);
     }
 
@@ -2053,7 +2110,7 @@ class MainForm : Form
     {
         var d = Cur;
         int max = d.Starts.Length, n;
-        string s = Prompt("Ir a línea", "Número de línea (1-" + max + "):", (d.LineOf(d.Box.SelectionStart) + 1).ToString());
+        string s = Prompt(Tr.S("Ir a línea"), Tr.S("Número de línea (1-{0}):", max), (d.LineOf(d.Box.SelectionStart) + 1).ToString());
         if (s == null || !int.TryParse(s, out n)) return;
         d.Box.Select(d.Starts[Math.Max(1, Math.Min(n, max)) - 1], 0);
         d.Box.ScrollToCaret();
@@ -2106,7 +2163,7 @@ class MainForm : Form
         }
         if (!m.Success)
         {
-            find.Info.Text = "No se encontró.";
+            find.Info.Text = Tr.S("No se encontró.");
             System.Media.SystemSounds.Beep.Play();
             return;
         }
@@ -2271,8 +2328,8 @@ class MainForm : Form
         using (var f = new Form { Text = title, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, ShowIcon = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
         {
             var tb = new TextBox { Text = value, Width = Font.Height * 16 };
-            var ok = new Button { Text = "Aceptar", DialogResult = DialogResult.OK, AutoSize = true };
-            var cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, AutoSize = true };
+            var ok = new Button { Text = Tr.S("Aceptar"), DialogResult = DialogResult.OK, AutoSize = true };
+            var cancel = new Button { Text = Tr.S("Cancelar"), DialogResult = DialogResult.Cancel, AutoSize = true };
             var buttons = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Right };
             buttons.Controls.AddRange(new Control[] { ok, cancel });
             var p = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, Padding = new Padding(10) };
@@ -2311,7 +2368,7 @@ class MainForm : Form
     {
         if (!previewOn && PreviewKind(Cur) == null)
         {
-            MessageBox.Show(this, "La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.", App, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, Tr.S("La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC."), App, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         previewOn = mPreview.Checked = !previewOn;
@@ -2359,7 +2416,7 @@ class MainForm : Form
         if (d == null) return;
         string kind = PreviewKind(d);
         lPreview.Visible = kind != null;
-        lPreview.Text = previewOn ? "◧ Ocultar vista previa" : "◧ Vista previa disponible";
+        lPreview.Text = previewOn ? Tr.S("◧ Ocultar vista previa") : Tr.S("◧ Vista previa disponible");
         StylePreviewButton(false);
         bool show = previewOn && kind != null;
         if (split.Panel2Collapsed == show)
@@ -2404,16 +2461,16 @@ class MainForm : Form
         if (d.Media == null && d.FilePath != null) // song.lrc next to song.mp3
             d.Media = MediaExts.Select(x => Path.ChangeExtension(d.FilePath, x)).FirstOrDefault(File.Exists);
         string player;
-        if (d.Media == null) player = "<p>Elige el audio o vídeo de esta letra para seguirla mientras suena.</p><a href='blocplus:media'>Elegir archivo...</a>";
+        if (d.Media == null) player = "<p>" + WebUtility.HtmlEncode(Tr.S("Elige el audio o vídeo de esta letra para seguirla mientras suena.")) + "</p><a href='blocplus:media'>" + WebUtility.HtmlEncode(Tr.S("Elegir archivo...")) + "</a>";
         else
         {
             string ext = Path.GetExtension(d.Media).ToLowerInvariant(), tag = ext == ".mp4" || ext == ".m4v" || ext == ".mov" || ext == ".wmv" || ext == ".avi" ? "video" : "audio";
             player = "<" + tag + " id='m' src='" + WebUtility.HtmlEncode(MediaUrl(d.Media)) + "'></" + tag + ">";
             if (tag == "video") player = "<div id='v'>" + player + "<div id='sub'></div></div>"; // lyrics as subtitles
             player +=
-                "<div id='c'><button id='pp' class='p' title='Reproducir / pausa'>&#9654;</button><span id='tc'>0:00</span>" + Slider("bar") +
-                "<span id='td'>0:00</span><button id='mu' title='Silenciar'>&#128266;</button>" + Slider("vol") + "</div>" +
-                "<div>" + WebUtility.HtmlEncode(Path.GetFileName(d.Media)) + " · <a href='blocplus:media'>Cambiar...</a> <span id='e'></span></div>";
+                "<div id='c'><button id='pp' class='p' title='" + WebUtility.HtmlEncode(Tr.S("Reproducir / pausa")) + "'>&#9654;</button><span id='tc'>0:00</span>" + Slider("bar") +
+                "<span id='td'>0:00</span><button id='mu' title='" + WebUtility.HtmlEncode(Tr.S("Silenciar")) + "'>&#128266;</button>" + Slider("vol") + "</div>" +
+                "<div>" + WebUtility.HtmlEncode(Path.GetFileName(d.Media)) + " · <a href='blocplus:media'>" + WebUtility.HtmlEncode(Tr.S("Cambiar...")) + "</a> <span id='e'></span></div>";
         }
         string acc = Hex(T.Accent), track = Hex(T.Border);
         string css = "html,body{height:100%;overflow:hidden}body{padding:0}" +
@@ -2430,10 +2487,10 @@ class MainForm : Form
             ".hit{position:absolute;left:0;right:0;top:0;bottom:0;background:#000;opacity:0}.sl:hover .kn{display:block}.sl:hover .tr,.sl:hover .fi{top:6px;height:6px}" +
             "#l{position:absolute;left:0;right:0;bottom:0;overflow:auto;padding:0 24px;text-align:center}#l:before{content:'';display:block;height:12px}#l:after{content:'';display:block;height:35vh}#l p{margin:.45em 0;opacity:.5;cursor:pointer;font-size:1.15em}" +
             "#l p.on{opacity:1;font-weight:600;color:" + Hex(T.Accent) + "}#e{color:#d33}";
-        const string script = "<script>var m=document.getElementById('m'),l=document.getElementById('l'),sub=document.getElementById('sub'),cur=null;" +
+        string script = "<script>var m=document.getElementById('m'),l=document.getElementById('l'),sub=document.getElementById('sub'),cur=null;" +
             "function fit(){l.style.top=document.getElementById('h').offsetHeight+'px';if(sub)sub.style.fontSize=Math.max(14,m.offsetWidth/28)+'px';}" +
             "fit();setInterval(fit,250);if(m){" +
-            "m.onerror=function(){document.getElementById('e').innerText='No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.';};" +
+            "m.onerror=function(){document.getElementById('e').innerText='" + Tr.S("No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.").Replace("\\", "\\\\").Replace("'", "\\'") + "';};" +
             "setInterval(function(){var ps=l.getElementsByTagName('p'),a=null,t=m.currentTime;" +
             "for(var i=0;i<ps.length;i++){if(parseFloat(ps[i].getAttribute('data-t'))<=t)a=ps[i];else break;}" +
             "if(a!==cur){if(cur)cur.className='';cur=a;if(sub)sub.innerHTML=a?'<span>'+a.innerHTML+'</span>':'';if(a){a.className='on';l.scrollTop+=a.getBoundingClientRect().top-l.getBoundingClientRect().top-(l.clientHeight-a.offsetHeight)/2;}}},100);" +
@@ -2482,8 +2539,8 @@ class MainForm : Form
         var d = Cur;
         using (var dlg = new OpenFileDialog
         {
-            Title = "Audio o vídeo de la letra",
-            Filter = "Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*"
+            Title = Tr.S("Audio o vídeo de la letra"),
+            Filter = Tr.S("Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*")
         })
         {
             if (d.FilePath != null) dlg.InitialDirectory = Path.GetDirectoryName(d.FilePath);
@@ -2533,12 +2590,12 @@ class MainForm : Form
                     if (Updater.IsNewer(r))
                     {
                         lUpdate.Tag = r;
-                        lUpdate.Text = "⬆ Actualización disponible: " + r.Version;
+                        lUpdate.Text = Tr.S("⬆ Actualización disponible: {0}", r.Version);
                         lUpdate.Visible = true;
                         if (manual) PromptUpdate(r);
                     }
                     else if (manual)
-                        MessageBox.Show(this, r == null ? "No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet." : "Tienes la última versión (" + Version + ").",
+                        MessageBox.Show(this, r == null ? Tr.S("No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.") : Tr.S("Tienes la última versión ({0}).", Version),
                             App, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }));
             }
@@ -2549,11 +2606,10 @@ class MainForm : Form
     void PromptUpdate(Updater.Release r)
     {
         string notes = r.Notes.Length > 1200 ? r.Notes.Substring(0, 1200) + "..." : r.Notes;
-        if (MessageBox.Show(this, "Hay una nueva versión de " + App + ": " + r.Version + " (tienes la " + Version + ").\n\n" + notes +
-                "\n\n¿Descargarla e instalarla ahora? " + App + " se reiniciará y conservará tus pestañas.",
+        if (MessageBox.Show(this, Tr.S("Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.", App, r.Version, Version, notes),
                 App, MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes) return;
         if (r.Url == null) { Process.Start(r.Page); return; }
-        lUpdate.Text = "Descargando actualización...";
+        lUpdate.Text = Tr.S("Descargando actualización...");
         string exe = Application.ExecutablePath, tmp = Path.Combine(Path.GetTempPath(), App + "-" + r.Version + ".exe");
         System.Threading.ThreadPool.QueueUserWorkItem(_ =>
         {
@@ -2566,7 +2622,7 @@ class MainForm : Form
             catch (Exception ex) { error = ex; }
             BeginInvoke((Action)(() =>
             {
-                if (error != null) { lUpdate.Text = "⬆ Actualización disponible: " + r.Version; Err(error); return; }
+                if (error != null) { lUpdate.Text = Tr.S("⬆ Actualización disponible: {0}", r.Version); Err(error); return; }
                 restartExe = exe;
                 Close();
             }));
@@ -2593,7 +2649,7 @@ class MainForm : Form
 
     void ShowSettings()
     {
-        using (var f = new Form { Text = "Ajustes - " + App + " " + Version, Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, ShowIcon = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
+        using (var f = new Form { Text = Tr.S("Ajustes - {0} {1}", App, Version), Font = Font, FormBorderStyle = FormBorderStyle.FixedDialog, MinimizeBox = false, MaximizeBox = false, ShowInTaskbar = false, ShowIcon = false, StartPosition = FormStartPosition.CenterParent, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink })
         {
             Func<string, bool, CheckBox> chk = (text, on) => new CheckBox { Text = text, Checked = on, AutoSize = true, Margin = new Padding(3, 4, 3, 4) };
             Func<string, Label> head = text => new Label { Text = text, AutoSize = true, Font = new Font(Font, FontStyle.Bold), Margin = new Padding(3, 12, 3, 4) };
@@ -2603,37 +2659,50 @@ class MainForm : Form
             var cTab = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = Font.Height * 10 };
             cTab.Items.AddRange(new object[] { "2", "4", "8" });
             cTab.SelectedItem = tabSize.ToString();
+            var langs = Tr.Available().Select(c => new CultureInfo(c))
+                .Select(c => new { c.Name, Text = char.ToUpper(c.NativeName[0], c) + c.NativeName.Substring(1) }).OrderBy(x => x.Text).ToList();
+            var cLang = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = Font.Height * 10, DropDownWidth = Font.Height * 16 };
+            cLang.Items.Add(Tr.S("Idioma de Windows"));
+            foreach (var x in langs) cLang.Items.Add(x.Text);
+            cLang.SelectedIndex = langs.FindIndex(x => x.Name == lang) + 1;
             var chosen = font;
-            var bFont = new Button { Text = "Fuente: " + font.Name + " " + font.SizeInPoints + " pt", AutoSize = true };
+            var bFont = new Button { Text = Tr.S("Fuente: {0} {1} pt", font.Name, font.SizeInPoints), AutoSize = true };
             bFont.Click += (s, e) =>
             {
                 using (var fd = new FontDialog { Font = chosen, ShowEffects = false })
-                    if (fd.ShowDialog(f) == DialogResult.OK) { chosen = fd.Font; bFont.Text = "Fuente: " + chosen.Name + " " + chosen.SizeInPoints + " pt"; }
+                    if (fd.ShowDialog(f) == DialogResult.OK) { chosen = fd.Font; bFont.Text = Tr.S("Fuente: {0} {1} pt", chosen.Name, chosen.SizeInPoints); }
             };
-            var xWrap = chk("Ajuste de línea", wrap);
-            var xLines = chk("Mostrar números de línea", lineNumbers);
-            var xSyntax = chk("Resaltado de sintaxis", syntax);
-            var xIndent = chk("Sangría automática al pulsar Intro", autoIndent);
-            var xSpaces = chk("El tabulador inserta espacios", spaces);
-            var xSession = chk("Restaurar pestañas y texto sin guardar al abrir", restoreSession);
-            var xTop = chk("Ventana siempre visible", TopMost);
-            var xUpdates = chk("Buscar actualizaciones al iniciar", checkUpdates);
+            var xWrap = chk(Tr.S("Ajuste de línea"), wrap);
+            var xLines = chk(Tr.S("Mostrar números de línea"), lineNumbers);
+            var xSyntax = chk(Tr.S("Resaltado de sintaxis"), syntax);
+            var xIndent = chk(Tr.S("Sangría automática al pulsar Intro"), autoIndent);
+            var xSpaces = chk(Tr.S("El tabulador inserta espacios"), spaces);
+            var xSession = chk(Tr.S("Restaurar pestañas y texto sin guardar al abrir"), restoreSession);
+            var xTop = chk(Tr.S("Ventana siempre visible"), TopMost);
+            var xUpdates = chk(Tr.S("Buscar actualizaciones al iniciar"), checkUpdates);
 
             var left = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false, Margin = new Padding(0, 0, 24, 0) };
             left.Controls.AddRange(new Control[] {
-                head("Apariencia"), new Label { Text = "Tema", AutoSize = true }, cTheme, bFont, xLines, xSyntax,
-                head("Edición"), xWrap, xIndent, xSpaces, new Label { Text = "Ancho del tabulador", AutoSize = true }, cTab,
-                head("Ventana"), xSession, xTop, xUpdates });
+                head(Tr.S("Apariencia")), new Label { Text = Tr.S("Tema"), AutoSize = true }, cTheme,
+                new Label { Text = Tr.S("Idioma"), AutoSize = true }, cLang, bFont, xLines, xSyntax,
+                head(Tr.S("Edición")), xWrap, xIndent, xSpaces, new Label { Text = Tr.S("Ancho del tabulador"), AutoSize = true }, cTab,
+                head(Tr.S("Ventana")), xSession, xTop, xUpdates });
 
             var log = new TextBox { Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Vertical, Text = Changelog(), Width = Font.Height * 30, Height = Font.Height * 22, WordWrap = true };
+            var github = new Button { Text = "GitHub", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(12, 8, 3, 2) };
+            github.Click += (s, e) => Process.Start("https://github.com/" + Setup.Repo);
+            var title = new FlowLayoutPanel { AutoSize = true, WrapContents = false, Margin = Padding.Empty };
+            title.Controls.AddRange(new Control[] {
+                new Label { Text = App + " " + Version, AutoSize = true, Anchor = AnchorStyles.Left, Font = new Font(Font.FontFamily, Font.Size * 1.6f, FontStyle.Bold), Margin = new Padding(3, 8, 3, 2) },
+                github });
             var right = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false };
             right.Controls.AddRange(new Control[] {
-                new Label { Text = App + " " + Version, AutoSize = true, Font = new Font(Font.FontFamily, Font.Size * 1.6f, FontStyle.Bold), Margin = new Padding(3, 8, 3, 2) },
-                new Label { Text = "Un editor de texto ligero para Windows.", AutoSize = true },
-                head("Novedades"), log });
+                title,
+                new Label { Text = Tr.S("Un editor de texto ligero para Windows."), AutoSize = true },
+                head(Tr.S("Novedades")), log });
 
-            var ok = new Button { Text = "Aceptar", DialogResult = DialogResult.OK, AutoSize = true };
-            var cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, AutoSize = true };
+            var ok = new Button { Text = Tr.S("Aceptar"), DialogResult = DialogResult.OK, AutoSize = true };
+            var cancel = new Button { Text = Tr.S("Cancelar"), DialogResult = DialogResult.Cancel, AutoSize = true };
             var buttons = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Right, Margin = new Padding(0, 12, 0, 0) };
             buttons.Controls.AddRange(new Control[] { ok, cancel });
             var grid = new TableLayoutPanel { AutoSize = true, ColumnCount = 2, Padding = new Padding(14) };
@@ -2658,9 +2727,18 @@ class MainForm : Form
             restoreSession = xSession.Checked;
             TopMost = xTop.Checked;
             checkUpdates = xUpdates.Checked;
+            string newLang = cLang.SelectedIndex == 0 ? "" : langs[cLang.SelectedIndex - 1].Name;
+            bool langChanged = newLang != lang;
+            lang = newLang;
             ApplyEditorSettings();
             ApplyThemeAll();
             try { SaveSettings(); } catch { }
+            if (langChanged && MessageBox.Show(this, Tr.S("El nuevo idioma se verá al reiniciar {0}.", App) + "\n\n" + Tr.S("¿Reiniciar ahora?"),
+                    App, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                restartExe = Application.ExecutablePath;
+                Close();
+            }
         }
     }
 
@@ -2788,6 +2866,7 @@ class MainForm : Form
             "font=" + font.Name,
             "size=" + font.Size.ToString(CultureInfo.InvariantCulture),
             "theme=" + themeMode,
+            "lang=" + lang,
             "tab=" + tabSize,
             "wrap=" + b(wrap),
             "lines=" + b(lineNumbers),
@@ -2810,7 +2889,7 @@ class MainForm : Form
             try { SaveSession(); }
             catch (Exception ex)
             {
-                if (!Confirm("No se pudo guardar la sesión:\n" + ex.Message + "\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar."))
+                if (!Confirm(Tr.S("No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.", ex.Message)))
                 {
                     e.Cancel = true;
                     restartExe = null;

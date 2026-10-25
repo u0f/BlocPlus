@@ -1,0 +1,135 @@
+&Abrir...	&Avaa...
+&Acerca de {0} {1}	&Tietoja: {0} {1}
+&Archivo	&Tiedosto
+&Buscar actualizaciones	&Tarkista päivitykset
+&Buscar...	&Etsi...
+&Codificación	&Merkistökoodaus
+&Copiar	&Kopioi
+&Deshacer	&Kumoa
+&Documento	&Asiakirja
+&Editar	&Muokkaa
+&Fin de línea	&Rivin loppu
+&Guardar	&Tallenna
+&Instalar en este equipo...	&Asenna tähän tietokoneeseen...
+&Ir a línea...	&Siirry riville...
+&Lenguaje	&Kieli
+&Nueva pestaña	&Uusi välilehti
+&Números de línea	&Rivinumerot
+&Pegar	&Liitä
+&Rehacer	&Tee uudelleen
+&Salir	&Lopeta
+&Ver	&Näytä
+&Vista previa	&Esikatselu
+(vacío)	(tyhjä)
+A&juste de línea	Automaatt&inen rivitys
+A&justes...	A&setukset...
+Abrir &reciente	Avaa &viimeisimmät
+Aceptar	OK
+Acercar	Lähennä
+Ajuste de línea	Rivitys
+Ajustes - {0} {1}	Asetukset - {0} {1}
+Alejar	Loitonna
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Jotkin merkit eivät ole ANSI-merkistössä ja katoaisivat.\nTallennetaanko sen sijaan UTF-8-muodossa?
+Ancho del tabulador	Sarkaimen leveys
+Anterior	Edellinen
+Apariencia	Ulkoasu
+Audio o vídeo de la letra	Sanoituksen ääni tai video
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Ääni ja video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Kaikki tiedostot|*.*
+Ay&uda	O&hje
+Bajar línea	Siirrä rivi alas
+Buscar &anterior	Etsi &edellinen
+Buscar &siguiente	Etsi &seuraava
+Buscar actualizaciones al iniciar	Tarkista päivitykset käynnistettäessä
+Buscar y reemplazar	Etsi ja korvaa
+Buscar:	Etsi:
+Cambiar...	Muuta...
+Cancelar	Peruuta
+Cerrar &pestaña	Sulje &välilehti
+Claro	Vaalea
+Copiar	Kopioi
+Cor&tar	Le&ikkaa
+Cortar	Leikkaa
+D&uplicar línea	&Monista rivi
+Descargando actualización...	Ladataan päivitystä...
+Deshacer	Kumoa
+Documento de texto ({0})	Tekstiasiakirja ({0})
+Edición	Muokkaus
+Editar con {0}	Muokkaa sovelluksella {0}
+Editor de texto ligero para Windows	Kevyt tekstieditori Windowsille
+Editor de texto ligero para Windows.	Kevyt tekstieditori Windowsille.
+El tabulador inserta espacios	Sarkain lisää välilyöntejä
+Elegir archivo...	Valitse tiedosto...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Valitse tämän sanoituksen ääni tai video, jotta voit seurata sitä toiston aikana.
+Eliminar	Poista
+Eliminar línea	Poista rivi
+Expresión regular	Säännöllinen lauseke
+Fuente: {0} {1} pt	Fontti: {0} {1} pt
+Guardar &como...	Tallenna &nimellä...
+Guardar t&odo	Tallenna k&aikki
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Sovelluksesta {0} on uusi versio: {1} (sinulla on {2}).\n\n{3}\n\nLadataanko ja asennetaanko se nyt? {0} käynnistyy uudelleen ja säilyttää välilehdet.
+Insertar fecha y hora	Lisää päivämäärä ja kellonaika
+Ir a línea	Siirry riville
+La descarga no es un ejecutable válido.	Ladattu tiedosto ei ole kelvollinen suoritettava tiedosto.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Esikatselu on käytettävissä HTML-, Markdown-, reStructuredText-, SVG-, CSV/TSV- ja LRC-sanoituksille.
+Lín {0}, Col {1}	Rv {0}, Sar {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Rv {0}, Sar {1}   ({2} valittu)
+MAYÚSCULAS	ISOT KIRJAIMET
+Mayús/minús	Isot/pienet kirjaimet
+Mostrar números de línea	Näytä rivinumerot
+No se encontró.	Ei löytynyt.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Päivitysten tarkistus epäonnistui. Tarkista internet-yhteytesi.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Istunnon tallennus epäonnistui:\n{0}\n\nSuljetaanko silti? Tallentamaton teksti menetetään.
+No se pudo instalar:\n{0}	Asennus epäonnistui:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Toisto ei onnistu: MP4:n on oltava H.264 ja AAC-ääni; äänen MP3 tai M4A/AAC.
+Novedades	Uusimmat muutokset
+Número de línea (1-{0}):	Rivinumero (1-{0}):
+Ordenar líneas	Lajittele rivit
+Oscuro	Tumma
+Palabra completa	Koko sana
+Pegar	Liitä
+Quitar espacios finales	Poista loppuvälilyönnit
+R&eemplazar...	K&orvaa...
+Reabrir pestaña &cerrada	Avaa suljettu väli&lehti uudelleen
+Recargar desde disco	Lataa levyltä uudelleen
+Reemplazar	Korvaa
+Reemplazar todo	Korvaa kaikki
+Reemplazar:	Korvaa:
+Reproducir / pausa	Toista / tauko
+Resaltado de sintaxis	Syntaksin korostus
+Restablecer zoom	Palauta zoomaus
+Restaurar pestañas y texto sin guardar al abrir	Palauta välilehdet ja tallentamaton teksti avattaessa
+Sangría automática al pulsar Intro	Automaattinen sisennys Enter-näppäimellä
+Seleccionar &todo	Valitse k&aikki
+Seleccionar todo	Valitse kaikki
+Siguiente	Seuraava
+Silenciar	Mykistä
+Sin título {0}	Nimetön {0}
+Sistema	Järjestelmä
+Subir línea	Siirrä rivi ylös
+Tema	Teema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Teksti (*.txt)|*.txt|Kaikki tiedostot (*.*)|*.*
+Texto plano	Pelkkä teksti
+Tienes la última versión ({0}).	Sinulla on uusin versio ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Kaikki tiedostot (*.*)|*.*|Teksti (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 BOM:lla
+Un editor de texto ligero para Windows.	Kevyt tekstieditori Windowsille.
+Usar como editor &predeterminado...	Käytä &oletuseditorina...
+Ventana	Ikkuna
+Ventana siempre visible	Ikkuna aina päällimmäisenä
+minúsculas	pienet kirjaimet
+{0} - Instalación	{0} - Asennus
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} on muuttunut editorin ulkopuolella.\nLadataanko se uudelleen ja menetetäänkö muutoksesi?
+{0} se ha desinstalado.	{0} on poistettu.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} on asennettu ja löytyy nyt Käynnistä-valikosta.\n\nHaluatko käyttää sitä oletustekstieditorina? Windowsin asetukset avautuvat, jotta voit valita sen.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Poistetaanko myös {0}-tietosi?\n\nNe ovat asetuksesi, viimeisimmät tiedostot ja tallennettu istunto, mukaan lukien välilehtien teksti, jota et koskaan tallentanut.\n\nJos valitset Ei, ne säilyvät siltä varalta, että asennat sovelluksen uudelleen.
+¿Descartar los cambios de {0} y recargar desde disco?	Hylätäänkö kohteen {0} muutokset ja ladataanko levyltä uudelleen?
+¿Desinstalar {0}?	Poistetaanko {0}?
+¿Guardar los cambios de {0}?	Tallennetaanko kohteen {0} muutokset?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Asennetaanko {0} {1} tähän tietokoneeseen?\n\nSe asennetaan vain sinun käyttäjällesi kohteeseen:\n{2}\n\nJärjestelmänvalvojan oikeuksia ei tarvita.
+◧ Ocultar vista previa	◧ Piilota esikatselu
+◧ Vista previa disponible	◧ Esikatselu käytettävissä
+⬆ Actualización disponible: {0}	⬆ Päivitys saatavilla: {0}
+Idioma	Kieli
+Idioma de Windows	Windowsin kieli
+El nuevo idioma se verá al reiniciar {0}.	Uusi kieli otetaan käyttöön, kun {0} käynnistetään uudelleen.
+¿Reiniciar ahora?	Käynnistetäänkö uudelleen nyt?

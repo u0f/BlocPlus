@@ -1,0 +1,135 @@
+&Abrir...	&Apri...
+&Acerca de {0} {1}	&Informazioni su {0} {1}
+&Archivo	&File
+&Buscar actualizaciones	Cerca &aggiornamenti
+&Buscar...	&Trova...
+&Codificación	&Codifica
+&Copiar	&Copia
+&Deshacer	&Annulla
+&Documento	&Documento
+&Editar	&Modifica
+&Fin de línea	Fine &riga
+&Guardar	&Salva
+&Instalar en este equipo...	&Installa su questo computer...
+&Ir a línea...	&Vai alla riga...
+&Lenguaje	&Linguaggio
+&Nueva pestaña	&Nuova scheda
+&Números de línea	&Numeri di riga
+&Pegar	&Incolla
+&Rehacer	&Ripeti
+&Salir	E&sci
+&Ver	&Visualizza
+&Vista previa	A&nteprima
+(vacío)	(vuoto)
+A&juste de línea	A &capo automatico
+A&justes...	I&mpostazioni...
+Abrir &reciente	Apri &recenti
+Aceptar	OK
+Acercar	Ingrandisci
+Ajuste de línea	A capo automatico
+Ajustes - {0} {1}	Impostazioni - {0} {1}
+Alejar	Riduci
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Alcuni caratteri non esistono in ANSI e andrebbero persi.\nSalvare invece in UTF-8?
+Ancho del tabulador	Larghezza tabulazione
+Anterior	Precedente
+Apariencia	Aspetto
+Audio o vídeo de la letra	Audio o video del testo
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audio e video (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Tutti i file|*.*
+Ay&uda	Ai&uto
+Bajar línea	Sposta riga in basso
+Buscar &anterior	Trova &precedente
+Buscar &siguiente	Trova &successivo
+Buscar actualizaciones al iniciar	Cerca aggiornamenti all'avvio
+Buscar y reemplazar	Trova e sostituisci
+Buscar:	Trova:
+Cambiar...	Cambia...
+Cancelar	Annulla
+Cerrar &pestaña	Chiudi &scheda
+Claro	Chiaro
+Copiar	Copia
+Cor&tar	Ta&glia
+Cortar	Taglia
+D&uplicar línea	D&uplica riga
+Descargando actualización...	Download dell'aggiornamento in corso...
+Deshacer	Annulla
+Documento de texto ({0})	Documento di testo ({0})
+Edición	Modifica
+Editar con {0}	Modifica con {0}
+Editor de texto ligero para Windows	Editor di testo leggero per Windows
+Editor de texto ligero para Windows.	Editor di testo leggero per Windows.
+El tabulador inserta espacios	Il tasto Tab inserisce spazi
+Elegir archivo...	Scegli file...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Scegli l'audio o il video di questo testo per seguirlo durante la riproduzione.
+Eliminar	Elimina
+Eliminar línea	Elimina riga
+Expresión regular	Espressione regolare
+Fuente: {0} {1} pt	Carattere: {0} {1} pt
+Guardar &como...	Salva con &nome...
+Guardar t&odo	Salva t&utto
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	È disponibile una nuova versione di {0}: {1} (hai la {2}).\n\n{3}\n\nScaricarla e installarla ora? {0} verrà riavviato e manterrà le tue schede.
+Insertar fecha y hora	Inserisci data e ora
+Ir a línea	Vai alla riga
+La descarga no es un ejecutable válido.	Il file scaricato non è un eseguibile valido.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	L'anteprima è disponibile per HTML, Markdown, reStructuredText, SVG, CSV/TSV e testi LRC.
+Lín {0}, Col {1}	Ri {0}, Col {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Ri {0}, Col {1}   ({2} selezionati)
+MAYÚSCULAS	MAIUSCOLO
+Mayús/minús	Maiuscole/minuscole
+Mostrar números de línea	Mostra numeri di riga
+No se encontró.	Non trovato.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Impossibile verificare la presenza di aggiornamenti. Controlla la connessione a Internet.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Impossibile salvare la sessione:\n{0}\n\nChiudere comunque? Il testo non salvato andrà perso.
+No se pudo instalar:\n{0}	Impossibile installare:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Impossibile riprodurre: l'MP4 deve essere H.264 con audio AAC; l'audio deve essere MP3 o M4A/AAC.
+Novedades	Novità
+Número de línea (1-{0}):	Numero di riga (1-{0}):
+Ordenar líneas	Ordina righe
+Oscuro	Scuro
+Palabra completa	Parola intera
+Pegar	Incolla
+Quitar espacios finales	Rimuovi spazi finali
+R&eemplazar...	S&ostituisci...
+Reabrir pestaña &cerrada	Riapri scheda &chiusa
+Recargar desde disco	Ricarica da disco
+Reemplazar	Sostituisci
+Reemplazar todo	Sostituisci tutto
+Reemplazar:	Sostituisci con:
+Reproducir / pausa	Riproduci / pausa
+Resaltado de sintaxis	Evidenziazione sintassi
+Restablecer zoom	Reimposta zoom
+Restaurar pestañas y texto sin guardar al abrir	Ripristina schede e testo non salvato all'avvio
+Sangría automática al pulsar Intro	Rientro automatico con Invio
+Seleccionar &todo	Seleziona &tutto
+Seleccionar todo	Seleziona tutto
+Siguiente	Successivo
+Silenciar	Disattiva audio
+Sin título {0}	Senza titolo {0}
+Sistema	Sistema
+Subir línea	Sposta riga in alto
+Tema	Tema
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Testo (*.txt)|*.txt|Tutti i file (*.*)|*.*
+Texto plano	Testo normale
+Tienes la última versión ({0}).	Hai l'ultima versione ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Tutti i file (*.*)|*.*|Testo (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 con BOM
+Un editor de texto ligero para Windows.	Un editor di testo leggero per Windows.
+Usar como editor &predeterminado...	Usa come editor &predefinito...
+Ventana	Finestra
+Ventana siempre visible	Finestra sempre in primo piano
+minúsculas	minuscolo
+{0} - Instalación	{0} - Installazione
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} è stato modificato all'esterno dell'editor.\nRicaricarlo e perdere le modifiche?
+{0} se ha desinstalado.	{0} è stato disinstallato.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} è stato installato ed è ora nel menu Start.\n\nVuoi usarlo come editor di testo predefinito? Si aprirà la configurazione di Windows per sceglierlo.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Eliminare anche i dati di {0}?\n\nSono le impostazioni, i file recenti e la sessione salvata, incluso il testo delle schede mai salvate.\n\nSe scegli No, vengono conservati nel caso lo reinstalli.
+¿Descartar los cambios de {0} y recargar desde disco?	Annullare le modifiche di {0} e ricaricare da disco?
+¿Desinstalar {0}?	Disinstallare {0}?
+¿Guardar los cambios de {0}?	Salvare le modifiche a {0}?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Installare {0} {1} su questo computer?\n\nVerrà installato solo per il tuo utente in:\n{2}\n\nNon servono i privilegi di amministratore.
+◧ Ocultar vista previa	◧ Nascondi anteprima
+◧ Vista previa disponible	◧ Anteprima disponibile
+⬆ Actualización disponible: {0}	⬆ Aggiornamento disponibile: {0}
+Idioma	Lingua
+Idioma de Windows	Lingua di Windows
+El nuevo idioma se verá al reiniciar {0}.	La nuova lingua verrà applicata al riavvio di {0}.
+¿Reiniciar ahora?	Riavviare ora?

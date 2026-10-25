@@ -1,0 +1,135 @@
+&Abrir...	&Ireki...
+&Acerca de {0} {1}	{0} {1} &buruz
+&Archivo	&Fitxategia
+&Buscar actualizaciones	Bilatu &eguneratzeak
+&Buscar...	&Bilatu...
+&Codificación	&Kodeketa
+&Copiar	&Kopiatu
+&Deshacer	&Desegin
+&Documento	&Dokumentua
+&Editar	&Editatu
+&Fin de línea	&Lerro-amaiera
+&Guardar	&Gorde
+&Instalar en este equipo...	&Instalatu ekipo honetan...
+&Ir a línea...	&Joan lerrora...
+&Lenguaje	&Lengoaia
+&Nueva pestaña	&Fitxa berria
+&Números de línea	Lerro-&zenbakiak
+&Pegar	&Itsatsi
+&Rehacer	&Berregin
+&Salir	I&rten
+&Ver	&Ikusi
+&Vista previa	Aurre&ikuspegia
+(vacío)	(hutsik)
+A&juste de línea	Lerro-&doikuntza
+A&justes...	&Ezarpenak...
+Abrir &reciente	Ireki &berriak
+Aceptar	Ados
+Acercar	Handitu
+Ajuste de línea	Lerro-doikuntza
+Ajustes - {0} {1}	Ezarpenak - {0} {1}
+Alejar	Txikitu
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Karaktere batzuk ez daude ANSI kodeketan eta galduko lirateke.\nUTF-8n gorde horren ordez?
+Ancho del tabulador	Tabuladorearen zabalera
+Anterior	Aurrekoa
+Apariencia	Itxura
+Audio o vídeo de la letra	Letraren audioa edo bideoa
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Audioa eta bideoa (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Fitxategi guztiak|*.*
+Ay&uda	Lagun&tza
+Bajar línea	Jaitsi lerroa
+Buscar &anterior	Bilatu &aurrekoa
+Buscar &siguiente	Bilatu &hurrengoa
+Buscar actualizaciones al iniciar	Bilatu eguneratzeak abiaraztean
+Buscar y reemplazar	Bilatu eta ordezkatu
+Buscar:	Bilatu:
+Cambiar...	Aldatu...
+Cancelar	Utzi
+Cerrar &pestaña	Itxi &fitxa
+Claro	Argia
+Copiar	Kopiatu
+Cor&tar	Ebak&i
+Cortar	Ebaki
+D&uplicar línea	Bikoiztu &lerroa
+Descargando actualización...	Eguneratzea deskargatzen...
+Deshacer	Desegin
+Documento de texto ({0})	Testu-dokumentua ({0})
+Edición	Edizioa
+Editar con {0}	Editatu {0} erabiliz
+Editor de texto ligero para Windows	Windowserako testu-editore arina
+Editor de texto ligero para Windows.	Windowserako testu-editore arina.
+El tabulador inserta espacios	Tabuladoreak zuriuneak txertatzen ditu
+Elegir archivo...	Aukeratu fitxategia...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Aukeratu letra honen audioa edo bideoa, erreproduzitzen den bitartean jarraitzeko.
+Eliminar	Ezabatu
+Eliminar línea	Ezabatu lerroa
+Expresión regular	Adierazpen erregularra
+Fuente: {0} {1} pt	Letra-tipoa: {0} {1} pt
+Guardar &como...	Gorde &honela...
+Guardar t&odo	Gorde &dena
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} programaren bertsio berri bat dago: {1} ({2} duzu).\n\n{3}\n\nOrain deskargatu eta instalatu? {0} berrabiaraziko da eta zure fitxak mantenduko ditu.
+Insertar fecha y hora	Txertatu data eta ordua
+Ir a línea	Joan lerrora
+La descarga no es un ejecutable válido.	Deskargatutakoa ez da exekutagarri baliozkoa.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Aurreikuspegia HTML, Markdown, reStructuredText, SVG, CSV/TSV eta LRC letretarako dago erabilgarri.
+Lín {0}, Col {1}	{0}. lerroa, {1}. zut.
+Lín {0}, Col {1}   ({2} seleccionados)	{0}. lerroa, {1}. zut.   ({2} hautatuta)
+MAYÚSCULAS	MAIUSKULAK
+Mayús/minús	Maiuskula/minuskula
+Mostrar números de línea	Erakutsi lerro-zenbakiak
+No se encontró.	Ez da aurkitu.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Ezin izan da eguneratzerik dagoen egiaztatu. Begiratu zure Interneteko konexioa.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Ezin izan da saioa gorde:\n{0}\n\nHala ere itxi? Gorde gabeko testua galduko da.
+No se pudo instalar:\n{0}	Ezin izan da instalatu:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Ezin da erreproduzitu: MP4 H.264 izan behar da AAC audioarekin; audioa, MP3 edo M4A/AAC.
+Novedades	Berritasunak
+Número de línea (1-{0}):	Lerro-zenbakia (1-{0}):
+Ordenar líneas	Ordenatu lerroak
+Oscuro	Iluna
+Palabra completa	Hitz osoa
+Pegar	Itsatsi
+Quitar espacios finales	Kendu amaierako zuriuneak
+R&eemplazar...	Or&dezkatu...
+Reabrir pestaña &cerrada	Berrireki &itxitako fitxa
+Recargar desde disco	Birkargatu diskotik
+Reemplazar	Ordezkatu
+Reemplazar todo	Ordezkatu guztiak
+Reemplazar:	Ordezkatu honekin:
+Reproducir / pausa	Erreproduzitu / eten
+Resaltado de sintaxis	Sintaxia nabarmentzea
+Restablecer zoom	Berrezarri zooma
+Restaurar pestañas y texto sin guardar al abrir	Berrezarri fitxak eta gorde gabeko testua irekitzean
+Sangría automática al pulsar Intro	Koska automatikoa Sartu sakatzean
+Seleccionar &todo	Hautatu &dena
+Seleccionar todo	Hautatu dena
+Siguiente	Hurrengoa
+Silenciar	Mututu
+Sin título {0}	Izenik gabea {0}
+Sistema	Sistema
+Subir línea	Igo lerroa
+Tema	Gaia
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Testua (*.txt)|*.txt|Fitxategi guztiak (*.*)|*.*
+Texto plano	Testu soila
+Tienes la última versión ({0}).	Azken bertsioa duzu ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Fitxategi guztiak (*.*)|*.*|Testua (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 BOMarekin
+Un editor de texto ligero para Windows.	Windowserako testu-editore arin bat.
+Usar como editor &predeterminado...	Erabili editore &lehenetsi gisa...
+Ventana	Leihoa
+Ventana siempre visible	Leihoa beti ikusgai
+minúsculas	minuskulak
+{0} - Instalación	{0} - Instalazioa
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	{0} editoretik kanpo aldatu da.\nBirkargatu eta zure aldaketak galdu?
+{0} se ha desinstalado.	{0} desinstalatu da.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	{0} instalatu da eta dagoeneko Hasiera menuan dago.\n\nTestu-editore lehenetsi gisa erabili nahi duzu? Windowsen ezarpenak irekiko dira hura aukeratzeko.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	{0} programaren zure datuak ere ezabatu?\n\nZure ezarpenak, azken fitxategiak eta gordetako saioa dira, inoiz gorde ez dituzun fitxen testua barne.\n\nEz aukeratzen baduzu, mantendu egingo dira berriro instalatzen baduzu.
+¿Descartar los cambios de {0} y recargar desde disco?	{0} programaren aldaketak baztertu eta diskotik birkargatu?
+¿Desinstalar {0}?	{0} desinstalatu?
+¿Guardar los cambios de {0}?	{0} programaren aldaketak gorde?
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	{0} {1} ekipo honetan instalatu?\n\nZure erabiltzailearentzat soilik instalatuko da hemen:\n{2}\n\nEz da administratzailea izan beharrik.
+◧ Ocultar vista previa	◧ Ezkutatu aurreikuspegia
+◧ Vista previa disponible	◧ Aurreikuspegia erabilgarri
+⬆ Actualización disponible: {0}	⬆ Eguneratzea erabilgarri: {0}
+Idioma	Hizkuntza
+Idioma de Windows	Windows-en hizkuntza
+El nuevo idioma se verá al reiniciar {0}.	Hizkuntza berria {0} berrabiaraztean ikusiko da.
+¿Reiniciar ahora?	Berrabiarazi orain?

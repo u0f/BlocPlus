@@ -1,0 +1,135 @@
+&Abrir...	&Άνοιγμα...
+&Acerca de {0} {1}	&Σχετικά με το {0} {1}
+&Archivo	&Αρχείο
+&Buscar actualizaciones	&Έλεγχος για ενημερώσεις
+&Buscar...	&Εύρεση...
+&Codificación	&Κωδικοποίηση
+&Copiar	&Αντιγραφή
+&Deshacer	&Αναίρεση
+&Documento	&Έγγραφο
+&Editar	&Επεξεργασία
+&Fin de línea	&Τέλος γραμμής
+&Guardar	&Αποθήκευση
+&Instalar en este equipo...	&Εγκατάσταση σε αυτόν τον υπολογιστή...
+&Ir a línea...	&Μετάβαση στη γραμμή...
+&Lenguaje	&Γλώσσα
+&Nueva pestaña	&Νέα καρτέλα
+&Números de línea	&Αριθμοί γραμμών
+&Pegar	&Επικόλληση
+&Rehacer	Ε&πανάληψη
+&Salir	&Έξοδος
+&Ver	&Προβολή
+&Vista previa	&Προεπισκόπηση
+(vacío)	(κενό)
+A&juste de línea	&Αναδίπλωση γραμμών
+A&justes...	&Ρυθμίσεις...
+Abrir &reciente	Άνοιγμα &πρόσφατων
+Aceptar	OK
+Acercar	Μεγέθυνση
+Ajuste de línea	Αναδίπλωση γραμμών
+Ajustes - {0} {1}	Ρυθμίσεις - {0} {1}
+Alejar	Σμίκρυνση
+Algunos caracteres no existen en ANSI y se perderían.\n¿Guardar en UTF-8 en su lugar?	Ορισμένοι χαρακτήρες δεν υπάρχουν στο ANSI και θα χαθούν.\nΝα γίνει αποθήκευση σε UTF-8;
+Ancho del tabulador	Πλάτος tab
+Anterior	Προηγούμενο
+Apariencia	Εμφάνιση
+Audio o vídeo de la letra	Ήχος ή βίντεο των στίχων
+Audio y vídeo (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Todos los archivos|*.*	Ήχος και βίντεο (MP3, M4A, AAC, MP4)|*.mp3;*.m4a;*.aac;*.mp4;*.m4v|Όλα τα αρχεία|*.*
+Ay&uda	&Βοήθεια
+Bajar línea	Μετακίνηση γραμμής κάτω
+Buscar &anterior	Εύρεση &προηγούμενου
+Buscar &siguiente	Εύρεση &επόμενου
+Buscar actualizaciones al iniciar	Έλεγχος για ενημερώσεις κατά την εκκίνηση
+Buscar y reemplazar	Εύρεση και αντικατάσταση
+Buscar:	Εύρεση:
+Cambiar...	Αλλαγή...
+Cancelar	Ακύρωση
+Cerrar &pestaña	Κλείσιμο &καρτέλας
+Claro	Φωτεινό
+Copiar	Αντιγραφή
+Cor&tar	Αποκοπ&ή
+Cortar	Αποκοπή
+D&uplicar línea	&Διπλασιασμός γραμμής
+Descargando actualización...	Λήψη ενημέρωσης...
+Deshacer	Αναίρεση
+Documento de texto ({0})	Έγγραφο κειμένου ({0})
+Edición	Επεξεργασία
+Editar con {0}	Επεξεργασία με το {0}
+Editor de texto ligero para Windows	Ελαφρύς επεξεργαστής κειμένου για Windows
+Editor de texto ligero para Windows.	Ελαφρύς επεξεργαστής κειμένου για Windows.
+El tabulador inserta espacios	Το tab εισάγει κενά
+Elegir archivo...	Επιλογή αρχείου...
+Elige el audio o vídeo de esta letra para seguirla mientras suena.	Επιλέξτε τον ήχο ή το βίντεο αυτών των στίχων για να τους ακολουθείτε κατά την αναπαραγωγή.
+Eliminar	Διαγραφή
+Eliminar línea	Διαγραφή γραμμής
+Expresión regular	Κανονική έκφραση
+Fuente: {0} {1} pt	Γραμματοσειρά: {0} {1} pt
+Guardar &como...	Αποθήκευση &ως...
+Guardar t&odo	Αποθήκευση ό&λων
+Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Υπάρχει νέα έκδοση του {0}: {1} (έχετε την {2}).\n\n{3}\n\nΝα γίνει λήψη και εγκατάσταση τώρα; Το {0} θα επανεκκινήσει και θα διατηρήσει τις καρτέλες σας.
+Insertar fecha y hora	Εισαγωγή ημερομηνίας και ώρας
+Ir a línea	Μετάβαση στη γραμμή
+La descarga no es un ejecutable válido.	Το αρχείο που λήφθηκε δεν είναι έγκυρο εκτελέσιμο.
+La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Η προεπισκόπηση είναι διαθέσιμη για HTML, Markdown, reStructuredText, SVG, CSV/TSV και στίχους LRC.
+Lín {0}, Col {1}	Γρ {0}, Στ {1}
+Lín {0}, Col {1}   ({2} seleccionados)	Γρ {0}, Στ {1}   ({2} επιλεγμένα)
+MAYÚSCULAS	ΚΕΦΑΛΑΙΑ
+Mayús/minús	Πεζά/κεφαλαία
+Mostrar números de línea	Εμφάνιση αριθμών γραμμών
+No se encontró.	Δεν βρέθηκε.
+No se pudo comprobar si hay actualizaciones. Revisa tu conexión a internet.	Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο.
+No se pudo guardar la sesión:\n{0}\n\n¿Cerrar de todos modos? Se perderá el texto sin guardar.	Δεν ήταν δυνατή η αποθήκευση της περιόδου λειτουργίας:\n{0}\n\nΝα γίνει κλείσιμο ούτως ή άλλως; Το μη αποθηκευμένο κείμενο θα χαθεί.
+No se pudo instalar:\n{0}	Δεν ήταν δυνατή η εγκατάσταση:\n{0}
+No se puede reproducir: el MP4 debe ser H.264 con audio AAC; el audio, MP3 o M4A/AAC.	Δεν είναι δυνατή η αναπαραγωγή: το MP4 πρέπει να είναι H.264 με ήχο AAC· ο ήχος MP3 ή M4A/AAC.
+Novedades	Τι νέο υπάρχει
+Número de línea (1-{0}):	Αριθμός γραμμής (1-{0}):
+Ordenar líneas	Ταξινόμηση γραμμών
+Oscuro	Σκούρο
+Palabra completa	Ολόκληρη λέξη
+Pegar	Επικόλληση
+Quitar espacios finales	Αφαίρεση τελικών κενών
+R&eemplazar...	Α&ντικατάσταση...
+Reabrir pestaña &cerrada	Εκ νέου άνοιγμα &κλειστής καρτέλας
+Recargar desde disco	Επανάληψη φόρτωσης από τον δίσκο
+Reemplazar	Αντικατάσταση
+Reemplazar todo	Αντικατάσταση όλων
+Reemplazar:	Αντικατάσταση με:
+Reproducir / pausa	Αναπαραγωγή / παύση
+Resaltado de sintaxis	Επισήμανση σύνταξης
+Restablecer zoom	Επαναφορά ζουμ
+Restaurar pestañas y texto sin guardar al abrir	Επαναφορά καρτελών και μη αποθηκευμένου κειμένου κατά την εκκίνηση
+Sangría automática al pulsar Intro	Αυτόματη εσοχή με το πάτημα του Enter
+Seleccionar &todo	Επιλογή ό&λων
+Seleccionar todo	Επιλογή όλων
+Siguiente	Επόμενο
+Silenciar	Σίγαση
+Sin título {0}	Χωρίς τίτλο {0}
+Sistema	Σύστημα
+Subir línea	Μετακίνηση γραμμής πάνω
+Tema	Θέμα
+Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*	Κείμενο (*.txt)|*.txt|Όλα τα αρχεία (*.*)|*.*
+Texto plano	Απλό κείμενο
+Tienes la última versión ({0}).	Έχετε την τελευταία έκδοση ({0}).
+Todos los archivos (*.*)|*.*|Texto (*.txt)|*.txt	Όλα τα αρχεία (*.*)|*.*|Κείμενο (*.txt)|*.txt
+UTF-8 con BOM	UTF-8 με BOM
+Un editor de texto ligero para Windows.	Ένας ελαφρύς επεξεργαστής κειμένου για Windows.
+Usar como editor &predeterminado...	Χρήση ως &προεπιλεγμένου επεξεργαστή...
+Ventana	Παράθυρο
+Ventana siempre visible	Παράθυρο πάντα στο προσκήνιο
+minúsculas	πεζά
+{0} - Instalación	{0} - Εγκατάσταση
+{0} ha cambiado fuera del editor.\n¿Recargarlo y perder tus cambios?	Το {0} άλλαξε εκτός του επεξεργαστή.\nΝα γίνει επαναφόρτωση και απώλεια των αλλαγών σας;
+{0} se ha desinstalado.	Το {0} έχει απεγκατασταθεί.
+{0} se ha instalado y ya está en el menú Inicio.\n\n¿Quieres usarlo como editor de texto predeterminado? Se abrirá la configuración de Windows para que lo elijas.	Το {0} εγκαταστάθηκε και βρίσκεται ήδη στο μενού Έναρξη.\n\nΘέλετε να το χρησιμοποιείτε ως προεπιλεγμένο επεξεργαστή κειμένου; Θα ανοίξουν οι ρυθμίσεις των Windows για να το επιλέξετε.
+¿Borrar también tus datos de {0}?\n\nSon tus ajustes, los archivos recientes y la sesión guardada, incluido el texto de las pestañas que nunca guardaste.\n\nSi eliges No, se conservan por si vuelves a instalarlo.	Να διαγραφούν και τα δεδομένα σας του {0};\n\nΕίναι οι ρυθμίσεις, τα πρόσφατα αρχεία και η αποθηκευμένη περίοδος λειτουργίας, συμπεριλαμβανομένου του κειμένου των καρτελών που δεν αποθηκεύσατε ποτέ.\n\nΑν επιλέξετε Όχι, διατηρούνται σε περίπτωση που το εγκαταστήσετε ξανά.
+¿Descartar los cambios de {0} y recargar desde disco?	Να απορριφθούν οι αλλαγές του {0} και να γίνει επαναφόρτωση από τον δίσκο;
+¿Desinstalar {0}?	Να απεγκατασταθεί το {0};
+¿Guardar los cambios de {0}?	Να αποθηκευτούν οι αλλαγές του {0};
+¿Instalar {0} {1} en este equipo?\n\nSe instalará solo para tu usuario en:\n{2}\n\nNo hace falta ser administrador.	Να εγκατασταθεί το {0} {1} σε αυτόν τον υπολογιστή;\n\nΘα εγκατασταθεί μόνο για τον χρήστη σας στο:\n{2}\n\nΔεν απαιτούνται δικαιώματα διαχειριστή.
+◧ Ocultar vista previa	◧ Απόκρυψη προεπισκόπησης
+◧ Vista previa disponible	◧ Διαθέσιμη προεπισκόπηση
+⬆ Actualización disponible: {0}	⬆ Διαθέσιμη ενημέρωση: {0}
+Idioma	Γλώσσα
+Idioma de Windows	Γλώσσα των Windows
+El nuevo idioma se verá al reiniciar {0}.	Η νέα γλώσσα θα εφαρμοστεί μετά την επανεκκίνηση του {0}.
+¿Reiniciar ahora?	Επανεκκίνηση τώρα;
