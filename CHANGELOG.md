@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2 (2026-10-25)
+
+- Preparado para Microsoft Store: la copia instalada desde la Store se actualiza desde la Store y no desde GitHub. La versión de GitHub funciona igual que antes.
+
 ## 1.2.1 (2026-10-25)
 
 - **BlocPlus en 33 idiomas**: usa el idioma de Windows (o inglés si no está disponible) y se puede cambiar en Ajustes > Idioma. Al cambiarlo, ofrece reiniciar el programa en ese momento.
