@@ -2,3 +2,5 @@
 *.pdb
 *.blocplus.tmp
 dist/
+packaging/stage/
+packaging/tools/

@@ -96,6 +96,7 @@ static class Native
     [DllImport("dwmapi.dll")] public static extern int DwmSetWindowAttribute(IntPtr h, int attr, ref int val, int size);
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)] public static extern int SetWindowTheme(IntPtr h, string app, string idList);
     [DllImport("shell32.dll")] public static extern void SHChangeNotify(int eventId, int flags, IntPtr a, IntPtr b);
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern int GetCurrentPackageFullName(ref int length, StringBuilder name);
     [DllImport("urlmon.dll")] public static extern int CoInternetSetFeatureEnabled(int feature, int flags, bool enable);
 }
 
@@ -107,14 +108,17 @@ static class Program
         try { Native.SetProcessDPIAware(); } catch { }
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        if (args.Contains("--uninstall")) { Setup.UninstallInteractive(); return; }
-        // The release ships the same exe twice; the copy named BlocPlus-Setup*.exe acts as the installer.
-        if (args.Contains("--install") || Path.GetFileName(Application.ExecutablePath).StartsWith("BlocPlus-Setup", StringComparison.OrdinalIgnoreCase))
+        if (!Setup.Packaged)
         {
-            if (Setup.InstallInteractive()) Process.Start(Setup.Exe);
-            return;
+            if (args.Contains("--uninstall")) { Setup.UninstallInteractive(); return; }
+            // The release ships the same exe twice; the copy named BlocPlus-Setup*.exe acts as the installer.
+            if (args.Contains("--install") || Path.GetFileName(Application.ExecutablePath).StartsWith("BlocPlus-Setup", StringComparison.OrdinalIgnoreCase))
+            {
+                if (Setup.InstallInteractive()) Process.Start(Setup.Exe);
+                return;
+            }
+            Setup.Startup();
         }
-        Setup.Startup();
         Application.Run(new MainForm(args.Where(a => !a.StartsWith("--")).ToArray()));
     }
 }
@@ -132,7 +136,16 @@ static class Setup
     public static string Dir { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", App); } }
     public static string Exe { get { return Path.Combine(Dir, App + ".exe"); } }
     static string Shortcut { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), App + ".lnk"); } }
+    // Microsoft Store (MSIX) copy: Windows installs and updates the package, so self-install and the GitHub updater stay off.
+    public static readonly bool Packaged = IsPackaged();
     public static bool RunningInstalled { get { return string.Equals(Path.GetFullPath(Application.ExecutablePath), Exe, StringComparison.OrdinalIgnoreCase); } }
+
+    static bool IsPackaged()
+    {
+        int len = 0;
+        try { return Native.GetCurrentPackageFullName(ref len, null) != 15700; } // APPMODEL_ERROR_NO_PACKAGE
+        catch { return false; } // Windows 7: no such API, no packages
+    }
 
     // Windows lets a running exe be renamed, so a new version can be swapped in while the old one is open.
     public static void ReplaceExe(string source, string target)
@@ -1355,7 +1368,7 @@ class MainForm : Form
             Highlight(Cur);
             previewShell = null; // the page set before the browser had a handle never loaded
             RenderPreview();
-            if (checkUpdates) CheckUpdates(false);
+            if (checkUpdates && !Setup.Packaged) CheckUpdates(false);
         };
         Activated += (s, e) => CheckExternal();
         FormClosing += OnClosing;
@@ -1452,8 +1465,12 @@ class MainForm : Form
             zin, zout, Item(Tr.S("Restablecer zoom"), Keys.Control | Keys.D0, () => Zoom(0)) });
 
         var help = new ToolStripMenuItem(Tr.S("Ay&uda"));
-        help.DropDownItems.Add(Item(Tr.S("&Buscar actualizaciones"), Keys.None, () => CheckUpdates(true)));
-        if (Setup.RunningInstalled) help.DropDownItems.Add(Item(Tr.S("Usar como editor &predeterminado..."), Keys.None, Setup.OpenDefaultApps));
+        help.DropDownItems.Add(Item(Tr.S("&Buscar actualizaciones"), Keys.None, () =>
+        {
+            if (Setup.Packaged) Process.Start("ms-windows-store://downloadsandupdates");
+            else CheckUpdates(true);
+        }));
+        if (Setup.RunningInstalled || Setup.Packaged) help.DropDownItems.Add(Item(Tr.S("Usar como editor &predeterminado..."), Keys.None, Setup.OpenDefaultApps));
         else help.DropDownItems.Add(Item(Tr.S("&Instalar en este equipo..."), Keys.None, () => { if (Setup.InstallInteractive()) { restartExe = Setup.Exe; Close(); } }));
         help.DropDownItems.Add(new ToolStripSeparator());
         help.DropDownItems.Add(Item(Tr.S("&Acerca de {0} {1}", App, Version), Keys.None, () => ShowSettings()));
@@ -2680,6 +2697,7 @@ class MainForm : Form
             var xSession = chk(Tr.S("Restaurar pestañas y texto sin guardar al abrir"), restoreSession);
             var xTop = chk(Tr.S("Ventana siempre visible"), TopMost);
             var xUpdates = chk(Tr.S("Buscar actualizaciones al iniciar"), checkUpdates);
+            xUpdates.Visible = !Setup.Packaged; // the Store updates it
 
             var left = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false, Margin = new Padding(0, 0, 24, 0) };
             left.Controls.AddRange(new Control[] {
