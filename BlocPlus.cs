@@ -24,7 +24,7 @@ using Microsoft.Win32;
 
 [assembly: AssemblyTitle("BlocPlus")]
 [assembly: AssemblyProduct("BlocPlus")]
-[assembly: AssemblyVersion("1.2.2")]
+[assembly: AssemblyVersion("1.3.0")]
 
 // UI strings are written in Spanish and translated with the embedded lang\<culture>.txt
 // matching the language chosen in settings, or else the Windows display language (English

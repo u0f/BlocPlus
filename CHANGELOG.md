@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 (2026-10-26)
+
+- **Vista previa de diffs y parches** (.diff, .patch): un recuadro por archivo con los números de línea antiguos y nuevos, las líneas añadidas en verde, las borradas en rojo y la cabecera del parche encima. Se pueden editar y la vista previa se actualiza al momento.
+- **Abrir desde URL** (Archivo > Abrir desde URL, Ctrl+Shift+O): abre cualquier archivo de texto de internet en una pestaña para verlo o editarlo, por ejemplo `https://github.com/u0f/BlocPlus/commit/e98d4a6.diff`. Si la URL está en el portapapeles se rellena sola, y los enlaces a archivos de GitHub abren el archivo, no la página.
+- **Seguridad**: lo que se abre desde una URL nunca ejecuta código. Las páginas HTML y SVG de internet no se previsualizan, el HTML dentro de un Markdown se muestra como texto, y los enlaces `javascript:` y similares se desactivan en todas las vistas previas. Las descargas tienen un máximo de 20 MB y se rechazan los archivos binarios.
+
 ## 1.2.2 (2026-10-25)
 
 - Versión de Microsoft Store: "Editar con BlocPlus" aparece en el menú contextual de Windows 11 para cualquier archivo, y "Abrir con" ofrece BlocPlus para muchos más tipos de archivo (.lrc, .rst, .svg, .vue, .ts...).
