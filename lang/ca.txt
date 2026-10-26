@@ -133,3 +133,8 @@ Idioma	Idioma
 Idioma de Windows	Idioma del Windows
 El nuevo idioma se verá al reiniciar {0}.	El nou idioma es veurà en reiniciar {0}.
 ¿Reiniciar ahora?	Vols reiniciar ara?
+Abrir desde &URL...	Obre des d'&URL...
+Abrir desde URL	Obre des d'URL
+Dirección del archivo de texto:	Adreça del fitxer de text:
+El archivo es demasiado grande (máximo {0} MB).	El fitxer és massa gran (màxim {0} MB).
+No es un archivo de texto.	No és un fitxer de text.

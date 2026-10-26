@@ -133,3 +133,8 @@ Idioma	भाषा
 Idioma de Windows	Windows की भाषा
 El nuevo idioma se verá al reiniciar {0}.	नई भाषा {0} को पुनः प्रारंभ करने पर लागू होगी।
 ¿Reiniciar ahora?	अभी पुनः प्रारंभ करें?
+Abrir desde &URL...	&URL से खोलें...
+Abrir desde URL	URL से खोलें
+Dirección del archivo de texto:	टेक्स्ट फ़ाइल का पता:
+El archivo es demasiado grande (máximo {0} MB).	फ़ाइल बहुत बड़ी है (अधिकतम {0} MB)।
+No es un archivo de texto.	यह टेक्स्ट फ़ाइल नहीं है।

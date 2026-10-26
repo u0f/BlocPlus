@@ -133,3 +133,8 @@ Idioma	Taal
 Idioma de Windows	Windows-taal
 El nuevo idioma se verá al reiniciar {0}.	De nieuwe taal wordt gebruikt nadat {0} opnieuw is gestart.
 ¿Reiniciar ahora?	Nu opnieuw starten?
+Abrir desde &URL...	Openen vanaf &URL...
+Abrir desde URL	Openen vanaf URL
+Dirección del archivo de texto:	Adres van het tekstbestand:
+El archivo es demasiado grande (máximo {0} MB).	Het bestand is te groot (maximaal {0} MB).
+No es un archivo de texto.	Dit is geen tekstbestand.

@@ -133,3 +133,8 @@ Idioma	ภาษา
 Idioma de Windows	ภาษาของ Windows
 El nuevo idioma se verá al reiniciar {0}.	ภาษาใหม่จะมีผลเมื่อเริ่ม {0} ใหม่
 ¿Reiniciar ahora?	เริ่มใหม่ตอนนี้หรือไม่
+Abrir desde &URL...	เปิดจาก &URL...
+Abrir desde URL	เปิดจาก URL
+Dirección del archivo de texto:	ที่อยู่ของไฟล์ข้อความ:
+El archivo es demasiado grande (máximo {0} MB).	ไฟล์มีขนาดใหญ่เกินไป (สูงสุด {0} MB)
+No es un archivo de texto.	ไม่ใช่ไฟล์ข้อความ

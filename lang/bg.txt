@@ -133,3 +133,8 @@ Idioma	Език
 Idioma de Windows	Езикът на Windows
 El nuevo idioma se verá al reiniciar {0}.	Новият език ще се приложи след рестартиране на {0}.
 ¿Reiniciar ahora?	Рестартиране сега?
+Abrir desde &URL...	Отваряне от &URL...
+Abrir desde URL	Отваряне от URL
+Dirección del archivo de texto:	Адрес на текстовия файл:
+El archivo es demasiado grande (máximo {0} MB).	Файлът е твърде голям (максимум {0} MB).
+No es un archivo de texto.	Това не е текстов файл.

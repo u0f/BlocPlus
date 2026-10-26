@@ -133,3 +133,8 @@ Idioma	Language
 Idioma de Windows	Windows language
 El nuevo idioma se verá al reiniciar {0}.	The new language will appear when {0} restarts.
 ¿Reiniciar ahora?	Restart now?
+Abrir desde &URL...	Open from &URL...
+Abrir desde URL	Open from URL
+Dirección del archivo de texto:	Address of the text file:
+El archivo es demasiado grande (máximo {0} MB).	The file is too large (maximum {0} MB).
+No es un archivo de texto.	It is not a text file.

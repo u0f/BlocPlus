@@ -133,3 +133,8 @@ Idioma	Nyelv
 Idioma de Windows	Windows nyelve
 El nuevo idioma se verá al reiniciar {0}.	Az új nyelv a(z) {0} újraindítása után lép érvénybe.
 ¿Reiniciar ahora?	Újraindítja most?
+Abrir desde &URL...	Megnyitás &URL-ről...
+Abrir desde URL	Megnyitás URL-ről
+Dirección del archivo de texto:	A szövegfájl címe:
+El archivo es demasiado grande (máximo {0} MB).	A fájl túl nagy (legfeljebb {0} MB).
+No es un archivo de texto.	Ez nem szövegfájl.

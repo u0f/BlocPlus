@@ -133,3 +133,8 @@ Idioma	Språk
 Idioma de Windows	Windows-språk
 El nuevo idioma se verá al reiniciar {0}.	Det nye språket brukes når {0} startes på nytt.
 ¿Reiniciar ahora?	Starte på nytt nå?
+Abrir desde &URL...	Åpne fra &URL...
+Abrir desde URL	Åpne fra URL
+Dirección del archivo de texto:	Adressen til tekstfilen:
+El archivo es demasiado grande (máximo {0} MB).	Filen er for stor (maks. {0} MB).
+No es un archivo de texto.	Dette er ikke en tekstfil.

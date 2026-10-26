@@ -133,3 +133,8 @@ Idioma	Язык
 Idioma de Windows	Язык Windows
 El nuevo idioma se verá al reiniciar {0}.	Новый язык будет применён после перезапуска {0}.
 ¿Reiniciar ahora?	Перезапустить сейчас?
+Abrir desde &URL...	Открыть по &URL...
+Abrir desde URL	Открыть по URL
+Dirección del archivo de texto:	Адрес текстового файла:
+El archivo es demasiado grande (máximo {0} MB).	Файл слишком большой (максимум {0} МБ).
+No es un archivo de texto.	Это не текстовый файл.

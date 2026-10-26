@@ -133,3 +133,8 @@ Idioma	语言
 Idioma de Windows	Windows 语言
 El nuevo idioma se verá al reiniciar {0}.	新语言将在 {0} 重新启动后生效。
 ¿Reiniciar ahora?	立即重新启动?
+Abrir desde &URL...	从 URL 打开(&U)...
+Abrir desde URL	从 URL 打开
+Dirección del archivo de texto:	文本文件的地址:
+El archivo es demasiado grande (máximo {0} MB).	文件太大(最大 {0} MB)。
+No es un archivo de texto.	这不是文本文件。

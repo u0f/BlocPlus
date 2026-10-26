@@ -133,3 +133,8 @@ Idioma	Γλώσσα
 Idioma de Windows	Γλώσσα των Windows
 El nuevo idioma se verá al reiniciar {0}.	Η νέα γλώσσα θα εφαρμοστεί μετά την επανεκκίνηση του {0}.
 ¿Reiniciar ahora?	Επανεκκίνηση τώρα;
+Abrir desde &URL...	Άνοιγμα από &URL...
+Abrir desde URL	Άνοιγμα από URL
+Dirección del archivo de texto:	Διεύθυνση του αρχείου κειμένου:
+El archivo es demasiado grande (máximo {0} MB).	Το αρχείο είναι πολύ μεγάλο (μέγιστο {0} MB).
+No es un archivo de texto.	Δεν είναι αρχείο κειμένου.

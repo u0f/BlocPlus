@@ -133,3 +133,8 @@ Idioma	Ngôn ngữ
 Idioma de Windows	Ngôn ngữ của Windows
 El nuevo idioma se verá al reiniciar {0}.	Ngôn ngữ mới sẽ được áp dụng khi khởi động lại {0}.
 ¿Reiniciar ahora?	Khởi động lại ngay bây giờ?
+Abrir desde &URL...	Mở từ &URL...
+Abrir desde URL	Mở từ URL
+Dirección del archivo de texto:	Địa chỉ của tệp văn bản:
+El archivo es demasiado grande (máximo {0} MB).	Tệp quá lớn (tối đa {0} MB).
+No es un archivo de texto.	Đây không phải là tệp văn bản.

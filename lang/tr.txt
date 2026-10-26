@@ -133,3 +133,8 @@ Idioma	Dil
 Idioma de Windows	Windows dili
 El nuevo idioma se verá al reiniciar {0}.	Yeni dil {0} yeniden başlatıldığında uygulanacak.
 ¿Reiniciar ahora?	Şimdi yeniden başlatılsın mı?
+Abrir desde &URL...	&URL'den aç...
+Abrir desde URL	URL'den aç
+Dirección del archivo de texto:	Metin dosyasının adresi:
+El archivo es demasiado grande (máximo {0} MB).	Dosya çok büyük (en fazla {0} MB).
+No es un archivo de texto.	Bu bir metin dosyası değil.

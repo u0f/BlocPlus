@@ -133,3 +133,8 @@ Idioma	Sprog
 Idioma de Windows	Windows-sprog
 El nuevo idioma se verá al reiniciar {0}.	Det nye sprog anvendes, når {0} genstartes.
 ¿Reiniciar ahora?	Genstart nu?
+Abrir desde &URL...	Åbn fra &URL...
+Abrir desde URL	Åbn fra URL
+Dirección del archivo de texto:	Adresse på tekstfilen:
+El archivo es demasiado grande (máximo {0} MB).	Filen er for stor (maks. {0} MB).
+No es un archivo de texto.	Det er ikke en tekstfil.

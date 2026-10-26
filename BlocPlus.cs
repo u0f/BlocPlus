@@ -504,7 +504,18 @@ class Lang
 // They cover the common syntax, not every corner of each spec.
 static class Markup
 {
+    public static bool Strict; // text from the web: raw HTML is shown as text, never run
+
     static string Esc(string s) { return WebUtility.HtmlEncode(s); }
+
+    // Link/image targets: web, mail, local files and relative paths only, so "javascript:" and friends never reach the browser.
+    static string Link(string u)
+    {
+        u = Regex.Replace(u, @"[\s\x00-\x1f]", ""); // IE drops these, so "java\tscript:" would still run
+        var m = Regex.Match(u, @"^([^/?#]*?):");
+        return m.Success && !Regex.IsMatch(m.Groups[1].Value, @"^(?:https?|mailto|file|[a-zA-Z])$", RegexOptions.IgnoreCase) ? "#" : Esc(u);
+    }
+
     static int Indent(string l) { int n = 0; while (n < l.Length && (l[n] == ' ' || l[n] == '\t')) n++; return n; }
 
     // Generated tags are parked in placeholders so later emphasis rules can't touch their URLs.
@@ -523,8 +534,8 @@ static class Markup
     {
         var keep = new List<string>();
         s = Regex.Replace(s, @"(`+)(.+?)\1", m => Stash(keep, "<code>" + Esc(m.Groups[2].Value.Trim()) + "</code>"));
-        s = Regex.Replace(s, @"!\[([^\]]*)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<img src=\"" + Esc(m.Groups[2].Value) + "\" alt=\"" + Esc(m.Groups[1].Value) + "\">"));
-        s = Regex.Replace(s, @"\[([^\]]+)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<a href=\"" + Esc(m.Groups[2].Value) + "\">" + Emphasis(Esc(m.Groups[1].Value)) + "</a>"));
+        s = Regex.Replace(s, @"!\[([^\]]*)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<img src=\"" + Link(m.Groups[2].Value) + "\" alt=\"" + Esc(m.Groups[1].Value) + "\">"));
+        s = Regex.Replace(s, @"\[([^\]]+)\]\(([^)\s]+)[^)]*\)", m => Stash(keep, "<a href=\"" + Link(m.Groups[2].Value) + "\">" + Emphasis(Esc(m.Groups[1].Value)) + "</a>"));
         s = Regex.Replace(s, @"<((?:https?|mailto):[^>\s]+)>", m => Stash(keep, "<a href=\"" + Esc(m.Groups[1].Value) + "\">" + Esc(m.Groups[1].Value) + "</a>"));
         return Unstash(keep, Emphasis(Esc(s)));
     }
@@ -575,7 +586,9 @@ static class Markup
             }
             else if (Regex.IsMatch(l, @"^\s{0,3}<[A-Za-z!/]")) // raw HTML block
             {
-                while (i < lines.Count && lines[i].Trim().Length > 0) sb.Append(lines[i++]).Append('\n');
+                var raw = new StringBuilder();
+                while (i < lines.Count && lines[i].Trim().Length > 0) raw.Append(lines[i++]).Append('\n');
+                sb.Append(Strict ? "<pre><code>" + Esc(raw.ToString()) + "</code></pre>\n" : raw.ToString());
             }
             else if (ListItem.IsMatch(l)) i = MdList(lines, i, sb);
             else if (l.Contains("|") && i + 1 < lines.Count && lines[i + 1].Contains("-") && TableSep.IsMatch(lines[i + 1])) i = MdTable(lines, i, sb);
@@ -676,7 +689,7 @@ static class Markup
     {
         var keep = new List<string>();
         s = Regex.Replace(s, @"``(.+?)``", m => Stash(keep, "<code>" + Esc(m.Groups[1].Value) + "</code>"));
-        s = Regex.Replace(s, @"`([^`<]+?)\s*<([^>]+)>`__?", m => Stash(keep, "<a href=\"" + Esc(m.Groups[2].Value) + "\">" + Esc(m.Groups[1].Value) + "</a>"));
+        s = Regex.Replace(s, @"`([^`<]+?)\s*<([^>]+)>`__?", m => Stash(keep, "<a href=\"" + Link(m.Groups[2].Value) + "\">" + Esc(m.Groups[1].Value) + "</a>"));
         s = Regex.Replace(s, @":[\w-]+:`([^`]+)`", m => Stash(keep, "<code>" + Esc(m.Groups[1].Value) + "</code>"));
         s = Regex.Replace(s, @"`([^`]+)`_?", m => Stash(keep, "<em>" + Esc(m.Groups[1].Value) + "</em>"));
         s = Regex.Replace(s, @"\bhttps?://[^\s<>""]+[^\s<>"".,;:)]", m => Stash(keep, "<a href=\"" + Esc(m.Value) + "\">" + Esc(m.Value) + "</a>"));
@@ -742,7 +755,7 @@ static class Markup
             {
                 i++;
                 IndentedBlock(lines, ref i, 0);
-                sb.Append("<p><img src=\"").Append(Esc(m.Groups[2].Value)).Append("\"></p>\n");
+                sb.Append("<p><img src=\"").Append(Link(m.Groups[2].Value)).Append("\"></p>\n");
             }
             else if (l.StartsWith("..")) { i++; IndentedBlock(lines, ref i, 0); } // comments, targets, other directives
             else if ((m = Regex.Match(l, @"^(\s*)([-*+•]|\d+[.)]|#[.)])\s+")).Success)
@@ -855,6 +868,72 @@ static class Markup
         }
         return sb.Append("</tbody></table>").ToString();
     }
+
+    // ---------- diff / patch ----------
+
+    static readonly Regex Hunk = new Regex(@"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@");
+
+    // One box per file with old/new line numbers; text around the files (a patch's mail header) stays as is.
+    public static string Diff(string text)
+    {
+        var sb = new StringBuilder();
+        var plain = new StringBuilder();
+        var meta = new List<string>();
+        string name = null; // file whose box is pending or open
+        bool table = false;
+        int o = 0, n = 0, oLeft = 0, nLeft = 0;
+        Action<string, object, object, string> row = (cls, a, b, s) => sb.Append("<tr class=\"").Append(cls).Append("\"><td class=\"ln\">").Append(a)
+            .Append("</td><td class=\"ln\">").Append(b).Append("</td><td>").Append(Esc(s)).Append("</td></tr>");
+        Action flush = () =>
+        {
+            if (plain.ToString().Trim().Length > 0) sb.Append("<pre>").Append(Esc(plain.ToString().Trim('\n'))).Append("</pre>");
+            plain.Clear();
+        };
+        Action open = () =>
+        {
+            if (name == null || table) return;
+            flush();
+            sb.Append("<div class=\"df\"><div class=\"dh\">").Append(Esc(name));
+            foreach (var x in meta) sb.Append("<span>").Append(Esc(x)).Append("</span>");
+            sb.Append("</div><table class=\"dt\">");
+            table = true;
+        };
+        Action close = () => { open(); if (table) sb.Append("</table></div>"); table = false; name = null; meta.Clear(); };
+        foreach (var l in text.Split('\n'))
+        {
+            if (oLeft > 0 || nLeft > 0)
+            {
+                char c = l.Length > 0 ? l[0] : ' ';
+                if (c == '+') { row("da", "", n++, l); nLeft--; }
+                else if (c == '-') { row("dd", o++, "", l); oLeft--; }
+                else if (c == '\\') row("dn", "", "", l);
+                else { row("", o++, n++, l); oLeft--; nLeft--; }
+                continue;
+            }
+            var m = Hunk.Match(l);
+            if (m.Success)
+            {
+                if (name == null) name = "";
+                open();
+                o = int.Parse(m.Groups[1].Value); oLeft = m.Groups[2].Success ? int.Parse(m.Groups[2].Value) : 1;
+                n = int.Parse(m.Groups[3].Value); nLeft = m.Groups[4].Success ? int.Parse(m.Groups[4].Value) : 1;
+                row("dk", "", "", l);
+            }
+            else if (l.StartsWith("diff ")) { close(); int b = l.LastIndexOf(" b/"); name = b > 0 ? l.Substring(b + 3) : l; }
+            else if (l.StartsWith("--- ") || l.StartsWith("+++ "))
+            {
+                if (table || name == null) { close(); name = ""; }
+                string f = l.Substring(4).Split('\t')[0];
+                if (f != "/dev/null") name = Regex.Replace(f, "^[ab]/", "");
+            }
+            else if (l.StartsWith("\\") && table) row("dn", "", "", l);
+            else if (name != null && !table) { if (l.Length > 0 && !l.StartsWith("index ")) meta.Add(l); }
+            else { close(); plain.Append(l).Append('\n'); }
+        }
+        close();
+        flush();
+        return sb.ToString();
+    }
 }
 
 class Doc
@@ -863,6 +942,7 @@ class Doc
     public MultiBox Box;
     public Gutter Gut;
     public string FilePath;
+    public string Url;             // where a tab opened from the web came from, until it's saved
     public int Enc, Eol, Untitled; // Eol: 0 CRLF, 1 LF, 2 CR
     public DateTime Stamp;
     public Lang Lang;
@@ -873,7 +953,15 @@ class Doc
     int[] starts;
 
     public bool Dirty { get { return Box.Modified; } }
-    public string Title { get { return FilePath != null ? Path.GetFileName(FilePath) : Tr.S("Sin título {0}", Untitled); } }
+    public string Title
+    {
+        get
+        {
+            if (FilePath != null) return Path.GetFileName(FilePath);
+            if (Url != null) { var u = new Uri(Url); string f = Path.GetFileName(u.LocalPath); return f.Length > 0 ? f : u.Host; }
+            return Tr.S("Sin título {0}", Untitled);
+        }
+    }
     public void Invalidate() { text = null; starts = null; }
 
     // RichTextBox counts every line break as one char, so cache text with "\n" only.
@@ -1152,7 +1240,7 @@ class TabStrip : Control
         int i = Hit(e.Location, out close, out plus);
         if (i != hover || close != hoverClose || plus != hoverPlus)
         {
-            if (i != hover) tip.SetToolTip(this, i >= 0 ? Docs[i].FilePath ?? Docs[i].Title : "");
+            if (i != hover) tip.SetToolTip(this, i >= 0 ? Docs[i].FilePath ?? Docs[i].Url ?? Docs[i].Title : "");
             hover = i; hoverClose = close; hoverPlus = plus;
             Invalidate();
         }
@@ -1345,7 +1433,7 @@ class MainForm : Form
         mLines.Checked = lineNumbers;
         mPreview.Checked = previewOn;
         if (restoreSession) RestoreSession();
-        foreach (var a in args) if (File.Exists(a)) OpenPath(a);
+        foreach (var a in args) if (File.Exists(a)) OpenPath(a); else if (IsUrl(a)) OpenUrl(a);
         if (docs.Count == 0) NewDoc();
         SwitchTo(Cur ?? docs[0]);
         ApplyThemeAll();
@@ -1387,6 +1475,7 @@ class MainForm : Form
         file.DropDownItems.AddRange(new ToolStripItem[] {
             Item(Tr.S("&Nueva pestaña"), Keys.Control | Keys.T, () => SwitchTo(NewDoc())),
             Item(Tr.S("&Abrir..."), Keys.Control | Keys.O, OpenDialog),
+            Item(Tr.S("Abrir desde &URL..."), Keys.Control | Keys.Shift | Keys.O, OpenUrlDialog),
             mRecent,
             Item(Tr.S("Reabrir pestaña &cerrada"), Keys.Control | Keys.Shift | Keys.T, ReopenClosed),
             Item(Tr.S("Recargar desde disco"), Keys.None, () => Reload(Cur, true)),
@@ -1790,10 +1879,67 @@ class MainForm : Form
         byte[] bytes;
         try { bytes = File.ReadAllBytes(path); }
         catch (Exception ex) { Err(ex); return; }
-        var c = Cur;
-        var d = c != null && c.FilePath == null && !c.Dirty && c.Box.TextLength == 0 ? c : NewDoc(); // reuse a blank tab
+        var d = BlankOrNew();
         LoadInto(d, path, bytes);
         AddRecent(path);
+        SwitchTo(d);
+    }
+
+    Doc BlankOrNew()
+    {
+        var c = Cur;
+        return c != null && c.FilePath == null && c.Url == null && !c.Dirty && c.Box.TextLength == 0 ? c : NewDoc(); // reuse a blank tab
+    }
+
+    static bool IsUrl(string s) { return Regex.IsMatch(s, @"^https?://\S+$", RegexOptions.IgnoreCase); }
+
+    void OpenUrlDialog()
+    {
+        string clip = "";
+        try { clip = Clipboard.ContainsText() ? Clipboard.GetText().Trim() : ""; } catch { }
+        string url = Prompt(Tr.S("Abrir desde URL"), Tr.S("Dirección del archivo de texto:"), IsUrl(clip) ? clip : "https://");
+        if (url != null && IsUrl(url.Trim())) OpenUrl(url.Trim());
+    }
+
+    // Opens the text at a URL in an unsaved tab; saving asks where to put it.
+    void OpenUrl(string url)
+    {
+        // A GitHub file page is HTML; the file itself is on raw.githubusercontent.com.
+        url = Regex.Replace(url, @"^https?://github\.com/([^/]+/[^/]+)/blob/", "https://raw.githubusercontent.com/$1/", RegexOptions.IgnoreCase);
+        foreach (var x in docs)
+            if (x.Url == url) { SwitchTo(x); return; }
+        byte[] bytes;
+        Cursor = Cursors.WaitCursor;
+        try
+        {
+            ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; // TLS 1.2
+            using (var wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.UserAgent] = App;
+                using (var r = wc.OpenRead(url))
+                using (var ms = new MemoryStream())
+                {
+                    var buf = new byte[81920];
+                    for (int k; (k = r.Read(buf, 0, buf.Length)) > 0; )
+                    {
+                        ms.Write(buf, 0, k);
+                        if (ms.Length > 20 << 20) throw new InvalidDataException(Tr.S("El archivo es demasiado grande (máximo {0} MB).", 20));
+                    }
+                    bytes = ms.ToArray();
+                }
+            }
+        }
+        catch (Exception ex) { Err(ex); return; }
+        finally { Cursor = Cursors.Default; }
+        int enc;
+        string s = Enc.Decode(bytes, out enc);
+        if (s.IndexOf('\0') >= 0) { Err(new InvalidDataException(Tr.S("No es un archivo de texto."))); return; }
+        var d = BlankOrNew();
+        d.Url = url;
+        d.Enc = enc;
+        d.Eol = DetectEol(s);
+        d.Lang = Lang.Detect(new Uri(url).LocalPath);
+        SetText(d, Normalize(s));
         SwitchTo(d);
     }
 
@@ -1842,7 +1988,7 @@ class MainForm : Form
         string path = d.FilePath;
         if (path == null || saveAs)
         {
-            using (var s = new SaveFileDialog { Filter = Tr.S("Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"), FileName = path == null ? "" : Path.GetFileName(path) })
+            using (var s = new SaveFileDialog { Filter = Tr.S("Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"), FileName = path != null ? Path.GetFileName(path) : d.Url != null ? d.Title : "" })
             {
                 if (path != null) s.InitialDirectory = Path.GetDirectoryName(path);
                 if (s.ShowDialog(this) != DialogResult.OK) return false;
@@ -2361,9 +2507,17 @@ class MainForm : Form
 
     // ---------- live preview ----------
 
+    // Pages and SVGs can run scripts, so ones that came from the web are never rendered.
     static string PreviewKind(Doc d)
     {
-        string ext = d.FilePath == null ? "" : Path.GetExtension(d.FilePath).TrimStart('.').ToLowerInvariant();
+        string k = AnyPreviewKind(d);
+        return d.Url != null && (k == "html" || k == "svg") ? null : k;
+    }
+
+    static string AnyPreviewKind(Doc d)
+    {
+        string file = d.FilePath ?? (d.Url != null ? new Uri(d.Url).LocalPath : null);
+        string ext = file == null ? "" : Path.GetExtension(file).TrimStart('.').ToLowerInvariant();
         switch (ext)
         {
             case "html": case "htm": case "xhtml": return "html";
@@ -2373,10 +2527,12 @@ class MainForm : Form
             case "csv": return "csv";
             case "tsv": return "tsv";
             case "lrc": return "lrc";
+            case "diff": case "patch": return "diff";
         }
         if (d.Lang == null) return null;
         if (d.Lang.Name == "Markdown") return "md";
         if (d.Lang.Name == "reStructuredText") return "rst";
+        if (d.Lang.Name == "Diff") return "diff";
         if (d.Lang.Name == "HTML / XML" && Regex.IsMatch(d.Text.Substring(0, Math.Min(1000, d.Text.Length)), "<html|<!doctype html", RegexOptions.IgnoreCase)) return "html";
         return null;
     }
@@ -2421,7 +2577,11 @@ class MainForm : Form
             "blockquote{margin:0 0 1em;padding:0 1em;color:" + muted + ";border-left:4px solid " + Hex(t.Border) + "}" +
             "table{border-collapse:collapse;margin:1em 0}th,td{border:1px solid " + Hex(t.Border) + ";padding:6px 13px}th{background:" + code + ";font-weight:600}" +
             "hr{border:0;border-top:1px solid " + Hex(t.Border) + ";margin:1.5em 0}ul,ol{padding-left:2em}" +
-            ".admonition{border-left:4px solid " + Hex(t.Accent) + ";background:" + code + ";padding:.4em 1em;margin:1em 0;border-radius:4px}.admonition-title{font-weight:600;margin:.3em 0}";
+            ".admonition{border-left:4px solid " + Hex(t.Accent) + ";background:" + code + ";padding:.4em 1em;margin:1em 0;border-radius:4px}.admonition-title{font-weight:600;margin:.3em 0}" +
+            ".df{border:1px solid " + Hex(t.Border) + ";border-radius:6px;margin:0 0 16px;overflow:hidden}.dh{padding:6px 12px;background:" + code + ";font-weight:600;border-bottom:1px solid " + Hex(t.Border) + "}" +
+            ".dh span{display:block;font-weight:normal;font-size:90%;color:" + muted + "}.dt{width:100%;margin:0;font:13px/1.45 Consolas,monospace}" +
+            ".dt td{border:0;padding:0 8px;white-space:pre-wrap;word-break:break-all}.dt td.ln{width:1%;text-align:right;color:" + muted + ";white-space:nowrap}" +
+            ".da td{background:rgba(46,160,67,.2)}.dd td{background:rgba(248,81,73,.2)}.dk td{background:rgba(56,139,253,.12);color:" + muted + "}.dn td{color:" + muted + "}";
         return "<!DOCTYPE html><html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta charset=\"utf-8\">" + BaseTag(d) +
             "<style>" + css + "</style></head><body></body></html>";
     }
@@ -2454,8 +2614,9 @@ class MainForm : Form
             web.DocumentText = m.Success ? page.Insert(m.Index + m.Length, head) : head + page;
             return;
         }
+        Markup.Strict = d.Url != null;
         string body = kind == "md" ? Markup.Markdown(d.Text) : kind == "rst" ? Markup.Rst(d.Text)
-            : kind == "csv" ? Markup.Csv(d.Text, ',') : kind == "tsv" ? Markup.Csv(d.Text, '\t') : d.Text;
+            : kind == "diff" ? Markup.Diff(d.Text) : kind == "csv" ? Markup.Csv(d.Text, ',') : kind == "tsv" ? Markup.Csv(d.Text, '\t') : d.Text;
         string shell = Shell(d);
         if (previewShell == shell && web.ReadyState == WebBrowserReadyState.Complete && web.Document != null && web.Document.Body != null)
         {
@@ -2791,7 +2952,7 @@ class MainForm : Form
                 keep.Add(tmp);
             }
             else if (d.FilePath == null) continue;
-            lines.Add(string.Join("\t", d.FilePath ?? "", tmp, d.Enc, d.Eol, d.Dirty ? 1 : 0, d.Box.SelectionStart, d.Lang == null ? "" : d.Lang.Name));
+            lines.Add(string.Join("\t", d.FilePath ?? "", tmp, d.Enc, d.Eol, d.Dirty ? 1 : 0, d.Box.SelectionStart, d.Lang == null ? "" : d.Lang.Name, d.Url ?? ""));
         }
         File.WriteAllLines(Path.Combine(SessDir, "session.txt"), lines);
         foreach (var f in Directory.GetFiles(SessDir, "tab*.txt"))
@@ -2828,6 +2989,7 @@ class MainForm : Form
                 }
                 else continue;
                 if (c.Length > 6) d.Lang = Lang.All.FirstOrDefault(l => l.Name == c[6]);
+                if (c.Length > 7 && c[7].Length > 0) d.Url = c[7];
                 int s;
                 if (int.TryParse(c[5], out s)) d.Box.Select(Math.Min(s, d.Box.TextLength), 0);
                 UpdateTitle(d);

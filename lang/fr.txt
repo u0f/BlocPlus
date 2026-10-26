@@ -133,3 +133,8 @@ Idioma	Langue
 Idioma de Windows	Langue de Windows
 El nuevo idioma se verá al reiniciar {0}.	La nouvelle langue s'appliquera au redémarrage de {0}.
 ¿Reiniciar ahora?	Redémarrer maintenant ?
+Abrir desde &URL...	Ouvrir depuis une &URL...
+Abrir desde URL	Ouvrir depuis une URL
+Dirección del archivo de texto:	Adresse du fichier texte :
+El archivo es demasiado grande (máximo {0} MB).	Le fichier est trop volumineux ({0} Mo maximum).
+No es un archivo de texto.	Ce n'est pas un fichier texte.

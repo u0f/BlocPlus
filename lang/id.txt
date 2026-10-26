@@ -133,3 +133,8 @@ Idioma	Bahasa
 Idioma de Windows	Bahasa Windows
 El nuevo idioma se verá al reiniciar {0}.	Bahasa baru akan diterapkan saat {0} dimulai ulang.
 ¿Reiniciar ahora?	Mulai ulang sekarang?
+Abrir desde &URL...	Buka dari &URL...
+Abrir desde URL	Buka dari URL
+Dirección del archivo de texto:	Alamat file teks:
+El archivo es demasiado grande (máximo {0} MB).	File terlalu besar (maksimum {0} MB).
+No es un archivo de texto.	Ini bukan file teks.

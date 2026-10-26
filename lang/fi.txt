@@ -133,3 +133,8 @@ Idioma	Kieli
 Idioma de Windows	Windowsin kieli
 El nuevo idioma se verá al reiniciar {0}.	Uusi kieli otetaan käyttöön, kun {0} käynnistetään uudelleen.
 ¿Reiniciar ahora?	Käynnistetäänkö uudelleen nyt?
+Abrir desde &URL...	Avaa &URL-osoitteesta...
+Abrir desde URL	Avaa URL-osoitteesta
+Dirección del archivo de texto:	Tekstitiedoston osoite:
+El archivo es demasiado grande (máximo {0} MB).	Tiedosto on liian suuri (enintään {0} Mt).
+No es un archivo de texto.	Tämä ei ole tekstitiedosto.

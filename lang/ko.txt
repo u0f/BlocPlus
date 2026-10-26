@@ -133,3 +133,8 @@ Idioma	언어
 Idioma de Windows	Windows 언어
 El nuevo idioma se verá al reiniciar {0}.	새 언어는 {0}을(를) 다시 시작하면 적용됩니다.
 ¿Reiniciar ahora?	지금 다시 시작하시겠습니까?
+Abrir desde &URL...	URL에서 열기(&U)...
+Abrir desde URL	URL에서 열기
+Dirección del archivo de texto:	텍스트 파일 주소:
+El archivo es demasiado grande (máximo {0} MB).	파일이 너무 큽니다(최대 {0}MB).
+No es un archivo de texto.	텍스트 파일이 아닙니다.

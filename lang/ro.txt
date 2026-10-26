@@ -133,3 +133,8 @@ Idioma	Limbă
 Idioma de Windows	Limba Windows
 El nuevo idioma se verá al reiniciar {0}.	Noua limbă se va aplica după repornirea {0}.
 ¿Reiniciar ahora?	Reporniți acum?
+Abrir desde &URL...	Deschide de la &URL...
+Abrir desde URL	Deschide de la URL
+Dirección del archivo de texto:	Adresa fișierului text:
+El archivo es demasiado grande (máximo {0} MB).	Fișierul este prea mare (maximum {0} MB).
+No es un archivo de texto.	Nu este un fișier text.

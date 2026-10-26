@@ -133,3 +133,8 @@ Idioma	Hizkuntza
 Idioma de Windows	Windows-en hizkuntza
 El nuevo idioma se verá al reiniciar {0}.	Hizkuntza berria {0} berrabiaraztean ikusiko da.
 ¿Reiniciar ahora?	Berrabiarazi orain?
+Abrir desde &URL...	Ireki &URLtik...
+Abrir desde URL	Ireki URLtik
+Dirección del archivo de texto:	Testu-fitxategiaren helbidea:
+El archivo es demasiado grande (máximo {0} MB).	Fitxategia handiegia da (gehienez {0} MB).
+No es un archivo de texto.	Ez da testu-fitxategi bat.

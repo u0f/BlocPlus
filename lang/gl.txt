@@ -133,3 +133,8 @@ Idioma	Idioma
 Idioma de Windows	Idioma de Windows
 El nuevo idioma se verá al reiniciar {0}.	O novo idioma verase ao reiniciar {0}.
 ¿Reiniciar ahora?	Reiniciar agora?
+Abrir desde &URL...	Abrir desde &URL...
+Abrir desde URL	Abrir desde URL
+Dirección del archivo de texto:	Enderezo do ficheiro de texto:
+El archivo es demasiado grande (máximo {0} MB).	O ficheiro é demasiado grande (máximo {0} MB).
+No es un archivo de texto.	Non é un ficheiro de texto.

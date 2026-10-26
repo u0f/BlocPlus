@@ -133,3 +133,8 @@ Idioma	言語
 Idioma de Windows	Windows の言語
 El nuevo idioma se verá al reiniciar {0}.	新しい言語は {0} の再起動後に適用されます。
 ¿Reiniciar ahora?	今すぐ再起動しますか?
+Abrir desde &URL...	URL から開く(&U)...
+Abrir desde URL	URL から開く
+Dirección del archivo de texto:	テキスト ファイルのアドレス:
+El archivo es demasiado grande (máximo {0} MB).	ファイルが大きすぎます (最大 {0} MB)。
+No es un archivo de texto.	テキスト ファイルではありません。

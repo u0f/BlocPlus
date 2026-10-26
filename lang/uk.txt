@@ -133,3 +133,8 @@ Idioma	Мова
 Idioma de Windows	Мова Windows
 El nuevo idioma se verá al reiniciar {0}.	Нову мову буде застосовано після перезапуску {0}.
 ¿Reiniciar ahora?	Перезапустити зараз?
+Abrir desde &URL...	Відкрити за &URL...
+Abrir desde URL	Відкрити за URL
+Dirección del archivo de texto:	Адреса текстового файлу:
+El archivo es demasiado grande (máximo {0} MB).	Файл завеликий (максимум {0} МБ).
+No es un archivo de texto.	Це не текстовий файл.

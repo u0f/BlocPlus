@@ -133,3 +133,8 @@ Idioma	Jazyk
 Idioma de Windows	Jazyk systému Windows
 El nuevo idioma se verá al reiniciar {0}.	Nový jazyk se projeví po restartování {0}.
 ¿Reiniciar ahora?	Restartovat nyní?
+Abrir desde &URL...	Otevřít z &URL...
+Abrir desde URL	Otevřít z URL
+Dirección del archivo de texto:	Adresa textového souboru:
+El archivo es demasiado grande (máximo {0} MB).	Soubor je příliš velký (maximum {0} MB).
+No es un archivo de texto.	Nejde o textový soubor.
