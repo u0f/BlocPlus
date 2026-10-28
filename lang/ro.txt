@@ -40,7 +40,6 @@ Bajar línea	Mutare linie în jos
 Buscar &anterior	Găsire &anterior
 Buscar &siguiente	Găsire &următor
 Buscar actualizaciones al iniciar	Căutare actualizări la pornire
-Buscar y reemplazar	Găsire și înlocuire
 Buscar:	Găsire:
 Cambiar...	Schimbare...
 Cancelar	Anulare
@@ -69,7 +68,6 @@ Guardar t&odo	Salvare t&otul
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Există o versiune nouă de {0}: {1} (aveți {2}).\n\n{3}\n\nO descărcați și o instalați acum? {0} va reporni și vă va păstra filele.
 Insertar fecha y hora	Inserare dată și oră
 Ir a línea	Salt la linia
-La descarga no es un ejecutable válido.	Descărcarea nu este un executabil valid.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Previzualizarea este disponibilă pentru HTML, Markdown, reStructuredText, SVG, CSV/TSV și versuri LRC.
 Lín {0}, Col {1}	Lin {0}, Col {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Lin {0}, Col {1}   ({2} selectate)
@@ -138,3 +136,47 @@ Abrir desde URL	Deschide de la URL
 Dirección del archivo de texto:	Adresa fișierului text:
 El archivo es demasiado grande (máximo {0} MB).	Fișierul este prea mare (maximum {0} MB).
 No es un archivo de texto.	Nu este un fișier text.
+&Imprimir...	&Imprimare...
+Buscar en todas las pestañas	Căutare în toate filele
+Buscar en una carpeta...	Căutare într-un folder...
+&Comparar con	&Comparare cu
+&Formatear JSON o XML	&Formatare JSON sau XML
+Co&mpactar JSON o XML	Co&mpactare JSON sau XML
+Mostrar &espacios y tabulaciones	Afișare &spații și tabulatori
+&Paleta de comandos...	&Paletă de comenzi...
+Plegar bloque	Pliere bloc
+Desplegar bloque	Depliere bloc
+Desplegar todo	Depliere totală
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} ocupă {1} MB și poate dura până se deschide. Îl deschizi oricum?
+Abriendo {0}...	Se deschide {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Căutarea durează prea mult. Încearcă o expresie mai simplă.
+{0} de {1}	{0} din {1}
+{0} reemplazos.	{0} înlocuiri.
+Cerrar comillas y paréntesis automáticamente	Închide automat ghilimelele și parantezele
+Mostrar espacios y tabulaciones	Afișare spații și tabulatori
+Abrir los archivos en la ventana que ya está abierta	Deschide fișierele în fereastra deja deschisă
+No es XML válido:	XML nevalid:
+No es JSON válido:	JSON nevalid:
+{0} y {1} son iguales.	{0} și {1} sunt identice.
+Desanclar	Desprinde
+Anclar	Fixează
+Cerrar	Închide
+Cerrar las demás	Închide celelalte
+Cerrar las de la derecha	Închide cele din dreapta
+Copiar ruta	Copiază calea
+Abrir la carpeta	Deschide folderul
+Comparar con la pestaña actual	Compară cu fila curentă
+Reemplazar en todas las pestañas...	Înlocuire în toate filele...
+Reemplazar en una carpeta...	Înlocuire într-un folder...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}” în {1}: {2} rezultate în {3} din {4} fișiere
+(solo los primeros {0})	(doar primele {0})
+las pestañas abiertas	filele deschise
+Carpeta donde buscar (con sus subcarpetas):	Folderul de căutat (cu subfoldere):
+Buscando en {0}...	Se caută în {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Se vor face {0} înlocuiri în {1} file. Fiecare filă le poate anula cu Ctrl+Z.\nContinui?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Există potriviri în {0} fișiere; sunt prea multe pentru a fi deschise simultan.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Se vor deschide {0} fișiere cu {1} potriviri și se vor face înlocuirile în filele lor, fără a le salva. Verifică-le și folosește Salvare toate pentru a le păstra.\nContinui?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Descărcarea este coruptă sau a fost modificată: suma ei de control SHA-256 nu coincide cu cea publicată.
+Falta cerrar una cadena en la línea {0}.	Lipsește închiderea unui șir pe linia {0}.
+Sobra un «{0}» en la línea {1}.	Un „{0}” în plus pe linia {1}.
+Falta cerrar un «{0}».	Lipsește închiderea unui „{0}”.

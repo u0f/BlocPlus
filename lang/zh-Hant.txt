@@ -40,7 +40,6 @@ Bajar línea	下移一行
 Buscar &anterior	尋找上一個(&P)
 Buscar &siguiente	尋找下一個(&N)
 Buscar actualizaciones al iniciar	啟動時檢查更新
-Buscar y reemplazar	尋找與取代
 Buscar:	尋找:
 Cambiar...	變更...
 Cancelar	取消
@@ -69,7 +68,6 @@ Guardar t&odo	全部儲存(&L)
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} 有新版本: {1} (目前為 {2})。\n\n{3}\n\n要立即下載並安裝嗎? {0} 將重新啟動並保留你的索引標籤。
 Insertar fecha y hora	插入日期和時間
 Ir a línea	移至行
-La descarga no es un ejecutable válido.	下載的檔案不是有效的可執行檔。
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	預覽適用於 HTML、Markdown、reStructuredText、SVG、CSV/TSV 和 LRC 歌詞。
 Lín {0}, Col {1}	行 {0},欄 {1}
 Lín {0}, Col {1}   ({2} seleccionados)	行 {0},欄 {1}   (已選取 {2})
@@ -138,3 +136,47 @@ Abrir desde URL	從 URL 開啟
 Dirección del archivo de texto:	文字檔的位址:
 El archivo es demasiado grande (máximo {0} MB).	檔案太大(最大 {0} MB)。
 No es un archivo de texto.	這不是文字檔。
+&Imprimir...	列印(&P)...
+Buscar en todas las pestañas	在所有索引標籤中尋找
+Buscar en una carpeta...	在資料夾中尋找...
+&Comparar con	比較(&C)
+&Formatear JSON o XML	格式化 JSON 或 XML(&F)
+Co&mpactar JSON o XML	壓縮 JSON 或 XML(&M)
+Mostrar &espacios y tabulaciones	顯示空白和定位字元(&E)
+&Paleta de comandos...	命令選擇區(&K)...
+Plegar bloque	摺疊區塊
+Desplegar bloque	展開區塊
+Desplegar todo	全部展開
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} 大小為 {1} MB，開啟可能需要較長時間。仍要開啟嗎？
+Abriendo {0}...	正在開啟 {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	搜尋耗時過長。請嘗試更簡單的運算式。
+{0} de {1}	{0} / {1}
+{0} reemplazos.	已取代 {0} 處。
+Cerrar comillas y paréntesis automáticamente	自動結束引號和括號
+Mostrar espacios y tabulaciones	顯示空白和定位字元
+Abrir los archivos en la ventana que ya está abierta	在已開啟的視窗中開啟檔案
+No es XML válido:	不是有效的 XML：
+No es JSON válido:	不是有效的 JSON：
+{0} y {1} son iguales.	{0} 與 {1} 相同。
+Desanclar	取消釘選
+Anclar	釘選
+Cerrar	關閉
+Cerrar las demás	關閉其他
+Cerrar las de la derecha	關閉右側索引標籤
+Copiar ruta	複製路徑
+Abrir la carpeta	開啟資料夾
+Comparar con la pestaña actual	與目前的索引標籤比較
+Reemplazar en todas las pestañas...	在所有索引標籤中取代...
+Reemplazar en una carpeta...	在資料夾中取代...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	「{0}」在 {1} 中：在 {4} 個檔案中的 {3} 個裡找到 {2} 個結果
+(solo los primeros {0})	（僅前 {0} 個）
+las pestañas abiertas	已開啟的索引標籤
+Carpeta donde buscar (con sus subcarpetas):	要搜尋的資料夾（包括子資料夾）：
+Buscando en {0}...	正在 {0} 中搜尋...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	將在 {1} 個索引標籤中進行 {0} 處取代。每個索引標籤都可以用 Ctrl+Z 復原。\n是否繼續？
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	有 {0} 個檔案存在相符項目，數量過多，無法同時開啟。
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	將開啟 {0} 個包含 {1} 處相符項目的檔案，並在其索引標籤中進行取代，但不儲存。請檢查後使用「全部儲存」以保留變更。\n是否繼續？
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	下載的檔案已損毀或遭修改：其 SHA-256 總和檢查碼與發佈的不一致。
+Falta cerrar una cadena en la línea {0}.	第 {0} 行缺少字串的結束符號。
+Sobra un «{0}» en la línea {1}.	第 {1} 行多了一個「{0}」。
+Falta cerrar un «{0}».	缺少一個「{0}」的結束符號。

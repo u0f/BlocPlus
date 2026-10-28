@@ -40,7 +40,6 @@ Bajar línea	下移一行
 Buscar &anterior	查找上一个(&P)
 Buscar &siguiente	查找下一个(&N)
 Buscar actualizaciones al iniciar	启动时检查更新
-Buscar y reemplazar	查找和替换
 Buscar:	查找:
 Cambiar...	更改...
 Cancelar	取消
@@ -69,7 +68,6 @@ Guardar t&odo	全部保存(&L)
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} 有新版本: {1} (当前为 {2})。\n\n{3}\n\n是否立即下载并安装? {0} 将重新启动并保留你的标签页。
 Insertar fecha y hora	插入日期和时间
 Ir a línea	转到行
-La descarga no es un ejecutable válido.	下载的文件不是有效的可执行文件。
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	预览适用于 HTML、Markdown、reStructuredText、SVG、CSV/TSV 和 LRC 歌词。
 Lín {0}, Col {1}	行 {0},列 {1}
 Lín {0}, Col {1}   ({2} seleccionados)	行 {0},列 {1}   (已选择 {2})
@@ -138,3 +136,47 @@ Abrir desde URL	从 URL 打开
 Dirección del archivo de texto:	文本文件的地址:
 El archivo es demasiado grande (máximo {0} MB).	文件太大(最大 {0} MB)。
 No es un archivo de texto.	这不是文本文件。
+&Imprimir...	打印(&P)...
+Buscar en todas las pestañas	在所有标签页中查找
+Buscar en una carpeta...	在文件夹中查找...
+&Comparar con	比较(&C)
+&Formatear JSON o XML	格式化 JSON 或 XML(&F)
+Co&mpactar JSON o XML	压缩 JSON 或 XML(&M)
+Mostrar &espacios y tabulaciones	显示空格和制表符(&E)
+&Paleta de comandos...	命令面板(&K)...
+Plegar bloque	折叠代码块
+Desplegar bloque	展开代码块
+Desplegar todo	全部展开
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} 大小为 {1} MB，打开可能需要较长时间。仍要打开吗？
+Abriendo {0}...	正在打开 {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	搜索耗时过长。请尝试更简单的表达式。
+{0} de {1}	{0} / {1}
+{0} reemplazos.	已替换 {0} 处。
+Cerrar comillas y paréntesis automáticamente	自动闭合引号和括号
+Mostrar espacios y tabulaciones	显示空格和制表符
+Abrir los archivos en la ventana que ya está abierta	在已打开的窗口中打开文件
+No es XML válido:	不是有效的 XML：
+No es JSON válido:	不是有效的 JSON：
+{0} y {1} son iguales.	{0} 与 {1} 相同。
+Desanclar	取消固定
+Anclar	固定
+Cerrar	关闭
+Cerrar las demás	关闭其他
+Cerrar las de la derecha	关闭右侧标签页
+Copiar ruta	复制路径
+Abrir la carpeta	打开文件夹
+Comparar con la pestaña actual	与当前标签页比较
+Reemplazar en todas las pestañas...	在所有标签页中替换...
+Reemplazar en una carpeta...	在文件夹中替换...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	“{0}”在 {1} 中：在 {4} 个文件中的 {3} 个里找到 {2} 个结果
+(solo los primeros {0})	（仅前 {0} 个）
+las pestañas abiertas	已打开的标签页
+Carpeta donde buscar (con sus subcarpetas):	要搜索的文件夹（包括子文件夹）：
+Buscando en {0}...	正在 {0} 中搜索...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	将在 {1} 个标签页中进行 {0} 处替换。每个标签页都可以用 Ctrl+Z 撤消。\n是否继续？
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	有 {0} 个文件存在匹配项，数量过多，无法同时打开。
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	将打开 {0} 个包含 {1} 处匹配的文件，并在其标签页中进行替换，但不保存。请检查后使用“全部保存”以保留更改。\n是否继续？
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	下载的文件已损坏或被修改：其 SHA-256 校验和与发布的不一致。
+Falta cerrar una cadena en la línea {0}.	第 {0} 行缺少字符串的结束符。
+Sobra un «{0}» en la línea {1}.	第 {1} 行多了一个“{0}”。
+Falta cerrar un «{0}».	缺少一个“{0}”的结束符。

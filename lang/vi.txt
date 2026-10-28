@@ -40,7 +40,6 @@ Bajar línea	Dời dòng xuống
 Buscar &anterior	Tìm &trước
 Buscar &siguiente	Tìm &tiếp
 Buscar actualizaciones al iniciar	Kiểm tra cập nhật khi khởi động
-Buscar y reemplazar	Tìm và thay thế
 Buscar:	Tìm:
 Cambiar...	Thay đổi...
 Cancelar	Hủy
@@ -69,7 +68,6 @@ Guardar t&odo	Lưu t&ất cả
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Đã có phiên bản mới của {0}: {1} (bạn đang dùng {2}).\n\n{3}\n\nTải xuống và cài đặt ngay bây giờ? {0} sẽ khởi động lại và giữ nguyên các tab của bạn.
 Insertar fecha y hora	Chèn ngày và giờ
 Ir a línea	Đi tới dòng
-La descarga no es un ejecutable válido.	Tệp tải xuống không phải là tệp thực thi hợp lệ.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Có thể xem trước HTML, Markdown, reStructuredText, SVG, CSV/TSV và lời bài hát LRC.
 Lín {0}, Col {1}	Dòng {0}, Cột {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Dòng {0}, Cột {1}   ({2} đã chọn)
@@ -138,3 +136,47 @@ Abrir desde URL	Mở từ URL
 Dirección del archivo de texto:	Địa chỉ của tệp văn bản:
 El archivo es demasiado grande (máximo {0} MB).	Tệp quá lớn (tối đa {0} MB).
 No es un archivo de texto.	Đây không phải là tệp văn bản.
+&Imprimir...	&In...
+Buscar en todas las pestañas	Tìm trong tất cả các tab
+Buscar en una carpeta...	Tìm trong thư mục...
+&Comparar con	So &sánh với
+&Formatear JSON o XML	&Định dạng JSON hoặc XML
+Co&mpactar JSON o XML	Thu &gọn JSON hoặc XML
+Mostrar &espacios y tabulaciones	Hiện &khoảng trắng và tab
+&Paleta de comandos...	&Bảng lệnh...
+Plegar bloque	Thu gọn khối
+Desplegar bloque	Mở rộng khối
+Desplegar todo	Mở rộng tất cả
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} có dung lượng {1} MB và có thể mở chậm. Vẫn mở?
+Abriendo {0}...	Đang mở {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Tìm kiếm mất quá nhiều thời gian. Hãy thử biểu thức đơn giản hơn.
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} lần thay thế.
+Cerrar comillas y paréntesis automáticamente	Tự động đóng dấu ngoặc kép và ngoặc
+Mostrar espacios y tabulaciones	Hiện khoảng trắng và tab
+Abrir los archivos en la ventana que ya está abierta	Mở tệp trong cửa sổ đã mở sẵn
+No es XML válido:	Không phải XML hợp lệ:
+No es JSON válido:	Không phải JSON hợp lệ:
+{0} y {1} son iguales.	{0} và {1} giống nhau.
+Desanclar	Bỏ ghim
+Anclar	Ghim
+Cerrar	Đóng
+Cerrar las demás	Đóng các tab khác
+Cerrar las de la derecha	Đóng các tab bên phải
+Copiar ruta	Sao chép đường dẫn
+Abrir la carpeta	Mở thư mục
+Comparar con la pestaña actual	So sánh với tab hiện tại
+Reemplazar en todas las pestañas...	Thay thế trong tất cả các tab...
+Reemplazar en una carpeta...	Thay thế trong thư mục...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	“{0}” trong {1}: {2} kết quả trong {3}/{4} tệp
+(solo los primeros {0})	(chỉ {0} kết quả đầu tiên)
+las pestañas abiertas	các tab đang mở
+Carpeta donde buscar (con sus subcarpetas):	Thư mục cần tìm (gồm cả thư mục con):
+Buscando en {0}...	Đang tìm trong {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Sẽ thực hiện {0} lần thay thế trong {1} tab. Mỗi tab có thể hoàn tác bằng Ctrl+Z.\nTiếp tục?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Có kết quả khớp trong {0} tệp; quá nhiều để mở cùng lúc.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Sẽ mở {0} tệp có {1} kết quả khớp và thực hiện thay thế trong các tab của chúng, chưa lưu. Hãy xem lại và dùng Lưu tất cả để giữ lại.\nTiếp tục?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Bản tải xuống bị hỏng hoặc đã bị sửa đổi: giá trị băm SHA-256 không khớp với giá trị đã công bố.
+Falta cerrar una cadena en la línea {0}.	Thiếu phần đóng chuỗi ở dòng {0}.
+Sobra un «{0}» en la línea {1}.	Thừa một “{0}” ở dòng {1}.
+Falta cerrar un «{0}».	Thiếu phần đóng “{0}”.

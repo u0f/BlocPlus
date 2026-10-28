@@ -40,7 +40,6 @@ Bajar línea	Przesuń wiersz w dół
 Buscar &anterior	Znajdź &poprzedni
 Buscar &siguiente	Znajdź &następny
 Buscar actualizaciones al iniciar	Sprawdzaj aktualizacje przy uruchamianiu
-Buscar y reemplazar	Znajdź i zamień
 Buscar:	Znajdź:
 Cambiar...	Zmień...
 Cancelar	Anuluj
@@ -69,7 +68,6 @@ Guardar t&odo	Zapisz w&szystko
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Dostępna jest nowa wersja programu {0}: {1} (masz wersję {2}).\n\n{3}\n\nPobrać i zainstalować teraz? Program {0} zostanie uruchomiony ponownie i zachowa Twoje karty.
 Insertar fecha y hora	Wstaw datę i godzinę
 Ir a línea	Przejdź do wiersza
-La descarga no es un ejecutable válido.	Pobrany plik nie jest prawidłowym plikiem wykonywalnym.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Podgląd jest dostępny dla HTML, Markdown, reStructuredText, SVG, CSV/TSV i tekstów LRC.
 Lín {0}, Col {1}	Wr {0}, Kol {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Wr {0}, Kol {1}   (zaznaczono: {2})
@@ -138,3 +136,47 @@ Abrir desde URL	Otwórz z URL
 Dirección del archivo de texto:	Adres pliku tekstowego:
 El archivo es demasiado grande (máximo {0} MB).	Plik jest za duży (maksymalnie {0} MB).
 No es un archivo de texto.	To nie jest plik tekstowy.
+&Imprimir...	&Drukuj...
+Buscar en todas las pestañas	Szukaj we wszystkich kartach
+Buscar en una carpeta...	Szukaj w folderze...
+&Comparar con	&Porównaj z
+&Formatear JSON o XML	&Formatuj JSON lub XML
+Co&mpactar JSON o XML	Zmini&fikuj JSON lub XML
+Mostrar &espacios y tabulaciones	Pokaż &spacje i tabulatory
+&Paleta de comandos...	&Paleta poleceń...
+Plegar bloque	Zwiń blok
+Desplegar bloque	Rozwiń blok
+Desplegar todo	Rozwiń wszystko
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} zajmuje {1} MB i jego otwarcie może potrwać. Otworzyć mimo to?
+Abriendo {0}...	Otwieranie {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Wyszukiwanie trwa zbyt długo. Spróbuj prostszego wyrażenia.
+{0} de {1}	{0} z {1}
+{0} reemplazos.	Liczba zamian: {0}.
+Cerrar comillas y paréntesis automáticamente	Automatycznie zamykaj cudzysłowy i nawiasy
+Mostrar espacios y tabulaciones	Pokaż spacje i tabulatory
+Abrir los archivos en la ventana que ya está abierta	Otwieraj pliki w już otwartym oknie
+No es XML válido:	Nieprawidłowy XML:
+No es JSON válido:	Nieprawidłowy JSON:
+{0} y {1} son iguales.	{0} i {1} są takie same.
+Desanclar	Odepnij
+Anclar	Przypnij
+Cerrar	Zamknij
+Cerrar las demás	Zamknij pozostałe
+Cerrar las de la derecha	Zamknij karty po prawej
+Copiar ruta	Kopiuj ścieżkę
+Abrir la carpeta	Otwórz folder
+Comparar con la pestaña actual	Porównaj z bieżącą kartą
+Reemplazar en todas las pestañas...	Zamień we wszystkich kartach...
+Reemplazar en una carpeta...	Zamień w folderze...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}” w {1}: wyników {2} w {3} z {4} plików
+(solo los primeros {0})	(tylko pierwsze {0})
+las pestañas abiertas	otwarte karty
+Carpeta donde buscar (con sus subcarpetas):	Folder do przeszukania (wraz z podfolderami):
+Buscando en {0}...	Przeszukiwanie {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Zostanie wykonanych zamian: {0}, w kartach: {1}. Każda karta może je cofnąć skrótem Ctrl+Z.\nKontynuować?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Dopasowania są w {0} plikach; to zbyt wiele, aby otworzyć je naraz.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Zostanie otwartych plików: {0}, z dopasowaniami: {1}, a zamiany zostaną wykonane w ich kartach bez zapisywania. Przejrzyj je i użyj Zapisz wszystko, aby je zachować.\nKontynuować?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Pobrany plik jest uszkodzony lub został zmodyfikowany: jego suma kontrolna SHA-256 nie zgadza się z opublikowaną.
+Falta cerrar una cadena en la línea {0}.	Nie zamknięto ciągu znaków w wierszu {0}.
+Sobra un «{0}» en la línea {1}.	Nadmiarowy znak „{0}” w wierszu {1}.
+Falta cerrar un «{0}».	Brakuje zamykającego znaku „{0}”.

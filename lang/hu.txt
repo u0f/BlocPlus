@@ -40,7 +40,6 @@ Bajar línea	Sor mozgatása lefelé
 Buscar &anterior	&Előző keresése
 Buscar &siguiente	&Következő keresése
 Buscar actualizaciones al iniciar	Frissítések keresése indításkor
-Buscar y reemplazar	Keresés és csere
 Buscar:	Keresés:
 Cambiar...	Módosítás...
 Cancelar	Mégse
@@ -69,7 +68,6 @@ Guardar t&odo	Összes &mentése
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Új verzió érhető el: {0} {1} (a jelenlegi: {2}).\n\n{3}\n\nLetölti és telepíti most? A(z) {0} újraindul, és megőrzi a lapjait.
 Insertar fecha y hora	Dátum és idő beszúrása
 Ir a línea	Ugrás sorra
-La descarga no es un ejecutable válido.	A letöltött fájl nem érvényes futtatható fájl.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Az előnézet HTML, Markdown, reStructuredText, SVG, CSV/TSV és LRC dalszövegek esetén érhető el.
 Lín {0}, Col {1}	{0}. sor, {1}. oszl.
 Lín {0}, Col {1}   ({2} seleccionados)	{0}. sor, {1}. oszl.   ({2} kijelölve)
@@ -138,3 +136,47 @@ Abrir desde URL	Megnyitás URL-ről
 Dirección del archivo de texto:	A szövegfájl címe:
 El archivo es demasiado grande (máximo {0} MB).	A fájl túl nagy (legfeljebb {0} MB).
 No es un archivo de texto.	Ez nem szövegfájl.
+&Imprimir...	&Nyomtatás...
+Buscar en todas las pestañas	Keresés az összes lapon
+Buscar en una carpeta...	Keresés mappában...
+&Comparar con	Ö&sszehasonlítás ezzel
+&Formatear JSON o XML	&JSON vagy XML formázása
+Co&mpactar JSON o XML	JSON vagy XML &tömörítése
+Mostrar &espacios y tabulaciones	&Szóközök és tabulátorok megjelenítése
+&Paleta de comandos...	&Parancspaletta...
+Plegar bloque	Blokk összecsukása
+Desplegar bloque	Blokk kibontása
+Desplegar todo	Összes kibontása
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	A(z) {0} {1} MB méretű, és megnyitása hosszabb ideig tarthat. Mégis megnyitja?
+Abriendo {0}...	{0} megnyitása...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	A keresés túl sokáig tart. Próbáljon egyszerűbb kifejezést.
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} csere.
+Cerrar comillas y paréntesis automáticamente	Idézőjelek és zárójelek automatikus lezárása
+Mostrar espacios y tabulaciones	Szóközök és tabulátorok megjelenítése
+Abrir los archivos en la ventana que ya está abierta	Fájlok megnyitása a már megnyitott ablakban
+No es XML válido:	Érvénytelen XML:
+No es JSON válido:	Érvénytelen JSON:
+{0} y {1} son iguales.	A(z) {0} és a(z) {1} azonos.
+Desanclar	Rögzítés feloldása
+Anclar	Rögzítés
+Cerrar	Bezárás
+Cerrar las demás	Többi bezárása
+Cerrar las de la derecha	Jobb oldaliak bezárása
+Copiar ruta	Elérési út másolása
+Abrir la carpeta	Mappa megnyitása
+Comparar con la pestaña actual	Összehasonlítás az aktuális lappal
+Reemplazar en todas las pestañas...	Csere az összes lapon...
+Reemplazar en una carpeta...	Csere mappában...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}” itt: {1}: {2} találat {3} / {4} fájlban
+(solo los primeros {0})	(csak az első {0})
+las pestañas abiertas	a megnyitott lapok
+Carpeta donde buscar (con sus subcarpetas):	Keresés helye (almappákkal együtt):
+Buscando en {0}...	Keresés itt: {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{0} csere lesz végrehajtva {1} lapon. Mindegyik lapon visszavonható a Ctrl+Z billentyűkombinációval.\nFolytatja?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	{0} fájlban van találat; ez túl sok ahhoz, hogy egyszerre megnyíljon.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} fájl nyílik meg {1} találattal, és a cserék a lapjaikon lesznek végrehajtva mentés nélkül. Ellenőrizze őket, és a megtartásukhoz használja a Mindet mentése parancsot.\nFolytatja?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	A letöltés sérült vagy módosították: az SHA-256 ellenőrző összege nem egyezik a közzétettel.
+Falta cerrar una cadena en la línea {0}.	Egy karakterlánc lezárása hiányzik a(z) {0}. sorban.
+Sobra un «{0}» en la línea {1}.	Felesleges „{0}” a(z) {1}. sorban.
+Falta cerrar un «{0}».	Egy „{0}” lezárása hiányzik.

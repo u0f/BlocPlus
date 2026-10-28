@@ -40,7 +40,6 @@ Bajar línea	Baixar liña
 Buscar &anterior	Buscar &anterior
 Buscar &siguiente	Buscar &seguinte
 Buscar actualizaciones al iniciar	Buscar actualizacións ao iniciar
-Buscar y reemplazar	Buscar e substituír
 Buscar:	Buscar:
 Cambiar...	Cambiar...
 Cancelar	Cancelar
@@ -69,7 +68,6 @@ Guardar t&odo	Gardar t&odo
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Hai unha nova versión de {0}: {1} (tes a {2}).\n\n{3}\n\nDescargala e instalala agora? {0} reiniciarase e conservará as túas lapelas.
 Insertar fecha y hora	Inserir data e hora
 Ir a línea	Ir á liña
-La descarga no es un ejecutable válido.	A descarga non é un executable válido.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	A vista previa está dispoñible para HTML, Markdown, reStructuredText, SVG, CSV/TSV e letras LRC.
 Lín {0}, Col {1}	Lin {0}, Col {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Lin {0}, Col {1}   ({2} seleccionados)
@@ -138,3 +136,47 @@ Abrir desde URL	Abrir desde URL
 Dirección del archivo de texto:	Enderezo do ficheiro de texto:
 El archivo es demasiado grande (máximo {0} MB).	O ficheiro é demasiado grande (máximo {0} MB).
 No es un archivo de texto.	Non é un ficheiro de texto.
+&Imprimir...	&Imprimir...
+Buscar en todas las pestañas	Buscar en todas as lapelas
+Buscar en una carpeta...	Buscar nun cartafol...
+&Comparar con	&Comparar con
+&Formatear JSON o XML	&Formatar JSON ou XML
+Co&mpactar JSON o XML	Co&mpactar JSON ou XML
+Mostrar &espacios y tabulaciones	Amosar &espazos e tabulacións
+&Paleta de comandos...	&Paleta de comandos...
+Plegar bloque	Pregar bloque
+Desplegar bloque	Despregar bloque
+Desplegar todo	Despregar todo
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} ocupa {1} MB e pode tardar en abrirse. Abrilo igualmente?
+Abriendo {0}...	Abrindo {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	A busca tarda demasiado. Proba cunha expresión máis sinxela.
+{0} de {1}	{0} de {1}
+{0} reemplazos.	{0} substitucións.
+Cerrar comillas y paréntesis automáticamente	Pechar comiñas e parénteses automaticamente
+Mostrar espacios y tabulaciones	Amosar espazos e tabulacións
+Abrir los archivos en la ventana que ya está abierta	Abrir os ficheiros na xanela que xa está aberta
+No es XML válido:	Non é XML válido:
+No es JSON válido:	Non é JSON válido:
+{0} y {1} son iguales.	{0} e {1} son iguais.
+Desanclar	Desafixar
+Anclar	Afixar
+Cerrar	Pechar
+Cerrar las demás	Pechar as demais
+Cerrar las de la derecha	Pechar as da dereita
+Copiar ruta	Copiar ruta
+Abrir la carpeta	Abrir o cartafol
+Comparar con la pestaña actual	Comparar coa lapela actual
+Reemplazar en todas las pestañas...	Substituír en todas as lapelas...
+Reemplazar en una carpeta...	Substituír nun cartafol...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	«{0}» en {1}: {2} resultados en {3} de {4} ficheiros
+(solo los primeros {0})	(só os primeiros {0})
+las pestañas abiertas	as lapelas abertas
+Carpeta donde buscar (con sus subcarpetas):	Cartafol onde buscar (cos seus subcartafoles):
+Buscando en {0}...	Buscando en {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Farase {0} substitucións en {1} lapelas. Cada lapela pode desfacelas con Ctrl+Z.\nContinuar?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Hai coincidencias en {0} ficheiros; son demasiados para abrilos á vez.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Abriranse {0} ficheiros con {1} coincidencias e farase as substitucións nas súas lapelas, sen gardalos. Revísaos e usa Gardar todo para conservalos.\nContinuar?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	A descarga está danada ou foi modificada: a súa pegada SHA-256 non coincide coa publicada.
+Falta cerrar una cadena en la línea {0}.	Falta pechar unha cadea na liña {0}.
+Sobra un «{0}» en la línea {1}.	Sobra un «{0}» na liña {1}.
+Falta cerrar un «{0}».	Falta pechar un «{0}».

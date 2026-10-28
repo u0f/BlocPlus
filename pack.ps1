@@ -32,10 +32,10 @@ $logo.Dispose()
 
 # Languages: Spanish plus one per lang\*.txt. File types: the ones the GitHub installer registers.
 $langs = @('es') + (Get-ChildItem lang\*.txt | Where-Object Name -NotLike '_*' | ForEach-Object BaseName)
-$exts = [regex]::Match((Get-Content BlocPlus.cs -Raw), 'string\[\] Exts = \("([^"]+)" \+\s*"([^"]+)"\)')
+$exts = [regex]::Match(((Get-Content src\*.cs -Raw) -join "`n"), 'string\[\] Exts = \("([^"]+)" \+\s*"([^"]+)"\)')
 $exts = ($exts.Groups[1].Value + $exts.Groups[2].Value).Split(' ', [StringSplitOptions]::RemoveEmptyEntries)
 # Plus every extension the syntax highlighter and the preview know, so "Open with" offers BlocPlus for them too.
-$src = Get-Content BlocPlus.cs -Raw
+$src = (Get-Content src\*.cs -Raw) -join "`n"
 $exts += [regex]::Matches($src, 'L\("[^"]+", "([^"]*)"') | ForEach-Object { $_.Groups[1].Value.Split(' ') }
 $exts += 'mdown', 'mkd', 'csv', 'tsv', 'lrc'
 $exts = $exts | Where-Object { $_ -and $_ -notin 'bat', 'cmd', 'reg' } | Sort-Object -Unique  # packages may not claim these

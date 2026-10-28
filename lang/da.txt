@@ -40,7 +40,6 @@ Bajar línea	Flyt linje ned
 Buscar &anterior	Find &forrige
 Buscar &siguiente	Find &næste
 Buscar actualizaciones al iniciar	Søg efter opdateringer ved start
-Buscar y reemplazar	Find og erstat
 Buscar:	Find:
 Cambiar...	Skift...
 Cancelar	Annuller
@@ -69,7 +68,6 @@ Guardar t&odo	Gem a&lle
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Der er en ny version af {0}: {1} (du har {2}).\n\n{3}\n\nVil du hente og installere den nu? {0} genstarter og beholder dine faner.
 Insertar fecha y hora	Indsæt dato og klokkeslæt
 Ir a línea	Gå til linje
-La descarga no es un ejecutable válido.	Den hentede fil er ikke en gyldig programfil.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Visning er tilgængelig for HTML, Markdown, reStructuredText, SVG, CSV/TSV og LRC-sangtekster.
 Lín {0}, Col {1}	Lin {0}, Kol {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Lin {0}, Kol {1}   ({2} markeret)
@@ -138,3 +136,47 @@ Abrir desde URL	Åbn fra URL
 Dirección del archivo de texto:	Adresse på tekstfilen:
 El archivo es demasiado grande (máximo {0} MB).	Filen er for stor (maks. {0} MB).
 No es un archivo de texto.	Det er ikke en tekstfil.
+&Imprimir...	&Udskriv...
+Buscar en todas las pestañas	Søg i alle faner
+Buscar en una carpeta...	Søg i en mappe...
+&Comparar con	&Sammenlign med
+&Formatear JSON o XML	&Formatér JSON eller XML
+Co&mpactar JSON o XML	Ko&mprimér JSON eller XML
+Mostrar &espacios y tabulaciones	Vis &mellemrum og tabulatorer
+&Paleta de comandos...	&Kommandopalet...
+Plegar bloque	Fold blok sammen
+Desplegar bloque	Fold blok ud
+Desplegar todo	Fold alle ud
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} fylder {1} MB og kan tage lang tid at åbne. Vil du åbne den alligevel?
+Abriendo {0}...	Åbner {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Søgningen tager for lang tid. Prøv et enklere udtryk.
+{0} de {1}	{0} af {1}
+{0} reemplazos.	{0} erstatninger.
+Cerrar comillas y paréntesis automáticamente	Luk citationstegn og parenteser automatisk
+Mostrar espacios y tabulaciones	Vis mellemrum og tabulatorer
+Abrir los archivos en la ventana que ya está abierta	Åbn filerne i det vindue, der allerede er åbent
+No es XML válido:	Ugyldig XML:
+No es JSON válido:	Ugyldig JSON:
+{0} y {1} son iguales.	{0} og {1} er ens.
+Desanclar	Frigør
+Anclar	Fastgør
+Cerrar	Luk
+Cerrar las demás	Luk andre
+Cerrar las de la derecha	Luk fanerne til højre
+Copiar ruta	Kopiér sti
+Abrir la carpeta	Åbn mappen
+Comparar con la pestaña actual	Sammenlign med den aktuelle fane
+Reemplazar en todas las pestañas...	Erstat i alle faner...
+Reemplazar en una carpeta...	Erstat i en mappe...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	»{0}« i {1}: {2} resultater i {3} af {4} filer
+(solo los primeros {0})	(kun de første {0})
+las pestañas abiertas	de åbne faner
+Carpeta donde buscar (con sus subcarpetas):	Mappe at søge i (med undermapper):
+Buscando en {0}...	Søger i {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Der foretages {0} erstatninger i {1} faner. Hver fane kan fortryde dem med Ctrl+Z.\nFortsæt?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Der er match i {0} filer; det er for mange til at åbne på én gang.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} filer med {1} match åbnes, og erstatningerne foretages i deres faner uden at blive gemt. Gennemse dem, og brug Gem alle for at beholde dem.\nFortsæt?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Overførslen er beskadiget eller er blevet ændret: dens SHA-256-kontrolsum stemmer ikke overens med den offentliggjorte.
+Falta cerrar una cadena en la línea {0}.	En streng er ikke lukket i linje {0}.
+Sobra un «{0}» en la línea {1}.	Overflødig »{0}« i linje {1}.
+Falta cerrar un «{0}».	Der mangler en afsluttende »{0}«.

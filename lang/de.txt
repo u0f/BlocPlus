@@ -40,7 +40,6 @@ Bajar línea	Zeile nach unten
 Buscar &anterior	&Vorheriges suchen
 Buscar &siguiente	&Nächstes suchen
 Buscar actualizaciones al iniciar	Beim Start nach Updates suchen
-Buscar y reemplazar	Suchen und Ersetzen
 Buscar:	Suchen:
 Cambiar...	Ändern...
 Cancelar	Abbrechen
@@ -69,7 +68,6 @@ Guardar t&odo	&Alle speichern
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Es gibt eine neue Version von {0}: {1} (Sie haben {2}).\n\n{3}\n\nJetzt herunterladen und installieren? {0} wird neu gestartet und behält Ihre Tabs.
 Insertar fecha y hora	Datum und Uhrzeit einfügen
 Ir a línea	Gehe zu Zeile
-La descarga no es un ejecutable válido.	Der Download ist keine gültige ausführbare Datei.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Die Vorschau ist für HTML, Markdown, reStructuredText, SVG, CSV/TSV und LRC-Songtexte verfügbar.
 Lín {0}, Col {1}	Z {0}, Sp {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Z {0}, Sp {1}   ({2} ausgewählt)
@@ -138,3 +136,47 @@ Abrir desde URL	Von URL öffnen
 Dirección del archivo de texto:	Adresse der Textdatei:
 El archivo es demasiado grande (máximo {0} MB).	Die Datei ist zu groß (maximal {0} MB).
 No es un archivo de texto.	Das ist keine Textdatei.
+&Imprimir...	&Drucken...
+Buscar en todas las pestañas	In allen Tabs suchen
+Buscar en una carpeta...	In Ordner suchen...
+&Comparar con	&Vergleichen mit
+&Formatear JSON o XML	JSON oder XML &formatieren
+Co&mpactar JSON o XML	JSON oder XML &komprimieren
+Mostrar &espacios y tabulaciones	&Leerzeichen und Tabs anzeigen
+&Paleta de comandos...	&Befehlspalette...
+Plegar bloque	Block einklappen
+Desplegar bloque	Block ausklappen
+Desplegar todo	Alle ausklappen
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} ist {1} MB groß und braucht evtl. etwas zum Öffnen. Trotzdem öffnen?
+Abriendo {0}...	{0} wird geöffnet...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Die Suche dauert zu lange. Versuchen Sie einen einfacheren Ausdruck.
+{0} de {1}	{0} von {1}
+{0} reemplazos.	{0} Ersetzungen.
+Cerrar comillas y paréntesis automáticamente	Anführungszeichen und Klammern automatisch schließen
+Mostrar espacios y tabulaciones	Leerzeichen und Tabs anzeigen
+Abrir los archivos en la ventana que ya está abierta	Dateien im bereits geöffneten Fenster öffnen
+No es XML válido:	Kein gültiges XML:
+No es JSON válido:	Kein gültiges JSON:
+{0} y {1} son iguales.	{0} und {1} sind identisch.
+Desanclar	Lösen
+Anclar	Anheften
+Cerrar	Schließen
+Cerrar las demás	Andere schließen
+Cerrar las de la derecha	Tabs rechts schließen
+Copiar ruta	Pfad kopieren
+Abrir la carpeta	Ordner öffnen
+Comparar con la pestaña actual	Mit aktuellem Tab vergleichen
+Reemplazar en todas las pestañas...	In allen Tabs ersetzen...
+Reemplazar en una carpeta...	In Ordner ersetzen...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}“ in {1}: {2} Treffer in {3} von {4} Dateien
+(solo los primeros {0})	(nur die ersten {0})
+las pestañas abiertas	die geöffneten Tabs
+Carpeta donde buscar (con sus subcarpetas):	Ordner für die Suche (mit Unterordnern):
+Buscando en {0}...	{0} wird durchsucht...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	In {1} Tabs werden {0} Ersetzungen vorgenommen. Jeder Tab kann sie mit Strg+Z rückgängig machen.\nFortfahren?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Es gibt Treffer in {0} Dateien; das sind zu viele, um sie gleichzeitig zu öffnen.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} Dateien mit {1} Treffern werden geöffnet und die Ersetzungen in ihren Tabs vorgenommen, ohne sie zu speichern. Prüfen Sie sie und verwenden Sie „Alles speichern“, um sie zu behalten.\nFortfahren?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Der Download ist beschädigt oder wurde verändert: Seine SHA-256-Prüfsumme stimmt nicht mit der veröffentlichten überein.
+Falta cerrar una cadena en la línea {0}.	Eine Zeichenfolge in Zeile {0} ist nicht geschlossen.
+Sobra un «{0}» en la línea {1}.	Überflüssiges „{0}“ in Zeile {1}.
+Falta cerrar un «{0}».	Schließendes „{0}“ fehlt.

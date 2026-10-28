@@ -40,7 +40,6 @@ Bajar línea	Siirrä rivi alas
 Buscar &anterior	Etsi &edellinen
 Buscar &siguiente	Etsi &seuraava
 Buscar actualizaciones al iniciar	Tarkista päivitykset käynnistettäessä
-Buscar y reemplazar	Etsi ja korvaa
 Buscar:	Etsi:
 Cambiar...	Muuta...
 Cancelar	Peruuta
@@ -69,7 +68,6 @@ Guardar t&odo	Tallenna k&aikki
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Sovelluksesta {0} on uusi versio: {1} (sinulla on {2}).\n\n{3}\n\nLadataanko ja asennetaanko se nyt? {0} käynnistyy uudelleen ja säilyttää välilehdet.
 Insertar fecha y hora	Lisää päivämäärä ja kellonaika
 Ir a línea	Siirry riville
-La descarga no es un ejecutable válido.	Ladattu tiedosto ei ole kelvollinen suoritettava tiedosto.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Esikatselu on käytettävissä HTML-, Markdown-, reStructuredText-, SVG-, CSV/TSV- ja LRC-sanoituksille.
 Lín {0}, Col {1}	Rv {0}, Sar {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Rv {0}, Sar {1}   ({2} valittu)
@@ -138,3 +136,47 @@ Abrir desde URL	Avaa URL-osoitteesta
 Dirección del archivo de texto:	Tekstitiedoston osoite:
 El archivo es demasiado grande (máximo {0} MB).	Tiedosto on liian suuri (enintään {0} Mt).
 No es un archivo de texto.	Tämä ei ole tekstitiedosto.
+&Imprimir...	&Tulosta...
+Buscar en todas las pestañas	Etsi kaikista välilehdistä
+Buscar en una carpeta...	Etsi kansiosta...
+&Comparar con	&Vertaa kohteeseen
+&Formatear JSON o XML	&Muotoile JSON tai XML
+Co&mpactar JSON o XML	&Tiivistä JSON tai XML
+Mostrar &espacios y tabulaciones	Näytä &välilyönnit ja sarkaimet
+&Paleta de comandos...	&Komentopaletti...
+Plegar bloque	Kutista lohko
+Desplegar bloque	Laajenna lohko
+Desplegar todo	Laajenna kaikki
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} on {1} Mt ja sen avaaminen voi kestää. Avataanko silti?
+Abriendo {0}...	Avataan {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Haku kestää liian kauan. Kokeile yksinkertaisempaa lauseketta.
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} korvausta.
+Cerrar comillas y paréntesis automáticamente	Sulje lainausmerkit ja sulkeet automaattisesti
+Mostrar espacios y tabulaciones	Näytä välilyönnit ja sarkaimet
+Abrir los archivos en la ventana que ya está abierta	Avaa tiedostot jo auki olevassa ikkunassa
+No es XML válido:	Ei kelvollista XML:ää:
+No es JSON válido:	Ei kelvollista JSON:ia:
+{0} y {1} son iguales.	{0} ja {1} ovat samat.
+Desanclar	Poista kiinnitys
+Anclar	Kiinnitä
+Cerrar	Sulje
+Cerrar las demás	Sulje muut
+Cerrar las de la derecha	Sulje oikealla olevat
+Copiar ruta	Kopioi polku
+Abrir la carpeta	Avaa kansio
+Comparar con la pestaña actual	Vertaa nykyiseen välilehteen
+Reemplazar en todas las pestañas...	Korvaa kaikissa välilehdissä...
+Reemplazar en una carpeta...	Korvaa kansiossa...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	”{0}” kohteessa {1}: {2} osumaa {3}/{4} tiedostossa
+(solo los primeros {0})	(vain {0} ensimmäistä)
+las pestañas abiertas	avoimet välilehdet
+Carpeta donde buscar (con sus subcarpetas):	Kansio, josta etsitään (alikansioineen):
+Buscando en {0}...	Etsitään kohteesta {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Tehdään {0} korvausta {1} välilehdessä. Jokainen välilehti voi kumota ne Ctrl+Z:lla.\nJatketaanko?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Osumia on {0} tiedostossa; se on liian monta avattavaksi kerralla.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Avataan {0} tiedostoa, joissa on {1} osumaa, ja korvaukset tehdään niiden välilehdissä tallentamatta. Tarkista ne ja säilytä ne valitsemalla Tallenna kaikki.\nJatketaanko?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Lataus on vioittunut tai sitä on muokattu: sen SHA-256-tarkistussumma ei vastaa julkaistua.
+Falta cerrar una cadena en la línea {0}.	Merkkijono on sulkematta rivillä {0}.
+Sobra un «{0}» en la línea {1}.	Ylimääräinen ”{0}” rivillä {1}.
+Falta cerrar un «{0}».	Päättävä ”{0}” puuttuu.

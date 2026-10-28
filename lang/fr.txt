@@ -40,7 +40,6 @@ Bajar línea	Descendre la ligne
 Buscar &anterior	Rechercher le &précédent
 Buscar &siguiente	Rechercher le &suivant
 Buscar actualizaciones al iniciar	Rechercher les mises à jour au démarrage
-Buscar y reemplazar	Rechercher et remplacer
 Buscar:	Rechercher :
 Cambiar...	Modifier...
 Cancelar	Annuler
@@ -69,7 +68,6 @@ Guardar t&odo	Enregistrer t&out
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Une nouvelle version de {0} est disponible : {1} (vous avez la {2}).\n\n{3}\n\nLa télécharger et l'installer maintenant ? {0} va redémarrer et conservera vos onglets.
 Insertar fecha y hora	Insérer la date et l'heure
 Ir a línea	Aller à la ligne
-La descarga no es un ejecutable válido.	Le téléchargement n'est pas un exécutable valide.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	L'aperçu est disponible pour HTML, Markdown, reStructuredText, SVG, CSV/TSV et les paroles LRC.
 Lín {0}, Col {1}	Lig {0}, Col {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Lig {0}, Col {1}   ({2} sélectionnés)
@@ -138,3 +136,47 @@ Abrir desde URL	Ouvrir depuis une URL
 Dirección del archivo de texto:	Adresse du fichier texte :
 El archivo es demasiado grande (máximo {0} MB).	Le fichier est trop volumineux ({0} Mo maximum).
 No es un archivo de texto.	Ce n'est pas un fichier texte.
+&Imprimir...	&Imprimer...
+Buscar en todas las pestañas	Rechercher dans tous les onglets
+Buscar en una carpeta...	Rechercher dans un dossier...
+&Comparar con	&Comparer avec
+&Formatear JSON o XML	&Formater le JSON ou XML
+Co&mpactar JSON o XML	Co&mpacter le JSON ou XML
+Mostrar &espacios y tabulaciones	Afficher les &espaces et tabulations
+&Paleta de comandos...	&Palette de commandes...
+Plegar bloque	Replier le bloc
+Desplegar bloque	Déplier le bloc
+Desplegar todo	Tout déplier
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} fait {1} Mo et peut mettre du temps à s'ouvrir. L'ouvrir quand même ?
+Abriendo {0}...	Ouverture de {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	La recherche prend trop de temps. Essayez une expression plus simple.
+{0} de {1}	{0} sur {1}
+{0} reemplazos.	{0} remplacements.
+Cerrar comillas y paréntesis automáticamente	Fermer automatiquement les guillemets et parenthèses
+Mostrar espacios y tabulaciones	Afficher les espaces et tabulations
+Abrir los archivos en la ventana que ya está abierta	Ouvrir les fichiers dans la fenêtre déjà ouverte
+No es XML válido:	XML non valide :
+No es JSON válido:	JSON non valide :
+{0} y {1} son iguales.	{0} et {1} sont identiques.
+Desanclar	Désépingler
+Anclar	Épingler
+Cerrar	Fermer
+Cerrar las demás	Fermer les autres
+Cerrar las de la derecha	Fermer les onglets à droite
+Copiar ruta	Copier le chemin
+Abrir la carpeta	Ouvrir le dossier
+Comparar con la pestaña actual	Comparer avec l'onglet actuel
+Reemplazar en todas las pestañas...	Remplacer dans tous les onglets...
+Reemplazar en una carpeta...	Remplacer dans un dossier...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	« {0} » dans {1} : {2} résultats dans {3} fichiers sur {4}
+(solo los primeros {0})	(seulement les {0} premiers)
+las pestañas abiertas	les onglets ouverts
+Carpeta donde buscar (con sus subcarpetas):	Dossier où rechercher (avec ses sous-dossiers) :
+Buscando en {0}...	Recherche dans {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{0} remplacements seront effectués dans {1} onglets. Chaque onglet peut les annuler avec Ctrl+Z.\nContinuer ?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Il y a des correspondances dans {0} fichiers ; c'est trop pour les ouvrir en une seule fois.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} fichiers avec {1} correspondances seront ouverts et les remplacements effectués dans leurs onglets, sans être enregistrés. Vérifiez-les et utilisez Tout enregistrer pour les conserver.\nContinuer ?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Le téléchargement est corrompu ou a été modifié : son empreinte SHA-256 ne correspond pas à celle publiée.
+Falta cerrar una cadena en la línea {0}.	Une chaîne n'est pas fermée à la ligne {0}.
+Sobra un «{0}» en la línea {1}.	« {0} » en trop à la ligne {1}.
+Falta cerrar un «{0}».	Il manque la fermeture de « {0} ».

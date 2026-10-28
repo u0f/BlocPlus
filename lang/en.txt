@@ -40,7 +40,6 @@ Bajar línea	Move line down
 Buscar &anterior	Find &previous
 Buscar &siguiente	Find &next
 Buscar actualizaciones al iniciar	Check for updates on startup
-Buscar y reemplazar	Find and replace
 Buscar:	Find:
 Cambiar...	Change...
 Cancelar	Cancel
@@ -69,7 +68,6 @@ Guardar t&odo	Save a&ll
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	There is a new version of {0}: {1} (you have {2}).\n\n{3}\n\nDownload and install it now? {0} will restart and keep your tabs.
 Insertar fecha y hora	Insert date and time
 Ir a línea	Go to line
-La descarga no es un ejecutable válido.	The download is not a valid executable.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Preview is available for HTML, Markdown, reStructuredText, SVG, CSV/TSV and LRC lyrics.
 Lín {0}, Col {1}	Ln {0}, Col {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Ln {0}, Col {1}   ({2} selected)
@@ -138,3 +136,47 @@ Abrir desde URL	Open from URL
 Dirección del archivo de texto:	Address of the text file:
 El archivo es demasiado grande (máximo {0} MB).	The file is too large (maximum {0} MB).
 No es un archivo de texto.	It is not a text file.
+&Imprimir...	&Print...
+Buscar en todas las pestañas	Find in all tabs
+Buscar en una carpeta...	Find in folder...
+&Comparar con	&Compare with
+&Formatear JSON o XML	&Format JSON or XML
+Co&mpactar JSON o XML	M&inify JSON or XML
+Mostrar &espacios y tabulaciones	Show &spaces and tabs
+&Paleta de comandos...	&Command palette...
+Plegar bloque	Fold block
+Desplegar bloque	Unfold block
+Desplegar todo	Unfold all
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} is {1} MB and may take a while to open. Open it anyway?
+Abriendo {0}...	Opening {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	The search is taking too long. Try a simpler expression.
+{0} de {1}	{0} of {1}
+{0} reemplazos.	{0} replacements.
+Cerrar comillas y paréntesis automáticamente	Automatically close quotes and brackets
+Mostrar espacios y tabulaciones	Show spaces and tabs
+Abrir los archivos en la ventana que ya está abierta	Open files in the window that is already open
+No es XML válido:	Not valid XML:
+No es JSON válido:	Not valid JSON:
+{0} y {1} son iguales.	{0} and {1} are identical.
+Desanclar	Unpin
+Anclar	Pin
+Cerrar	Close
+Cerrar las demás	Close others
+Cerrar las de la derecha	Close tabs to the right
+Copiar ruta	Copy path
+Abrir la carpeta	Open folder
+Comparar con la pestaña actual	Compare with current tab
+Reemplazar en todas las pestañas...	Replace in all tabs...
+Reemplazar en una carpeta...	Replace in folder...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	“{0}” in {1}: {2} results in {3} of {4} files
+(solo los primeros {0})	(only the first {0})
+las pestañas abiertas	the open tabs
+Carpeta donde buscar (con sus subcarpetas):	Folder to search (with its subfolders):
+Buscando en {0}...	Searching in {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{0} replacements will be made in {1} tabs. Each tab can undo them with Ctrl+Z.\nContinue?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	There are matches in {0} files; that is too many to open at once.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} files with {1} matches will be opened and the replacements made in their tabs, without saving them. Review them and use Save all to keep them.\nContinue?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	The download is corrupt or has been modified: its SHA-256 checksum does not match the published one.
+Falta cerrar una cadena en la línea {0}.	A string is not closed on line {0}.
+Sobra un «{0}» en la línea {1}.	Unexpected “{0}” on line {1}.
+Falta cerrar un «{0}».	Missing closing “{0}”.

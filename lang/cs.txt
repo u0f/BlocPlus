@@ -40,7 +40,6 @@ Bajar línea	Posunout řádek dolů
 Buscar &anterior	Najít &předchozí
 Buscar &siguiente	Najít &další
 Buscar actualizaciones al iniciar	Vyhledat aktualizace při spuštění
-Buscar y reemplazar	Najít a nahradit
 Buscar:	Najít:
 Cambiar...	Změnit...
 Cancelar	Zrušit
@@ -69,7 +68,6 @@ Guardar t&odo	Uložit &vše
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Je dostupná nová verze {0}: {1} (máte {2}).\n\n{3}\n\nStáhnout a nainstalovat nyní? {0} se restartuje a zachová vaše karty.
 Insertar fecha y hora	Vložit datum a čas
 Ir a línea	Přejít na řádek
-La descarga no es un ejecutable válido.	Stažený soubor není platný spustitelný soubor.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Náhled je k dispozici pro HTML, Markdown, reStructuredText, SVG, CSV/TSV a texty LRC.
 Lín {0}, Col {1}	Řád {0}, Sl {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Řád {0}, Sl {1}   (vybráno: {2})
@@ -138,3 +136,47 @@ Abrir desde URL	Otevřít z URL
 Dirección del archivo de texto:	Adresa textového souboru:
 El archivo es demasiado grande (máximo {0} MB).	Soubor je příliš velký (maximum {0} MB).
 No es un archivo de texto.	Nejde o textový soubor.
+&Imprimir...	&Tisk...
+Buscar en todas las pestañas	Hledat ve všech kartách
+Buscar en una carpeta...	Hledat ve složce...
+&Comparar con	&Porovnat s
+&Formatear JSON o XML	&Formátovat JSON nebo XML
+Co&mpactar JSON o XML	Z&minifikovat JSON nebo XML
+Mostrar &espacios y tabulaciones	Zobrazit &mezery a tabulátory
+&Paleta de comandos...	&Paleta příkazů...
+Plegar bloque	Sbalit blok
+Desplegar bloque	Rozbalit blok
+Desplegar todo	Rozbalit vše
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} má {1} MB a jeho otevření může chvíli trvat. Přesto otevřít?
+Abriendo {0}...	Otevírání {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Hledání trvá příliš dlouho. Zkuste jednodušší výraz.
+{0} de {1}	{0} z {1}
+{0} reemplazos.	Počet nahrazení: {0}.
+Cerrar comillas y paréntesis automáticamente	Automaticky zavírat uvozovky a závorky
+Mostrar espacios y tabulaciones	Zobrazit mezery a tabulátory
+Abrir los archivos en la ventana que ya está abierta	Otevírat soubory v již otevřeném okně
+No es XML válido:	Neplatné XML:
+No es JSON válido:	Neplatný JSON:
+{0} y {1} son iguales.	{0} a {1} jsou shodné.
+Desanclar	Odepnout
+Anclar	Připnout
+Cerrar	Zavřít
+Cerrar las demás	Zavřít ostatní
+Cerrar las de la derecha	Zavřít karty vpravo
+Copiar ruta	Kopírovat cestu
+Abrir la carpeta	Otevřít složku
+Comparar con la pestaña actual	Porovnat s aktuální kartou
+Reemplazar en todas las pestañas...	Nahradit ve všech kartách...
+Reemplazar en una carpeta...	Nahradit ve složce...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}“ v {1}: výsledků {2} v {3} z {4} souborů
+(solo los primeros {0})	(pouze prvních {0})
+las pestañas abiertas	otevřené karty
+Carpeta donde buscar (con sus subcarpetas):	Složka, ve které hledat (včetně podsložek):
+Buscando en {0}...	Hledání v {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Počet nahrazení: {0}, v kartách: {1}. Každá karta je může vrátit zpět pomocí Ctrl+Z.\nPokračovat?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Shody jsou v {0} souborech; to je příliš mnoho na otevření najednou.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Bude otevřeno souborů: {0}, se shodami: {1}, a nahrazení se provedou v jejich kartách bez uložení. Zkontrolujte je a pomocí Uložit vše je zachovejte.\nPokračovat?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Stažený soubor je poškozen nebo byl změněn: jeho kontrolní součet SHA-256 neodpovídá zveřejněnému.
+Falta cerrar una cadena en la línea {0}.	Řetězec na řádku {0} není ukončen.
+Sobra un «{0}» en la línea {1}.	Nadbytečné „{0}“ na řádku {1}.
+Falta cerrar un «{0}».	Chybí ukončující „{0}“.

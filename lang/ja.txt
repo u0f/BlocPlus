@@ -40,7 +40,6 @@ Bajar línea	行を下へ移動
 Buscar &anterior	前を検索(&P)
 Buscar &siguiente	次を検索(&N)
 Buscar actualizaciones al iniciar	起動時に更新を確認する
-Buscar y reemplazar	検索と置換
 Buscar:	検索:
 Cambiar...	変更...
 Cancelar	キャンセル
@@ -69,7 +68,6 @@ Guardar t&odo	すべて保存(&L)
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} の新しいバージョン {1} があります (現在のバージョン: {2})。\n\n{3}\n\n今すぐダウンロードしてインストールしますか? {0} は再起動し、タブは保持されます。
 Insertar fecha y hora	日付と時刻の挿入
 Ir a línea	指定行へ移動
-La descarga no es un ejecutable válido.	ダウンロードしたファイルは有効な実行可能ファイルではありません。
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	プレビューは HTML、Markdown、reStructuredText、SVG、CSV/TSV、LRC 歌詞で利用できます。
 Lín {0}, Col {1}	行 {0}、列 {1}
 Lín {0}, Col {1}   ({2} seleccionados)	行 {0}、列 {1}   ({2} 選択)
@@ -138,3 +136,47 @@ Abrir desde URL	URL から開く
 Dirección del archivo de texto:	テキスト ファイルのアドレス:
 El archivo es demasiado grande (máximo {0} MB).	ファイルが大きすぎます (最大 {0} MB)。
 No es un archivo de texto.	テキスト ファイルではありません。
+&Imprimir...	印刷(&P)...
+Buscar en todas las pestañas	すべてのタブで検索
+Buscar en una carpeta...	フォルダー内を検索...
+&Comparar con	比較(&C)
+&Formatear JSON o XML	JSON または XML を整形(&F)
+Co&mpactar JSON o XML	JSON または XML を圧縮(&M)
+Mostrar &espacios y tabulaciones	空白とタブを表示(&E)
+&Paleta de comandos...	コマンド パレット(&K)...
+Plegar bloque	ブロックを折りたたむ
+Desplegar bloque	ブロックを展開
+Desplegar todo	すべて展開
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} のサイズは {1} MB で、開くのに時間がかかる場合があります。それでも開きますか?
+Abriendo {0}...	{0} を開いています...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	検索に時間がかかりすぎています。もっと単純な式を試してください。
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} 件置換しました。
+Cerrar comillas y paréntesis automáticamente	引用符とかっこを自動的に閉じる
+Mostrar espacios y tabulaciones	空白とタブを表示
+Abrir los archivos en la ventana que ya está abierta	すでに開いているウィンドウでファイルを開く
+No es XML válido:	有効な XML ではありません:
+No es JSON válido:	有効な JSON ではありません:
+{0} y {1} son iguales.	{0} と {1} は同じです。
+Desanclar	固定解除
+Anclar	固定
+Cerrar	閉じる
+Cerrar las demás	その他を閉じる
+Cerrar las de la derecha	右側を閉じる
+Copiar ruta	パスをコピー
+Abrir la carpeta	フォルダーを開く
+Comparar con la pestaña actual	現在のタブと比較
+Reemplazar en todas las pestañas...	すべてのタブで置換...
+Reemplazar en una carpeta...	フォルダー内を置換...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	「{0}」({1}): {4} ファイル中 {3} ファイルに {2} 件の結果
+(solo los primeros {0})	(最初の {0} 件のみ)
+las pestañas abiertas	開いているタブ
+Carpeta donde buscar (con sus subcarpetas):	検索するフォルダー (サブフォルダーを含む):
+Buscando en {0}...	{0} を検索しています...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{1} 個のタブで {0} 件の置換を行います。各タブで Ctrl+Z により元に戻せます。\n続行しますか?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	{0} 個のファイルに一致があります。同時に開くには多すぎます。
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{1} 件の一致がある {0} 個のファイルを開き、保存せずにそれぞれのタブで置換を行います。内容を確認し、保持するには「すべて保存」を使用してください。\n続行しますか?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	ダウンロードしたファイルが破損しているか変更されています。SHA-256 ハッシュが公開されている値と一致しません。
+Falta cerrar una cadena en la línea {0}.	{0} 行目で文字列が閉じられていません。
+Sobra un «{0}» en la línea {1}.	{1} 行目に余分な「{0}」があります。
+Falta cerrar un «{0}».	「{0}」が閉じられていません。

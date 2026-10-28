@@ -40,7 +40,6 @@ Bajar línea
 Buscar &anterior
 Buscar &siguiente
 Buscar actualizaciones al iniciar
-Buscar y reemplazar
 Buscar:
 Cambiar...
 Cancelar
@@ -69,7 +68,6 @@ Guardar t&odo
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.
 Insertar fecha y hora
 Ir a línea
-La descarga no es un ejecutable válido.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.
 Lín {0}, Col {1}
 Lín {0}, Col {1}   ({2} seleccionados)
@@ -138,3 +136,47 @@ Abrir desde URL
 Dirección del archivo de texto:
 El archivo es demasiado grande (máximo {0} MB).
 No es un archivo de texto.
+&Imprimir...
+Buscar en todas las pestañas
+Buscar en una carpeta...
+&Comparar con
+&Formatear JSON o XML
+Co&mpactar JSON o XML
+Mostrar &espacios y tabulaciones
+&Paleta de comandos...
+Plegar bloque
+Desplegar bloque
+Desplegar todo
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?
+Abriendo {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.
+{0} de {1}
+{0} reemplazos.
+Cerrar comillas y paréntesis automáticamente
+Mostrar espacios y tabulaciones
+Abrir los archivos en la ventana que ya está abierta
+No es XML válido:
+No es JSON válido:
+{0} y {1} son iguales.
+Desanclar
+Anclar
+Cerrar
+Cerrar las demás
+Cerrar las de la derecha
+Copiar ruta
+Abrir la carpeta
+Comparar con la pestaña actual
+Reemplazar en todas las pestañas...
+Reemplazar en una carpeta...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos
+(solo los primeros {0})
+las pestañas abiertas
+Carpeta donde buscar (con sus subcarpetas):
+Buscando en {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.
+Falta cerrar una cadena en la línea {0}.
+Sobra un «{0}» en la línea {1}.
+Falta cerrar un «{0}».

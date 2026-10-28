@@ -40,7 +40,6 @@ Bajar línea	Regel omlaag
 Buscar &anterior	Zoek &vorige
 Buscar &siguiente	Zoek &volgende
 Buscar actualizaciones al iniciar	Bij opstarten naar updates zoeken
-Buscar y reemplazar	Zoeken en vervangen
 Buscar:	Zoeken:
 Cambiar...	Wijzigen...
 Cancelar	Annuleren
@@ -69,7 +68,6 @@ Guardar t&odo	Alles o&pslaan
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Er is een nieuwe versie van {0}: {1} (u heeft {2}).\n\n{3}\n\nNu downloaden en installeren? {0} wordt opnieuw gestart en behoudt uw tabbladen.
 Insertar fecha y hora	Datum en tijd invoegen
 Ir a línea	Ga naar regel
-La descarga no es un ejecutable válido.	De download is geen geldig uitvoerbaar bestand.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Voorbeeld is beschikbaar voor HTML, Markdown, reStructuredText, SVG, CSV/TSV en LRC-songteksten.
 Lín {0}, Col {1}	Rg {0}, Kol {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Rg {0}, Kol {1}   ({2} geselecteerd)
@@ -138,3 +136,47 @@ Abrir desde URL	Openen vanaf URL
 Dirección del archivo de texto:	Adres van het tekstbestand:
 El archivo es demasiado grande (máximo {0} MB).	Het bestand is te groot (maximaal {0} MB).
 No es un archivo de texto.	Dit is geen tekstbestand.
+&Imprimir...	&Afdrukken...
+Buscar en todas las pestañas	Zoeken in alle tabbladen
+Buscar en una carpeta...	Zoeken in een map...
+&Comparar con	&Vergelijken met
+&Formatear JSON o XML	JSON of XML &opmaken
+Co&mpactar JSON o XML	JSON of XML &comprimeren
+Mostrar &espacios y tabulaciones	&Spaties en tabs weergeven
+&Paleta de comandos...	&Opdrachtpalet...
+Plegar bloque	Blok samenvouwen
+Desplegar bloque	Blok uitvouwen
+Desplegar todo	Alles uitvouwen
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} is {1} MB groot en kan lang duren om te openen. Toch openen?
+Abriendo {0}...	{0} openen...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Het zoeken duurt te lang. Probeer een eenvoudigere expressie.
+{0} de {1}	{0} van {1}
+{0} reemplazos.	{0} vervangingen.
+Cerrar comillas y paréntesis automáticamente	Aanhalingstekens en haakjes automatisch sluiten
+Mostrar espacios y tabulaciones	Spaties en tabs weergeven
+Abrir los archivos en la ventana que ya está abierta	Bestanden openen in het al geopende venster
+No es XML válido:	Geen geldige XML:
+No es JSON válido:	Geen geldige JSON:
+{0} y {1} son iguales.	{0} en {1} zijn gelijk.
+Desanclar	Losmaken
+Anclar	Vastmaken
+Cerrar	Sluiten
+Cerrar las demás	Andere sluiten
+Cerrar las de la derecha	Tabbladen rechts sluiten
+Copiar ruta	Pad kopiëren
+Abrir la carpeta	Map openen
+Comparar con la pestaña actual	Vergelijken met huidig tabblad
+Reemplazar en todas las pestañas...	Vervangen in alle tabbladen...
+Reemplazar en una carpeta...	Vervangen in een map...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	‘{0}’ in {1}: {2} resultaten in {3} van {4} bestanden
+(solo los primeros {0})	(alleen de eerste {0})
+las pestañas abiertas	de geopende tabbladen
+Carpeta donde buscar (con sus subcarpetas):	Map om in te zoeken (met submappen):
+Buscando en {0}...	Zoeken in {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Er worden {0} vervangingen uitgevoerd in {1} tabbladen. Elk tabblad kan ze ongedaan maken met Ctrl+Z.\nDoorgaan?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Er zijn overeenkomsten in {0} bestanden; dat zijn er te veel om tegelijk te openen.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Er worden {0} bestanden met {1} overeenkomsten geopend en de vervangingen worden in hun tabbladen uitgevoerd, zonder op te slaan. Controleer ze en gebruik Alles opslaan om ze te bewaren.\nDoorgaan?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	De download is beschadigd of gewijzigd: de SHA-256-controlesom komt niet overeen met de gepubliceerde.
+Falta cerrar una cadena en la línea {0}.	Een tekenreeks is niet gesloten op regel {0}.
+Sobra un «{0}» en la línea {1}.	Overbodig ‘{0}’ op regel {1}.
+Falta cerrar un «{0}».	Een afsluitend ‘{0}’ ontbreekt.

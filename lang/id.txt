@@ -40,7 +40,6 @@ Bajar línea	Turunkan baris
 Buscar &anterior	Cari seb&elumnya
 Buscar &siguiente	Cari &berikutnya
 Buscar actualizaciones al iniciar	Periksa pembaruan saat memulai
-Buscar y reemplazar	Cari dan ganti
 Buscar:	Cari:
 Cambiar...	Ubah...
 Cancelar	Batal
@@ -69,7 +68,6 @@ Guardar t&odo	Simpan sem&ua
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Ada versi baru {0}: {1} (Anda memiliki {2}).\n\n{3}\n\nUnduh dan instal sekarang? {0} akan dimulai ulang dan tab Anda tetap terjaga.
 Insertar fecha y hora	Sisipkan tanggal dan waktu
 Ir a línea	Ke baris
-La descarga no es un ejecutable válido.	Unduhan bukan berkas yang dapat dieksekusi yang valid.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Pratinjau tersedia untuk HTML, Markdown, reStructuredText, SVG, CSV/TSV, dan lirik LRC.
 Lín {0}, Col {1}	Brs {0}, Kol {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Brs {0}, Kol {1}   ({2} dipilih)
@@ -138,3 +136,47 @@ Abrir desde URL	Buka dari URL
 Dirección del archivo de texto:	Alamat file teks:
 El archivo es demasiado grande (máximo {0} MB).	File terlalu besar (maksimum {0} MB).
 No es un archivo de texto.	Ini bukan file teks.
+&Imprimir...	&Cetak...
+Buscar en todas las pestañas	Cari di semua tab
+Buscar en una carpeta...	Cari di folder...
+&Comparar con	Ban&dingkan dengan
+&Formatear JSON o XML	&Format JSON atau XML
+Co&mpactar JSON o XML	Pa&datkan JSON atau XML
+Mostrar &espacios y tabulaciones	Tampilkan &spasi dan tab
+&Paleta de comandos...	&Palet perintah...
+Plegar bloque	Ciutkan blok
+Desplegar bloque	Bentangkan blok
+Desplegar todo	Bentangkan semua
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} berukuran {1} MB dan mungkin lama dibuka. Tetap buka?
+Abriendo {0}...	Membuka {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Pencarian terlalu lama. Coba ekspresi yang lebih sederhana.
+{0} de {1}	{0} dari {1}
+{0} reemplazos.	{0} penggantian.
+Cerrar comillas y paréntesis automáticamente	Tutup tanda kutip dan tanda kurung secara otomatis
+Mostrar espacios y tabulaciones	Tampilkan spasi dan tab
+Abrir los archivos en la ventana que ya está abierta	Buka file di jendela yang sudah terbuka
+No es XML válido:	Bukan XML yang valid:
+No es JSON válido:	Bukan JSON yang valid:
+{0} y {1} son iguales.	{0} dan {1} sama.
+Desanclar	Lepas sematan
+Anclar	Sematkan
+Cerrar	Tutup
+Cerrar las demás	Tutup yang lain
+Cerrar las de la derecha	Tutup yang di kanan
+Copiar ruta	Salin path
+Abrir la carpeta	Buka folder
+Comparar con la pestaña actual	Bandingkan dengan tab saat ini
+Reemplazar en todas las pestañas...	Ganti di semua tab...
+Reemplazar en una carpeta...	Ganti di folder...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	“{0}” di {1}: {2} hasil di {3} dari {4} file
+(solo los primeros {0})	(hanya {0} pertama)
+las pestañas abiertas	tab yang terbuka
+Carpeta donde buscar (con sus subcarpetas):	Folder tempat mencari (beserta subfolder):
+Buscando en {0}...	Mencari di {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Akan dilakukan {0} penggantian di {1} tab. Setiap tab dapat membatalkannya dengan Ctrl+Z.\nLanjutkan?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Ada kecocokan di {0} file; terlalu banyak untuk dibuka sekaligus.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Akan dibuka {0} file dengan {1} kecocokan dan penggantian dilakukan di tab-nya tanpa disimpan. Periksa dan gunakan Simpan semua untuk mempertahankannya.\nLanjutkan?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Unduhan rusak atau telah dimodifikasi: checksum SHA-256-nya tidak cocok dengan yang dipublikasikan.
+Falta cerrar una cadena en la línea {0}.	Penutup string hilang pada baris {0}.
+Sobra un «{0}» en la línea {1}.	Ada “{0}” berlebih pada baris {1}.
+Falta cerrar un «{0}».	Penutup “{0}” hilang.

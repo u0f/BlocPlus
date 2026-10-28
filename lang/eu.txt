@@ -40,7 +40,6 @@ Bajar línea	Jaitsi lerroa
 Buscar &anterior	Bilatu &aurrekoa
 Buscar &siguiente	Bilatu &hurrengoa
 Buscar actualizaciones al iniciar	Bilatu eguneratzeak abiaraztean
-Buscar y reemplazar	Bilatu eta ordezkatu
 Buscar:	Bilatu:
 Cambiar...	Aldatu...
 Cancelar	Utzi
@@ -69,7 +68,6 @@ Guardar t&odo	Gorde &dena
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} programaren bertsio berri bat dago: {1} ({2} duzu).\n\n{3}\n\nOrain deskargatu eta instalatu? {0} berrabiaraziko da eta zure fitxak mantenduko ditu.
 Insertar fecha y hora	Txertatu data eta ordua
 Ir a línea	Joan lerrora
-La descarga no es un ejecutable válido.	Deskargatutakoa ez da exekutagarri baliozkoa.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Aurreikuspegia HTML, Markdown, reStructuredText, SVG, CSV/TSV eta LRC letretarako dago erabilgarri.
 Lín {0}, Col {1}	{0}. lerroa, {1}. zut.
 Lín {0}, Col {1}   ({2} seleccionados)	{0}. lerroa, {1}. zut.   ({2} hautatuta)
@@ -138,3 +136,47 @@ Abrir desde URL	Ireki URLtik
 Dirección del archivo de texto:	Testu-fitxategiaren helbidea:
 El archivo es demasiado grande (máximo {0} MB).	Fitxategia handiegia da (gehienez {0} MB).
 No es un archivo de texto.	Ez da testu-fitxategi bat.
+&Imprimir...	&Inprimatu...
+Buscar en todas las pestañas	Bilatu fitxa guztietan
+Buscar en una carpeta...	Bilatu karpeta batean...
+&Comparar con	&Alderatu honekin
+&Formatear JSON o XML	JSON edo XML &formatua eman
+Co&mpactar JSON o XML	JSON edo XML &trinkotu
+Mostrar &espacios y tabulaciones	Erakutsi &zuriuneak eta tabulazioak
+&Paleta de comandos...	&Komando-paleta...
+Plegar bloque	Tolestu blokea
+Desplegar bloque	Zabaldu blokea
+Desplegar todo	Zabaldu dena
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} {1} MB da eta ireki arte denbora behar dezake. Hala ere ireki?
+Abriendo {0}...	{0} irekitzen...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Bilaketak denbora gehiegi behar du. Saiatu adierazpen sinpleago batekin.
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} ordezkapen.
+Cerrar comillas y paréntesis automáticamente	Itxi komatxoak eta parentesiak automatikoki
+Mostrar espacios y tabulaciones	Erakutsi zuriuneak eta tabulazioak
+Abrir los archivos en la ventana que ya está abierta	Ireki fitxategiak irekita dagoen leihoan
+No es XML válido:	XML baliogabea:
+No es JSON válido:	JSON baliogabea:
+{0} y {1} son iguales.	{0} eta {1} berdinak dira.
+Desanclar	Askatu
+Anclar	Ainguratu
+Cerrar	Itxi
+Cerrar las demás	Itxi besteak
+Cerrar las de la derecha	Itxi eskuinekoak
+Copiar ruta	Kopiatu bidea
+Abrir la carpeta	Ireki karpeta
+Comparar con la pestaña actual	Alderatu uneko fitxarekin
+Reemplazar en todas las pestañas...	Ordeztu fitxa guztietan...
+Reemplazar en una carpeta...	Ordeztu karpeta batean...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	«{0}» {1}(e)n: {2} emaitza {4} fitxategitatik {3}tan
+(solo los primeros {0})	(lehenengo {0} soilik)
+las pestañas abiertas	irekitako fitxak
+Carpeta donde buscar (con sus subcarpetas):	Bilatzeko karpeta (azpikarpetekin):
+Buscando en {0}...	{0}(e)n bilatzen...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{0} ordezkapen egingo dira {1} fitxatan. Fitxa bakoitzak Ctrl+Z-rekin desegin ditzake.\nJarraitu?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	{0} fitxategitan bat-etortzeak daude; gehiegi dira aldi berean irekitzeko.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} fitxategi irekiko dira {1} bat-etortzerekin, eta ordezkapenak haien fitxetan egingo dira, gorde gabe. Berrikusi itzazu eta erabili Gorde dena mantentzeko.\nJarraitu?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Deskarga hondatuta dago edo aldatu egin da: bere SHA-256 hatz-marka ez dator bat argitaratutakoarekin.
+Falta cerrar una cadena en la línea {0}.	Kate bat ixteke dago {0}. lerroan.
+Sobra un «{0}» en la línea {1}.	«{0}» soberan dago {1}. lerroan.
+Falta cerrar un «{0}».	«{0}» ixteke dago.

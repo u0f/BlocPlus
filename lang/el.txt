@@ -40,7 +40,6 @@ Bajar línea	Μετακίνηση γραμμής κάτω
 Buscar &anterior	Εύρεση &προηγούμενου
 Buscar &siguiente	Εύρεση &επόμενου
 Buscar actualizaciones al iniciar	Έλεγχος για ενημερώσεις κατά την εκκίνηση
-Buscar y reemplazar	Εύρεση και αντικατάσταση
 Buscar:	Εύρεση:
 Cambiar...	Αλλαγή...
 Cancelar	Ακύρωση
@@ -69,7 +68,6 @@ Guardar t&odo	Αποθήκευση ό&λων
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Υπάρχει νέα έκδοση του {0}: {1} (έχετε την {2}).\n\n{3}\n\nΝα γίνει λήψη και εγκατάσταση τώρα; Το {0} θα επανεκκινήσει και θα διατηρήσει τις καρτέλες σας.
 Insertar fecha y hora	Εισαγωγή ημερομηνίας και ώρας
 Ir a línea	Μετάβαση στη γραμμή
-La descarga no es un ejecutable válido.	Το αρχείο που λήφθηκε δεν είναι έγκυρο εκτελέσιμο.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Η προεπισκόπηση είναι διαθέσιμη για HTML, Markdown, reStructuredText, SVG, CSV/TSV και στίχους LRC.
 Lín {0}, Col {1}	Γρ {0}, Στ {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Γρ {0}, Στ {1}   ({2} επιλεγμένα)
@@ -138,3 +136,47 @@ Abrir desde URL	Άνοιγμα από URL
 Dirección del archivo de texto:	Διεύθυνση του αρχείου κειμένου:
 El archivo es demasiado grande (máximo {0} MB).	Το αρχείο είναι πολύ μεγάλο (μέγιστο {0} MB).
 No es un archivo de texto.	Δεν είναι αρχείο κειμένου.
+&Imprimir...	&Εκτύπωση...
+Buscar en todas las pestañas	Αναζήτηση σε όλες τις καρτέλες
+Buscar en una carpeta...	Αναζήτηση σε φάκελο...
+&Comparar con	&Σύγκριση με
+&Formatear JSON o XML	&Μορφοποίηση JSON ή XML
+Co&mpactar JSON o XML	Σ&υμπίεση JSON ή XML
+Mostrar &espacios y tabulaciones	Εμφάνιση &κενών και tab
+&Paleta de comandos...	&Παλέτα εντολών...
+Plegar bloque	Σύμπτυξη μπλοκ
+Desplegar bloque	Ανάπτυξη μπλοκ
+Desplegar todo	Ανάπτυξη όλων
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	Το {0} έχει μέγεθος {1} MB και ίσως αργήσει να ανοίξει. Να ανοίξει παρ' όλα αυτά;
+Abriendo {0}...	Άνοιγμα του {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Η αναζήτηση διαρκεί υπερβολικά. Δοκιμάστε μια απλούστερη έκφραση.
+{0} de {1}	{0} από {1}
+{0} reemplazos.	{0} αντικαταστάσεις.
+Cerrar comillas y paréntesis automáticamente	Αυτόματο κλείσιμο εισαγωγικών και παρενθέσεων
+Mostrar espacios y tabulaciones	Εμφάνιση κενών και tab
+Abrir los archivos en la ventana que ya está abierta	Άνοιγμα των αρχείων στο παράθυρο που είναι ήδη ανοιχτό
+No es XML válido:	Μη έγκυρο XML:
+No es JSON válido:	Μη έγκυρο JSON:
+{0} y {1} son iguales.	Το {0} και το {1} είναι ίδια.
+Desanclar	Ξεκαρφίτσωμα
+Anclar	Καρφίτσωμα
+Cerrar	Κλείσιμο
+Cerrar las demás	Κλείσιμο των υπολοίπων
+Cerrar las de la derecha	Κλείσιμο των δεξιών
+Copiar ruta	Αντιγραφή διαδρομής
+Abrir la carpeta	Άνοιγμα του φακέλου
+Comparar con la pestaña actual	Σύγκριση με την τρέχουσα καρτέλα
+Reemplazar en todas las pestañas...	Αντικατάσταση σε όλες τις καρτέλες...
+Reemplazar en una carpeta...	Αντικατάσταση σε φάκελο...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	«{0}» στο {1}: {2} αποτελέσματα σε {3} από {4} αρχεία
+(solo los primeros {0})	(μόνο τα πρώτα {0})
+las pestañas abiertas	οι ανοιχτές καρτέλες
+Carpeta donde buscar (con sus subcarpetas):	Φάκελος αναζήτησης (με τους υποφακέλους του):
+Buscando en {0}...	Αναζήτηση στο {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Θα γίνουν {0} αντικαταστάσεις σε {1} καρτέλες. Κάθε καρτέλα μπορεί να τις αναιρέσει με Ctrl+Z.\nΣυνέχεια;
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Υπάρχουν αντιστοιχίες σε {0} αρχεία· είναι πάρα πολλά για να ανοίξουν ταυτόχρονα.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Θα ανοίξουν {0} αρχεία με {1} αντιστοιχίες και οι αντικαταστάσεις θα γίνουν στις καρτέλες τους, χωρίς αποθήκευση. Ελέγξτε τα και χρησιμοποιήστε το Αποθήκευση όλων για να τα κρατήσετε.\nΣυνέχεια;
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Η λήψη είναι κατεστραμμένη ή έχει τροποποιηθεί: το άθροισμα ελέγχου SHA-256 δεν συμφωνεί με το δημοσιευμένο.
+Falta cerrar una cadena en la línea {0}.	Λείπει το κλείσιμο συμβολοσειράς στη γραμμή {0}.
+Sobra un «{0}» en la línea {1}.	Περισσεύει ένα «{0}» στη γραμμή {1}.
+Falta cerrar un «{0}».	Λείπει το κλείσιμο ενός «{0}».

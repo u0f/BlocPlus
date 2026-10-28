@@ -40,7 +40,6 @@ Bajar línea	Satırı aşağı taşı
 Buscar &anterior	&Öncekini bul
 Buscar &siguiente	&Sonrakini bul
 Buscar actualizaciones al iniciar	Başlangıçta güncellemeleri denetle
-Buscar y reemplazar	Bul ve değiştir
 Buscar:	Bul:
 Cambiar...	Değiştir...
 Cancelar	İptal
@@ -69,7 +68,6 @@ Guardar t&odo	&Tümünü kaydet
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} için yeni bir sürüm var: {1} (sizdeki: {2}).\n\n{3}\n\nŞimdi indirip yüklensin mi? {0} yeniden başlatılacak ve sekmelerinizi koruyacak.
 Insertar fecha y hora	Tarih ve saat ekle
 Ir a línea	Satıra git
-La descarga no es un ejecutable válido.	İndirilen dosya geçerli bir yürütülebilir dosya değil.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Önizleme HTML, Markdown, reStructuredText, SVG, CSV/TSV ve LRC şarkı sözleri için kullanılabilir.
 Lín {0}, Col {1}	Sat {0}, Süt {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Sat {0}, Süt {1}   ({2} seçili)
@@ -138,3 +136,47 @@ Abrir desde URL	URL'den aç
 Dirección del archivo de texto:	Metin dosyasının adresi:
 El archivo es demasiado grande (máximo {0} MB).	Dosya çok büyük (en fazla {0} MB).
 No es un archivo de texto.	Bu bir metin dosyası değil.
+&Imprimir...	&Yazdır...
+Buscar en todas las pestañas	Tüm sekmelerde ara
+Buscar en una carpeta...	Klasörde ara...
+&Comparar con	&Şununla karşılaştır
+&Formatear JSON o XML	JSON veya XML'i &biçimlendir
+Co&mpactar JSON o XML	JSON veya XML'i s&ıkıştır
+Mostrar &espacios y tabulaciones	&Boşlukları ve sekmeleri göster
+&Paleta de comandos...	&Komut paleti...
+Plegar bloque	Bloğu daralt
+Desplegar bloque	Bloğu genişlet
+Desplegar todo	Tümünü genişlet
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} dosyası {1} MB boyutunda ve açılması uzun sürebilir. Yine de açılsın mı?
+Abriendo {0}...	{0} açılıyor...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Arama çok uzun sürüyor. Daha basit bir ifade deneyin.
+{0} de {1}	{0} / {1}
+{0} reemplazos.	{0} değiştirme.
+Cerrar comillas y paréntesis automáticamente	Tırnak ve parantezleri otomatik kapat
+Mostrar espacios y tabulaciones	Boşlukları ve sekmeleri göster
+Abrir los archivos en la ventana que ya está abierta	Dosyaları zaten açık olan pencerede aç
+No es XML válido:	Geçerli bir XML değil:
+No es JSON válido:	Geçerli bir JSON değil:
+{0} y {1} son iguales.	{0} ve {1} aynı.
+Desanclar	Sabitlemeyi kaldır
+Anclar	Sabitle
+Cerrar	Kapat
+Cerrar las demás	Diğerlerini kapat
+Cerrar las de la derecha	Sağdakileri kapat
+Copiar ruta	Yolu kopyala
+Abrir la carpeta	Klasörü aç
+Comparar con la pestaña actual	Geçerli sekmeyle karşılaştır
+Reemplazar en todas las pestañas...	Tüm sekmelerde değiştir...
+Reemplazar en una carpeta...	Klasörde değiştir...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	"{0}" için {1} içinde: {3} / {4} dosyada {2} sonuç
+(solo los primeros {0})	(yalnızca ilk {0})
+las pestañas abiertas	açık sekmeler
+Carpeta donde buscar (con sus subcarpetas):	Aranacak klasör (alt klasörleriyle):
+Buscando en {0}...	{0} içinde aranıyor...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{1} sekmede {0} değiştirme yapılacak. Her sekme bunları Ctrl+Z ile geri alabilir.\nDevam edilsin mi?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	{0} dosyada eşleşme var; aynı anda açmak için çok fazla.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{1} eşleşmeli {0} dosya açılacak ve değiştirmeler kaydedilmeden sekmelerinde yapılacak. Gözden geçirin ve korumak için Tümünü kaydet'i kullanın.\nDevam edilsin mi?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	İndirilen dosya bozuk veya değiştirilmiş: SHA-256 özeti yayımlananla eşleşmiyor.
+Falta cerrar una cadena en la línea {0}.	{0}. satırda bir dizenin kapanışı eksik.
+Sobra un «{0}» en la línea {1}.	{1}. satırda fazladan bir "{0}" var.
+Falta cerrar un «{0}».	Bir "{0}" kapatılmamış.

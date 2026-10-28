@@ -40,7 +40,6 @@ Bajar línea	Flytta rad nedåt
 Buscar &anterior	Sök &föregående
 Buscar &siguiente	Sök &nästa
 Buscar actualizaciones al iniciar	Sök efter uppdateringar vid start
-Buscar y reemplazar	Sök och ersätt
 Buscar:	Sök:
 Cambiar...	Ändra...
 Cancelar	Avbryt
@@ -69,7 +68,6 @@ Guardar t&odo	Spara a&lla
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Det finns en ny version av {0}: {1} (du har {2}).\n\n{3}\n\nVill du hämta och installera den nu? {0} startas om och behåller dina flikar.
 Insertar fecha y hora	Infoga datum och tid
 Ir a línea	Gå till rad
-La descarga no es un ejecutable válido.	Den hämtade filen är inte en giltig körbar fil.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Förhandsgranskning finns för HTML, Markdown, reStructuredText, SVG, CSV/TSV och LRC-låttexter.
 Lín {0}, Col {1}	Rad {0}, Kol {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Rad {0}, Kol {1}   ({2} markerade)
@@ -138,3 +136,47 @@ Abrir desde URL	Öppna från URL
 Dirección del archivo de texto:	Adress till textfilen:
 El archivo es demasiado grande (máximo {0} MB).	Filen är för stor (högst {0} MB).
 No es un archivo de texto.	Det är ingen textfil.
+&Imprimir...	&Skriv ut...
+Buscar en todas las pestañas	Sök i alla flikar
+Buscar en una carpeta...	Sök i en mapp...
+&Comparar con	&Jämför med
+&Formatear JSON o XML	&Formatera JSON eller XML
+Co&mpactar JSON o XML	Ko&mprimera JSON eller XML
+Mostrar &espacios y tabulaciones	Visa &blanksteg och tabbar
+&Paleta de comandos...	&Kommandopalett...
+Plegar bloque	Fäll ihop block
+Desplegar bloque	Fäll ut block
+Desplegar todo	Fäll ut alla
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} är {1} MB och kan ta lång tid att öppna. Öppna ändå?
+Abriendo {0}...	Öppnar {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Sökningen tar för lång tid. Prova ett enklare uttryck.
+{0} de {1}	{0} av {1}
+{0} reemplazos.	{0} ersättningar.
+Cerrar comillas y paréntesis automáticamente	Stäng citattecken och parenteser automatiskt
+Mostrar espacios y tabulaciones	Visa blanksteg och tabbar
+Abrir los archivos en la ventana que ya está abierta	Öppna filerna i det fönster som redan är öppet
+No es XML válido:	Ogiltig XML:
+No es JSON válido:	Ogiltig JSON:
+{0} y {1} son iguales.	{0} och {1} är lika.
+Desanclar	Lossa
+Anclar	Fäst
+Cerrar	Stäng
+Cerrar las demás	Stäng övriga
+Cerrar las de la derecha	Stäng flikarna till höger
+Copiar ruta	Kopiera sökväg
+Abrir la carpeta	Öppna mappen
+Comparar con la pestaña actual	Jämför med aktuell flik
+Reemplazar en todas las pestañas...	Ersätt i alla flikar...
+Reemplazar en una carpeta...	Ersätt i en mapp...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	”{0}” i {1}: {2} träffar i {3} av {4} filer
+(solo los primeros {0})	(endast de första {0})
+las pestañas abiertas	de öppna flikarna
+Carpeta donde buscar (con sus subcarpetas):	Mapp att söka i (med undermappar):
+Buscando en {0}...	Söker i {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{0} ersättningar kommer att göras i {1} flikar. Varje flik kan ångra dem med Ctrl+Z.\nFortsätta?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Det finns träffar i {0} filer; det är för många för att öppna på en gång.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{0} filer med {1} träffar öppnas och ersättningarna görs i deras flikar, utan att sparas. Granska dem och använd Spara alla för att behålla dem.\nFortsätta?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Nedladdningen är skadad eller har ändrats: dess SHA-256-kontrollsumma stämmer inte med den publicerade.
+Falta cerrar una cadena en la línea {0}.	En sträng är inte stängd på rad {0}.
+Sobra un «{0}» en la línea {1}.	Överflödig ”{0}” på rad {1}.
+Falta cerrar un «{0}».	En avslutande ”{0}” saknas.

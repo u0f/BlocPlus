@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.4.0 (2026-10-28)
+
+- **Barra de búsqueda** encima del texto (Ctrl+F, Ctrl+H) en lugar de la ventana aparte: resalta todas las coincidencias visibles, busca mientras escribes y cuenta los resultados ("3 de 12").
+  - Desde su botón **⋯**: buscar o reemplazar en todas las pestañas (Ctrl+Shift+F) o en una carpeta y sus subcarpetas. Los resultados salen en un panel; doble clic para ir a cada uno.
+  - Reemplazar en una carpeta no toca el disco: abre los archivos en pestañas con los cambios hechos para revisarlos y guardarlos con Guardar todo.
+- **Paleta de comandos** (Ctrl+Shift+P): todos los comandos de los menús en una lista que se filtra al escribir.
+- **Plegar bloques**: la flecha junto al número de línea oculta las líneas sangradas bajo ella; también con Alt+← y Alt+→.
+- Se marcan el **paréntesis o llave que empareja** con el del cursor y las **otras apariciones de la palabra seleccionada**.
+- **Mostrar espacios y tabulaciones** (Ver) y **cerrar comillas y paréntesis automáticamente** (opcional, en Ajustes).
+- **Formatear y compactar JSON y XML** (Documento, Ctrl+Alt+F), sin reordenar claves ni cambiar números ni comentarios.
+- **Comparar pestañas** (Documento > Comparar con): las diferencias se abren en una pestaña nueva con su vista previa en color.
+- **Imprimir** (Ctrl+P).
+- **Pestañas ancladas** y menú de pestaña con clic derecho: cerrar las demás, cerrar las de la derecha, copiar la ruta y abrir la carpeta.
+- La barra de estado deja cambiar el lenguaje, la codificación y el fin de línea con un clic.
+- **Una sola ventana**: abrir un archivo con BlocPlus ya abierto añade una pestaña en la misma ventana (se puede desactivar en Ajustes). `archivo.txt:42` o `archivo.txt:42:7` abre en esa línea y columna.
+- **Seguridad**: las actualizaciones solo se instalan si su huella SHA-256 coincide con la que publica GitHub.
+- El resaltado de sintaxis ya no vuelve a analizar el archivo entero en cada tecla ni al desplazarse, y la sesión solo reescribe las pestañas que han cambiado.
+- Los archivos de más de 50 MB piden confirmación antes de abrirse.
+- Los errores que el programa resuelve solo quedan en `%APPDATA%\BlocPlus\log.txt`.
+
 ## 1.3.0 (2026-10-26)
 
 - **Vista previa de diffs y parches** (.diff, .patch): un recuadro por archivo con los números de línea antiguos y nuevos, las líneas añadidas en verde, las borradas en rojo y la cabecera del parche encima. Se pueden editar y la vista previa se actualiza al momento.

@@ -40,7 +40,6 @@ Bajar línea	Преместване на реда надолу
 Buscar &anterior	Търси &предишно
 Buscar &siguiente	Търси &следващо
 Buscar actualizaciones al iniciar	Проверка за актуализации при стартиране
-Buscar y reemplazar	Търсене и замяна
 Buscar:	Търсене:
 Cambiar...	Промяна...
 Cancelar	Отказ
@@ -69,7 +68,6 @@ Guardar t&odo	Запис на &всички
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	Има нова версия на {0}: {1} (вие имате {2}).\n\n{3}\n\nДа се изтегли и инсталира ли сега? {0} ще се рестартира и ще запази разделите ви.
 Insertar fecha y hora	Вмъкване на дата и час
 Ir a línea	Към ред
-La descarga no es un ejecutable válido.	Изтегленият файл не е валиден изпълним файл.
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	Прегледът е наличен за HTML, Markdown, reStructuredText, SVG, CSV/TSV и текстове LRC.
 Lín {0}, Col {1}	Ред {0}, Кол {1}
 Lín {0}, Col {1}   ({2} seleccionados)	Ред {0}, Кол {1}   ({2} избрани)
@@ -138,3 +136,47 @@ Abrir desde URL	Отваряне от URL
 Dirección del archivo de texto:	Адрес на текстовия файл:
 El archivo es demasiado grande (máximo {0} MB).	Файлът е твърде голям (максимум {0} MB).
 No es un archivo de texto.	Това не е текстов файл.
+&Imprimir...	&Печат...
+Buscar en todas las pestañas	Търсене във всички раздели
+Buscar en una carpeta...	Търсене в папка...
+&Comparar con	&Сравняване с
+&Formatear JSON o XML	&Форматиране на JSON или XML
+Co&mpactar JSON o XML	Со&биране на JSON или XML
+Mostrar &espacios y tabulaciones	Показване на &интервали и табулации
+&Paleta de comandos...	&Палитра с команди...
+Plegar bloque	Свиване на блок
+Desplegar bloque	Разгъване на блок
+Desplegar todo	Разгъване на всички
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} е {1} MB и може да се отваря бавно. Да се отвори ли въпреки това?
+Abriendo {0}...	Отваряне на {0}...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	Търсенето отнема твърде дълго. Опитайте с по-прост израз.
+{0} de {1}	{0} от {1}
+{0} reemplazos.	{0} замени.
+Cerrar comillas y paréntesis automáticamente	Автоматично затваряне на кавички и скоби
+Mostrar espacios y tabulaciones	Показване на интервали и табулации
+Abrir los archivos en la ventana que ya está abierta	Отваряне на файловете в вече отворения прозорец
+No es XML válido:	Невалиден XML:
+No es JSON válido:	Невалиден JSON:
+{0} y {1} son iguales.	{0} и {1} са еднакви.
+Desanclar	Откачване
+Anclar	Закачане
+Cerrar	Затваряне
+Cerrar las demás	Затваряне на останалите
+Cerrar las de la derecha	Затваряне на тези отдясно
+Copiar ruta	Копиране на пътя
+Abrir la carpeta	Отваряне на папката
+Comparar con la pestaña actual	Сравняване с текущия раздел
+Reemplazar en todas las pestañas...	Замяна във всички раздели...
+Reemplazar en una carpeta...	Замяна в папка...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	„{0}“ в {1}: {2} резултата в {3} от {4} файла
+(solo los primeros {0})	(само първите {0})
+las pestañas abiertas	отворените раздели
+Carpeta donde buscar (con sus subcarpetas):	Папка за търсене (с подпапките):
+Buscando en {0}...	Търсене в {0}...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	Ще бъдат направени {0} замени в {1} раздела. Във всеки раздел могат да се отменят с Ctrl+Z.\nДа се продължи ли?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	Има съвпадения в {0} файла; те са твърде много, за да се отворят наведнъж.
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	Ще бъдат отворени {0} файла с {1} съвпадения и замените ще се извършат в техните раздели, без запазване. Прегледайте ги и използвайте „Запази всички“, за да ги запазите.\nДа се продължи ли?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	Изтеглянето е повредено или променено: неговата контролна сума SHA-256 не съвпада с публикуваната.
+Falta cerrar una cadena en la línea {0}.	Липсва затваряне на низ на ред {0}.
+Sobra un «{0}» en la línea {1}.	Излишно „{0}“ на ред {1}.
+Falta cerrar un «{0}».	Липсва затваряне на „{0}“.

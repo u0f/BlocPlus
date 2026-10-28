@@ -40,7 +40,6 @@ Bajar línea	पंक्ति नीचे ले जाएँ
 Buscar &anterior	पिछला खोजें(&P)
 Buscar &siguiente	अगला खोजें(&N)
 Buscar actualizaciones al iniciar	शुरू होने पर अपडेट जाँचें
-Buscar y reemplazar	खोजें और बदलें
 Buscar:	खोजें:
 Cambiar...	बदलें...
 Cancelar	रद्द करें
@@ -69,7 +68,6 @@ Guardar t&odo	सभी सहेजें(&L)
 Hay una nueva versión de {0}: {1} (tienes la {2}).\n\n{3}\n\n¿Descargarla e instalarla ahora? {0} se reiniciará y conservará tus pestañas.	{0} का नया संस्करण उपलब्ध है: {1} (आपके पास {2} है)।\n\n{3}\n\nअभी डाउनलोड करके इंस्टॉल करें? {0} पुनः प्रारंभ होगा और आपके टैब बने रहेंगे।
 Insertar fecha y hora	दिनांक और समय डालें
 Ir a línea	पंक्ति पर जाएँ
-La descarga no es un ejecutable válido.	डाउनलोड की गई फ़ाइल मान्य निष्पादन योग्य फ़ाइल नहीं है।
 La vista previa está disponible para HTML, Markdown, reStructuredText, SVG, CSV/TSV y letras LRC.	पूर्वावलोकन HTML, Markdown, reStructuredText, SVG, CSV/TSV और LRC गीत के बोल के लिए उपलब्ध है।
 Lín {0}, Col {1}	पंक्ति {0}, स्तंभ {1}
 Lín {0}, Col {1}   ({2} seleccionados)	पंक्ति {0}, स्तंभ {1}   ({2} चयनित)
@@ -138,3 +136,47 @@ Abrir desde URL	URL से खोलें
 Dirección del archivo de texto:	टेक्स्ट फ़ाइल का पता:
 El archivo es demasiado grande (máximo {0} MB).	फ़ाइल बहुत बड़ी है (अधिकतम {0} MB)।
 No es un archivo de texto.	यह टेक्स्ट फ़ाइल नहीं है।
+&Imprimir...	प्रिंट करें(&P)...
+Buscar en todas las pestañas	सभी टैब में खोजें
+Buscar en una carpeta...	फ़ोल्डर में खोजें...
+&Comparar con	इससे तुलना करें(&C)
+&Formatear JSON o XML	JSON या XML को फ़ॉर्मैट करें(&F)
+Co&mpactar JSON o XML	JSON या XML को संक्षिप्त करें(&M)
+Mostrar &espacios y tabulaciones	स्पेस और टैब दिखाएँ(&E)
+&Paleta de comandos...	कमांड पैलेट(&K)...
+Plegar bloque	ब्लॉक समेटें
+Desplegar bloque	ब्लॉक फैलाएँ
+Desplegar todo	सभी फैलाएँ
+{0} ocupa {1} MB y puede tardar en abrirse. ¿Abrirlo de todos modos?	{0} का आकार {1} MB है और इसे खुलने में समय लग सकता है। फिर भी खोलें?
+Abriendo {0}...	{0} खोला जा रहा है...
+La búsqueda tarda demasiado. Prueba con una expresión más sencilla.	खोज में बहुत अधिक समय लग रहा है। कोई सरल एक्सप्रेशन आज़माएँ।
+{0} de {1}	{1} में से {0}
+{0} reemplazos.	{0} बदलाव।
+Cerrar comillas y paréntesis automáticamente	उद्धरण चिह्न और कोष्ठक अपने-आप बंद करें
+Mostrar espacios y tabulaciones	स्पेस और टैब दिखाएँ
+Abrir los archivos en la ventana que ya está abierta	फ़ाइलें पहले से खुली विंडो में खोलें
+No es XML válido:	मान्य XML नहीं है:
+No es JSON válido:	मान्य JSON नहीं है:
+{0} y {1} son iguales.	{0} और {1} समान हैं।
+Desanclar	अनपिन करें
+Anclar	पिन करें
+Cerrar	बंद करें
+Cerrar las demás	अन्य बंद करें
+Cerrar las de la derecha	दाईं ओर के बंद करें
+Copiar ruta	पथ कॉपी करें
+Abrir la carpeta	फ़ोल्डर खोलें
+Comparar con la pestaña actual	वर्तमान टैब से तुलना करें
+Reemplazar en todas las pestañas...	सभी टैब में बदलें...
+Reemplazar en una carpeta...	फ़ोल्डर में बदलें...
+«{0}» en {1}: {2} resultados en {3} de {4} archivos	{1} में “{0}”: {4} में से {3} फ़ाइलों में {2} परिणाम
+(solo los primeros {0})	(केवल पहले {0})
+las pestañas abiertas	खुले हुए टैब
+Carpeta donde buscar (con sus subcarpetas):	खोजने के लिए फ़ोल्डर (उपफ़ोल्डर सहित):
+Buscando en {0}...	{0} में खोजा जा रहा है...
+Se harán {0} reemplazos en {1} pestañas. Cada pestaña puede deshacerlos con Ctrl+Z.\n¿Continuar?	{1} टैब में {0} बदलाव किए जाएँगे। प्रत्येक टैब Ctrl+Z से उन्हें पूर्ववत कर सकता है।\nजारी रखें?
+Hay coincidencias en {0} archivos; son demasiados para abrirlos a la vez.	{0} फ़ाइलों में मिलान हैं; इन्हें एक साथ खोलने के लिए ये बहुत अधिक हैं।
+Se abrirán {0} archivos con {1} coincidencias y se harán los reemplazos en sus pestañas, sin guardarlos. Revísalos y usa Guardar todo para conservarlos.\n¿Continuar?	{1} मिलान वाली {0} फ़ाइलें खोली जाएँगी और उनके टैब में बिना सहेजे बदलाव किए जाएँगे। उन्हें जाँचें और रखने के लिए सभी सहेजें का उपयोग करें।\nजारी रखें?
+La descarga está dañada o ha sido modificada: su huella SHA-256 no coincide con la publicada.	डाउनलोड दूषित है या बदला गया है: उसका SHA-256 चेकसम प्रकाशित चेकसम से मेल नहीं खाता।
+Falta cerrar una cadena en la línea {0}.	पंक्ति {0} में स्ट्रिंग बंद करना शेष है।
+Sobra un «{0}» en la línea {1}.	पंक्ति {1} में एक अतिरिक्त “{0}” है।
+Falta cerrar un «{0}».	एक “{0}” बंद करना शेष है।
